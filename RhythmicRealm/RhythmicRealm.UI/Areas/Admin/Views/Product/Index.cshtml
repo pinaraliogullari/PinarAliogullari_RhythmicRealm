@@ -1,0 +1,95 @@
+﻿  @model List<ProductViewModel>
+  <!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                </div>
+                <div class="col-sm-6">
+                    
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="myDataTable" class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Ürün</th>
+                                        <th>Ana Kategori</th>
+                                        <th>Alt Kategori</th>
+                                        <th>Marka</th>
+                                        <th>Fiyat(TL)</th>
+                                        <th>Ana Sayfa</th>
+                                        <th>Aktif</th>
+                                        <th>İşlemler</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                      @foreach (var product in Model)
+                                        {
+                                        <tr>
+                                            <td>@product.Id</td>
+                                            <td>@product.Name</td>
+                                            <td>@product.MainCategory.Name</td>
+                                            <td>@product.SubCategory.Name</td>
+                                            <td>@product.Brand.Name</td>
+                                            <td>@product.Price</td>
+                                            <td>@product.IsHome</td>
+                                            <td>@product.IsActive</td>
+                                            <td>
+                                                <a asp-area="Admin"
+                                                   asp-controller="Product"
+                                                   asp-action="Edit"
+                                                   asp-route-id="@product.Id"
+                                                   class="btn btn-warning btn-sm">
+                                                    <i class="far fa-edit"></i>
+                                                </a>
+                                                <a asp-area="Admin"
+                                                   asp-controller="Product"
+                                                   asp-action="Delete"
+                                                   asp-route-id="@product.Id"
+                                                   class="btn btn-danger btn-sm">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                            </td>
+                                                </tr>
+                                        }
+                                
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+@section Styles {
+    @await Html.PartialAsync("_DataTablesCssPartial")
+}
+
+@section Scripts {
+    @await Html.PartialAsync("_DataTablesJsPartial")
+
+}

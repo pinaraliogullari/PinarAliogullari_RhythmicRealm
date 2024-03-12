@@ -1,0 +1,99 @@
+﻿@* @model EditProductViewModel
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                </div>
+                <div class="col-sm-6">
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Update Product</h2>
+                    <div class="container">
+                        <form 
+                            asp-area="Admin"
+                            asp-controller="Product"
+                            asp-action="Edit"
+                            method="post">
+                            <div class="form-group">
+                                <label asp-for="ImageUrl" class="control-label"></label>
+                                <input asp-for="ImageUrl" class="form-control" />
+                                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Url" class="control-label"></label>
+                                <input asp-for="Url" class="form-control" />
+                                <span asp-validation-for="Url" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Description" class="control-label"></label>
+                                <textarea asp-for="Description" class="form-control"></textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Properties" class="control-label"></label>
+                                <textarea asp-for="Properties" class="form-control"></textarea>
+                                <span asp-validation-for="Properties" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Price" class="control-label"></label>
+                                <input asp-for="Price" class="form-control" />
+                                <span asp-validation-for="Price" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="IsHome" class="control-label"></label>
+                                <input asp-for="IsHome" type="checkbox" />
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="SubCategoryList" class="control-label"></label>
+                                <select asp-items="@Model.SubCategoryList"  asp-for="SubCategoryId" class="form-control">
+                                
+                                </select>
+                                <span asp-validation-for="SubCategoryId" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="BrandList" class="control-label"></label>
+                                <select asp-items="@Model.BrandList" asp-for="BrandId" class="form-control">
+
+                                
+                                </select>
+                                <span asp-validation-for="BrandId" class="text-danger"></span>
+                            </div>
+
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Güncelle</button>
+                            </div>
+                        </form>
+
+                        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+
+                    </div>
+
+
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper --> *@

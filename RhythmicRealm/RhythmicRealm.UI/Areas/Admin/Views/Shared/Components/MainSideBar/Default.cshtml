@@ -1,0 +1,230 @@
+﻿  <!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="/Admin" class="brand-link text-center">
+        <span><strong>RR</strong></span>
+        <span class="brand-text font-weight-light">Rhythmic Realm</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+        <vc:side-bar-user-panel></vc:side-bar-user-panel>
+    
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-list-alt"></i>
+                        <p>
+                            Ana Kategoriler
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a asp-area="Admin"
+                               asp-controller="MainCategory"
+                            asp-action="Index"
+                              class="nav-link">
+                                <i class="fas fa-list"></i>
+                                <p>Ana Kategori Listesi</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pages/UI/icons.html" class="nav-link">
+                                <i class="fas fa-plus"></i>
+                                <p>Ana Kategori Ekle</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pages/UI/buttons.html" class="nav-link">
+                                <i class="fas fa-trash-alt"></i>
+                                <p>Çöp Kutusu</p>
+                            </a>
+                        </li>
+                       
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-list-alt"></i>
+                        <p>
+                            Alt Kategoriler
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="pages/forms/general.html" class="nav-link">
+                                <i class="fas fa-list"></i>
+                                <p>Alt Kategori Listesi</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pages/forms/advanced.html" class="nav-link">
+                                <i class="fas fa-plus"></i>
+                                <p>Alt Kategori Ekle</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pages/forms/editors.html" class="nav-link">
+                                <i class="fas fa-trash-alt"></i>
+                                <p>Çöp Kutusu</p>
+                            </a>
+                        </li>
+                       
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-list-alt"></i>
+                        <p>
+                            Ürünler
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a 
+                                asp-area="Admin"
+                                asp-controller="Product"
+                                asp-action="Index"
+                                asp-route-isdeleted=false
+                                class="nav-link">
+                                <i class="fas fa-list"></i>
+                                <p>Ürün Listesi</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pages/tables/data.html" class="nav-link">
+                                <i class="fas fa-plus"></i>
+                                <p>Yeni Ürün Ekle</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a 
+                                asp-area="Admin"
+                                asp-controller="Product"
+                                asp-action="Index"
+                                asp-route-isdeleted=true
+                               class="nav-link">
+                                <i class="fas fa-trash-alt"></i>
+                                <p>Çöp Kutusu</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-table"></i>
+                        <p>
+                            Siparişler
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="pages/tables/simple.html" class="nav-link">
+                                <i class="fas fa-list"></i>
+                                <p>Sipariş Listesi</p>
+                            </a>
+                        </li>
+                      
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-users"></i>
+                        <p>
+                            Kullanıcılar
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="pages/mailbox/mailbox.html" class="nav-link">
+                                <i class="fas fa-user"></i>
+                                <p>Yeni Kullanıcılar</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pages/mailbox/compose.html" class="nav-link">
+                                <i class="fas fa-user"></i>
+                                <p>Yöneticiler</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pages/mailbox/read-mail.html" class="nav-link">
+                                <i class="fas fa-user"></i>
+                                <p>Müşteriler</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pages/mailbox/read-mail.html" class="nav-link">
+                                <i class="fas fa-user-tag"></i>
+                                <p>Rol Atama</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-envelope"></i>
+                        <p>
+                          Mesajlar
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="pages/mailbox/mailbox.html" class="nav-link">
+                                <i class="fas fa-envelope-open-text"></i>
+                                <p>Tüm Mesajlar</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pages/mailbox/compose.html" class="nav-link">
+                                <i class="fas fa-minus-square"></i>
+                                <p>Okunmamış Mesajlar</p>
+                            </a>
+                        </li>
+                     
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="pages/gallery.html" class="nav-link">
+                        <i class="fas fa-cog"></i>
+                        <p>
+                            Ayarlar
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link">
+                        <i class="fas fa-undo-alt"></i>
+                        <p>
+                           Uygulamaya Geri Dön
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <!--logout sayfasına yönlendireceğim.-->
+                    <a asp-area=""
+                    asp-controller="Home"
+                    asp-action="Index"
+                    class="nav-link">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <p>
+                            Çıkış Yap
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>

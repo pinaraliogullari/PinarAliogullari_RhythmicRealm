@@ -1,0 +1,79 @@
+﻿	<!-- HEADER -->
+<header>
+	<!-- TOP HEADER -->
+	<div id="top-header">
+		<div class="container">
+			<ul class="header-links pull-left">
+				<li><a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a></li>
+				<li><a href="#"><i class="fa fa-envelope-o"></i> aliogullarpnar@gmail.com</a></li>
+				<li><a href="#"><i class="fa fa-map-marker"></i> Beşiktaş İSTANBUL</a></li>
+			</ul>
+			@* <ul class="header-links pull-right">
+				<li><a href="#"><i class="fa fa-user-o"></i> Hesabım</a></li>
+			</ul> *@
+		</div>
+	</div>
+	<!-- /TOP HEADER -->
+	<!-- MAIN HEADER -->
+	<div id="header">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<!-- LOGO -->
+				<div class="col-lg-2 col-md-2  col-sm-2">
+					<div class="header-logo">
+						<a href="#" class="logo">
+							<img src="~/ui/img/logo1.png" alt="" >
+						</a>
+					</div>
+				</div>
+				<!-- /LOGO -->
+				<div class="col-lg-6 col-md-5 col-sm-8">
+					<vc:search-bar></vc:search-bar>
+
+				</div>
+
+				
+				<!-- ACCOUNT -->
+				<div class="col-lg-4 col-md-5 col-sm-12 clearfix">
+					<div class="header-ctn">
+						<div>
+							<a href="/admin">
+								<i class="fa fa-lock" aria-hidden="true"></i>
+								<span>Admin Panel</span>
+						
+							</a>
+						</div>
+						<div>
+							<!--eğer user login olmuşsa burada hesabım yazacak ve hesap bilgilerine gidecek.-->
+							<!--eğer user login değilse  burada giriş yap yazacak ve login ekranına gidecek.-->
+							<a href="/admin">
+								<i class="fa fa-user-o" aria-hidden="true"></i>
+								<span>Giriş Yap</span>
+
+							</a>
+						</div>
+						
+					<vc:wishlist></vc:wishlist>
+					<vc:cart></vc:cart>
+						
+						<!-- Menu Toogle -->
+						<div class="menu-toggle">
+							<a href="#">
+								<i class="fa fa-bars"></i>
+								<span>Menu</span>
+							</a>
+						</div>
+						<!-- /Menu Toogle -->
+					</div>
+				</div>
+				<!-- /ACCOUNT -->
+			</div>
+			<!-- row -->
+		</div>
+		<!-- container -->
+	</div>
+	<!-- /MAIN HEADER -->
+</header>
+<!-- /HEADER -->
