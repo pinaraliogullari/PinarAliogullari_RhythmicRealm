@@ -47,28 +47,38 @@
                                             <td>@product.SubCategory.Name</td>
                                             <td>@product.Brand.Name</td>
                                             <td>@product.Price</td>
-                                            <td>@product.IsHome</td>
-                                            <td>@product.IsActive</td>
+                                            <td>
+                                                <div class="custom-control custom-switch">
+                                                    <input onchange="changeIsHome(this,'@product.Id');"type="checkbox"class="custom-control-input"
+                                                     asp-for="@product.IsHome" id="isHomeSwitch-@product.Id" />
+                                                    <label class="custom-control-label" for="isHomeSwitch-@product.Id"></label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="custom-control custom-switch">
+                                                    <input onchange="changeIsActive(this,'@product.Id');"type="checkbox"class="custom-control-input"
+                                                     asp-for="@product.IsActive" id="isActiveSwitch-@product.Id" />
+                                                    <label class="custom-control-label" for="isActiveSwitch-@product.Id"></label>
+                                                </div>
+                                            </td>
                                             <td>
                                                 <a asp-area="Admin"
                                                    asp-controller="Product"
                                                    asp-action="Edit"
                                                    asp-route-id="@product.Id"
-                                                   class="btn btn-warning btn-sm">
+                                                   class="btn btn-outline-warning btn-sm">
                                                     <i class="far fa-edit"></i>
                                                 </a>
                                                 <a asp-area="Admin"
                                                    asp-controller="Product"
                                                    asp-action="Delete"
                                                    asp-route-id="@product.Id"
-                                                   class="btn btn-danger btn-sm">
+                                                   class="btn btn-outline-danger btn-sm">
                                                     <i class="fas fa-trash"></i>
                                                 </a>
                                             </td>
                                                 </tr>
                                         }
-                                
-
                                 </tbody>
                             </table>
                         </div>
@@ -88,8 +98,37 @@
 @section Styles {
     @await Html.PartialAsync("_DataTablesCssPartial")
 }
+@section TopScripts {
+   <script>
+        const changeIsHome = (element, id) => {
+            $.ajax({
+                url: `/Admin/Product/UpdateIsHome/${id}`,
+                type: 'GET',
+                success: function (response) {
+                    $(element.id).attr("checked", response ? "checked" : "");
+                },
+                error: function (err) {
+                    console.error(err);
+                }
+            });
+        };
 
-@section Scripts {
+        const changeIsActive = (element, id)=> {
+            $.ajax({
+                url: `/Admin/Product/UpdateIsActive/${id}`,
+                type: 'GET',
+                success: function (response) {
+                    $(element.id).attr("checked", response ? "checked" : "");
+                },
+                error: function (err) {
+                    console.error(err);
+                }
+            });
+        };
+   </script>
+
+}
+@section BottomScripts {
     @await Html.PartialAsync("_DataTablesJsPartial")
 
 }

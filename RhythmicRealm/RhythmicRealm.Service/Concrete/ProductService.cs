@@ -21,6 +21,26 @@ namespace RhythmicRealm.Service.Concrete
 			_productRepository = productRepository;
 		}
 
+		public Task<Response<ProductViewModel>> CreateProductAsync(AddProductViewModel addProductViewModel)
+		{
+			throw new NotImplementedException();
+		}
+
+		public Task<Response<List<ProductViewModel>>> GetAllProductsAsync()
+		{
+			throw new NotImplementedException();
+		}
+
+		public Task<Response<ProductViewModel>> GetProductByProductIdAsync(int productId)
+		{
+			throw new NotImplementedException();
+		}
+
+		public Task<Response<List<ProductViewModel>>> GetProductsByIsActiveAsync(bool isActive = true)
+		{
+			throw new NotImplementedException();
+		}
+
 
 
 		/// <summary>
@@ -74,5 +94,42 @@ namespace RhythmicRealm.Service.Concrete
 			return Response<List<ProductViewModel>>.Success(productsDto, 200);
 		}
 
+		public Task<Response<List<ProductViewModel>>> GetProductsBySubCategoryIdAsync(int subCategoryId)
+		{
+			throw new NotImplementedException();
+		}
+
+		public Task<Response<NoContent>> HardDeleteAsync(int productId)
+		{
+			throw new NotImplementedException();
+		}
+
+		public Task<Response<NoContent>> SoftDeleteAsync(int productId)
+		{
+			throw new NotImplementedException();
+		}
+
+		public async Task<bool> UpdateIsActiveAsync(int productId)
+		{
+			var product= await _productRepository.GetAsync(p=>p.Id == productId);
+			product.IsActive =!product.IsActive;
+			product.UpdatedDate= DateTime.Now;
+			await _productRepository.UpdateAsync(product);
+			return product.IsActive;
+		}
+
+		public async Task<bool> UpdateIsHomeAsync(int productId)
+		{
+            var product = await _productRepository.GetAsync(p => p.Id == productId);
+            product.IsHome = !product.IsHome;
+            product.UpdatedDate = DateTime.Now;
+            await _productRepository.UpdateAsync(product);
+            return product.IsHome;
+        }
+
+		public Task<Response<ProductViewModel>> UpdateProductAsync(EditProductViewModel editProductDto)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }
