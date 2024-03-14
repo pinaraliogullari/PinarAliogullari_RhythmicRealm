@@ -1,4 +1,4 @@
-﻿@model AdminEditProductViewModel
+﻿@model AdminAddProductViewModel
 
 
   <!-- Content Wrapper. Contains page content -->
@@ -6,22 +6,23 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
+            <div class="row mb-2 ">
                 
-                <div class="col-sm-12">
+                <div class="col-sm-12 ">
                     <div class="d-flex justify-content-between">
-                        <div>
-                            <h4>Ürün Bilgileri</h4>
-                        </div>
-                        <div>
-                            <a asp-area="Admin"
-                               asp-controller="Product"
-                               asp-action="Index"
-                               class="btn btn-dark btn-sm">
-                                Ürün Listesi
-                            </a>
-                        </div>
+                    <div>
+                        <h4>Ürün Bilgileri</h4>
                     </div>
+                     <div>
+                        <a asp-area="Admin"
+                           asp-controller="Product"
+                           asp-action="Index"
+                           class="btn btn-dark btn-sm">
+                            Ürün Listesi
+                        </a>
+                    </div>
+                    </div>
+                    
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -37,28 +38,28 @@
                         <div class="card-body">
                             <form asp-area="Admin"
                                   asp-controller="Product"
-                                  asp-action="Edit"
-                                  method="post">
-                                   <input type="hidden" asp-for="@Model.EditProductViewModel.Id" />
+                                  asp-action="Create"
+                                  method="post"
+                                  enctype="multipart/form-data">
                                 <div class="d-flex justify-content-between">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label asp-for="@Model.EditProductViewModel.Name" class="control-label"></label>
-                                        <input asp-for="@Model.EditProductViewModel.Name" class="form-control" />
-                                        <span asp-validation-for="@Model.EditProductViewModel.Name" class="text-danger"></span>
+                                        <label asp-for="AddProductViewModel.Name" class="control-label"></label>
+                                            <input asp-for="AddProductViewModel.Name" class="form-control" />
+                                            <span asp-validation-for="AddProductViewModel.Name" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label asp-for="@Model.EditProductViewModel.Price" class="control-label"></label>
-                                        <input asp-for="@Model.EditProductViewModel.Price" class="form-control" />
-                                        <span asp-validation-for="@Model.EditProductViewModel.Price" class="text-danger"></span>
+                                            <label asp-for="AddProductViewModel.Price" class="control-label"></label>
+                                            <input asp-for="AddProductViewModel.Price" class="form-control" />
+                                            <span asp-validation-for="AddProductViewModel.Price" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-3 mt-4">
                                     <div class="icheck-primary d-inline">
-                                        <input asp-for="@Model.EditProductViewModel.IsHome" type="checkbox" checked id="checkboxSuccess1">
-                                        <label asp-for="@Model.EditProductViewModel.IsHome" for="checkboxSuccess1">
+                                            <input asp-for="AddProductViewModel.IsHome" type="checkbox" checked id="checkboxSuccess1">
+                                            <label asp-for="AddProductViewModel.IsHome" for="checkboxSuccess1">
                                         </label>
                                     </div>
                                     </div>
@@ -67,29 +68,29 @@
                                 <div class="d-flex justify-content-between">
                                 <div class="col-md-6">
                                 <div class="form-group">
-                                    <label asp-for="@Model.EditProductViewModel.Url" class="control-label"></label>
-                                    <input asp-for="@Model.EditProductViewModel.Url" class="form-control" />
-                                    <span asp-validation-for="@Model.EditProductViewModel.Url" class="text-danger"></span>
+                                            <label asp-for="AddProductViewModel.Url" class="control-label"></label>
+                                            <input asp-for="AddProductViewModel.Url" class="form-control" />
+                                            <span asp-validation-for="AddProductViewModel.Url" class="text-danger"></span>
                                 </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label asp-for="@Model.EditProductViewModel.ImageUrl" class="control-label"></label>
-                                        <input asp-for="@Model.EditProductViewModel.ImageUrl" class="form-control" />
-                                        <span asp-validation-for="@Model.EditProductViewModel.ImageUrl" class="text-danger"></span>
+                                            <label asp-for="AddProductViewModel.ImageUrl" class="control-label"></label>
+                                            <input asp-for="AddProductViewModel.ImageUrl" class="form-control" />
+                                            <span asp-validation-for="AddProductViewModel.ImageUrl" class="text-danger"></span>
                                     </div>
                                 </div>
                                 </div>
                                 <div class="form-group">
-                                    <label asp-for="@Model.EditProductViewModel.Description" class="control-label"></label>
-                                    <textarea asp-for="@Model.EditProductViewModel.Description" class="form-control"></textarea>
-                                    <span asp-validation-for="@Model.EditProductViewModel.Description" class="text-danger"></span>
+                                    <label asp-for="AddProductViewModel.Description" class="control-label"></label>
+                                    <textarea asp-for="AddProductViewModel.Description" class="form-control"></textarea>
+                                    <span asp-validation-for="AddProductViewModel.Description" class="text-danger"></span>
                                 </div>
 
                                 <div class="form-group">
-                                    <label asp-for="@Model.EditProductViewModel.Properties" class="control-label"></label>
-                                    <textarea id="Properties" asp-for="@Model.EditProductViewModel.Properties" class="form-control" rows="10"></textarea>
-                                    <span asp-validation-for="@Model.EditProductViewModel.Properties" class="text-danger"></span>
+                                    <label asp-for="AddProductViewModel.Properties" class="control-label"></label>
+                                    <textarea id="Properties" asp-for="AddProductViewModel.Properties" class="form-control" rows="10"></textarea>
+                                    <span asp-validation-for="AddProductViewModel.Properties" class="text-danger"></span>
                                 </div>
 
 
@@ -110,10 +111,11 @@
 
 
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary float-right btn-sm">Güncelle</button>
+                                    <button type="submit" class="btn btn-success float-right btn-sm">Ürün Ekle</button>
                                 </div>
                             </form>
 
+                         
                         </div>
                         <!-- /.card-body -->
                     </div>

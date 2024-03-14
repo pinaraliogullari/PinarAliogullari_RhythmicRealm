@@ -1,5 +1,5 @@
 ﻿using RhythmicRealm.Shared.Response;
-using RhythmicRealm.Shared.ViewModels;
+using RhythmicRealm.Shared.ViewModels.ProductViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RhythmicRealm.Service.Abstract
 {
-	public interface IProductService
+    public interface IProductService
 	{
 		Task<Response<List<ProductViewModel>>> GetProductsBySubCategoryIdAsync(int subCategoryId);
 		Task<Response<ProductViewModel>> GetProductByProductIdAsync(int productId);

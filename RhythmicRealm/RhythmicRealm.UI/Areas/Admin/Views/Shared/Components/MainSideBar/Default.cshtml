@@ -25,9 +25,10 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a asp-area="Admin"
-                               asp-controller="MainCategory"
-                            asp-action="Index"
+                            <a 
+                               asp-area="Admin"
+                               asp-controller="MainCategory"  
+                               asp-action="Index"
                               class="nav-link">
                                 <i class="fas fa-list"></i>
                                 <p>Ana Kategori Listesi</p>
@@ -99,7 +100,10 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/tables/data.html" class="nav-link">
+                            <a asp-area="Admin"
+                            asp-controller="Product"
+                            asp-action="Create"
+                            class="nav-link">
                                 <i class="fas fa-plus"></i>
                                 <p>Yeni Ürün Ekle</p>
                             </a>
@@ -193,6 +197,14 @@
                         </li>
                      
                     </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="pages/gallery.html" class="nav-link">
+                        <i class="fa fa-upload" aria-hidden="true"></i>
+                        <p>
+                            Dosya Yükleme
+                        </p>
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a href="pages/gallery.html" class="nav-link">

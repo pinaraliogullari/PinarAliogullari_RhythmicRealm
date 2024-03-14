@@ -7,6 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    
+    <PackageReference Include="AlertifyJS" Version="1.13.1" />
+    
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.16">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -20,6 +23,11 @@
   <ItemGroup>
     <ProjectReference Include="..\RhythmicRealm.Service\RhythmicRealm.Service.csproj" />
     <ProjectReference Include="..\RhythmicRealm.Shared\RhythmicRealm.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\admin\css\" />
+    <Folder Include="wwwroot\admin\js\" />
   </ItemGroup>
 
 

@@ -4,24 +4,43 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
+            
                 <div class="col-sm-6">
+                    <h3>Ürün Bİlgileri</h3>
                 </div>
-                <div class="col-sm-6">
-                    
-                </div>
-            </div>
+            
         </div><!-- /.container-fluid -->
     </section>
-
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
+        
             <div class="row">
+                <div class="col-md-12 float-right">
+                    @if (ViewBag.TransferInf)
+                    {
+                        <a asp-area="Admin"
+                           asp-controller="Product"
+                           asp-action="Index"
+                           class="btn btn-dark btn-large float-right mb-3">
+                            Ürün Listesi
+                        </a>
+                    }else
+                    {
+                        <a asp-area="Admin"
+                           asp-controller="Product"
+                           asp-action="Create"
+                           class="btn btn-primary btn-sm float-right mb-3">
+                            Yeni Ürün Ekle
+                        </a>
+                    }
+                </div>
                 <div class="col-12">
                     <div class="card">
+                      
                         <!-- /.card-header -->
                         <div class="card-body">
+                             
                             <table id="myDataTable" class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
@@ -62,23 +81,35 @@
                                                 </div>
                                             </td>
                                             <td>
+                                                @if (!ViewBag.TransferInf)
+                                                {
+                                                    <a asp-area="Admin"
+                                                       asp-controller="Product"
+                                                       asp-action="Edit"
+                                                       asp-route-id="@product.Id"
+                                                       class="btn btn-outline-secondary btn-sm">
+                                                        <i class="far fa-edit"></i>
+                                                    </a>
+                                                    <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="@("#DeleteProduct-" + product.Id)" data-url="@Url.Action($"Delete/{product.Id}")"> <i class="fas fa-trash"></i></button>
+                                                    @await Html.PartialAsync("_DeleteProductPartialView", product)
+
+                                                }else
+                                                {
                                                 <a asp-area="Admin"
                                                    asp-controller="Product"
-                                                   asp-action="Edit"
+                                                   asp-action="SoftDelete"
                                                    asp-route-id="@product.Id"
-                                                   class="btn btn-outline-warning btn-sm">
-                                                    <i class="far fa-edit"></i>
+                                                   class="btn btn-outline-secondary btn-sm">
+                                                        <i class="fas fa-undo-alt"></i>
                                                 </a>
-                                                <a asp-area="Admin"
-                                                   asp-controller="Product"
-                                                   asp-action="Delete"
-                                                   asp-route-id="@product.Id"
-                                                   class="btn btn-outline-danger btn-sm">
-                                                    <i class="fas fa-trash"></i>
-                                                </a>
+                                                }
+                                               
+                                                   
+                                        
                                             </td>
                                                 </tr>
                                         }
+                            
                                 </tbody>
                             </table>
                         </div>
@@ -97,6 +128,7 @@
 <!-- /.content-wrapper -->
 @section Styles {
     @await Html.PartialAsync("_DataTablesCssPartial")
+
 }
 @section TopScripts {
    <script>
@@ -130,5 +162,7 @@
 }
 @section BottomScripts {
     @await Html.PartialAsync("_DataTablesJsPartial")
+  
+   
 
 }

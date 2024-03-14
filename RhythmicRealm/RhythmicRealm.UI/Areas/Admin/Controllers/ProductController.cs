@@ -1,33 +1,38 @@
 ﻿using Mapster;
+using RhythmicRealm.Service.Abstract;
+using RhythmicRealm.Shared.ViewModels.BrandViewModels;
+using RhythmicRealm.Shared.ViewModels.ProductViewModels;
+using RhythmicRealm.UI.ViewModels.SubCategoryViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using RhythmicRealm.Service.Abstract;
+using RhythmicRealm.UI.Areas.Admin.AdminViewModels;
 using RhythmicRealm.Shared.Response;
-using RhythmicRealm.Shared.ViewModels;
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.Security.Cryptography.X509Certificates;
-using System.Text.Json;
+
+
 
 namespace RhythmicRealm.UI.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class ProductController : Controller
     {
-    private readonly IProductService _productService;
+		private readonly IProductService _productService;
+		private readonly IBrandService _brandService;
+		private readonly ISubCategoryService _subCategoryService;
 
-		public ProductController(IProductService productService)
-		{
-			_productService = productService;
-		}
+        public ProductController(IProductService productService, IBrandService brandService, ISubCategoryService subCategoryService)
+        {
+            _productService = productService;
+            _brandService = brandService;
+            _subCategoryService = subCategoryService;
+        }
 
-		[HttpGet]
+        [HttpGet]
         public async Task<IActionResult> Index(bool isdeleted)
         {
 			var products = await _productService.GetProductsByIsDeleteAsync(isdeleted);
 
-			//ViewBag.TransferInf = isdeleted; 
-			// TempData["TransferInf"] = isdeleted;
+			ViewBag.TransferInf = isdeleted; 
+		    TempData["TransferInf"] = isdeleted;
 
 			return View(products.Data);
 
@@ -49,95 +54,178 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
 
         private async Task<ProductViewModel> GetProductAsync(int id)
 		{
-			Response<ProductViewModel> response = new Response<ProductViewModel>();
-			using (HttpClient httpclient = new HttpClient())
-			{
-				HttpResponseMessage responseApi = await httpclient.GetAsync($"https://localhost:7284/api/product/get-product/{id}");
-				string contentResponseApi = await responseApi.Content.ReadAsStringAsync();
-				response = JsonSerializer.Deserialize<Response<ProductViewModel>>(contentResponseApi);
-			}
-
-			return response.Data;
+			var product= await _productService.GetProductByProductIdAsync(id);
+			return product.Data;
 		}
 
-		private async Task<List<BrandSlimViewModel>> GetBrandsAsync()
+		private async Task<List<BrandViewModel>> GetBrandsAsync()
 		{
-			Response<List<BrandSlimViewModel>> response = new Response<List<BrandSlimViewModel>>();
-			using (HttpClient httpclient = new HttpClient())
-			{
-				HttpResponseMessage responseApi = await httpclient.GetAsync("https://localhost:7284/api/brand");
-				string contentResponseApi = await responseApi.Content.ReadAsStringAsync();
-				response = JsonSerializer.Deserialize<Response<List<BrandSlimViewModel>>>(contentResponseApi);
-			}
-
-			return response.Data;
+			var brands= await _brandService.GetAllBrandsAsync();
+			//var brandSlimViewModel=brands.Adapt<List<BrandSlimViewModel>>();
+			return brands.Data;
 		}
 
-		private async Task<List<SubCategorySlimViewModel>> GetSubCategoriesAsync()
+		private async Task<List<SubCategoryViewModel>> GetSubCategoriesAsync()
 		{
-			Response<List<SubCategorySlimViewModel>> response = new Response<List<SubCategorySlimViewModel>>();
-			using (HttpClient httpclient = new HttpClient())
-			{
-				HttpResponseMessage responseApi = await httpclient.GetAsync("https://localhost:7284/api/subcategory");
-				string contentResponseApi = await responseApi.Content.ReadAsStringAsync();
-				response = JsonSerializer.Deserialize<Response<List<SubCategorySlimViewModel>>>(contentResponseApi);
-			}
-
-			return response.Data;
+			var subCategories= await _subCategoryService.GetAllSubCategoriesAsync();
+			//var subCategorySlimViewModel=subCategories.Adapt<List<SubCategorySlimViewModel>>();
+			return subCategories.Data;
 		}
 
-		//[HttpGet]
-		//public async Task<IActionResult> Edit(int id)
-		//{
+		[HttpGet]
+		public async Task<IActionResult> Edit(int id)
+		{
+            ProductViewModel product = await GetProductAsync(id);
 
-		//	ProductViewModel product = await GetProductAsync(id);
-
-		//	var brands = await GetBrandsAsync();
-		//	var brandListItem = brands.Select(x => new SelectListItem
-		//	{
-		//		Value = x.Id.ToString(),
-		//		Text = x.Name,
-		//	}).ToList();
+            var brands = await GetBrandsAsync();
+            var brandListItem = brands.Select(x => new SelectListItem
+            {
+                Value = x.Id.ToString(),
+                Text = x.Name,
+            }).ToList();
 
 
-		//	var subCategories = await GetSubCategoriesAsync();
-		//	var subCategoryListItem = subCategories.Select(x => new SelectListItem
-		//	{
-		//		Value = x.Id.ToString(),
-		//		Text = x.Name,
-		//	}).ToList();
+            var subCategories = await GetSubCategoriesAsync();
+            var subCategoryListItem = subCategories.Select(x => new SelectListItem
+            {
+                Value = x.Id.ToString(),
+                Text = x.Name,
+            }).ToList();
 
-		//	var model = new EditProductViewModel()
-		//	{
-		//		Id = product.Id,
-		//		BrandList = brandListItem,
-		//		SubCategoryList = subCategoryListItem,
-		//		Price = product.Price,
-		//		Description = product.Description,
-		//		ImageUrl = product.ImageUrl,
-		//		IsActive = product.IsActive,
-		//		IsHome = product.IsHome,
-		//		Name = product.Name,
-		//		Url = product.Url,
-		//		Properties = product.Properties,
-		//		BrandId = product.Brand.Id,
-		//		SubCategoryId = product.SubCategory.Id,
-		//	};
+            var model = new AdminEditProductViewModel()
+            {
+               EditProductViewModel = new EditProductViewModel
+                {
+                Id = product.Id,
+                Price = product.Price,
+                Description = product.Description,
+                ImageUrl = product.ImageUrl,
+                IsActive = product.IsActive,
+                IsHome = product.IsHome,
+                Name = product.Name,
+                Url = product.Url,
+                Properties = product.Properties,
+                },
+                BrandList = brandListItem,
+                SubCategoryList = subCategoryListItem,
+                BrandId = product.Brand.Id,
+                SubCategoryId = product.SubCategory.Id
+            };
 
-		//	return View(model);
+            return View(model);
 
-		//}
+		}
 
-		//[HttpPost]
-		//public async Task<IActionResult> Edit(EditProductViewModel editProductViewModel)
-		//{
+		[HttpPost]
+		public async Task<IActionResult> Edit(AdminEditProductViewModel adminEditProductViewModel)
+		{
+            
+            if (ModelState.IsValid )
+            {
+                var editProductViewModel = new EditProductViewModel
+                {
+                    //editproductviewmodelin içinde brand, sub filan yok.
+                    Id = adminEditProductViewModel.EditProductViewModel.Id,
+                    Name = adminEditProductViewModel.EditProductViewModel.Name,
+                    Description = adminEditProductViewModel.EditProductViewModel.Description,
+                    ImageUrl = adminEditProductViewModel.EditProductViewModel.ImageUrl,
+                    Url = adminEditProductViewModel.EditProductViewModel.Url,
+                    Price = adminEditProductViewModel.EditProductViewModel.Price,
+                    Properties = adminEditProductViewModel.EditProductViewModel.Properties,
+                    IsHome = adminEditProductViewModel.EditProductViewModel.IsHome,
 
-		//	return View();
+                };
+                await _productService.UpdateProductAsync(editProductViewModel);
+                return RedirectToAction("Index");
+            }
 
-		//}
+            var brands = await GetBrandsAsync();
+            var brandListItem = brands.Select(x => new SelectListItem
+            {
+                Value = x.Id.ToString(),
+                Text = x.Name,
+            }).ToList();
+            adminEditProductViewModel.BrandList = brandListItem;
 
-	}
+            var subCategories = await GetSubCategoriesAsync();
+            var subCategoryListItem = subCategories.Select(x => new SelectListItem
+            {
+                Value = x.Id.ToString(),
+                Text = x.Name,
+            }).ToList();
+            adminEditProductViewModel.SubCategoryList = subCategoryListItem;
 
-   
+            return View(adminEditProductViewModel);
+
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var product = await _productService.GetProductByProductIdAsync(id);
+            var productViewModel = product.Data;
+            AdminDeleteProductViewModel model = new AdminDeleteProductViewModel
+            {
+                Id = productViewModel.Id,
+                Name = productViewModel.Name,
+                Price = productViewModel.Price,
+                Description = productViewModel.Description,
+            };
+            return PartialView("_DeleteProductPartialView", model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> HardDelete(int id)
+        {
+
+            await _productService.HardDeleteAsync(id);
+            return RedirectToAction("Index");
+            
+        }
+     
+        [HttpGet]
+        public async Task<IActionResult> SoftDelete(int id)
+        {
+            await _productService.SoftDeleteAsync(id);
+            var tempdataInf = TempData["TransferInf"];
+            return RedirectToAction("Index", new { isdeleted = tempdataInf });
+        }
+        [HttpGet]
+        public async Task<IActionResult> Create()
+        {
+            var brands = await GetBrandsAsync();
+            var brandListItem = brands.Select(x => new SelectListItem
+            {
+                Value = x.Id.ToString(),
+                Text = x.Name,
+            }).ToList();
+            var subCategories = await GetSubCategoriesAsync();
+            var subCategoryListItem = subCategories.Select(x => new SelectListItem
+            {
+                Value = x.Id.ToString(),
+                Text = x.Name,
+            }).ToList();
+            AdminAddProductViewModel adminAddProductViewModel = new AdminAddProductViewModel
+            {
+                BrandList = brandListItem,
+                SubCategoryList = subCategoryListItem,
+            };
+
+            return View(adminAddProductViewModel);
+        }
+
+        //[HttpPost]
+        //public async Task<IActionResult>Create(AdminAddProductViewModel adminAddProductViewModel)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+
+        //    }
+        //}
+
+
+    }
+
+
 }
 
