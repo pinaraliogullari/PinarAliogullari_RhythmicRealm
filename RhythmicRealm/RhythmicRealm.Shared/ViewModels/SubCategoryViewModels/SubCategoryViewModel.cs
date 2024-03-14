@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RhythmicRealm.Shared.ViewModels.BrandViewModels;
+using RhythmicRealm.Shared.ViewModels.MainCategoryViewModels;
 using RhythmicRealm.Shared.ViewModels.ProductViewModels;
 
-namespace RhythmicRealm.UI.ViewModels.SubCategoryViewModels
+namespace RhythmicRealm.Shared.ViewModels.SubCategoryViewModels
 {
     public class SubCategoryViewModel
     {
@@ -15,6 +16,7 @@ namespace RhythmicRealm.UI.ViewModels.SubCategoryViewModels
         public bool IsActive { get; set; }
         public bool IsDeleted { get; set; }
         public string Url { get; set; }
+        public MainCategorySlimViewModel MainCategory { get; set; }
         public List<InProductViewModel> Products { get; set; }
         public List<BrandSlimViewModel> Brands { get; set; }
     }

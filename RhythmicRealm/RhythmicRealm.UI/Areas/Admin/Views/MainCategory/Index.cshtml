@@ -1,58 +1,109 @@
-﻿  <!-- Content Wrapper. Contains page content -->
+﻿  @model List<MainCategoryViewModel>
+<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="/Admin">Home</a></li>
-                        <li class="breadcrumb-item active">Ana Kategoriler</li>
-                    </ol>
-                </div>
+
+            <div class="col-sm-6">
+                <h3>Ana Kategoriler</h3>
             </div>
+
         </div><!-- /.container-fluid -->
     </section>
-
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
+
             <div class="row">
+                <div class="col-md-12 float-right">
+                    @if (ViewBag.TransferInf)
+                    {
+                        <a asp-area="Admin"
+                           asp-controller="MainCategory"
+                           asp-action="Index"
+                           class="btn btn-dark btn-large float-right mb-3">
+                            Ana Kategori Listesi
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-area="Admin"
+                           asp-controller="MainCategory"
+                           asp-action="Create"
+                           class="btn btn-primary btn-sm float-right mb-3">
+                             Ana Kategori Ekle
+                        </a>
+                    }
+                </div>
                 <div class="col-12">
                     <div class="card">
+
                         <!-- /.card-header -->
                         <div class="card-body">
+
                             <table id="myDataTable" class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Rendering engine</th>
-                                        <th>Browser</th>
-                                        <th>Platform(s)</th>
-                                        <th>Engine version</th>
-                                        <th>CSS grade</th>
+                                        <th>Id</th>
+                                        <th>Ana Kategori</th>
+                                        <th>Url</th>
+                                        <th>Aktif</th>
+                                        <th>İşlemler</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Trident</td>
-                                        <td>
-                                            Internet
-                                            Explorer 4.0
-                                        </td>
-                                        <td>Win 95+</td>
-                                        <td> 4</td>
-                                        <td>X</td>
-                                    </tr>
-                                   
+
+                                    @foreach (var mainCategory in Model)
+                                    {
+                                        <tr>
+                                            <td>@mainCategory.Id</td>
+                                            <td>@mainCategory.Name</td>
+                                            <td>@mainCategory.Url</td>
+                                            <td>
+                                                <div class="custom-control custom-switch">
+                                                    <input onchange="changeIsActive(this,'@mainCategory.Id');" type="checkbox" class="custom-control-input"
+                                                           asp-for="@mainCategory.IsActive" id="isActiveSwitch-@mainCategory.Id" />
+                                                    <label class="custom-control-label" for="isActiveSwitch-@mainCategory.Id"></label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                @if (!ViewBag.TransferInf)
+                                                {
+                                                    <a asp-area="Admin"
+                                                       asp-controller="MainCategory"
+                                                       asp-action="Edit"
+                                                       asp-route-id="@mainCategory.Id"
+                                                       class="btn btn-outline-secondary btn-sm">
+                                                        <i class="far fa-edit"></i>
+                                                    </a>
+                                                    <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="@("#DeleteMainCategory-" + mainCategory.Id)" data-url="@Url.Action($"Delete/{mainCategory.Id}")"> <i class="fas fa-trash"></i></button>
+                                            @await Html.PartialAsync("_DeleteMainCategoryPartialView", mainCategory) 
+
+                                                }
+                                                else
+                                                {
+                                                    <a asp-area="Admin"
+                                                       asp-controller="MainCategory"
+                                                       asp-action="SoftDelete"
+                                                       asp-route-id="@mainCategory.Id"
+                                                       class="btn btn-outline-secondary btn-sm">
+                                                        <i class="fas fa-undo-alt"></i>
+                                                    </a>
+                                                }
+
+
+
+                                            </td>
+                                        </tr>
+                                    }
+
                                 </tbody>
                             </table>
                         </div>
                         <!-- /.card-body -->
                     </div>
-              
+
                 </div>
                 <!-- /.col -->
             </div>
@@ -63,11 +114,31 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-@section Styles{
+@section Styles {
     @await Html.PartialAsync("_DataTablesCssPartial")
-}
 
-@section Scripts{
+}
+@section TopScripts {
+    <script>
+      
+        const changeIsActive = (element, id) => {
+            $.ajax({
+                url: `/Admin/MainCategory/UpdateIsActive/${id}`,
+                type: 'GET',
+                success: function (response) {
+                    $(element.id).attr("checked", response ? "checked" : "");
+                },
+                error: function (err) {
+                    console.error(err);
+                }
+            });
+        };
+    </script>
+
+}
+@section BottomScripts {
     @await Html.PartialAsync("_DataTablesJsPartial")
+
+
 
 }

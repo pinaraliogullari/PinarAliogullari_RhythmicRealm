@@ -1,0 +1,41 @@
+﻿
+<div class="modal fade" id="DeleteMainCategory-@Model.Id" aria-labelledby="DeleteMainCategoryLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="DeleteMainCategoryLabel">Ana Kategori sil</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <p>Ana Kategori silinecektir. Emin misiniz?</p>
+                    <div>
+                        <label>Id: </label>
+                        <span>@Model.Id</span>
+                    </div>
+                    <div>
+                        <label>Adı: </label>
+                        <span>@Model.Name</span>
+                    </div>
+                    <div>
+                        <label>Url: </label>
+                        <span>@Model.Url</span>
+                    </div>
+                 
+              <div class="d-flex justify-content-between">
+                  <div>
+                     <a asp-area="Admin" asp-controller="MainCategory" asp-action="HardDelete" asp-route-id="@Model.Id" class="btn btn-danger">Kalıcı Olarak Sil</a>
+                            <a asp-area="Admin" asp-controller="MainCategory" asp-action="SoftDelete" asp-route-id="@Model.Id" class="btn btn-warning">Çöp Kutusuna Gönder</a>
+                  </div>
+                  <div>
+                            <a asp-area="Admin" asp-controller="MainCategory" asp-action="Index" class="btn btn-secondary">Vazgeç</a>
+                  </div>
+              </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

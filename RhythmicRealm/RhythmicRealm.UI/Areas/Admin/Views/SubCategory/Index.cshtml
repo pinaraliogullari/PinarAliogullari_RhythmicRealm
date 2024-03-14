@@ -1,25 +1,41 @@
-﻿  <!-- Content Wrapper. Contains page content -->
+﻿@model List<SubCategoryViewModel>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
+                
                 <div class="col-sm-6">
+                    <h3>Alt Kategoriler</h3>
                 </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="/Admin">Home</a></li>
-                        <li class="breadcrumb-item active">Ana Kategoriler</li>
-                    </ol>
-                </div>
+               
             </div>
         </div><!-- /.container-fluid -->
     </section>
-
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
             <div class="row">
+                <div class="col-md-12 float-right">
+                    @if (ViewBag.TransferInf)
+                    {
+                        <a asp-area="Admin"
+                           asp-controller="MainCategory"
+                           asp-action="Index"
+                           class="btn btn-dark btn-large float-right mb-3">
+                            Ana Kategori Listesi
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-area="Admin"
+                           asp-controller="MainCategory"
+                           asp-action="Create"
+                           class="btn btn-primary btn-sm float-right mb-3">
+                            Ana Kategori Ekle
+                        </a>
+                    }
+                </div>
                 <div class="col-12">
                     <div class="card">
                         <!-- /.card-header -->
@@ -27,24 +43,57 @@
                             <table id="myDataTable" class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Rendering engine</th>
-                                        <th>Browser</th>
-                                        <th>Platform(s)</th>
-                                        <th>Engine version</th>
-                                        <th>CSS grade</th>
+                                        <th>Id</th>
+                                        <th>Alt Kategori</th>
+                                        <th>Url</th>
+                                        <th>Ana Kategori</th>
+                                        <th>Aktif</th>
+                                        <th>İşlemler</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Trident</td>
-                                        <td>
-                                            Internet
-                                            Explorer 4.0
-                                        </td>
-                                        <td>Win 95+</td>
-                                        <td> 4</td>
-                                        <td>X</td>
-                                    </tr>
+                                    @foreach (var subCategory in Model)
+                                    {
+                                        <tr>
+                                            <td>@subCategory.Id</td>
+                                            <td>@subCategory.Name </td>
+                                            <td>@subCategory.Url</td>
+                                            <td>@subCategory.MainCategory.Name</td>
+                                            <td>
+                                                <div class="custom-control custom-switch">
+                                                    <input onchange="changeIsActive(this,'@subCategory.Id');" type="checkbox" class="custom-control-input"
+                                                           asp-for="@subCategory.IsActive" id="isActiveSwitch-@subCategory.Id" />
+                                                    <label class="custom-control-label" for="isActiveSwitch-@subCategory.Id"></label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                @if (!ViewBag.TransferInf)
+                                                {
+                                                    <a asp-area="Admin"
+                                                       asp-controller="SubCategory"
+                                                       asp-action="Edit"
+                                                       asp-route-id="@subCategory.Id"
+                                                       class="btn btn-outline-secondary btn-sm">
+                                                        <i class="far fa-edit"></i>
+                                                    </a>
+                                                    <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="@("#DeleteSubCategory-" + subCategory.Id)" data-url="@Url.Action($"Delete/{subCategory.Id}")"> <i class="fas fa-trash"></i></button>
+                                                    @await Html.PartialAsync("_DeleteSubCategoryPartialView", subCategory)
+
+                                                }
+                                                else
+                                                {
+                                                    <a asp-area="Admin"
+                                                       asp-controller="SubCategory"
+                                                       asp-action="SoftDelete"
+                                                       asp-route-id="@subCategory.Id"
+                                                       class="btn btn-outline-secondary btn-sm">
+                                                        <i class="fas fa-undo-alt"></i>
+                                                    </a>
+                                                }
+
+                                            </td>
+                                        </tr>
+                                    }
 
                                 </tbody>
                             </table>
@@ -65,8 +114,25 @@
 @section Styles {
     @await Html.PartialAsync("_DataTablesCssPartial")
 }
+@section TopScripts {
+    <script>
+       
+        const changeIsActive = (element, id) => {
+            $.ajax({
+                url: `/Admin/SubCategory/UpdateIsActive/${id}`,
+                type: 'GET',
+                success: function (response) {
+                    $(element.id).attr("checked", response ? "checked" : "");
+                },
+                error: function (err) {
+                    console.error(err);
+                }
+            });
+        };
+    </script>
+}
 
-@section Scripts {
+@section BottomScripts {
     @await Html.PartialAsync("_DataTablesJsPartial")
 
 }

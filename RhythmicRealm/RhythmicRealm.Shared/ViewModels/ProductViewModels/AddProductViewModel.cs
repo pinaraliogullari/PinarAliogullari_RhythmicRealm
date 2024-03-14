@@ -16,47 +16,40 @@ namespace RhythmicRealm.Shared.ViewModels.ProductViewModels
         [Required(ErrorMessage = "{0} alanı boş bırakılmamalıdır.")]
         [MinLength(5, ErrorMessage = "{0} alanı uzunluğu {1} karakterden az girilmemelidir.")]
         [MaxLength(100, ErrorMessage = "{0} alanı uzunluğu {1} karakterden bçok girilmemelidir.")]
-        [JsonPropertyName("Name")]
         public string Name { get; set; }
 
 
         [DisplayName("Görsel Url")]
         [Required(ErrorMessage = "{0} alanı boş bırakılmamalıdır.")]
-        [JsonPropertyName("ImageUrl")]
         public string ImageUrl { get; set; }
 
 
         [DisplayName("Url")]
         [Required(ErrorMessage = "{0} alanı boş bırakılmamalıdır.")]
-        [JsonPropertyName("Url")]
         public string Url { get; set; }
 
 
         [DisplayName("Ürün Açıklaması")]
         [Required(ErrorMessage = "{0} alanı boş bırakılmamalıdır.")]
-        [JsonPropertyName("Description")]
         public string Description { get; set; }
 
 
         [DisplayName("Ürün Özellikleri")]
         [Required(ErrorMessage = "{0} alanı boş bırakılmamalıdır.")]
-        [JsonPropertyName("Properties")]
         public string Properties { get; set; }
 
 
         [DisplayName("Fiyat")]
         [Required(ErrorMessage = "{0} alanı boş bırakılmamalıdır.")]
-        [JsonPropertyName("Price")]
+        [RegularExpression(@"^[0-9]+(\.[0-9]{1,2})",ErrorMessage ="Bu alanda virgülden sonra en fazla 2 basamak olmalıdır.")]
         public decimal Price { get; set; }
 
 
         [DisplayName("Ana Sayfa")]
-        [JsonPropertyName("IsHome")]
         public bool IsHome { get; set; }
 
 
         [DisplayName("Aktif")]
-        [JsonPropertyName("IsActive")]
         public bool IsActive { get; set; }
 
 

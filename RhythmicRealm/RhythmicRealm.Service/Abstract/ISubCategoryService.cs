@@ -1,4 +1,5 @@
 ﻿using RhythmicRealm.Shared.Response;
+using RhythmicRealm.Shared.ViewModels.SubCategoryViewModels;
 using RhythmicRealm.UI.ViewModels.SubCategoryViewModels;
 using System;
 using System.Collections.Generic;
@@ -19,5 +20,6 @@ namespace RhythmicRealm.Service.Abstract
         Task<Response<SubCategoryViewModel>> UpdateSubCategoryAsync(EditSubCategoryViewModel editSubCategoryViewModel);
         Task<Response<NoContent>> SoftDeleteSubCategoryAsync(int id);
         Task<Response<NoContent>> HardDeleteSubCategoryAsync(int id);
+        Task<bool> UpdateIsActiveAsync(int id);
     }
 }

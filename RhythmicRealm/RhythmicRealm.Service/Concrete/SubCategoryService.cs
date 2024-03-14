@@ -1,12 +1,14 @@
 ﻿using Mapster;
 using Microsoft.EntityFrameworkCore;
 using RhythmicRealm.Data.Abstract;
+using RhythmicRealm.Data.Concrete.Repositories;
 using RhythmicRealm.Entity.Concrete;
 using RhythmicRealm.Service.Abstract;
 using RhythmicRealm.Shared.Response;
 using RhythmicRealm.Shared.ViewModels.BrandViewModels;
+using RhythmicRealm.Shared.ViewModels.MainCategoryViewModels;
 using RhythmicRealm.Shared.ViewModels.ProductViewModels;
-
+using RhythmicRealm.Shared.ViewModels.SubCategoryViewModels;
 using RhythmicRealm.UI.ViewModels.SubCategoryViewModels;
 
 
@@ -36,7 +38,7 @@ namespace RhythmicRealm.Service.Concrete
             {
                 var subCategories = await _subCategoryRepository.GetAllAsync();
                 if (subCategories == null) return Response<List<SubCategoryViewModel>>.Fail(404, "Sonuç bulunamadı");
-                var subCategoriesDto = subCategories.Select(subCategory => new SubCategoryViewModel
+                var subCategoriesViewModel = subCategories.Select(subCategory => new SubCategoryViewModel
                 {
                     Id = subCategory.Id,
                     Name = subCategory.Name,
@@ -44,31 +46,46 @@ namespace RhythmicRealm.Service.Concrete
                     IsDeleted = subCategory.IsDeleted,
                     Url = subCategory.Url
                 }).ToList();
-                return Response<List<SubCategoryViewModel>>.Success(subCategoriesDto, 200);
+                return Response<List<SubCategoryViewModel>>.Success(subCategoriesViewModel, 200);
             }
 
             public async Task<Response<List<SubCategoryViewModel>>> GetSubCategoriesByIsActiveAsync(bool isActive = true)
             {
                 var subCategories = await _subCategoryRepository.GetAllAsync(s => s.IsActive == isActive);
                 if (subCategories == null) return Response<List<SubCategoryViewModel>>.Fail(404, "Sonuç bulunamadı");
-                var maincategoriesDto = subCategories.Adapt<List<SubCategoryViewModel>>();
-                return Response<List<SubCategoryViewModel>>.Success(maincategoriesDto, 200);
+                var subCategoriesViewModel = subCategories.Adapt<List<SubCategoryViewModel>>();
+                return Response<List<SubCategoryViewModel>>.Success(subCategoriesViewModel, 200);
             }
 
             public async Task<Response<List<SubCategoryViewModel>>> GetSubCategoriesByIsDeleteAsync(bool isDeleted = false)
             {
-                var subCategories = await _subCategoryRepository.GetAllAsync(s => s.IsDeleted == isDeleted);
+                var subCategories = await _subCategoryRepository.GetAllAsync(s => s.IsDeleted == isDeleted,
+                    source=>source
+                    .Include(s=>s.MainCategory));
                 if (subCategories == null) return Response<List<SubCategoryViewModel>>.Fail(404, "Sonuç bulunamadı");
-                var maincategoriesDto = subCategories.Adapt<List<SubCategoryViewModel>>();
-                return Response<List<SubCategoryViewModel>>.Success(maincategoriesDto, 200);
+            var subCategoriesViewModel = subCategories.Select(subCategory => new SubCategoryViewModel
+            {
+                Id = subCategory.Id,
+                Name = subCategory.Name,
+                Url = subCategory.Url,
+                IsActive = subCategory.IsActive,
+                IsDeleted = subCategory.IsDeleted,
+                MainCategory = new MainCategorySlimViewModel
+                {
+                    Id = subCategory.MainCategory.Id,
+                    Name = subCategory.MainCategory.Name,
+                },
+
+            }).ToList();
+                return Response<List<SubCategoryViewModel>>.Success(subCategoriesViewModel, 200);
             }
 
             public async Task<Response<SubCategoryViewModel>> GetSubCategoryByIdAsync(int id)
             {
                 var subCategory = await _subCategoryRepository.GetAsync(s => s.Id == id);
                 if (subCategory == null) return Response<SubCategoryViewModel>.Fail(404, "İlgili ana kategori bulunamadı.");
-                var mainCategoryDto = subCategory.Adapt<SubCategoryViewModel>();
-                return Response<SubCategoryViewModel>.Success(mainCategoryDto, 200);
+                var subCategoriesViewModel = subCategory.Adapt<SubCategoryViewModel>();
+                return Response<SubCategoryViewModel>.Success(subCategoriesViewModel, 200);
             }
 
             public async Task<Response<SubCategoryViewModel>> GetSubCategoryWithProductsAsync(int subCategoryId)
@@ -129,7 +146,16 @@ namespace RhythmicRealm.Service.Concrete
                 return Response<NoContent>.Success(200);
             }
 
-            public async Task<Response<SubCategoryViewModel>> UpdateSubCategoryAsync(EditSubCategoryViewModel editSubCategoryViewModel)
+        public async Task<bool> UpdateIsActiveAsync(int id)
+        {
+            var subCategory = await _subCategoryRepository.GetAsync(s => s.Id == id);
+            subCategory.IsActive = !subCategory.IsActive;
+            subCategory.UpdatedDate = DateTime.Now;
+            await _subCategoryRepository.UpdateAsync(subCategory);
+            return subCategory.IsActive;
+        }
+
+        public async Task<Response<SubCategoryViewModel>> UpdateSubCategoryAsync(EditSubCategoryViewModel editSubCategoryViewModel)
             {
                 var subCategory = new SubCategory
                 {

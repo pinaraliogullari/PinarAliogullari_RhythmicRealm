@@ -29,19 +29,27 @@
                                asp-area="Admin"
                                asp-controller="MainCategory"  
                                asp-action="Index"
+                               asp-route-isdeleted=false
                               class="nav-link">
                                 <i class="fas fa-list"></i>
                                 <p>Ana Kategori Listesi</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/UI/icons.html" class="nav-link">
+                            <a asp-area="Admin"
+                               asp-controller="MainCategory"
+                               asp-action="Create"
+                               class="nav-link">
                                 <i class="fas fa-plus"></i>
                                 <p>Ana Kategori Ekle</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/UI/buttons.html" class="nav-link">
+                            <a asp-area="Admin"
+                               asp-controller="MainCategory"
+                               asp-action="Index"
+                               asp-route-isdeleted=true
+                               class="nav-link">
                                 <i class="fas fa-trash-alt"></i>
                                 <p>Çöp Kutusu</p>
                             </a>
@@ -59,19 +67,30 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/forms/general.html" class="nav-link">
+                            <a asp-area="Admin"
+                               asp-controller="SubCategory"
+                               asp-action="Index"
+                               asp-route-isdeleted=false
+                               class="nav-link">
                                 <i class="fas fa-list"></i>
                                 <p>Alt Kategori Listesi</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/forms/advanced.html" class="nav-link">
+                            <a asp-area="Admin"
+                               asp-controller="SubCategory"
+                               asp-action="Create"
+                               class="nav-link">
                                 <i class="fas fa-plus"></i>
                                 <p>Alt Kategori Ekle</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/forms/editors.html" class="nav-link">
+                            <a asp-area="Admin"
+                               asp-controller="SubCategory"
+                               asp-action="Index"
+                               asp-route-isdeleted=true
+                               class="nav-link">
                                 <i class="fas fa-trash-alt"></i>
                                 <p>Çöp Kutusu</p>
                             </a>
