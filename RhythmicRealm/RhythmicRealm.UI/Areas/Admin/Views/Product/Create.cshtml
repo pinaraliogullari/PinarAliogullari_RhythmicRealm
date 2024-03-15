@@ -42,79 +42,92 @@
                                   method="post"
                                   enctype="multipart/form-data">
                                 <div class="d-flex justify-content-between">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label asp-for="AddProductViewModel.Name" class="control-label"></label>
-                                            <input asp-for="AddProductViewModel.Name" class="form-control" />
-                                            <span asp-validation-for="AddProductViewModel.Name" class="text-danger"></span>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="AddProductViewModel.Name" class="control-label"></label>
+                                                <input asp-for="AddProductViewModel.Name" class="form-control" />
+                                                <span asp-validation-for="AddProductViewModel.Name" class="text-danger"></span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                            <label asp-for="AddProductViewModel.Price" class="control-label"></label>
-                                            <input asp-for="AddProductViewModel.Price" class="form-control" />
-                                            <span asp-validation-for="AddProductViewModel.Price" class="text-danger"></span>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                                <label asp-for="AddProductViewModel.Price" class="control-label"></label>
+                                                <input asp-for="AddProductViewModel.Price" class="form-control" />
+                                                <span asp-validation-for="AddProductViewModel.Price" class="text-danger"></span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3 mt-4">
-                                    <div class="icheck-primary d-inline">
-                                            <input asp-for="AddProductViewModel.IsHome" type="checkbox" checked id="checkboxSuccess1">
-                                            <label asp-for="AddProductViewModel.IsHome" for="checkboxSuccess1">
-                                        </label>
+                                    <div class="col-md-2 mt-4 ">
+                                        <div class="icheck-primary d-inline">
+                                                <input asp-for="AddProductViewModel.IsHome" type="checkbox" checked id="checkboxSuccess1">
+                                                <label asp-for="AddProductViewModel.IsHome" for="checkboxSuccess1">
+                                            </label>
+                                        </div>
                                     </div>
+                                    <div class="col-md-2 mt-4 ">
+                                        <div class="icheck-primary d-inline">
+                                            <input asp-for="AddProductViewModel.IsActive" type="checkbox" checked id="checkboxSuccess1">
+                                            <label asp-for="AddProductViewModel.IsActive" for="checkboxSuccess1">
+                                            </label>
+                                        </div>
                                     </div>
-                                   
                                 </div>
                                 <div class="d-flex justify-content-between">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                 <div class="form-group">
                                             <label asp-for="AddProductViewModel.Url" class="control-label"></label>
                                             <input asp-for="AddProductViewModel.Url" class="form-control" />
                                             <span asp-validation-for="AddProductViewModel.Url" class="text-danger"></span>
                                 </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                            <label asp-for="AddProductViewModel.ImageUrl" class="control-label"></label>
-                                            <input asp-for="AddProductViewModel.ImageUrl" class="form-control" />
-                                            <span asp-validation-for="AddProductViewModel.ImageUrl" class="text-danger"></span>
+                             
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="AddProductViewModel.Description" class="control-label"></label>
+                                            <input asp-for="AddProductViewModel.Description" class="form-control"/>
+                                            <span asp-validation-for="AddProductViewModel.Description" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Görsel</label>
+                                            <input id="image" name="image" type="file" class="d-none" accept="image/png, image/jpg, image/jpeg" />
+                                            <div class="d-flex">
+                                                <div class="mt-2">
+                                                    <label class="btn btn-success btn-sm" for="image">Görsel Yükle</label>
+                                                </div>
+                                                <div class="card ml-5">
+                                                    <img id="image-viewer" class="img-fluid" style="height:150px;" />
+                                                    <span class="text-danger">@ViewBag.ImageErrorMessage</span>
+                                                </div>
+                                               
+                                            </div>
+                                       
+                                  
+                                        </div>
                                     </div>
                                 </div>
-                                </div>
-                                <div class="form-group">
-                                    <label asp-for="AddProductViewModel.Description" class="control-label"></label>
-                                    <textarea asp-for="AddProductViewModel.Description" class="form-control"></textarea>
-                                    <span asp-validation-for="AddProductViewModel.Description" class="text-danger"></span>
-                                </div>
-
                                 <div class="form-group">
                                     <label asp-for="AddProductViewModel.Properties" class="control-label"></label>
                                     <textarea id="Properties" asp-for="AddProductViewModel.Properties" class="form-control" rows="10"></textarea>
                                     <span asp-validation-for="AddProductViewModel.Properties" class="text-danger"></span>
                                 </div>
-
-
-
                                 <div class="form-group">
                                     <label asp-for="SubCategoryList" class="control-label"></label>
                                     <select asp-items="@Model.SubCategoryList" asp-for="SubCategoryId" class="form-control">
                                     </select>
                                     <span asp-validation-for="SubCategoryId" class="text-danger"></span>
                                 </div>
-
                                 <div class="form-group">
                                     <label asp-for="BrandList" class="control-label"></label>
                                     <select asp-items="@Model.BrandList" asp-for="BrandId" class="form-control">
                                     </select>
                                     <span asp-validation-for="BrandId" class="text-danger"></span>
                                 </div>
-
-
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-success float-right btn-sm">Ürün Ekle</button>
                                 </div>
                             </form>
-
+                        </div>
                          
                         </div>
                         <!-- /.card-body -->
@@ -137,4 +150,12 @@
 }
 @section BottomScripts{
    @await Html.PartialAsync("_SummerNotePartial")
+
+    <script>
+        $("#image").on("change", function (e) {
+            const selectedFiles = e.target.files;
+
+            $("#image-viewer").attr("src", window.URL.createObjectURL(selectedFiles[0]));
+        });
+    </script>
 }

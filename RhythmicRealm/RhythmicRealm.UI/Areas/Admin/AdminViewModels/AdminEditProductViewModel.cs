@@ -22,7 +22,7 @@ namespace RhythmicRealm.UI.Areas.Admin.AdminViewModels
         public int SubCategoryId { get; set; }
 
 
-        [DisplayName("Alt Kategori Listesi")]
+        [DisplayName("Alt Kategori Seçiniz")]
         public List<SelectListItem> SubCategoryList { get; set; } 
     }
 }

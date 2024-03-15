@@ -15,7 +15,7 @@
 		@RenderBody()
 		@await Html.PartialAsync("_FooterPartial")
 		@await Html.PartialAsync("_ScriptsPartial")
-	@* 	@await Component.InvokeAsync("Notyf"); *@
+		@await Component.InvokeAsync("Notyf");
 		@await RenderSectionAsync("Scripts", false)
 
 </body>

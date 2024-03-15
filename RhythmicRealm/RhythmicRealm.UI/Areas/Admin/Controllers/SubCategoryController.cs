@@ -1,7 +1,11 @@
-﻿using Mapster;
+﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using Mapster;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using RhythmicRealm.Entity.Concrete;
 using RhythmicRealm.Service.Abstract;
 using RhythmicRealm.Shared.ViewModels.MainCategoryViewModels;
+using RhythmicRealm.Shared.ViewModels.SubCategoryViewModels;
 using RhythmicRealm.UI.Areas.Admin.AdminViewModels;
 
 namespace RhythmicRealm.UI.Areas.Admin.Controllers
@@ -11,10 +15,14 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
     {
 
         private readonly ISubCategoryService _subCategoryService;
+        private readonly IMainCategoryService _mainCategoryService;
+        private readonly INotyfService _notyfService;
 
-        public SubCategoryController(ISubCategoryService subCategoryService)
+        public SubCategoryController(ISubCategoryService subCategoryService, IMainCategoryService mainCategoryService, INotyfService notyfService)
         {
             _subCategoryService = subCategoryService;
+            _mainCategoryService = mainCategoryService;
+            _notyfService = notyfService;
         }
 
         [HttpGet]
@@ -56,6 +64,7 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
         {
 
             await _subCategoryService.HardDeleteSubCategoryAsync(id);
+            _notyfService.Success("Alt kategori kalıcı olarak silindi.");
             return RedirectToAction("Index");
 
         }
@@ -65,53 +74,130 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
         {
             await _subCategoryService.SoftDeleteSubCategoryAsync(id);
             var tempdataInf = TempData["TransferInf"];
+            _notyfService.Success("Alt kategori çöp kutusuna gönderildi.");
             return RedirectToAction("Index", new { isdeleted = tempdataInf });
         }
 
+        private async Task<List<MainCategoryViewModel>> GetMainCategories()
+        {
+            var mainCategories = await _mainCategoryService.GetAllMainCategoriesAsync();
+            return mainCategories.Data;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+
+            var subCategory = await _subCategoryService.GetSubCategoryWithMainCategory(id);
+            var subCategoryViewModel = subCategory.Data;
+            var mainCategories = await GetMainCategories();
+      
+            var mainCategoryListItem = mainCategories.Select(x => new SelectListItem
+            {
+                Value = x.Id.ToString(),
+                Text = x.Name,
+            }).ToList();
+            var editSubCategoryViewModel = new EditSubCategoryViewModel
+            {
+                Id = subCategoryViewModel.Id,
+                Name = subCategoryViewModel.Name,
+                Url = subCategoryViewModel.Url,
+                IsActive = subCategoryViewModel.IsActive,
+
+            };
+            var model = new AdminEditSubCategoryViewModel
+            {
+                EditSubCategoryViewModel = editSubCategoryViewModel,
+                MainCategoryList = mainCategoryListItem,
+                MainCategoryId=subCategoryViewModel.MainCategory.Id,
+                MainCategoryName= subCategoryViewModel.MainCategory.Name,
+                
+            };
+            return View(model);
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(AdminEditSubCategoryViewModel adminEditSubCategoryViewModel)
+        {
+
+            if (ModelState.IsValid)
+            {
+                var editSubCategoryViewModel = new EditSubCategoryViewModel
+                {
+                    Id = adminEditSubCategoryViewModel.EditSubCategoryViewModel.Id,
+                    Name = adminEditSubCategoryViewModel.EditSubCategoryViewModel.Name,
+                    Url = adminEditSubCategoryViewModel.EditSubCategoryViewModel.Url,
+                    IsActive = adminEditSubCategoryViewModel.EditSubCategoryViewModel.IsActive,
+                    MainCategories = new MainCategorySlimViewModel
+                    {
+                        Id = adminEditSubCategoryViewModel.MainCategoryId,
+                        Name = adminEditSubCategoryViewModel.MainCategoryName 
+                    }
+
+                };
+                await _subCategoryService.UpdateSubCategoryAsync(editSubCategoryViewModel);
+                _notyfService.Success("Ana kategori başarıyla güncellendi.");
+                return RedirectToAction("Index");
+            }
+            var mainCategories = await GetMainCategories();
+            var mainCategoryListItem = mainCategories.Select(x => new SelectListItem
+            {
+                Value = x.Id.ToString(),
+                Text = x.Name,
+            }).ToList();
+            adminEditSubCategoryViewModel.MainCategoryList = mainCategoryListItem;
+            _notyfService.Error("Alt kategori güncellenşrken bir sorun oluştu.");
+            return View(adminEditSubCategoryViewModel);
+
+        }
 
 
-        //[HttpGet]
-        //public async Task<IActionResult> Edit(int id)
-        //{
+        [HttpGet]
+        public async Task<IActionResult> Create()
+        {
+            var model = new AdminAddSubCategoryViewModel();
+            var mainCategories = await GetMainCategories();
 
-        //    var mainCategory = await _subCategoryService.GetMainCategoryByIdAsync(id);
-        //    var mainCategoryViewModel = mainCategory.Data;
-        //    var model = mainCategoryViewModel.Adapt<EditMainCategoryViewModel>();
-        //    return View(model);
-
-        //}
-
-        //[HttpPost]
-        //public async Task<IActionResult> Edit(EditMainCategoryViewModel editMainCategoryViewModel)
-        //{
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        await _subCategoryService.UpdateMainCategoryAsync(editMainCategoryViewModel);
-        //        return RedirectToAction("Index");
-        //    }
-
-        //    return View(editMainCategoryViewModel);
-
-        //}
-
-
-        //[HttpGet]
-        //public async Task<IActionResult> Create()
-        //{
-
-        //    return View();
-        //}
-        //[HttpPost]
-        //public async Task<IActionResult> Create(AddMainCategoryViewModel addMainCategoryViewModel)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        await _subCategoryService.CreateMainCategoryAsync(addMainCategoryViewModel);
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View(addMainCategoryViewModel);
-        //}
+            var mainCategoryListItem = mainCategories.Select(x => new SelectListItem
+            {
+                Value = x.Id.ToString(),
+                Text = x.Name,
+            }).ToList();
+            model.MainCategoryList = mainCategoryListItem;
+            return View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Create(AdminAddSubCategoryViewModel adminAddSubCategoryViewModel)
+        {
+        
+            if (ModelState.IsValid)
+            {
+                var model = new AddSubCategoryViewModel
+                {
+                    Name = adminAddSubCategoryViewModel.AddSubCategoryViewModel.Name,
+                    Url = adminAddSubCategoryViewModel.AddSubCategoryViewModel.Url,
+                    IsActive = adminAddSubCategoryViewModel.AddSubCategoryViewModel.IsActive,
+                    MainCategories = new MainCategorySlimViewModel
+                    {
+                        Id = adminAddSubCategoryViewModel.MainCategoryId,
+                        Name = adminAddSubCategoryViewModel.MainCategoryName
+                    }
+                };
+                await _subCategoryService.CreateSubCategoryAsync(model);
+                _notyfService.Success("Alt kategori başarıyla kaydedildi.");
+                return RedirectToAction("Index");
+            }
+            var mainCategories = await GetMainCategories();
+            var mainCategoryListItem = mainCategories.Select(x => new SelectListItem
+            {
+                Value = x.Id.ToString(),
+                Text = x.Name,
+            }).ToList();
+            adminAddSubCategoryViewModel.MainCategoryList = mainCategoryListItem;
+            _notyfService.Success("Alt kategori kaydedilirken bir sorun oluştu.");
+            return View(adminAddSubCategoryViewModel);
+        }
 
 
     }

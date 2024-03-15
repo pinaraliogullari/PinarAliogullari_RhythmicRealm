@@ -1,9 +1,11 @@
 ﻿using Mapster;
+using Microsoft.EntityFrameworkCore;
 using RhythmicRealm.Data.Abstract;
 using RhythmicRealm.Entity.Concrete;
 using RhythmicRealm.Service.Abstract;
 using RhythmicRealm.Shared.Response;
 using RhythmicRealm.Shared.ViewModels.MainCategoryViewModels;
+using RhythmicRealm.Shared.ViewModels.SubCategoryViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,9 +34,32 @@ namespace RhythmicRealm.Service.Concrete
             return Response<MainCategoryViewModel>.Success(mainCategoryViewModel, 200);
         }
 
-        public Task<Response<List<MainCategoryViewModel>>> GetAllMainCategoriesAsync()
+        public async Task<Response<List<MainCategoryViewModel>>> GetAllMainCategoriesAsync()
         {
-            throw new NotImplementedException();
+          var mainCategories= await _mainCategoryRepository.GetAllAsync(null,source=>source
+          .Include(m=>m.SubCategories));
+            if (mainCategories == null)
+                return Response<List<MainCategoryViewModel>>.Fail(404, "Sonuç bulunamadı");
+            var mainCategoriesViewModel = mainCategories.Select(m => new MainCategoryViewModel
+            {
+                Id = m.Id,
+                Name = m.Name,
+                IsActive = m.IsActive,
+                IsDeleted = m.IsDeleted,
+                Url = m.Url,
+                SubCategories = m.SubCategories.Select(s => new InSubCategoryViewModel
+                {
+                    Id = s.Id,
+                    Name = s.Name,
+                    IsActive = s.IsActive,
+                    IsDeleted = s.IsDeleted,
+                    Url = s.Url,
+                }).ToList()
+
+            }).ToList();
+          
+            return Response<List<MainCategoryViewModel>>.Success(mainCategoriesViewModel, 200); 
+
         }
 
         public  Task<Response<List<MainCategoryViewModel>>> GetMainCategoriesByIsActiveAsync()

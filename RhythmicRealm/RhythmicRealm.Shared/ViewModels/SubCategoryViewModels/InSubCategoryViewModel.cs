@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RhythmicRealm.UI.ViewModels.SubCategoryViewModels
+namespace RhythmicRealm.Shared.ViewModels.SubCategoryViewModels
 {
     public class InSubCategoryViewModel
     {

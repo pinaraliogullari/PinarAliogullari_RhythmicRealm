@@ -9,7 +9,7 @@ using RhythmicRealm.Shared.ViewModels.BrandViewModels;
 using RhythmicRealm.Shared.ViewModels.MainCategoryViewModels;
 using RhythmicRealm.Shared.ViewModels.ProductViewModels;
 using RhythmicRealm.Shared.ViewModels.SubCategoryViewModels;
-using RhythmicRealm.UI.ViewModels.SubCategoryViewModels;
+using RhythmicRealm.Shared.ViewModels.SubCategoryViewModels;
 
 
 namespace RhythmicRealm.Service.Concrete
@@ -88,7 +88,27 @@ namespace RhythmicRealm.Service.Concrete
                 return Response<SubCategoryViewModel>.Success(subCategoriesViewModel, 200);
             }
 
-            public async Task<Response<SubCategoryViewModel>> GetSubCategoryWithProductsAsync(int subCategoryId)
+        public async Task<Response<SubCategoryViewModel>> GetSubCategoryWithMainCategory(int id)
+        {
+            var subCategory = await _subCategoryRepository.GetAsync(s => s.Id == id,x=>x.Include(s=>s.MainCategory));
+            if (subCategory == null) return Response<SubCategoryViewModel>.Fail(404, "İlgili ana kategori bulunamadı.");
+            var subCategoryViewModel = new SubCategoryViewModel
+            {
+                Id = subCategory.Id,
+                Name = subCategory.Name,
+                IsActive = subCategory.IsActive,
+                IsDeleted = subCategory.IsDeleted,
+                Url = subCategory.Url,
+                MainCategory = new MainCategorySlimViewModel
+                {
+                    Id = subCategory.MainCategory.Id,
+                    Name = subCategory.MainCategory.Name,
+                }
+            };
+            return Response<SubCategoryViewModel>.Success(subCategoryViewModel, 200);
+        }
+
+        public async Task<Response<SubCategoryViewModel>> GetSubCategoryWithProductsAsync(int subCategoryId)
             {
                 var subCategory = await _subCategoryRepository.GetAsync(s => s.Id == subCategoryId,
                  source => source

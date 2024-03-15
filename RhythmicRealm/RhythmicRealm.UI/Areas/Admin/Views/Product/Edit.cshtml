@@ -1,6 +1,5 @@
 ﻿@model AdminEditProductViewModel
 
-
   <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -38,82 +37,88 @@
                             <form asp-area="Admin"
                                   asp-controller="Product"
                                   asp-action="Edit"
-                                  method="post">
-                                   <input type="hidden" asp-for="@Model.EditProductViewModel.Id" />
+                                  method="post"
+                                  enctype="multipart/form-data">
                                 <div class="d-flex justify-content-between">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label asp-for="@Model.EditProductViewModel.Name" class="control-label"></label>
-                                        <input asp-for="@Model.EditProductViewModel.Name" class="form-control" />
-                                        <span asp-validation-for="@Model.EditProductViewModel.Name" class="text-danger"></span>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="EditProductViewModel.Name" class="control-label"></label>
+                                            <input asp-for="EditProductViewModel.Name" class="form-control" />
+                                            <span asp-validation-for="EditProductViewModel.Name" class="text-danger"></span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label asp-for="@Model.EditProductViewModel.Price" class="control-label"></label>
-                                        <input asp-for="@Model.EditProductViewModel.Price" class="form-control" />
-                                        <span asp-validation-for="@Model.EditProductViewModel.Price" class="text-danger"></span>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="EditProductViewModel.Price" class="control-label"></label>
+                                            <input asp-for="EditProductViewModel.Price" class="form-control" />
+                                            <span asp-validation-for="EditProductViewModel.Price" class="text-danger"></span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3 mt-4">
-                                    <div class="icheck-primary d-inline">
-                                        <input asp-for="@Model.EditProductViewModel.IsHome" type="checkbox" checked id="checkboxSuccess1">
-                                        <label asp-for="@Model.EditProductViewModel.IsHome" for="checkboxSuccess1">
-                                        </label>
+                                    <div class="col-md-2 mt-4 ">
+                                        <div class="icheck-primary d-inline">
+                                            <input asp-for="EditProductViewModel.IsHome" type="checkbox" checked id="checkboxSuccess1">
+                                            <label asp-for="EditProductViewModel.IsHome" for="checkboxSuccess1">
+                                            </label>
+                                        </div>
                                     </div>
-                                </div>
-                                   
+                                    <div class="col-md-2 mt-4 ">
+                                        <div class="icheck-primary d-inline">
+                                            <input asp-for="EditProductViewModel.IsActive" type="checkbox" checked id="checkboxSuccess1">
+                                            <label asp-for="EditProductViewModel.IsActive" for="checkboxSuccess1">
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="d-flex justify-content-between">
-                                <div class="col-md-6">
-                                <div class="form-group">
-                                    <label asp-for="@Model.EditProductViewModel.Url" class="control-label"></label>
-                                    <input asp-for="@Model.EditProductViewModel.Url" class="form-control" />
-                                    <span asp-validation-for="@Model.EditProductViewModel.Url" class="text-danger"></span>
-                                </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label asp-for="@Model.EditProductViewModel.ImageUrl" class="control-label"></label>
-                                        <input asp-for="@Model.EditProductViewModel.ImageUrl" class="form-control" />
-                                        <span asp-validation-for="@Model.EditProductViewModel.ImageUrl" class="text-danger"></span>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="EditProductViewModel.Url" class="control-label"></label>
+                                            <input asp-for="EditProductViewModel.Url" class="form-control" />
+                                            <span asp-validation-for="EditProductViewModel.Url" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="EditProductViewModel.Description" class="control-label"></label>
+                                            <input asp-for="EditProductViewModel.Description" class="form-control" />
+                                            <span asp-validation-for="EditProductViewModel.Description" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label>Görsel</label>
+                                            <input type="hidden" value="@Model.EditProductViewModel.ImageUrl" id="oldImageUrl" />
+                                            <input id="image" name="image" type="file" class="d-none" accept="image/png, image/jpg, image/jpeg" />
+                                            <div class="mt-2">
+                                                <label class="btn btn-success" for="image">Görseli Güncelle</label>
+                                            </div>
+                                            <span class="text-danger">@ViewBag.ImageErrorMessage</span>
+                                            <img src="/images/products/@Model.EditProductViewModel.ImageUrl" id="image-viewer" class="img-fluid" style="height:200px;" />
+                                        </div>
                                     </div>
                                 </div>
-                                </div>
                                 <div class="form-group">
-                                    <label asp-for="@Model.EditProductViewModel.Description" class="control-label"></label>
-                                    <textarea asp-for="@Model.EditProductViewModel.Description" class="form-control"></textarea>
-                                    <span asp-validation-for="@Model.EditProductViewModel.Description" class="text-danger"></span>
+                                    <label asp-for="EditProductViewModel.Properties" class="control-label"></label>
+                                    <textarea id="Properties" asp-for="EditProductViewModel.Properties" class="form-control" rows="10"></textarea>
+                                    <span asp-validation-for="EditProductViewModel.Properties" class="text-danger"></span>
                                 </div>
-
-                                <div class="form-group">
-                                    <label asp-for="@Model.EditProductViewModel.Properties" class="control-label"></label>
-                                    <textarea id="Properties" asp-for="@Model.EditProductViewModel.Properties" class="form-control" rows="10"></textarea>
-                                    <span asp-validation-for="@Model.EditProductViewModel.Properties" class="text-danger"></span>
-                                </div>
-
-
-
                                 <div class="form-group">
                                     <label asp-for="SubCategoryList" class="control-label"></label>
                                     <select asp-items="@Model.SubCategoryList" asp-for="SubCategoryId" class="form-control">
                                     </select>
                                     <span asp-validation-for="SubCategoryId" class="text-danger"></span>
                                 </div>
-
                                 <div class="form-group">
                                     <label asp-for="BrandList" class="control-label"></label>
                                     <select asp-items="@Model.BrandList" asp-for="BrandId" class="form-control">
                                     </select>
                                     <span asp-validation-for="BrandId" class="text-danger"></span>
                                 </div>
-
-
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary float-right btn-sm">Güncelle</button>
+                                    <button type="submit" class="btn btn-success float-right btn-sm">Güncelle</button>
                                 </div>
                             </form>
-
                         </div>
                         <!-- /.card-body -->
                     </div>
@@ -135,4 +140,15 @@
 }
 @section BottomScripts{
    @await Html.PartialAsync("_SummerNotePartial")
+    <script>
+
+        $("#image").on("change", function (e) {
+            const selectedFiles = e.target.files;
+            if (selectedFiles.length > 0) {
+                $("#image-viewer").attr("src", window.URL.createObjectURL(selectedFiles[0]));
+            } else {
+                $("#image-viewer").attr("src", "http://localhost:5066/images/products/" + $("#oldImageUrl").val());
+            }
+        });
+    </script>
 }

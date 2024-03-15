@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RhythmicRealm.Shared.ViewModels.SubCategoryViewModels
+namespace RhythmicRealm.Shared.ViewModels.Identity
 {
-    public class SubCategorySlimViewModel
+    public class AssignRoleViewModel
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
+        public bool IsAssigned { get; set; }
     }
 }

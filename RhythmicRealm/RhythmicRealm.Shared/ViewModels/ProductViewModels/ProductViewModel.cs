@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using RhythmicRealm.Shared.ViewModels.BrandViewModels;
 using RhythmicRealm.Shared.ViewModels.MainCategoryViewModels;
-using RhythmicRealm.UI.ViewModels.SubCategoryViewModels;
+using RhythmicRealm.Shared.ViewModels.SubCategoryViewModels;
 
 namespace RhythmicRealm.Shared.ViewModels.ProductViewModels
 {

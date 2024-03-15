@@ -1,6 +1,6 @@
 ﻿using RhythmicRealm.Shared.Response;
 using RhythmicRealm.Shared.ViewModels.SubCategoryViewModels;
-using RhythmicRealm.UI.ViewModels.SubCategoryViewModels;
+using RhythmicRealm.Shared.ViewModels.SubCategoryViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +12,7 @@ namespace RhythmicRealm.Service.Abstract
     public interface ISubCategoryService
 	{
         Task<Response<List<SubCategoryViewModel>>> GetAllSubCategoriesAsync();
+        Task<Response<SubCategoryViewModel>> GetSubCategoryWithMainCategory(int id);
         Task<Response<SubCategoryViewModel>> GetSubCategoryByIdAsync(int id);
         Task<Response<SubCategoryViewModel>> GetSubCategoryWithProductsAsync(int subCategoryId);
         Task<Response<List<SubCategoryViewModel>>> GetSubCategoriesByIsActiveAsync(bool isActive = true);

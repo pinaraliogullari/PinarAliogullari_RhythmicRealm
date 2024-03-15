@@ -1,0 +1,81 @@
+﻿@model List<UserListViewModel>
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+
+            <div class="col-sm-6">
+                <h3>Yetkilendirme</h3>
+            </div>
+
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+
+            <div class="row ">
+                <div class="card">
+                    <div class="card-body">
+                      <table id="myDataTable" class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Kullanıcı Adı</th>
+                        <th>Ad Soyad</th>
+                        <th>Rol</th>
+                        <th>Email</th>
+                        <th>Pasif Yap</th>
+                        <th>Yetkisini Değiştir</th>
+                    </tr>
+                 </thead>
+                 <tbody>
+                        @foreach (var user in Model)
+                        {
+                            <tr>
+                                <td>@user.Id</td>
+                                <td>@user.UserName</td>
+                                <td>@user.FullName</td>
+                                <td>@user.Role</td>
+                                <td>@user.Email</td>
+                                <td>
+                                    <a asp-area="Admin"
+                                    asp-controller="Authorization"
+                                    asp-action="ChangeAsPassive"
+                                    asp-route-id="@user.Id"
+                                    class="btn btn-danger btn-sm">Pasif Yap </a>
+                                </td>
+                                <td>
+                                    <a asp-area="Admin"
+                                    asp-controller="Authorization"
+                                    asp-action="ChangeAuthority"
+                                    asp-route-id="@user.Id"
+                                    class="btn btn-warning btn-sm">Güncelle </a>
+                                </td>
+                               
+                            </tr>
+                        }
+                 </tbody>
+               
+            </table>
+                    </div>
+                </div>
+            </div>
+                <!-- /.col -->
+        </div>
+            <!-- /.row -->
+    </div>
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+@section Styles {
+    @await Html.PartialAsync("_DataTablesCssPartial")
+
+}
+@section BottomScripts {
+    @await Html.PartialAsync("_DataTablesJsPartial")
+
+}

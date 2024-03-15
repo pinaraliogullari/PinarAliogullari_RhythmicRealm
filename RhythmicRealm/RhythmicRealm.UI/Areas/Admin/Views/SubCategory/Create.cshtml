@@ -1,0 +1,96 @@
+﻿@model AdminAddSubCategoryViewModel
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+
+                <div class="col-sm-6">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h4>Alt Kategori Bilgileri</h4>
+                        </div>
+                        <div>
+                            <a asp-area="Admin"
+                               asp-controller="SubCategory"
+                               asp-action="Index"
+                               class="btn btn-dark btn-sm">
+                                Alt Kategori Listesi
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-6">
+                    <div class="card">
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <form asp-area="Admin"
+                                  asp-controller="SubCategory"
+                                  asp-action="Create"
+                                  method="post">
+                              
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="@Model.AddSubCategoryViewModel.Name" class="control-label"></label>
+                                        <input asp-for="@Model.AddSubCategoryViewModel.Name" class="form-control" />
+                                        <span asp-validation-for="@Model.AddSubCategoryViewModel.Name" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="@Model.AddSubCategoryViewModel.Url" class="control-label"></label>
+                                        <input asp-for="@Model.AddSubCategoryViewModel.Url" class="form-control" />
+                                        <span asp-validation-for="@Model.AddSubCategoryViewModel.Url" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="@Model.AddSubCategoryViewModel.IsActive" class="control-label"></label>
+                                        <input asp-for="@Model.AddSubCategoryViewModel.IsActive" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="MainCategoryList" class="control-label"></label>
+                                        <select asp-items="@Model.MainCategoryList" asp-for="MainCategoryId" class="form-control">
+                                        </select>
+                                        <span asp-validation-for="MainCategoryId" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary float-right btn-large">Alt Kategori Ekle</button>
+                                </div>
+                            </form>
+
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+@section Styles {
+    <link rel="stylesheet" href="~/admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+
+}
+

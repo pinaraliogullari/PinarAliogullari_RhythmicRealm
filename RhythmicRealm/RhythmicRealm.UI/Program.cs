@@ -1,3 +1,4 @@
+using AspNetCoreHero.ToastNotification;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using RhythmicRealm.Data.Abstract;
@@ -6,6 +7,8 @@ using RhythmicRealm.Data.Concrete.Repositories;
 using RhythmicRealm.Entity.Concrete.Identity;
 using RhythmicRealm.Service.Abstract;
 using RhythmicRealm.Service.Concrete;
+using RhythmicRealm.Shared.Helpers.Abstract;
+using RhythmicRealm.Shared.Helpers.Concrete;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,16 +42,29 @@ builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IShoppingBasketService, ShoppingBasketService>();
 builder.Services.AddScoped<IShoppingBasketItemService, ShoppingBasketItemService>();
 
+//Helper
+builder.Services.AddScoped<IImageHelper, ImageHelper>();
+
+//toastr
+builder.Services.AddNotyf(options =>
+{
+	options.DurationInSeconds = 3;
+	options.Position = NotyfPosition.TopRight;
+	//options.HasRippleEffect = true;
+	//options.IsDismissable = true;
+	
+
+});
 
 
 
 var app = builder.Build();
+var environment = app.Environment;
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
 	app.UseExceptionHandler("/Home/Error");
-	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
 	app.UseHsts();
 }
 

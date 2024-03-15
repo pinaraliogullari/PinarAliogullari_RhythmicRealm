@@ -8,11 +8,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RhythmicRealm.Data.Concrete.Extensions;
+using RhythmicRealm.Data.Extensions;
 
 namespace RhythmicRealm.Data.Concrete.Contexts
 {
-	public class RRContext : IdentityDbContext<User, Role, string>
+    public class RRContext : IdentityDbContext<User, Role, string>
 	{
 		public RRContext(DbContextOptions<RRContext> options) : base(options)
 		{

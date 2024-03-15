@@ -299,7 +299,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 		   {
 			   Id = 20,
 			   Name = "Yamaha Viyola Seti",
-			   ImageUrl = "viola1.png",
+			   ImageUrl = "viyola1.png",
 			   SubCategoryId = 9,
 			   Url = "yamaha-viyola-seti",
 			   Price = 34000,
@@ -313,7 +313,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 		   {
 			   Id = 21,
 			   Name = "Yamaha VA5S Viyola",
-			   ImageUrl = "viola2.png",
+			   ImageUrl = "viyola2.png",
 			   SubCategoryId = 9,
 			   Url = "yamaha-va5s-seti",
 			   Price = 35000,

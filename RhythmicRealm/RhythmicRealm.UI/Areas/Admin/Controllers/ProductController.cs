@@ -2,12 +2,13 @@
 using RhythmicRealm.Service.Abstract;
 using RhythmicRealm.Shared.ViewModels.BrandViewModels;
 using RhythmicRealm.Shared.ViewModels.ProductViewModels;
-using RhythmicRealm.UI.ViewModels.SubCategoryViewModels;
+using RhythmicRealm.Shared.ViewModels.SubCategoryViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using RhythmicRealm.UI.Areas.Admin.AdminViewModels;
-using RhythmicRealm.Shared.Response;
-using RhythmicRealm.Shared.ViewModels.SubCategoryViewModels;
+using AspNetCoreHero.ToastNotification.Abstractions;
+using RhythmicRealm.Shared.Helpers.Abstract;
+using RhythmicRealm.Shared.Helpers.Concrete;
 
 
 
@@ -19,12 +20,16 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
 		private readonly IProductService _productService;
 		private readonly IBrandService _brandService;
 		private readonly ISubCategoryService _subCategoryService;
+        private readonly IImageHelper _imageHelper;
+        private readonly INotyfService _notyfService;
 
-        public ProductController(IProductService productService, IBrandService brandService, ISubCategoryService subCategoryService)
+        public ProductController(IProductService productService, IBrandService brandService, ISubCategoryService subCategoryService, INotyfService notyfService, IImageHelper imageHelper)
         {
             _productService = productService;
             _brandService = brandService;
             _subCategoryService = subCategoryService;
+            _notyfService = notyfService;
+            _imageHelper = imageHelper;
         }
 
         [HttpGet]
@@ -34,7 +39,6 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
 
 			ViewBag.TransferInf = isdeleted; 
 		    TempData["TransferInf"] = isdeleted;
-
 			return View(products.Data);
 
 		}
@@ -118,11 +122,14 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> Edit(AdminEditProductViewModel adminEditProductViewModel)
+		public async Task<IActionResult> Edit(AdminEditProductViewModel adminEditProductViewModel,IFormFile image)
 		{
             
-            if (ModelState.IsValid )
+            if (ModelState.IsValid && image!=null)
             {
+                adminEditProductViewModel.EditProductViewModel.ImageUrl = await _imageHelper.UploadImage(image, "products");
+                adminEditProductViewModel.EditProductViewModel.Url = UrlCreateHelper.GetUrl(adminEditProductViewModel.EditProductViewModel.Name);
+
                 var editProductViewModel = new EditProductViewModel
                 {
                     //editproductviewmodelin içinde brand, sub filan yok.
@@ -137,6 +144,7 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
 
                 };
                 await _productService.UpdateProductAsync(editProductViewModel);
+                _notyfService.Success("Ürün başarıyla güncellendi");
                 return RedirectToAction("Index");
             }
 
@@ -155,7 +163,7 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
                 Text = x.Name,
             }).ToList();
             adminEditProductViewModel.SubCategoryList = subCategoryListItem;
-
+            _notyfService.Error("Ürün güncellenirken bir sorun oluştu.");
             return View(adminEditProductViewModel);
 
         }
@@ -178,8 +186,8 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> HardDelete(int id)
         {
-
             await _productService.HardDeleteAsync(id);
+            _notyfService.Error("Ürün kalıcı olarak silindi.");
             return RedirectToAction("Index");
             
         }
@@ -189,6 +197,7 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
         {
             await _productService.SoftDeleteAsync(id);
             var tempdataInf = TempData["TransferInf"];
+            _notyfService.Success("Ürün çöp kutusuna gönderildi.");
             return RedirectToAction("Index", new { isdeleted = tempdataInf });
         }
         [HttpGet]
@@ -215,14 +224,46 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
             return View(adminAddProductViewModel);
         }
 
-        //[HttpPost]
-        //public async Task<IActionResult>Create(AdminAddProductViewModel adminAddProductViewModel)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
+        [HttpPost]
+        public async Task<IActionResult> Create(AdminAddProductViewModel adminAddProductViewModel,IFormFile image)
+        {
+            if (ModelState.IsValid && image!=null)
+            {
+                adminAddProductViewModel.AddProductViewModel.ImageUrl=await _imageHelper.UploadImage(image,"products");
+                adminAddProductViewModel.AddProductViewModel.Url = UrlCreateHelper.GetUrl(adminAddProductViewModel.AddProductViewModel.Name);
+                var model = new AddProductViewModel
+                {
+                    Name = adminAddProductViewModel.AddProductViewModel.Name,
+                    Url = adminAddProductViewModel.AddProductViewModel.Url,
+                    ImageUrl = adminAddProductViewModel.AddProductViewModel.ImageUrl,
+                    Description = adminAddProductViewModel.AddProductViewModel.Description,
+                    Properties = adminAddProductViewModel.AddProductViewModel.Properties,
+                    IsActive = adminAddProductViewModel.AddProductViewModel.IsActive,
+                    IsHome = adminAddProductViewModel.AddProductViewModel.IsHome,
+                    Price=adminAddProductViewModel.AddProductViewModel.Price,
+                };
+                await _productService.CreateProductAsync(model);
+                _notyfService.Success("Ürün başarıyla kaydedildi.");
+                return RedirectToAction("Index");
+            }
+            var brands = await GetBrandsAsync();
+            var brandListItem = brands.Select(x => new SelectListItem
+            {
+                Value = x.Id.ToString(),
+                Text = x.Name,
+            }).ToList();
+            adminAddProductViewModel.BrandList = brandListItem;
 
-        //    }
-        //}
+            var subCategories = await GetSubCategoriesAsync();
+            var subCategoryListItem = subCategories.Select(x => new SelectListItem
+            {
+                Value = x.Id.ToString(),
+                Text = x.Name,
+            }).ToList();
+            adminAddProductViewModel.SubCategoryList = subCategoryListItem;
+            _notyfService.Error("Ürün kaydedilirken bir sorun oluştu.");
+            return View(adminAddProductViewModel);
+        }
 
 
     }

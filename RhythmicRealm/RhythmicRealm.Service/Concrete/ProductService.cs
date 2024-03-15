@@ -8,7 +8,7 @@ using RhythmicRealm.Shared.ViewModels;
 using RhythmicRealm.Shared.ViewModels.BrandViewModels;
 using RhythmicRealm.Shared.ViewModels.MainCategoryViewModels;
 using RhythmicRealm.Shared.ViewModels.ProductViewModels;
-using RhythmicRealm.UI.ViewModels.SubCategoryViewModels;
+using RhythmicRealm.Shared.ViewModels.SubCategoryViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

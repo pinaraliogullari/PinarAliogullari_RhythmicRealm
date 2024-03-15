@@ -162,13 +162,17 @@
                     <a href="#" class="nav-link">
                         <i class="fas fa-users"></i>
                         <p>
-                            Kullanıcılar
+                            Kullanıcılar&Yetkiler
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/mailbox/mailbox.html" class="nav-link">
+                            <a 
+                                asp-area="Admin"
+                                asp-controller=""
+                                asp-action=""
+                            class="nav-link">
                                 <i class="fas fa-user"></i>
                                 <p>Yeni Kullanıcılar</p>
                             </a>
@@ -186,9 +190,13 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/mailbox/read-mail.html" class="nav-link">
+                            <a 
+                                asp-area="Admin"
+                                asp-controller="Authorization"
+                                asp-action="Index"
+                                class="nav-link">
                                 <i class="fas fa-user-tag"></i>
-                                <p>Rol Atama</p>
+                                <p>Yetkilendirme</p>
                             </a>
                         </li>
                     </ul>
