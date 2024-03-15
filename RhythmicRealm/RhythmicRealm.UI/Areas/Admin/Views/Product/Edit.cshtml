@@ -39,6 +39,7 @@
                                   asp-action="Edit"
                                   method="post"
                                   enctype="multipart/form-data">
+                                  <input  type="hidden" asp-for="@Model.EditProductViewModel.Id"/>
                                 <div class="d-flex justify-content-between">
                                     <div class="col-md-4">
                                         <div class="form-group">
@@ -88,7 +89,7 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label>Görsel</label>
-                                            <input type="hidden" value="@Model.EditProductViewModel.ImageUrl" id="oldImageUrl" />
+                                            <input asp-for="@Model.EditProductViewModel.ImageUrl" type="hidden" value="@Model.EditProductViewModel.ImageUrl" id="oldImageUrl" />
                                             <input id="image" name="image" type="file" class="d-none" accept="image/png, image/jpg, image/jpeg" />
                                             <div class="mt-2">
                                                 <label class="btn btn-success" for="image">Görseli Güncelle</label>

@@ -122,7 +122,7 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> Edit(AdminEditProductViewModel adminEditProductViewModel,IFormFile image)
+		public async Task<IActionResult> Edit(AdminEditProductViewModel adminEditProductViewModel, IFormFile image)
 		{
             
             if (ModelState.IsValid && image!=null)
@@ -141,7 +141,8 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
                     Price = adminEditProductViewModel.EditProductViewModel.Price,
                     Properties = adminEditProductViewModel.EditProductViewModel.Properties,
                     IsHome = adminEditProductViewModel.EditProductViewModel.IsHome,
-
+                    BrandId = adminEditProductViewModel.BrandId,
+                    SubCategoryId = adminEditProductViewModel.SubCategoryId
                 };
                 await _productService.UpdateProductAsync(editProductViewModel);
                 _notyfService.Success("Ürün başarıyla güncellendi");
@@ -197,7 +198,13 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
         {
             await _productService.SoftDeleteAsync(id);
             var tempdataInf = TempData["TransferInf"];
-            _notyfService.Success("Ürün çöp kutusuna gönderildi.");
+            if (tempdataInf != null && tempdataInf is bool transferInf && transferInf == true)
+
+                _notyfService.Information("Ürün çöp kutusundan çıkartıldı.");
+
+            else
+                _notyfService.Information("Ürün çöp kutusuna gönderildi.");
+            
             return RedirectToAction("Index", new { isdeleted = tempdataInf });
         }
         [HttpGet]

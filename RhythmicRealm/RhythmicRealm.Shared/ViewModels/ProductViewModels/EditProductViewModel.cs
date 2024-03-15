@@ -57,7 +57,9 @@ namespace RhythmicRealm.Shared.ViewModels.ProductViewModels
         [JsonPropertyName("IsActive")]
         public bool IsActive { get; set; }
 
+        public int BrandId { get; set; }
 
-    
+        public int SubCategoryId { get; set; }
+
     }
 }

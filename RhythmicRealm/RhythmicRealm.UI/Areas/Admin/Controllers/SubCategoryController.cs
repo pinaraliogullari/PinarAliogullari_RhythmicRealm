@@ -121,6 +121,7 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
         public async Task<IActionResult> Edit(AdminEditSubCategoryViewModel adminEditSubCategoryViewModel)
         {
 
+            ModelState.Remove("EditSubCategoryViewModel.MainCategories.Name");
             if (ModelState.IsValid)
             {
                 var editSubCategoryViewModel = new EditSubCategoryViewModel
