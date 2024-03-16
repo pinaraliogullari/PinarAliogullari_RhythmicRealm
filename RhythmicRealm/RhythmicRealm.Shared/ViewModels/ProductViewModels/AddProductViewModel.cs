@@ -18,10 +18,7 @@ namespace RhythmicRealm.Shared.ViewModels.ProductViewModels
         [MaxLength(100, ErrorMessage = "{0} alanı uzunluğu {1} karakterden bçok girilmemelidir.")]
         public string Name { get; set; }
 
-
-        [DisplayName("Görsel Url")]
-        [Required(ErrorMessage = "{0} alanı boş bırakılmamalıdır.")]
-        public string ImageUrl { get; set; }
+        public string ImageUrl { get; set; } = "";
 
 
         [DisplayName("Url")]
@@ -41,7 +38,7 @@ namespace RhythmicRealm.Shared.ViewModels.ProductViewModels
 
         [DisplayName("Fiyat")]
         [Required(ErrorMessage = "{0} alanı boş bırakılmamalıdır.")]
-        [RegularExpression(@"^[0-9]+(\.[0-9]{1,2})",ErrorMessage ="Bu alanda virgülden sonra en fazla 2 basamak olmalıdır.")]
+        //[RegularExpression(@"^[0-9]+(\.[0-9]{1,2})",ErrorMessage ="Bu alanda virgülden sonra en fazla 2 basamak olmalıdır.")]
         public decimal Price { get; set; }
 
 

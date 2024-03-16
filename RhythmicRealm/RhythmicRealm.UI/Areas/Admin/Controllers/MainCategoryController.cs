@@ -65,7 +65,12 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
         {
             await _mainCategoryService.SoftDeleteMainCategoryAsync(id);
             var tempdataInf = TempData["TransferInf"];
-            _notyfService.Success("Ana kategori çöp kutusuna gönderildi.");
+            if (tempdataInf != null && tempdataInf is bool transferInf && transferInf == true)
+
+                _notyfService.Information("Ürün çöp kutusundan çıkartıldı.");
+
+            else
+                _notyfService.Information("Ürün çöp kutusuna gönderildi.");
             return RedirectToAction("Index", new { isdeleted = tempdataInf });
         }
 

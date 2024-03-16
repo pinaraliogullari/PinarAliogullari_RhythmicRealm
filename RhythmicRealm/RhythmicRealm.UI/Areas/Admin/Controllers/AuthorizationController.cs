@@ -9,6 +9,7 @@ using RhythmicRealm.Shared.ViewModels.Identity;
 namespace RhythmicRealm.UI.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    //[Authorize("SuperAdmin")]
     public class AuthorizationController : Controller
     {
         private readonly UserManager<User> _userManager;
@@ -39,7 +40,8 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
                     FullName = $"{user.FirstName} {user.LastName}",
                     UserName = user.UserName,
                     Email = user.Email,
-                    Role = userRole 
+                    Role = userRole,
+                    Statu =user.Statu
                 };
 
                 usersWithRoles.Add(userWithRoles);
@@ -49,7 +51,7 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
             return View(usersWithRoles);
         }
 
-        //[Authorize("SuperAdmin")]
+      
         [HttpGet]
         public async Task<IActionResult> ChangeAuthority(string id)
         {
@@ -70,6 +72,58 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
             };
 
             return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangeAuthority(ChangeAuthorityViewModel changeAuthorityViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByIdAsync(changeAuthorityViewModel.Id);
+                foreach (var role in changeAuthorityViewModel.AssignRole)
+                {
+                    if (role.IsAssigned)
+                        await _userManager.AddToRoleAsync(user, role.Name);
+                    
+                    else
+                    {
+                        await _userManager.RemoveFromRoleAsync(user, role.Name);
+                    }
+                }
+                _notyfService.Success($"{user.FirstName} {user.LastName}  adlı kullanıcının rolü başarıyla değiştirilmiştir.");
+                return RedirectToAction("Index");
+            }
+            _notyfService.Success("Güncelleme işlemi başarısız");
+            return View(changeAuthorityViewModel);
+        }
+
+        public async Task<IActionResult> ChangeStatu(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if (user != null)
+            {
+                if (await _userManager.IsLockedOutAsync(user))
+                {
+                    await _userManager.SetLockoutEndDateAsync(user, null);
+                }
+                if (user.Statu)
+                {
+                    await _userManager.SetLockoutEnabledAsync(user, true);
+                    await _userManager.SetLockoutEndDateAsync(user, DateTimeOffset.MaxValue);
+                    user.Statu = false;
+                }
+                else
+                {
+                    await _userManager.SetLockoutEnabledAsync(user, false);
+                    await _userManager.SetLockoutEndDateAsync(user, null);
+                    user.Statu = true;
+                }
+                await _userManager.UpdateAsync(user);
+                return RedirectToAction("Index");
+            }
+
+       
+            return RedirectToAction("Index");
         }
     }
 }

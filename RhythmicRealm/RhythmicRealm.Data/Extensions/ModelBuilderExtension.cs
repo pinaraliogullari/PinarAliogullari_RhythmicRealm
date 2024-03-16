@@ -44,7 +44,8 @@ namespace RhythmicRealm.Data.Extensions
                     Address="Halilpaşa Konağı Caddesi Kemeraltı Sokak No:4 D:2 Üsküdar",
                     City="İstanbul",
                     PhoneNumber="5558779966",
-                    EmailConfirmed=true
+                    EmailConfirmed=true,
+                    Statu=true,
                 },
                 new User
                 {
@@ -59,7 +60,8 @@ namespace RhythmicRealm.Data.Extensions
                     Address="Halilpaşa Konağı Caddesi Kemeraltı Sokak No:4 D:2 Üsküdar",
                     City="İstanbul",
                     PhoneNumber="5387996655",
-                    EmailConfirmed=true
+                    EmailConfirmed=true,
+                    Statu=true,
                 },
                 new User
                 {
@@ -74,23 +76,10 @@ namespace RhythmicRealm.Data.Extensions
                     Address="Halilpaşa Konağı Caddesi Kemeraltı Sokak No:4 D:2 Üsküdar",
                     City="İstanbul",
                     PhoneNumber="5387996655",
-                    EmailConfirmed=true
+                    EmailConfirmed=true,
+                    Statu=true,
                 },
-                new User
-                {
-                    FirstName="İdil",
-                    LastName="Gökçek",
-                    UserName="idilgökcek",
-                    NormalizedUserName="IDILGOKCEK",
-                    Email="idilgokcek@gmail.com",
-                    NormalizedEmail="IDILGOKCEK@GMAIL.COM",
-                    Gender="Kadın",
-                    DateOfBirth=new DateTime(1993,7,16),
-                    Address="Halilpaşa Konağı Caddesi Kemeraltı Sokak No:4 D:2 Üsküdar",
-                    City="İstanbul",
-                    PhoneNumber="5387996655",
-                    EmailConfirmed=true
-                }
+              
             };
 
             modelBuilder.Entity<User>().HasData(users);
@@ -102,7 +91,6 @@ namespace RhythmicRealm.Data.Extensions
             users[0].PasswordHash = passwordHasher.HashPassword(users[0], "Qsc987.");
             users[1].PasswordHash = passwordHasher.HashPassword(users[1], "Qsc987.");
             users[2].PasswordHash = passwordHasher.HashPassword(users[2], "Qsc987.");
-            users[3].PasswordHash = passwordHasher.HashPassword(users[3], "Qsc987.");
 
             #endregion
 
@@ -123,13 +111,9 @@ namespace RhythmicRealm.Data.Extensions
                 new IdentityUserRole<string>
                 {
                     UserId=users[2].Id,
-                    RoleId=roles.Where(r=>r.Name=="Admin").FirstOrDefault().Id,
-                },
-                new IdentityUserRole<string>
-                {
-                    UserId=users[3].Id,
                     RoleId=roles.Where(r=>r.Name=="Customer").FirstOrDefault().Id,
-                }
+                },
+              
             };
             modelBuilder.Entity<IdentityUserRole<string>>().HasData(userRoles);
             #endregion
@@ -141,7 +125,7 @@ namespace RhythmicRealm.Data.Extensions
                 new ShoppingBasket{ Id=1, UserId=users[0].Id } ,
                 new ShoppingBasket{ Id=2, UserId=users[1].Id } ,
                 new ShoppingBasket{ Id=3, UserId=users[2].Id } ,
-                new ShoppingBasket{ Id=4, UserId=users[3].Id }
+         
             };
             modelBuilder.Entity<ShoppingBasket>().HasData(shoppingBaskets);
 

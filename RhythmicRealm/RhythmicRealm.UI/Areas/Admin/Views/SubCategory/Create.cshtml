@@ -37,7 +37,9 @@
                                   asp-controller="SubCategory"
                                   asp-action="Create"
                                   method="post">
-                              
+                              <input type="hidden" asp-for="@Model.AddSubCategoryViewModel.MainCategories.Id" />
+                              <input type="hidden" asp-for="@Model.AddSubCategoryViewModel.MainCategories.Name" />
+                                <input type="hidden" asp-for="@Model.MainCategoryName" />
 
                                 <div class="col-md-6">
                                     <div class="form-group">

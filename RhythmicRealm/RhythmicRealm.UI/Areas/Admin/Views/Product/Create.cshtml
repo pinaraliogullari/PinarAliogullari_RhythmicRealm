@@ -41,32 +41,33 @@
                                   asp-action="Create"
                                   method="post"
                                   enctype="multipart/form-data">
+                                  <input type="hidden" asp-for="@Model.AddProductViewModel.ImageUrl"/>
                                 <div class="d-flex justify-content-between">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label asp-for="AddProductViewModel.Name" class="control-label"></label>
-                                                <input asp-for="AddProductViewModel.Name" class="form-control" />
-                                                <span asp-validation-for="AddProductViewModel.Name" class="text-danger"></span>
+                                            <label asp-for="@Model.AddProductViewModel.Name" class="control-label"></label>
+                                            <input asp-for="@Model.AddProductViewModel.Name" class="form-control" />
+                                            <span asp-validation-for="@Model.AddProductViewModel.Name" class="text-danger"></span>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                                <label asp-for="AddProductViewModel.Price" class="control-label"></label>
-                                                <input asp-for="AddProductViewModel.Price" class="form-control" />
-                                                <span asp-validation-for="AddProductViewModel.Price" class="text-danger"></span>
+                                            <label asp-for="@Model.AddProductViewModel.Price" class="control-label"></label>
+                                            <input asp-for="@Model.AddProductViewModel.Price" class="form-control" />
+                                            <span asp-validation-for="@Model.AddProductViewModel.Price" class="text-danger"></span>
                                         </div>
                                     </div>
                                     <div class="col-md-2 mt-4 ">
                                         <div class="icheck-primary d-inline">
-                                                <input asp-for="AddProductViewModel.IsHome" type="checkbox" checked id="checkboxSuccess1">
-                                                <label asp-for="AddProductViewModel.IsHome" for="checkboxSuccess1">
+                                            <input asp-for="@Model.AddProductViewModel.IsHome" type="checkbox" checked id="checkboxSuccess1">
+                                            <label asp-for="@Model.AddProductViewModel.IsHome" for="checkboxSuccess1">
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-md-2 mt-4 ">
                                         <div class="icheck-primary d-inline">
-                                            <input asp-for="AddProductViewModel.IsActive" type="checkbox" checked id="checkboxSuccess1">
-                                            <label asp-for="AddProductViewModel.IsActive" for="checkboxSuccess1">
+                                            <input asp-for="@Model.AddProductViewModel.IsActive" type="checkbox" checked id="checkboxSuccess1">
+                                            <label asp-for="@Model.AddProductViewModel.IsActive" for="checkboxSuccess1">
                                             </label>
                                         </div>
                                     </div>
@@ -74,17 +75,17 @@
                                 <div class="d-flex justify-content-between">
                                 <div class="col-md-4">
                                 <div class="form-group">
-                                            <label asp-for="AddProductViewModel.Url" class="control-label"></label>
-                                            <input asp-for="AddProductViewModel.Url" class="form-control" />
-                                            <span asp-validation-for="AddProductViewModel.Url" class="text-danger"></span>
+                                            <label asp-for="@Model.AddProductViewModel.Url" class="control-label"></label>
+                                            <input asp-for="@Model.AddProductViewModel.Url" class="form-control" />
+                                            <span asp-validation-for="@Model.AddProductViewModel.Url" class="text-danger"></span>
                                 </div>
                                 </div>
                              
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label asp-for="AddProductViewModel.Description" class="control-label"></label>
-                                            <input asp-for="AddProductViewModel.Description" class="form-control"/>
-                                            <span asp-validation-for="AddProductViewModel.Description" class="text-danger"></span>
+                                            <label asp-for="@Model.AddProductViewModel.Description" class="control-label"></label>
+                                            <input asp-for="@Model.AddProductViewModel.Description" class="form-control" />
+                                            <span asp-validation-for="@Model.AddProductViewModel.Description" class="text-danger"></span>
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
@@ -101,15 +102,13 @@
                                                 </div>
                                                
                                             </div>
-                                       
-                                  
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label asp-for="AddProductViewModel.Properties" class="control-label"></label>
-                                    <textarea id="Properties" asp-for="AddProductViewModel.Properties" class="form-control" rows="10"></textarea>
-                                    <span asp-validation-for="AddProductViewModel.Properties" class="text-danger"></span>
+                                    <label asp-for="@Model.AddProductViewModel.Properties" class="control-label"></label>
+                                    <textarea id="Properties" asp-for="@Model.AddProductViewModel.Properties" class="form-control" rows="10"></textarea>
+                                    <span asp-validation-for="@Model.AddProductViewModel.Properties" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="SubCategoryList" class="control-label"></label>

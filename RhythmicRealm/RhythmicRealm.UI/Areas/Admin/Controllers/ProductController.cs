@@ -124,15 +124,18 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Edit(AdminEditProductViewModel adminEditProductViewModel, IFormFile image)
 		{
-            
-            if (ModelState.IsValid && image!=null)
+            ModelState.Remove("Image");
+            if (ModelState.IsValid )
             {
-                adminEditProductViewModel.EditProductViewModel.ImageUrl = await _imageHelper.UploadImage(image, "products");
+                if(image!=null)
+                {
+                    adminEditProductViewModel.EditProductViewModel.ImageUrl = await _imageHelper.UploadImage(image, "products");
+                }
                 adminEditProductViewModel.EditProductViewModel.Url = UrlCreateHelper.GetUrl(adminEditProductViewModel.EditProductViewModel.Name);
 
                 var editProductViewModel = new EditProductViewModel
                 {
-                    //editproductviewmodelin içinde brand, sub filan yok.
+                 
                     Id = adminEditProductViewModel.EditProductViewModel.Id,
                     Name = adminEditProductViewModel.EditProductViewModel.Name,
                     Description = adminEditProductViewModel.EditProductViewModel.Description,
@@ -234,6 +237,7 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(AdminAddProductViewModel adminAddProductViewModel,IFormFile image)
         {
+            ModelState.Remove("ImageUrl");
             if (ModelState.IsValid && image!=null)
             {
                 adminAddProductViewModel.AddProductViewModel.ImageUrl=await _imageHelper.UploadImage(image,"products");

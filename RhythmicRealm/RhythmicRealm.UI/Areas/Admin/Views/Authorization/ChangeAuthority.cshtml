@@ -8,8 +8,12 @@
                     Kullanıcı Rol Değiştirme
                 </div>
                 <div class="card-body">
-                    <form method="post" action="@Url.Action("ChangeAuthority", "Authorization")">
+                    <form asp-area="Admin"
+                          asp-controller="Authorization"
+                          asp-action="ChangeAuthority"
+                          method="post">
                         <input type="hidden" asp-for="Id" />
+                    
                         <div class="form-group">
                             <label>Kullanıcı Adı:</label>
                             <input type="text" class="form-control" asp-for="UserName" readonly />
@@ -19,16 +23,18 @@
                             <input type="text" class="form-control" asp-for="FullName" readonly />
                         </div>
                         <div class="form-group">
-                            <label>Rol:</label>
-                            @foreach (var role in Model.AssignRole)
+                            <label>Roller:</label>
+                            @for (int i = 0; i < Model.AssignRole.Count; i++)
                             {
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" asp-for="@role.IsAssigned" />
-                                    <label class="form-check-label">@role.Name</label>
+                                <div class="icheck-primary">
+                                    <input asp-for="@Model.AssignRole[i].IsAssigned" />
+                                    <label asp-for="@Model.AssignRole[i].IsAssigned">@Model.AssignRole[i].Name</label>
+                                    <input type="hidden" asp-for="@Model.AssignRole[i].Id" />
+                                    <input type="hidden" asp-for="@Model.AssignRole[i].Name" />
                                 </div>
                             }
                         </div>
-                        <button type="submit" class="btn btn-success">Kaydet</button>
+                        <button type="submit" class="btn btn-primary float-right">Güncelle</button>
                     </form>
                 </div>
             </div>
