@@ -7,6 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\admin\css\**" />
+    <Compile Remove="wwwroot\admin\js\**" />
+    <Compile Remove="wwwroot\login-register-master\**" />
+    <Content Remove="wwwroot\admin\css\**" />
+    <Content Remove="wwwroot\admin\js\**" />
+    <Content Remove="wwwroot\login-register-master\**" />
+    <EmbeddedResource Remove="wwwroot\admin\css\**" />
+    <EmbeddedResource Remove="wwwroot\admin\js\**" />
+    <EmbeddedResource Remove="wwwroot\login-register-master\**" />
+    <None Remove="wwwroot\admin\css\**" />
+    <None Remove="wwwroot\admin\js\**" />
+    <None Remove="wwwroot\login-register-master\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     
     <PackageReference Include="AlertifyJS" Version="1.13.1" />
     
@@ -25,11 +40,6 @@
   <ItemGroup>
     <ProjectReference Include="..\RhythmicRealm.Service\RhythmicRealm.Service.csproj" />
     <ProjectReference Include="..\RhythmicRealm.Shared\RhythmicRealm.Shared.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\admin\css\" />
-    <Folder Include="wwwroot\admin\js\" />
   </ItemGroup>
 
 

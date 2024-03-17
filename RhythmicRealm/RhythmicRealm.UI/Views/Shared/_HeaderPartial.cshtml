@@ -48,11 +48,27 @@
 						<div>
 							<!--eğer user login olmuşsa burada hesabım yazacak ve hesap bilgilerine gidecek.-->
 							<!--eğer user login değilse  burada giriş yap yazacak ve login ekranına gidecek.-->
-							<a href="/admin">
-								<i class="fa fa-user-o" aria-hidden="true"></i>
-								<span>Giriş Yap</span>
+							@if (!User.Identity.IsAuthenticated)
+							{
+								<a asp-area=""
+								   asp-controller="Account"
+								   asp-action="Login">
+									<i class="fa fa-user-o" aria-hidden="true"></i>
+									<span>Giriş Yap</span>
 
-							</a>
+								</a>
+							}
+							else
+							{
+								<a asp-area=""
+								   asp-controller="Account"
+								   asp-action="Profile">
+									<i class="fa fa-user-o" aria-hidden="true"></i>
+									<span>Hesabım</span>
+
+								</a>
+							}
+
 						</div>
 						
 					<vc:wishlist></vc:wishlist>
