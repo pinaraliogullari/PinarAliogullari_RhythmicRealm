@@ -1,27 +1,9 @@
-﻿
-@{
-    Layout = null;
-} 
+﻿@{
+    Layout = "_LoginRegisterLayout";
+}
 @model RegisterViewModel
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Registration Page</title>
-
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="~/admin/plugins/fontawesome-free/css/all.min.css">
-    <!-- icheck bootstrap -->
-    <link rel="stylesheet" href="~/admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="~/admin/dist/css/adminlte.min.css">
-</head>
-<body class="hold-transition register-page">
     <div class="register-box">
         <div class="register-logo">
             <a href="~/admin/index2.html"><b>Rhythmic</b>Realm</a>
@@ -32,60 +14,73 @@
                 <p class="login-box-msg">Merhaba,
 Rhythmic Realm'a hemen üye ol ve fırsatları yakala!</p>
 
-                <form action="~/admin/index.html" method="post">
+                <form 
+                    asp-area=""
+                    asp-controller="Account"
+                    asp-action="Register"
+                    method="post"
+                >
+         
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Ad ">
+                        <input asp-for="FirstName" type="text" class="form-control" placeholder="Ad ">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
                             </div>
                         </div>
+                 
                     </div>
+  
+                <span asp-validation-for="FirstName" class="text-danger"></span>
                       <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Soyad">
+                        <input asp-for="LastName" type="text" class="form-control" placeholder="Soyad">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
                             </div>
                         </div>
                     </div>
+                <span asp-validation-for="LastName" class="text-danger"></span>
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Email">
+                        <input asp-for="Email" type="email" class="form-control" placeholder="Email">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
                             </div>
                         </div>
                     </div>
+                <span asp-validation-for="Email" class="text-danger"></span>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Şifre">
+                        <input asp-for="Password" type="password" class="form-control" placeholder="Şifre">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
                             </div>
                         </div>
                     </div>
+                <span asp-validation-for="Password" class="text-danger"></span>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Şifrenizi tekrar giriniz">
+                        <input asp-for="RePassword" type="password" class="form-control" placeholder="Şifrenizi tekrar giriniz">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
                             </div>
                         </div>
                     </div>
+                <span asp-validation-for="RePassword" class="text-danger"></span>
                     <div class="row">
                         <div class="col-8">
-                            <div class="icheck-primary">
-                                <input type="checkbox" id="agreeTerms" name="terms" value="agree">
-                                <label for="agreeTerms">
-                                    Şartları kabul ediyorum <a href="#">Şartlar</a>
-                                </label>
+                           
+                            <input asp-for="MemberShipTerms" type="checkbox" id="memberShipTerms" name="memberShipTerms">
+                                <a href="#"  data-toggle="modal" data-target="#TermsModal">Şartları</a>  kabul ediyorum 
                             </div>
-                        </div>
+               
+                    <span asp-validation-for="MemberShipTerms" class="text-danger"></span>
                         <!-- /.col -->
                         <div class="col-4">
                             <button type="submit" class="btn btn-primary btn-block">Üye ol</button>
                         </div>
+                 
                         <!-- /.col -->
                     </div>
                 </form>
@@ -96,11 +91,23 @@ Rhythmic Realm'a hemen üye ol ve fırsatları yakala!</p>
         </div><!-- /.card -->
     </div>
     <!-- /.register-box -->
-    <!-- jQuery -->
-    <script src="~/admin/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="~/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="~/admin/dist/js/adminlte.min.js"></script>
-</body>
-</html>
+
+<div class="modal" id="TermsModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+           <div class="modal-header">
+               <h2 class="modal-title">Üyelik Sözleşmesi</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+         
+           </div>
+            <div class="modal-body">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+                Why do we use it?
+                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+            </div>
+        </div>
+    </div>
+</div>

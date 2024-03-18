@@ -8,9 +8,7 @@
 				<li><a href="#"><i class="fa fa-envelope-o"></i> aliogullarpnar@gmail.com</a></li>
 				<li><a href="#"><i class="fa fa-map-marker"></i> Beşiktaş İSTANBUL</a></li>
 			</ul>
-			@* <ul class="header-links pull-right">
-				<li><a href="#"><i class="fa fa-user-o"></i> Hesabım</a></li>
-			</ul> *@
+		
 		</div>
 	</div>
 	<!-- /TOP HEADER -->
@@ -21,7 +19,7 @@
 			<!-- row -->
 			<div class="row">
 				<!-- LOGO -->
-				<div class="col-lg-2 col-md-2  col-sm-2">
+				<div class="col-lg-2 col-md-2">
 					<div class="header-logo">
 						<a href="#" class="logo">
 							<img src="~/ui/img/logo1.png" alt="" >
@@ -29,25 +27,25 @@
 					</div>
 				</div>
 				<!-- /LOGO -->
-				<div class="col-lg-6 col-md-5 col-sm-8">
+				<div class="col-lg-6 col-md-5 ">
 					<vc:search-bar></vc:search-bar>
 
 				</div>
 
 				
 				<!-- ACCOUNT -->
-				<div class="col-lg-4 col-md-5 col-sm-12 clearfix">
+				<div class="col-lg-4 col-md-5  clear-fix">
 					<div class="header-ctn">
 						<div>
 							<a href="/admin">
+						
 								<i class="fa fa-lock" aria-hidden="true"></i>
 								<span>Admin Panel</span>
 						
 							</a>
 						</div>
 						<div>
-							<!--eğer user login olmuşsa burada hesabım yazacak ve hesap bilgilerine gidecek.-->
-							<!--eğer user login değilse  burada giriş yap yazacak ve login ekranına gidecek.-->
+					
 							@if (!User.Identity.IsAuthenticated)
 							{
 								<a asp-area=""
@@ -60,18 +58,35 @@
 							}
 							else
 							{
-								<a asp-area=""
+						
+								<div class="dropdown text-center">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:white" role="button" aria-haspopup="true" aria-expanded="false">
+									
+											<i class="fa fa-user-o " aria-hidden="true"></i>
+											<div>Hesabım</div>
+										
+									</a>
+									<ul class="dropdown-menu">
+										<li><a href="#">Siparişlerim</a></li>
+										<li role="separator" class="divider"></li>
+										<li><a href="#">Kullanıcı Bilgilerim</a></li>
+										<li role="separator" class="divider"></li>
+										<li><a asp-area="" asp-controller="Account" asp-action="Logout">Çıkış Yap</a></li>
+									</ul>
+								</div>
+							
+							@* 	<a asp-area=""
 								   asp-controller="Account"
 								   asp-action="Profile">
 									<i class="fa fa-user-o" aria-hidden="true"></i>
 									<span>Hesabım</span>
 
-								</a>
+								</a> *@
 							}
 
 						</div>
 						
-					<vc:wishlist></vc:wishlist>
+					@* <vc:wishlist></vc:wishlist> *@
 					<vc:cart></vc:cart>
 						
 						<!-- Menu Toogle -->
@@ -93,3 +108,5 @@
 	<!-- /MAIN HEADER -->
 </header>
 <!-- /HEADER -->
+
+									

@@ -46,6 +46,7 @@ namespace RhythmicRealm.Data.Extensions
                     PhoneNumber="5558779966",
                     EmailConfirmed=true,
                     Statu=true,
+                   
                 },
                 new User
                 {
@@ -62,6 +63,7 @@ namespace RhythmicRealm.Data.Extensions
                     PhoneNumber="5387996655",
                     EmailConfirmed=true,
                     Statu=true,
+           
                 },
                 new User
                 {
@@ -78,6 +80,7 @@ namespace RhythmicRealm.Data.Extensions
                     PhoneNumber="5387996655",
                     EmailConfirmed=true,
                     Statu=true,
+                   
                 },
               
             };

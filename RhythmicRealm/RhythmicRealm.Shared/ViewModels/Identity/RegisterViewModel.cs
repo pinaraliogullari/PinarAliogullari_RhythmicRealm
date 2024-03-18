@@ -25,15 +25,15 @@ namespace RhythmicRealm.Shared.ViewModels.Identity
 
         [DisplayName("Şifre")]
         [Required(ErrorMessage = "Lütfen {0} alanını boş bırakmayınız.")]
-        [DataType(DataType.Password)]
+        [DataType(DataType.Password,ErrorMessage ="Şifreniz en az 7 karakter ve en fazla 20 karakter olmalı, harf ve rakam içermelidir.")]
         public string Password { get; set; }
 
         [DisplayName("Şifre")]
         [Required(ErrorMessage = "Lütfen {0} alanını boş bırakmayınız.")]
-        [DataType(DataType.Password)]
-        [Compare("Password", ErrorMessage = "Parolalar eşleşmiyor, lütfen kontrol ediniz.")]
+        [DataType(DataType.Password, ErrorMessage = "Şifreniz en az 7 karakter ve en fazla 20 karakter olmalı, harf ve rakam içermelidir.")]
         public string RePassword { get; set; }
 
-        //public string ConfirmDesc { get; set; }
+        [Required(ErrorMessage = "Üye olmak için şartları kabul etmeniz gerekmektedir.")]
+        public bool MemberShipTerms { get; set; }
     }
 }

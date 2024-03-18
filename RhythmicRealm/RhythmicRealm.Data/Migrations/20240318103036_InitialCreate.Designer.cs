@@ -11,7 +11,7 @@ using RhythmicRealm.Data.Concrete.Contexts;
 namespace RhythmicRealm.Data.Migrations
 {
     [DbContext(typeof(RRContext))]
-    [Migration("20240316212655_InitialCreate")]
+    [Migration("20240318103036_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -105,18 +105,18 @@ namespace RhythmicRealm.Data.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "f08543c7-d181-4ac6-8c6a-22e394b9c249",
-                            RoleId = "58f660ac-a4ac-4e08-b8e1-cdd70119266c"
+                            UserId = "9760a242-1a8b-47eb-99bd-fbdfd8c33caa",
+                            RoleId = "5b17ed55-e03b-403e-982b-e9d8b8402f51"
                         },
                         new
                         {
-                            UserId = "c7eaf879-6050-43fd-8079-0f3ff70f1fe4",
-                            RoleId = "a2d35094-8bd1-49ef-9e0c-de6fe045fcc7"
+                            UserId = "a4d32708-cb4e-4604-b1c7-d5d928f7bf7b",
+                            RoleId = "6e44e7ec-40b5-4464-b1eb-c2d02a499726"
                         },
                         new
                         {
-                            UserId = "87957ba2-cdc2-4096-b747-c2ab70c57832",
-                            RoleId = "bbf830e9-b7e7-49ef-a8ab-b878d24b7168"
+                            UserId = "9c706bde-727f-4516-b575-4d6b3c60afec",
+                            RoleId = "d89478b0-71cb-4532-9731-6c0d5d595fe9"
                         });
                 });
 
@@ -284,21 +284,21 @@ namespace RhythmicRealm.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "58f660ac-a4ac-4e08-b8e1-cdd70119266c",
+                            Id = "5b17ed55-e03b-403e-982b-e9d8b8402f51",
                             Description = "Süper Yönetici haklarını taşıyan rol",
                             Name = "SuperAdmin",
                             NormalizedName = "SUPERADMIN"
                         },
                         new
                         {
-                            Id = "a2d35094-8bd1-49ef-9e0c-de6fe045fcc7",
+                            Id = "6e44e7ec-40b5-4464-b1eb-c2d02a499726",
                             Description = "Yönetici haklarını taşıyan rol",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "bbf830e9-b7e7-49ef-a8ab-b878d24b7168",
+                            Id = "d89478b0-71cb-4532-9731-6c0d5d595fe9",
                             Description = "Müşteri haklarını taşıyan rol",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
@@ -314,18 +314,16 @@ namespace RhythmicRealm.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("City")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("DateOfBirth")
+                    b.Property<DateTime?>("DateOfBirth")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
@@ -340,7 +338,6 @@ namespace RhythmicRealm.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Gender")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("LastName")
@@ -370,6 +367,10 @@ namespace RhythmicRealm.Data.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("RoleId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("TEXT");
 
@@ -397,11 +398,11 @@ namespace RhythmicRealm.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "f08543c7-d181-4ac6-8c6a-22e394b9c249",
+                            Id = "9760a242-1a8b-47eb-99bd-fbdfd8c33caa",
                             AccessFailedCount = 0,
                             Address = "Halilpaşa Konağı Caddesi Kemeraltı Sokak No:4 D:2 Üsküdar",
                             City = "İstanbul",
-                            ConcurrencyStamp = "e8ac15f0-c1b4-44c4-9e73-b35db6bd5c9d",
+                            ConcurrencyStamp = "de64e310-d2a5-482e-be58-f7392a8db8cb",
                             DateOfBirth = new DateTime(1990, 5, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "nisakircali@gmail.com",
                             EmailConfirmed = true,
@@ -411,21 +412,22 @@ namespace RhythmicRealm.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "NISAKIRCALI@GMAIL.COM",
                             NormalizedUserName = "NISAKIRCALI",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJAzRFdSgSr81ie8nymmnyPlhWdfy+0kiygtIQCcfyckbe4A717kufqfJwU9Pm12LQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDzFiFjT0yH/errlBcURU6WMn2/O/Me6rCbhSKTWL3eic0DssWFP3Ztm/U2P58kTXQ==",
                             PhoneNumber = "5558779966",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b2cb68e8-bb83-4dcb-90c7-3958ec1c2ac2",
+                            RoleId = "5b17ed55-e03b-403e-982b-e9d8b8402f51",
+                            SecurityStamp = "1a4cd645-5b48-4563-a7e0-103b52ed1605",
                             Statu = true,
                             TwoFactorEnabled = false,
                             UserName = "nisakircali"
                         },
                         new
                         {
-                            Id = "c7eaf879-6050-43fd-8079-0f3ff70f1fe4",
+                            Id = "a4d32708-cb4e-4604-b1c7-d5d928f7bf7b",
                             AccessFailedCount = 0,
                             Address = "Halilpaşa Konağı Caddesi Kemeraltı Sokak No:4 D:2 Üsküdar",
                             City = "İstanbul",
-                            ConcurrencyStamp = "63d24a53-a234-4ba3-86fd-13a9ba678ca1",
+                            ConcurrencyStamp = "5f594399-7578-46bf-a65d-049d1835c26b",
                             DateOfBirth = new DateTime(1993, 7, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "mehmetaksu@gmail.com",
                             EmailConfirmed = true,
@@ -435,21 +437,22 @@ namespace RhythmicRealm.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MEHMETAKSU@GMAIL.COM",
                             NormalizedUserName = "MEHMETAKSU",
-                            PasswordHash = "AQAAAAIAAYagAAAAEAY0n31RdQo61ypZEqqS9TMVGOyxIN2+kr8H2DFxE2XyA5lHN6p7ys4AkRHaXxgM0g==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFM6/fDyM/a6u3CYnogs/VALKnmJ+6gmVeoaORZDzbeb4AdwK5QZSzw/2FIH2HgpfA==",
                             PhoneNumber = "5387996655",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "bc538092-73c1-4f64-97ad-cb1fdae6b782",
+                            RoleId = "6e44e7ec-40b5-4464-b1eb-c2d02a499726",
+                            SecurityStamp = "7fe9afef-db2f-460e-9ad7-a15a711420c1",
                             Statu = true,
                             TwoFactorEnabled = false,
                             UserName = "mehmetaksu"
                         },
                         new
                         {
-                            Id = "87957ba2-cdc2-4096-b747-c2ab70c57832",
+                            Id = "9c706bde-727f-4516-b575-4d6b3c60afec",
                             AccessFailedCount = 0,
                             Address = "Halilpaşa Konağı Caddesi Kemeraltı Sokak No:4 D:2 Üsküdar",
                             City = "İstanbul",
-                            ConcurrencyStamp = "0cf8c042-22d5-4faa-adee-8ddb0a26e11a",
+                            ConcurrencyStamp = "44e311d4-f2ef-4899-9d27-b29fda86e672",
                             DateOfBirth = new DateTime(1993, 7, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "ertankemaloglu@gmail.com",
                             EmailConfirmed = true,
@@ -459,10 +462,11 @@ namespace RhythmicRealm.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ERTANKEMALOGLU@GMAIL.COM",
                             NormalizedUserName = "ERTANKEMALOGLU",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJCGyJehB0ItAB1apNG2NBHAdbBbXR2SUJDZJ9I38H0iCFCln04mUdPs1vzTrhrbOg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEL8seD2w+GQGANxLBbiDZUsKOPn1l3bIkTV8uUXKViN0uH4irm4wdZscik6Jgi3CeQ==",
                             PhoneNumber = "5387996655",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "bab1ca25-85f6-4e4b-8b9f-98dab9ece136",
+                            RoleId = "d89478b0-71cb-4532-9731-6c0d5d595fe9",
+                            SecurityStamp = "84b0a11a-1ad3-4a6c-a515-56cc7bac2e56",
                             Statu = true,
                             TwoFactorEnabled = false,
                             UserName = "ertankemaloglu"
@@ -505,51 +509,51 @@ namespace RhythmicRealm.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(3459),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 900, DateTimeKind.Local).AddTicks(8369),
                             IsActive = true,
                             IsDeleted = false,
                             Name = "Tuşlular",
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(3473),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 900, DateTimeKind.Local).AddTicks(8386),
                             Url = "tuslular"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(3475),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 900, DateTimeKind.Local).AddTicks(8412),
                             IsActive = true,
                             IsDeleted = false,
                             Name = "Telliler",
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(3476),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 900, DateTimeKind.Local).AddTicks(8413),
                             Url = "telliler"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(3477),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 900, DateTimeKind.Local).AddTicks(8414),
                             IsActive = true,
                             IsDeleted = false,
                             Name = "Yaylılar",
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(3477),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 900, DateTimeKind.Local).AddTicks(8414),
                             Url = "yaylilar"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(3478),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 900, DateTimeKind.Local).AddTicks(8415),
                             IsActive = true,
                             IsDeleted = false,
                             Name = "Nefesliler",
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(3479),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 900, DateTimeKind.Local).AddTicks(8416),
                             Url = "nefesliler"
                         },
                         new
                         {
                             Id = 5,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(3479),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 900, DateTimeKind.Local).AddTicks(8417),
                             IsActive = true,
                             IsDeleted = false,
                             Name = "Davul Perküsyon",
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(3480),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 900, DateTimeKind.Local).AddTicks(8417),
                             Url = "davul-perkusyon"
                         });
                 });
@@ -622,7 +626,7 @@ namespace RhythmicRealm.Data.Migrations
                         {
                             Id = 1,
                             BrandId = 2,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8129),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4099),
                             Description = "102011060204 / PEARL RIVER / V-05 WH",
                             ImageUrl = "piyano1.png",
                             IsActive = true,
@@ -632,14 +636,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 25000m,
                             Properties = "Teknik Özellikler : \r\n\r\nTuş Sistemi :   İtalyan üretimi  Fatar Grand-Response™ 88 Tuşlu Tuş yapısı -  Çekiç Aksiyon Sistemi - Dinamik Eğrili Sensör Sistemi - 4 Farklı Hassasiyet ayarı \r\n\r\nPolifoni : 512\r\n\r\nSes Sayısı :  26 farklı Ses -  Avrupa Konser tipi Kuyruklu Piyano  örneklemesi ile yapılmış ana piyano sesi  - Ritm Perküsyon Ses Dizilimli  Ses Örneklemeleri \r\n\r\nKullanım Özelikleri :  Çift Ses birleştirme,   Klayyede bölerek iki ses kullanımı ( Split ) \r\n\r\nMetronom : Mevcut \r\n\r\nTranspose : Mevcut \r\n\r\nBluetooth : Mevcut\r\n\r\nEfekt Özellikleri : Reverb ve Chorus Efektleri \r\n\r\nKayıt Özellikleri :  22000 Nota uzunluğuna kadar Kayıt imkanı \r\n\r\nKayıtlı Eserler :  75 farklı   Demo şarkıları \r\n\r\nBağlantılar : USB, Kulaklık Çıkışı ( 2 adet ) , Line in ve Line Out Bağlantıları  \r\n\r\nBluetooth Audio Bağlantısı : Mevcut\r\n\r\nSes Çıkışı :  25 Watt x 2 \r\n\r\nGenişlik : 137cm\r\n\r\nYükseklik : 81,5cm \r\n\r\nDerinlik : 42cm \r\n\r\nAğırlık : 46,5 Kg \r\n\r\nElektrik Bağlantısı :  DC 12V Adaptör ile Çalışır ",
                             SubCategoryId = 1,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8138),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4106),
                             Url = "pearl-river-v-05-dijital-piyano"
                         },
                         new
                         {
                             Id = 2,
                             BrandId = 2,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8147),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4115),
                             Description = "102021910201 / KURZWEIL / KAG100WHP\r\n",
                             ImageUrl = "piyano2.png",
                             IsActive = true,
@@ -649,14 +653,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 80000m,
                             Properties = "Klavye: 88 standard-ölçülü hammer tuşlar (A0~C8) \r\nTuş hassasiyeti: 3 farklı descede seçilebilir tuş hassasiyeti\r\nEkran: 2*16 alphanumeric LCD Ekran\r\nPolifoni: 64 Ses\r\nHazır Programlar: 200\r\nKullanıcı Hazır Sesleri: 20\r\nGenel MIDI: Yok\r\nDemos Şarkılar: 71\r\nÖğrenilen Şarkılar 55\r\nSplits/Layers: Quick Split/Layer, easy access with adjustable relative volume\r\nTranspoze: Full transposition to any key, +/- one octave\r\nAkort: +/- 1 semitone\r\nEfektler: 8 reverb types (plus level); 8 chorus types (plus level); Treble/Bass EQ\r\nAuto-Accompaniment: 100 styles plus 1 user\r\nMetronom: Var\r\nRecorder/Sequencer: 2-Track\r\nSes Sistemş: 4-Hoparlör, 20W+15W, stereo\r\nSes Çıkışları: Stereo left/right RCA line outs (for connecting to external amplification)\r\nSes Girişleri: Stereo left/right RCA line ins (for connecting external sound sources)\r\nLine Çıkışı: Var\r\nKulaklık Girişi: (2) 1/4″ stereo kulaklık çıkışı\r\nUSB: (1) port;  MIDI ve audio over USBBluetooth:    Yes (incl. blue tooth receiver)\r\nPedals:    (3) Dahili switch-type: sustain, sostenuto, soft\r\nGüç: Internal Power Supply",
                             SubCategoryId = 1,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8148),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4115),
                             Url = "kurzveil-dijital-kuyruklu-piyano"
                         },
                         new
                         {
                             Id = 3,
                             BrandId = 1,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8151),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4118),
                             Description = "102010290110 / CASIO / AP270BK",
                             ImageUrl = "piyano3.png",
                             IsActive = true,
@@ -666,14 +670,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 29999m,
                             Properties = "TEKNİK ÖZELLİKLER\r\nKlavye: 88 tuş, Üç Sensörlü Ölçekli Çekiç Aksiyonlu Klavye II, benzetilmiş abanoz ve fildişi kaplama tuşlar\r\nDokunuş Tepkisi: 3 hassasiyet seviyesi, Kapalı\r\nSes Kaynağı: AiR ses kaynağı, damper rezonansı, çekiç tepkisi, damper parazit\r\nMaksimum Polifoni: 192\r\nTonlar: Kuyruklu Piyano 1, Kuyruklu Piyano 2 tonları dahil toplam 22 ton\r\nKatman / Bölme: Katman (Bas tonları hariç), Bölme (Yalnızca alt aralıktaki bas tonları)\r\nDijital Efektler: Reverb (4 tür), Chorus (4 tür), Brilliance (-3 - 0 - 3), DSP (bazı tonlarda dahilidir)\r\nDahili Şarkılar: 10 (Konser Çalma), 60 (Müzik Kitaplığı)\r\nŞarkı Genişletme: 10 şarkı (maks.) Şarkı başına en fazla yaklaşık 90 KB\r\nDers İşlevi: Bölüm AÇIK / KAPALI (Ders bölümü: Sağ el/Sol el)\r\nMetronom: Vuruş: 0 - 9 (Tempo aralığı: dörtlük = 20 - 255)\r\nMIDI Kaydedici: 2 kanal x 1 şarkı, maksimum yaklaşık 5.000 nota, gerçek zamanlı kayıt/playback\r\nNotaya Aktarma: 2 oktav (-12 yarı ton ~ 0 ~ +12 yarı ton)\r\nAkortlama Kontrolü: A4 = 415,5 Hz ~ 440,0 Hz ~ 465,9 Hz\r\nPedallar: 3 pedal (damper, yumuşak, sostenuto)\r\n*damper = açık/kapalı\r\nMIDI: Bu üründe MIDI terminalleri bulunmaz. Ürün ve bilgisayar arasındaki MIDI iletişimi, USB bağlantı noktası aracılığıyla yapılır.\r\nHoparlörler: 12 cm x 2\r\nAmp Çıkışı: 8W + 8W\r\n\r\nGiriş/Çıkış Uçları: KULAKLIK/ÇIKIŞ x 2 (Stereo standart)\r\n\r\nUSB: Tip B\r\n\r\nHarici güç (12V DC)\r\n\r\n* Bilgisayara bağlanmak amacıyla USB terminalini kullanmak için USB kablosu (A-B tipi) gereklidir.\r\nGüç Gereksinimleri: AC adaptör: AD-A12150LW\r\nBoyutlar (G x D x Y): 1.417 x 432 x 821mm (nota sehpası hariç)\r\nAğırlık: 36,6kg\r\nBirlikte Verilen Aksesuarlar: Piyano Taburesi, AC Adaptör (AD-A12150LW), Nota Sehpası ",
                             SubCategoryId = 1,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8151),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4118),
                             Url = "casio-ap20bk-celviano-dijital-piyano"
                         },
                         new
                         {
                             Id = 4,
                             BrandId = 2,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8153),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4120),
                             Description = "103011500112 / YAMAHA / NP15B",
                             ImageUrl = "klavye1.png",
                             IsActive = true,
@@ -683,14 +687,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 14500m,
                             Properties = "Teknik Özellikler\r\n\r\nTipi: Eğitim Klavyesi\r\nSes Teknoojisi: AWN Stereo Sampling\r\nTuş Sayısı: 61\r\nTuş Tipi: Yarı-Ağırlıklı\r\nTouch Sensitivity: Hard, Medium, Soft, Fixed\r\nPolifoni: 64 Nota\r\nHazır Sesler: 15 Ses\r\nEfektler: 6 x Reverb\r\nSes Kayıt: 1 parça (7,000 nota'ya kadar.)\r\nSes Çıkışları: 1 x 1/4\" (phones/output)\r\nUSB: 1 x Type B\r\nMIDI I/O: USB\r\nPedal Girişkerş: 1 x 1/4\" (sustain)\r\nDahili Hoparlör: 2 x (4.75\" x 3.14\")\r\nAmpfi: 2 x 2.5W\r\nGüç Desteği: 6 x AA, 12V DC (1A) power supply ",
                             SubCategoryId = 2,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8153),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4120),
                             Url = "yamaha-piaggero-tuslu-egitim-klavyesi"
                         },
                         new
                         {
                             Id = 5,
                             BrandId = 2,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8155),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4122),
                             Description = "103010290039/CASIO/MZX500",
                             ImageUrl = "klavye2.png",
                             IsActive = true,
@@ -700,14 +704,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 32800m,
                             Properties = "Teknik Özellikler\r\n\r\nTipi: Eğitim Klavyesi\r\nSes Teknoojisi: AWN Stereo Sampling\r\nTuş Sayısı: 61\r\nTuş Tipi: Yarı-Ağırlıklı\r\nTouch Sensitivity: Hard, Medium, Soft, Fixed\r\nPolifoni: 64 Nota\r\nHazır Sesler: 15 Ses\r\nEfektler: 6 x Reverb\r\nSes Kayıt: 1 parça (7,000 nota'ya kadar.)\r\nSes Çıkışları: 1 x 1/4\" (phones/output)\r\nUSB: 1 x Type B\r\nMIDI I/O: USB\r\nPedal Girişkerş: 1 x 1/4\" (sustain)\r\nDahili Hoparlör: 2 x (4.75\" x 3.14\")\r\nAmpfi: 2 x 2.5W\r\nGüç Desteği: 6 x AA, 12V DC (1A) power supply ",
                             SubCategoryId = 2,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8155),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4122),
                             Url = "casio-mz61-tuslu-klavye"
                         },
                         new
                         {
                             Id = 6,
                             BrandId = 1,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8157),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4124),
                             Description = "102011060204 / PEARL RIVER / V-05 WH",
                             ImageUrl = "klavye3.png",
                             IsActive = true,
@@ -717,14 +721,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 25000m,
                             Properties = "CASIO'nun gelişmiş dijital teknolojileri, rock ve caz hayranları arasında popüler olan eski mekanik ton dişli org seslerini aslına uygun olarak üretir. Orgun yalnızca döner hoparlörlerine özel sarsıntılar değil, aynı zamanda gürültü kaçakları da doğru şekilde üretilir. Geliştiricilerin geleneksel ton dişli orgdaki derin, ağır rezonansı elde etme konusundaki kararlılığı sayesinde hoş seslerden oluşan zengin bir ses grubu ortaya çıkmıştır.\r\n\r\nHex Layer ve Synth\r\n\r\nDahili bir Hex Layer (yalnızca MZ-X500) altı adede kadar farklı tonu birleştirerek müziğin güçlü ifade şekline katkıda bulunan polifonik ses üretir. Ayrıca dahili Bass Synth işlevi de bulunur. Bu işlev, monofonik ses ve geleneksel analog synthesizer'ları anımsatan portamento efekti üretir.",
                             SubCategoryId = 2,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8157),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4125),
                             Url = "casio-61-tuslu-klavye"
                         },
                         new
                         {
                             Id = 7,
                             BrandId = 1,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8159),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4147),
                             Description = "103030640208 / HOHNER / A16812",
                             ImageUrl = "akordiyon1.png",
                             IsActive = true,
@@ -734,14 +738,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 32000m,
                             Properties = "Teknik Özellikler\r\n\r\nTuş Sayısı: 41\r\nNota Sayısı: 41, F - A\r\nSınıfı: Kromatik\r\nKamış Plaka Seti: 3\r\nRegister Sayısı: 7\r\nTon Sayısı: 5\r\nStandart Baslar: 120\r\nStandart Bas (Kamış Plaka Seti): 4\r\nStandart Bas Register: 3\r\nÖlçüleri: 44 x 18,5 cm\r\nKamış Plaka Seti Kalitesi: Standart\r\nAğırlığı: 9,2 kg\r\nİlave İçerik: Askılı Taşıma Çantası.\"",
                             SubCategoryId = 3,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8159),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4147),
                             Url = "hohner-a16812-bravo-120-akordiyon"
                         },
                         new
                         {
                             Id = 8,
                             BrandId = 1,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8162),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4149),
                             Description = "104081122078 / PRS - PAUL REED SMITH / ST844TB",
                             ImageUrl = "elektrogitar1.png",
                             IsActive = true,
@@ -751,14 +755,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 35000m,
                             Properties = "Teknik Özellikler\r\n\r\nÖn Gövde: Maun\r\nGövde: Maun\r\nGövde Carve: Shallow Violin Carve\r\nPerde Sayısı: 24\r\nUzunluk: 25”\r\nSap (Neck): Akçaağaç\r\nSap (Neck) Şekli: Wide Thin\r\nKlavye: Gülağacı\r\nKlavye İşaretleri: “Old School” Birds\r\nKöprü (Bridge): PRS Patented Tremolo, Molded\r\nBurgular: PRS-Designed Tuners\r\nAksamlar: Nikel\r\nTruss Rod Cover: “Custom”\r\nKöprü (Bridge) Manyetiği: TCI “S” Treble\r\nSap (Neck) Manyetiği: TCI “S” Bass\r\nKontroller: Volume and Tone Control with 3-Way Toggle Pickup Switch and Two Mini-Toggle Coil-Tap Switches\r\nTeller: PRS Classic, 9-42\r\nTaşıma Çantası: PRS Gig Bag ",
                             SubCategoryId = 4,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8162),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4150),
                             Url = "prs-se-standart-elektro-gitar"
                         },
                         new
                         {
                             Id = 9,
                             BrandId = 1,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8174),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4158),
                             Description = "104081121601 / PRS - PAUL REED SMITH / SEC844TU",
                             ImageUrl = "elektrogitar2.png",
                             IsActive = true,
@@ -768,14 +772,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 43000m,
                             Properties = "Teknik Özellikler\r\n\r\nÖn Gövde: Akçaağaç w/ Flame Akçaağaç Veneer\r\nGövde: Maun\r\nGövde Carve: Shallow Violin Carve\r\nPerde Sayısı: 24\r\nUzunluk: 25”\r\nSap (Neck): Akçaağaç\r\nSap (Neck) Şekli: Wide Thin\r\nKlavye: Gülağacı\r\nKlavye İşaretleri: “Old School” Birds\r\nKöprü (Bridge): PRS Patented Tremolo, Molded\r\nBurgular: PRS-Designed Tuners\r\nAksamlar: Nikel\r\nTruss Rod Cover: “Custom”\r\nKöprü (Bridge) Manyetiği: TCI “S” Treble\r\nSap (Neck) Manyetiği: TCI “S” Bass\r\nKontroller: Volume and Tone Control with 3-Way Toggle Pickup Switch and Two Mini-Toggle Coil-Tap Switches\r\nTeller: PRS Classic, 9-42\r\nTaşıma Çantası: PRS Gig Bag ",
                             SubCategoryId = 4,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8183),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4165),
                             Url = "prs-se-custom-elektro-gitar"
                         },
                         new
                         {
                             Id = 10,
                             BrandId = 1,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8185),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4167),
                             Description = "104041230601/SEAGULL/052431",
                             ImageUrl = "akustikgitar1.png",
                             IsActive = true,
@@ -785,14 +789,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 30600m,
                             Properties = "Teknik Özellikler\r\n\r\nTel Tipi: Çelik\r\nTel Sayısı: 6\r\nÇalım: Sağ El\r\nGövde Şekli: Dreadnought\r\nÖn Gövde: Sedir\r\nFinish: Yarı Parlak\r\nRenk: Natural\r\nBody Bracing: Fan bracing\r\nSap (Neck): Silver Leaf Akçaağaç\r\nSap (Neck) Şekli: D\r\nKlavye: Gülağacı\r\nKlavye İşaretleri: Circular Plastic\r\nPerde Sayısı: 22, Nickel Silver\r\nUzunluk: 24.84\"\r\nEşik Genişiği: 1.8\"\r\nEşik/Saddle: Graph Tech\r\nKöprü (Bridge): Gülağacı\r\nBurgular: Sealed Chrome, 14:1 ratio\r\nTeller: Godin A6 LT, .012-.053 ",
                             SubCategoryId = 5,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8185),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4167),
                             Url = "seagull-s6-collection-akustik-gitar"
                         },
                         new
                         {
                             Id = 11,
                             BrandId = 1,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8187),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4169),
                             Description = "104051231201/SEAGULL/052424",
                             ImageUrl = "akustikgitar2.png",
                             IsActive = true,
@@ -802,14 +806,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 42600m,
                             Properties = "Tel Tipi: Çelik\r\nTel Sayısı: 6\r\nÇalım: Sağ El\r\nGövde Şekli: Concert\r\nÖn Gövde: Sedir\r\nFinish: Parlak\r\nRenk: Ruby Red\r\nBody Bracing: X-bracing\r\nSap (Neck): Silver Leaf Akçaağaç\r\nSap (Neck) Şekli: D\r\nRadius: 16\"\r\nKlavye: Gülağacı\r\nKlavye İşaretleri: Noktalar\r\nPerde Sayısı: 21\r\nUzunluk: 25.5\"\r\nEşik Genişiği: 1.8\"\r\nEşik/Saddle: Tusq/Tusq\r\nKöprü (Bridge): Gülağacı\r\nBurgular: Open-gear\r\nPreamp: Fishman Sonitone\r\nTeller: Godin A6 LT, .012-.053\r\nTaşıma Çantasu: Gig Bag ",
                             SubCategoryId = 5,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8187),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4169),
                             Url = "seagull-m6-akustik-gitar"
                         },
                         new
                         {
                             Id = 12,
                             BrandId = 1,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8189),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4171),
                             Description = "104050570703 / GIBSON / MCRS45CH",
                             ImageUrl = "akustikgitar3.png",
                             IsActive = true,
@@ -819,14 +823,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 33000m,
                             Properties = "Teknik Özellikler\r\n\r\nTel Tipi: Çelik\r\nTel Sayısı: 6\r\nÇalım: Sağ El\r\nGövde Şekli: J-45 Dreadnought\r\nArka & Yanlar: Maun\r\nÖn Gövde: Sitka Ladin\r\nFinish: Gloss Nitrocellulose Lacquer\r\nRenk: Cherry\r\nBinding: Multi-ply\r\nSap (Neck): Maun\r\nSap (Neck) Şekli: Slim Taper\r\nRadius: 12\"\r\nKlavye: Hint Gülağacı\r\nKlavye İşaretleri: Mother-of-Pearl Dots\r\nPerdeler: 20\r\nUzunluk: 24.75\"\r\nEşik Genişliği: 1.725\"\r\nEşik/Saddle: Tusq/Tusq\r\nKöprü (Bridge): Gülağacı Reverse Belly\r\nBurgular: Grover Rotomatics\r\nPreamo: LR Baggs VTC\r\nTeller: Gibson, .012-.053\r\nCase: Hardshell Case",
                             SubCategoryId = 5,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8189),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4171),
                             Url = "gibson-standart-akustik-gitar"
                         },
                         new
                         {
                             Id = 13,
                             BrandId = 1,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8191),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4174),
                             Description = "104130571101/EPIPHONE/EF30ASGH1",
                             ImageUrl = "mandolin1.png",
                             IsActive = true,
@@ -836,14 +840,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 8500m,
                             Properties = "Stil: F-Style\r\nGövde Derinlik: 50 mm\r\nÖn Gövde: Ladin\r\nArka ve Yanlar: Akçaağaç\r\nSap (Neck): Akçaağaç\r\nKlavye: Gülağacı\r\nKlavye İşaretleri: inlays\r\nEşik Genişliği: 28 mm\r\nUzunluk: 350 mm\r\nPerdeler: 24\r\nKöprü (Bridge): Rosewood\r\nBurgular: Chrome-plated\r\nRenk: Whiskey Burst Satin",
                             SubCategoryId = 6,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8191),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4174),
                             Url = "epiphone-mm-30s-mandolin"
                         },
                         new
                         {
                             Id = 14,
                             BrandId = 1,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8193),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4176),
                             Description = "10413216580 /ORTEGA/RMF30-WB",
                             ImageUrl = "mandolin2.png",
                             IsActive = true,
@@ -853,14 +857,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 11800m,
                             Properties = "Stil: F-Style\r\nGövde Derinlik: 50 mm\r\nÖn Gövde: Ladin\r\nArka ve Yanlar: Akçaağaç\r\nSap (Neck): Akçaağaç\r\nKlavye: Gülağacı\r\nKlavye İşaretleri: inlays\r\nEşik Genişliği: 28 mm\r\nUzunluk: 350 mm\r\nPerdeler: 24\r\nKöprü (Bridge): Rosewood\r\nBurgular: Chrome-plated\r\nRenk: Whiskey Burst Satin",
                             SubCategoryId = 6,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8194),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4176),
                             Url = "8-telli-mandolin"
                         },
                         new
                         {
                             Id = 15,
                             BrandId = 1,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8196),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4178),
                             Description = "104122165710/ORTEGA /RUAR-EY",
                             ImageUrl = "ukulele1.png",
                             IsActive = true,
@@ -870,14 +874,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 2800m,
                             Properties = "Teknik Özellikler\r\n\r\nSize: Concert \r\nScale: 380 mm\r\nEşik Genişliği: 36 mm\r\nPerdeler: 18\r\nTel Sayısı: 4\r\nÖn Gövde: Ladin\r\nRenk: Egypt Custom\r\nFinish: Satin \r\nSap (Neck): Nato\r\nKöprü (Bridge): Akçaağaç\r\nKlavye: Akçaağaç\r\nBurgular: Die-cast tuning machines, gold w/ gold buttons",
                             SubCategoryId = 7,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8196),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4179),
                             Url = "art-series-concert-ukulele"
                         },
                         new
                         {
                             Id = 16,
                             BrandId = 1,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8198),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4180),
                             Description = "104120939928/MAHALO/MM3E",
                             ImageUrl = "ukulele2.png",
                             IsActive = true,
@@ -887,14 +891,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 5100m,
                             Properties = "Teknik Özellikler\r\n\r\nMarka: Mahalo\r\nÖn Gövde: SOLID Red Cedar\r\nArka ve Yanlar: Solid Maun\r\nBracing: Toneflow Bracing\r\nSap (Neck): Tek Parça Maun\r\nKlavye: Amara Abanoz\r\nKöprü (Bridge): Amara Abanoz\r\nBurgular: Waverly Style, Gold Plated with Ivoroid Button",
                             SubCategoryId = 7,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8198),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4180),
                             Url = "all-solid-elektro-tenor-ukulele"
                         },
                         new
                         {
                             Id = 17,
                             BrandId = 1,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8200),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4182),
                             Description = "107010959912 / MAVIS / MV012L 1/4",
                             ImageUrl = "keman1.png",
                             IsActive = true,
@@ -904,14 +908,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 1900m,
                             Properties = "Teknik Özellikler\r\n\r\nKutu, Arşe ve Reçine dahil..\r\nKatı preslenmiş ladin ağacı salyangoz\r\nKatı preslenmiş akçaağaç gövde\r\nSiyah boyalı akçaağaçtan klavye ve pigler",
                             SubCategoryId = 8,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8201),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4182),
                             Url = "mavis-laminated-keman"
                         },
                         new
                         {
                             Id = 18,
                             BrandId = 1,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8202),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4184),
                             Description = "107012560101 / DONNER / EC1531",
                             ImageUrl = "keman2.png",
                             IsActive = true,
@@ -921,14 +925,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 16000m,
                             Properties = "Teknik Özellikler\r\n\r\nKutu, Arşe ve Reçine dahil..\r\nKatı preslenmiş ladin ağacı salyangoz\r\nKatı preslenmiş akçaağaç gövde\r\nSiyah boyalı akçaağaçtan klavye ve pigler",
                             SubCategoryId = 8,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8203),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4184),
                             Url = "donner-rising-carbon-fiber-keman-seti"
                         },
                         new
                         {
                             Id = 19,
                             BrandId = 2,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8205),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4186),
                             Description = "10702150010/YAMAHA/YSV104BLA02",
                             ImageUrl = "keman3.png",
                             IsActive = true,
@@ -938,14 +942,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 28000m,
                             Properties = "Teknik Özellikler\r\n\r\nÜrün Kodu: YSV104BRO \r\nTür: Silent Keman\r\nÖlçü: 4/4\r\nGövde: Ladin\r\nSap (Neck): Akçaağaç\r\nKlavye: Kompozit\r\nBurgular: Abanoz\r\nTeller: D'Addario Zyex ",
                             SubCategoryId = 8,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8206),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4186),
                             Url = "yamaha-silent-keman"
                         },
                         new
                         {
                             Id = 20,
                             BrandId = 2,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8208),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4188),
                             Description = "107031509907/YAMAHA/KVA5S16",
                             ImageUrl = "viyola1.png",
                             IsActive = true,
@@ -955,14 +959,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 34000m,
                             Properties = "Teknik Özellikler\r\n\r\nTip: Stradivarius\r\nBoyut: 16\"\r\nÜst Kapak: Ladin\r\nArka Kapak: Akçaağaç\r\nYan Kapaklar: Akçaağaç\r\nSap: Akçaağaç\r\nKlavye: Abanoz\r\nCila: Poliüretan\r\nBurgular: Abanoz\r\nKuyruk: Wittner \"Ultra\" (4 Adet Fiks)\r\nFiksler: Wittner \"Ultra\" (4 Adet Fiks)\r\nEşik: Yamaha Orijinal\r\nÇenelik: Abanoz\r\nTeller: Prelude\r\nKutu: Var\r\nYay: Brazilian Ağacı\r\nReçine: Piranito ",
                             SubCategoryId = 9,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8208),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4188),
                             Url = "yamaha-viyola-seti"
                         },
                         new
                         {
                             Id = 21,
                             BrandId = 2,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8210),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4190),
                             Description = "107031509904/YAMAHA/VA5S16",
                             ImageUrl = "viyola2.png",
                             IsActive = true,
@@ -972,14 +976,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 35000m,
                             Properties = "Teknik Özellikler\r\n\r\nTip: Stradivarius\r\nBoyut: 16\"\r\nÜst Kapak: Ladin\r\nArka Kapak: Akçaağaç\r\nYan Kapaklar: Akçaağaç\r\nSap: Akçaağaç\r\nKlavye: Abanoz\r\nCila: Poliüretan\r\nBurgular: Abanoz\r\nKuyruk: Wittner \"Ultra\" (4 Adet Fiks)\r\nFiksler: Wittner \"Ultra\" (4 Adet Fiks)\r\nEşik: Yamaha Orijinal\r\nÇenelik: Abanoz\r\nTeller: Prelude\r\nKutu: Var\r\nYay: Brazilian Ağacı\r\nReçine: Piranito ",
                             SubCategoryId = 9,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8210),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4190),
                             Url = "yamaha-va5s-seti"
                         },
                         new
                         {
                             Id = 22,
                             BrandId = 3,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8212),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4192),
                             Description = "107041209902/RÖSLER/MC6012 1/2",
                             ImageUrl = "cello1.png",
                             IsActive = true,
@@ -989,14 +993,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 23500m,
                             Properties = "Teknik Özellikler\r\n\r\nÖn Kapak: Ladin\r\nYan - Arka: Akçaağaç\r\nKlavye: Ebonit\r\nKuyruk: Dahili 4 fixli kuyruk\r\nBurgu: Ebonit\r\nVernik: Parlak Cila\r\nKutu İçeriği: Taşıma Çantası, Yay",
                             SubCategoryId = 10,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8212),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4192),
                             Url = "rösler-mc6012-cello"
                         },
                         new
                         {
                             Id = 23,
                             BrandId = 3,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8214),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4194),
                             Description = "108351500001/YAMAHA/YDS150",
                             ImageUrl = "saksafon1.png",
                             IsActive = true,
@@ -1006,14 +1010,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 38000m,
                             Properties = "Teknik Özellikler\r\n\r\nAkustik Saksafon ile aynı tuş düzenine sahiptir.\r\nAWM (Advanced Wave Memory) sampling\r\n73 Ses - 56 Saksafon sesi\r\n5 Efekt\r\nVolume Kontrolü ile 15 farklı seviye\r\nAkort Modu: Eb, Bb, C\r\nAkort: 427 - 453 Hz (0.5 Hz'e kadar ayarlanabilir.)\r\nAuto power off\r\nBluetooth\r\nIos veya Android uygulaması: Sesleri değiştir, fingering, enstrüman ayarlamaları\r\nStereo Kulaklık Çıkışı: 3.5 mm Mini jack\r\nMicro USB tip B\r\nBatarya (4x AAA) veya harici USB güç desteği ile çalışır.(Kutu içeriğine dahil değildir.)\r\nGüç Tüketimi: 4.5 W (USB kullanımı esnasında.)",
                             SubCategoryId = 11,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8214),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4194),
                             Url = "yamaha-dijital-saksafon"
                         },
                         new
                         {
                             Id = 24,
                             BrandId = 3,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8216),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4196),
                             Description = "108351500001/BOHEMIA/YDS150",
                             ImageUrl = "saksafon2.png",
                             IsActive = true,
@@ -1023,14 +1027,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 25800m,
                             Properties = "Teknik Özellikler\r\n\r\nBohemia XTN2001 Tenor Saksafon\r\n\r\nÖğrenci Seviyesi\r\nAltın Lake Kaplama\r\n'Bb' Tenor Saksafon\r\nKumaş Sert Çanta\r\nAskı\r\nAğızlık Set\r\n2 Yıl Garanti",
                             SubCategoryId = 11,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8216),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4197),
                             Url = "bohemia-tenor-saksafon"
                         },
                         new
                         {
                             Id = 25,
                             BrandId = 3,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8218),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4198),
                             Description = "108070730004/JINBAO/JBCL-570",
                             ImageUrl = "klarnet1.png",
                             IsActive = true,
@@ -1040,14 +1044,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 6800m,
                             Properties = "Teknik Özellikler\r\n\r\nJinbao XTN2001 Tenor Saksafon\r\n\r\nÖğrenci Seviyesi\r\nAltın Lake Kaplama\r\n'Bb' Tenor Saksafon\r\nKumaş Sert Çanta\r\nAskı\r\nAğızlık Set\r\n2 Yıl Garanti",
                             SubCategoryId = 12,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8218),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4199),
                             Url = "jinbao-bemol-klarnet"
                         },
                         new
                         {
                             Id = 26,
                             BrandId = 3,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8220),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4200),
                             Description = "108330220010/BOHEMIA/XCL340W",
                             ImageUrl = "klarnet2.png",
                             IsActive = true,
@@ -1057,14 +1061,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 10100m,
                             Properties = "Teknik Özellikler\r\n\r\nBakalit\r\n4 Yüzüklü.\r\nNikel kaplama.\r\nErgonomik tuş tasarımı sayesinde rahat çalım imkanı sunmaktadır.\r\n2 adet baril kutu içeriğinde bulunmaktadır. (68 mm, 70 mm)",
                             SubCategoryId = 12,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8220),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4201),
                             Url = "bohemia-plus-sol-klarnet"
                         },
                         new
                         {
                             Id = 27,
                             BrandId = 3,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8222),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4202),
                             Description = "108070100101/ANTIGUA/WCL3230S-WH",
                             ImageUrl = "klarnet3.png",
                             IsActive = true,
@@ -1074,14 +1078,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 37000m,
                             Properties = "Teknik Özellikler\r\n\r\nBakalit\r\n4 Yüzüklü.\r\nNikel kaplama.\r\nErgonomik tuş tasarımı sayesinde rahat çalım imkanı sunmaktadır.\r\n2 adet baril kutu içeriğinde bulunmaktadır. (68 mm, 70 mm)",
                             SubCategoryId = 12,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8222),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4202),
                             Url = "antigua-si-bemol-klarnet"
                         },
                         new
                         {
                             Id = 28,
                             BrandId = 3,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8224),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4204),
                             Description = "108160645008/HOHNER/M58611X",
                             ImageUrl = "mızıka1.png",
                             IsActive = true,
@@ -1091,14 +1095,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 732m,
                             Properties = "Metal bb sibemol major mızıka",
                             SubCategoryId = 13,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8224),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4204),
                             Url = "blues-bender-si-bemol-major-mizika"
                         },
                         new
                         {
                             Id = 29,
                             BrandId = 3,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8227),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4206),
                             Description = "108010220001/BOHEMIA/XFL003",
                             ImageUrl = "yanflut1.png",
                             IsActive = true,
@@ -1108,14 +1112,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 5955m,
                             Properties = "Bohemia BFL003 Yan Flüt\r\nÖğrenci Seviyesi\r\nGümüş Kaplama\r\nKapalı Tuşe Sistemli\r\n'C' Flüt\r\nKumaş Sert Çanta\r\nTemizlik Bezi Set\r\n2 Yıl Garanti",
                             SubCategoryId = 14,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8227),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4206),
                             Url = "bohemia-yan-flut"
                         },
                         new
                         {
                             Id = 30,
                             BrandId = 3,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8229),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4209),
                             Description = "108010100001/ANTIGUA/FL2210-A",
                             ImageUrl = "yanflut2.png",
                             IsActive = true,
@@ -1125,14 +1129,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 16263m,
                             Properties = "Antigua FL2210A Yan Flüt\r\n\r\nOrta Seviye\r\nGümüş Kaplama\r\nKapalı Tuşe Sistemli\r\n'C' Flüt\r\nSert Kabuk Çanta\r\nTemizlik Bezleri Set\r\n2 Yıl Garanti",
                             SubCategoryId = 14,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8229),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4210),
                             Url = "antigua-yan-flut"
                         },
                         new
                         {
                             Id = 31,
                             BrandId = 3,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8234),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4213),
                             Description = "108010320901/CONDUCTOR/M1115S",
                             ImageUrl = "yanflut3.png",
                             IsActive = true,
@@ -1142,14 +1146,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 6692m,
                             Properties = "CONDUCTOR M1115\r\n\r\nÖğrenci Seviyesi\r\n\r\nGümüş Kaplama\r\n\r\nKapalı Tuşe Sistemli,\r\n\r\nC' Flüt\r\n\r\nKumaş Sert Çanta\r\n\r\nTemizlik Bezi Set\r\n\r\n2 Yıl Garanti",
                             SubCategoryId = 14,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8235),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4214),
                             Url = "conductor-gumus-yan-flut"
                         },
                         new
                         {
                             Id = 32,
                             BrandId = 4,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8236),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4215),
                             Description = "109230730002/JINBAO/JBS-1059",
                             ImageUrl = "akustikdavul1.png",
                             IsActive = true,
@@ -1159,14 +1163,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 2455m,
                             Properties = "2 yıl garantili ,başlangıç seviye trampet",
                             SubCategoryId = 15,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8236),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4216),
                             Url = "jinbao-trampet"
                         },
                         new
                         {
                             Id = 33,
                             BrandId = 4,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8238),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4217),
                             Description = "109190730001/JINBAO/JBTB1413",
                             ImageUrl = "perkusyon1.png",
                             IsActive = true,
@@ -1176,14 +1180,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 4591m,
                             Properties = "2 yıl garantili ,başlangıç seviye trampet",
                             SubCategoryId = 16,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8238),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4218),
                             Url = "jinbao-timbal"
                         },
                         new
                         {
                             Id = 34,
                             BrandId = 4,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8240),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4219),
                             Description = "109250730002/JINBAO/JB500AG",
                             ImageUrl = "perkusyon2.png",
                             IsActive = true,
@@ -1193,14 +1197,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 5615m,
                             Properties = "Yüksek Kaliteli Malzeme: Dayanıklı ve uzun ömürlü çalma deneyimi için sağlam yapıda malzemeler kullanılmıştır.\r\nSes Aralığı: Belirli bir not aralığını kapsayan ve doğru tonları sağlayan çeşitli notların bulunduğu geniş bir ses aralığına sahiptir.\r\nTaşınabilirlik: Hafif ve kompakt tasarımı sayesinde kolayca taşınabilirdir.",
                             SubCategoryId = 16,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8240),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4220),
                             Url = "jinbao-Alto-glockenspiel"
                         },
                         new
                         {
                             Id = 35,
                             BrandId = 4,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8242),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4222),
                             Description = "109052178516/MEINL/PAC14MTH",
                             ImageUrl = "zil1.png",
                             IsActive = true,
@@ -1210,14 +1214,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 12212m,
                             Properties = "Meinl PAC14MTH 14\" Pure Alloy Custom MT Meinl Hihat Zil (Çift)\r\n\r\nMeinl PAC14MTH 14\", Net ve güçlü bir ses sunar. dayanıklı ve kaliteli hi-hat zil arayan müzisyenler için idealdir.\r\n\r\nGenel özellikler\r\n\r\nGeniş ses aralığı, net ve hassas.\r\nAlmanya'da üretilmiştir.\r\nMüzik Stili:\r\n\r\nRock, Pop, Fusion, R&B, Reggae, Stüdyo",
                             SubCategoryId = 17,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8242),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4222),
                             Url = "meinl-Hihat-zil"
                         },
                         new
                         {
                             Id = 36,
                             BrandId = 4,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8244),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4224),
                             Description = "109052178504 / MEINL / B17JMTC",
                             ImageUrl = "zil2.png",
                             IsActive = true,
@@ -1227,14 +1231,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 11584m,
                             Properties = "Meinl B17JMTC Byzance 17\" Jazz Medium Thin Crash Zil\r\n\r\nMeinl B17JMTC, Sıcak ve net bir sese sahiptir. dayanıklı ve kaliteli crash zil arayan müzisyenler için idealdir.\r\n\r\nGenel özellikler\r\n\r\nB20 bronz alaşımı.\r\n\r\nBenzersiz bir ses için elle yapılmıştır.",
                             SubCategoryId = 17,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8244),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4224),
                             Url = "jazz-medium-thin-crash-zil"
                         },
                         new
                         {
                             Id = 37,
                             BrandId = 4,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8246),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4226),
                             Description = "109052178504/Jinbao/B17JMTC",
                             ImageUrl = "baget1.png",
                             IsActive = true,
@@ -1244,14 +1248,14 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 101m,
                             Properties = "Yüksek Kaliteli Malzeme: Dayanıklı ve uzun ömürlü kullanım için yüksek kaliteli malzemelerden üretilmiştir.\r\nErgonomik Tasarım: Rahat bir kavrama ve kullanım sağlayan ergonomik bir tasarıma sahiptir.\r\nÇeşitli Kullanım Alanları: Klavye enstrümanlarıyla uyumlu olarak kullanılabilen çok yönlü bir malet.\r\nHassas Ses Üretimi: Denge ve kontrol sağlayan yapısı sayesinde hassas sesler elde etmek için idealdir.",
                             SubCategoryId = 18,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8246),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4226),
                             Url = "jinbao-m6-keyboard-malet"
                         },
                         new
                         {
                             Id = 38,
                             BrandId = 4,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8248),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4228),
                             Description = "109082170035/MEINL/SB302",
                             ImageUrl = "baget2.png",
                             IsActive = true,
@@ -1261,7 +1265,7 @@ namespace RhythmicRealm.Data.Migrations
                             Price = 1352m,
                             Properties = "Yüksek Kaliteli Malzeme: Dayanıklı ve uzun ömürlü kullanım için yüksek kaliteli malzemelerden üretilmiştir.\r\nErgonomik Tasarım: Rahat bir kavrama ve kullanım sağlayan ergonomik bir tasarıma sahiptir.\r\nÇeşitli Kullanım Alanları: Klavye enstrümanlarıyla uyumlu olarak kullanılabilen çok yönlü bir malet.\r\nHassas Ses Üretimi: Denge ve kontrol sağlayan yapısı sayesinde hassas sesler elde etmek için idealdir.",
                             SubCategoryId = 18,
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 828, DateTimeKind.Local).AddTicks(8248),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(4228),
                             Url = "meinl-brush-fixed-wire-baget"
                         });
                 });
@@ -1287,20 +1291,20 @@ namespace RhythmicRealm.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 824, DateTimeKind.Local).AddTicks(907),
-                            UserId = "f08543c7-d181-4ac6-8c6a-22e394b9c249"
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 895, DateTimeKind.Local).AddTicks(4533),
+                            UserId = "9760a242-1a8b-47eb-99bd-fbdfd8c33caa"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 824, DateTimeKind.Local).AddTicks(944),
-                            UserId = "c7eaf879-6050-43fd-8079-0f3ff70f1fe4"
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 895, DateTimeKind.Local).AddTicks(4551),
+                            UserId = "a4d32708-cb4e-4604-b1c7-d5d928f7bf7b"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 824, DateTimeKind.Local).AddTicks(947),
-                            UserId = "87957ba2-cdc2-4096-b747-c2ab70c57832"
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 895, DateTimeKind.Local).AddTicks(4553),
+                            UserId = "9c706bde-727f-4516-b575-4d6b3c60afec"
                         });
                 });
 
@@ -1372,199 +1376,199 @@ namespace RhythmicRealm.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1705),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7217),
                             IsActive = true,
                             IsDeleted = false,
                             MainCategoryId = 1,
                             Name = "Piyanolar",
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1716),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7224),
                             Url = "piyanolar"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1719),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7227),
                             IsActive = true,
                             IsDeleted = false,
                             MainCategoryId = 1,
                             Name = "Klavyeler",
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1720),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7227),
                             Url = "klavyeler"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1721),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7229),
                             IsActive = true,
                             IsDeleted = false,
                             MainCategoryId = 1,
                             Name = "Akordiyonlar",
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1722),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7229),
                             Url = "akordiyonlar"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1723),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7230),
                             IsActive = true,
                             IsDeleted = false,
                             MainCategoryId = 2,
                             Name = "Elektro Gitarlar",
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1723),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7231),
                             Url = "elektro-gitarlar"
                         },
                         new
                         {
                             Id = 5,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1724),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7232),
                             IsActive = true,
                             IsDeleted = false,
                             MainCategoryId = 2,
                             Name = "Akustik Gitarlar",
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1724),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7232),
                             Url = "akustik-gitarlar"
                         },
                         new
                         {
                             Id = 6,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1726),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7233),
                             IsActive = true,
                             IsDeleted = false,
                             MainCategoryId = 2,
                             Name = "Mandolinler",
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1726),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7233),
                             Url = "mandolinler"
                         },
                         new
                         {
                             Id = 7,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1727),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7234),
                             IsActive = true,
                             IsDeleted = false,
                             MainCategoryId = 2,
                             Name = "Ukuleleler",
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1727),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7235),
                             Url = "ukuleleler"
                         },
                         new
                         {
                             Id = 8,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1728),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7236),
                             IsActive = true,
                             IsDeleted = false,
                             MainCategoryId = 3,
                             Name = "Kemanlar",
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1729),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7236),
                             Url = "kemanlar"
                         },
                         new
                         {
                             Id = 9,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1729),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7237),
                             IsActive = true,
                             IsDeleted = false,
                             MainCategoryId = 3,
                             Name = "Viyolalar",
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1730),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7238),
                             Url = "viyolalar"
                         },
                         new
                         {
                             Id = 10,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1731),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7239),
                             IsActive = true,
                             IsDeleted = false,
                             MainCategoryId = 3,
                             Name = "Çellolar",
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1731),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7239),
                             Url = "çellolar"
                         },
                         new
                         {
                             Id = 11,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1732),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7240),
                             IsActive = true,
                             IsDeleted = false,
                             MainCategoryId = 4,
                             Name = "Saksafonlar",
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1732),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7240),
                             Url = "saksafonlar"
                         },
                         new
                         {
                             Id = 12,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1733),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7242),
                             IsActive = true,
                             IsDeleted = false,
                             MainCategoryId = 4,
                             Name = "Klarnetler",
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1734),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7242),
                             Url = "klarnetler"
                         },
                         new
                         {
                             Id = 13,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1735),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7243),
                             IsActive = true,
                             IsDeleted = false,
                             MainCategoryId = 4,
                             Name = "Mızıkalar",
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1735),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7243),
                             Url = "mızıkalar"
                         },
                         new
                         {
                             Id = 14,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1736),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7245),
                             IsActive = true,
                             IsDeleted = false,
                             MainCategoryId = 4,
                             Name = "Yan Flütler",
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1736),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7245),
                             Url = "yan-flütler"
                         },
                         new
                         {
                             Id = 15,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1737),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7246),
                             IsActive = true,
                             IsDeleted = false,
                             MainCategoryId = 5,
                             Name = "Akustik Davul",
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1738),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7246),
                             Url = "akustik-davullar"
                         },
                         new
                         {
                             Id = 16,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1739),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7269),
                             IsActive = true,
                             IsDeleted = false,
                             MainCategoryId = 5,
                             Name = "Perküsyonlar",
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1739),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7270),
                             Url = "perküsyonlar"
                         },
                         new
                         {
                             Id = 17,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1740),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7271),
                             IsActive = true,
                             IsDeleted = false,
                             MainCategoryId = 5,
                             Name = "Ziller",
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1740),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7272),
                             Url = "ziller"
                         },
                         new
                         {
                             Id = 18,
-                            CreatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1741),
+                            CreatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7273),
                             IsActive = true,
                             IsDeleted = false,
                             MainCategoryId = 5,
                             Name = "Bagetler",
-                            UpdatedDate = new DateTime(2024, 3, 17, 0, 26, 55, 829, DateTimeKind.Local).AddTicks(1741),
+                            UpdatedDate = new DateTime(2024, 3, 18, 13, 30, 35, 901, DateTimeKind.Local).AddTicks(7273),
                             Url = "bagetler"
                         });
                 });

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RhythmicRealm.Shared.ViewModels.Identity
 {
-    public class ForgotPasswordViewModel
+    public class ResetPasswordViewModel
     {
         public string Email { get; set; }
     }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RhythmicRealm.Shared.ViewModels.Identity
 {
-    public class ChangePasswordViewModel
+    public class UpdatePasswordViewModel
     {
         [DisplayName("Eski şifreniz")]
         [Required(ErrorMessage = "{0} alanı boş bırakılamaz!")]
