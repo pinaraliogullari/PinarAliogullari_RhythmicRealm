@@ -27,10 +27,17 @@ namespace RhythmicRealm.Service.Concrete
 			_productRepository = productRepository;
 		}
 
-		public Task<Response<ProductViewModel>> CreateProductAsync(AddProductViewModel addProductViewModel)
+		public async Task<Response<ProductViewModel>> CreateProductAsync(AddProductViewModel addProductViewModel)
 		{
-			throw new NotImplementedException();
-		}
+            var product = addProductViewModel.Adapt<Product>();
+            var createdProduct = await _productRepository.CreateAsync(product);
+            if (createdProduct == null)
+                return Response<ProductViewModel>.Fail(500, "Ürün kaydedilirken bir hata meydana geldi.");
+
+            var productViewModel = createdProduct.Adapt<ProductViewModel>();
+            return Response<ProductViewModel>.Success(productViewModel, 200);
+
+        }
 
 		public Task<Response<List<ProductViewModel>>> GetAllProductsAsync()
 		{

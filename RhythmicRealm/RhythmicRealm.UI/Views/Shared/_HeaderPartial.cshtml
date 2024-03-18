@@ -36,35 +36,24 @@
 				<!-- ACCOUNT -->
 				<div class="col-lg-4 col-md-5  clear-fix">
 					<div class="header-ctn">
-						<div>
-							<a href="/admin">
-						
-								<i class="fa fa-lock" aria-hidden="true"></i>
-								<span>Admin Panel</span>
-						
-							</a>
-						</div>
-						<div>
-					
-							@if (!User.Identity.IsAuthenticated)
-							{
-								<a asp-area=""
-								   asp-controller="Account"
-								   asp-action="Login">
-									<i class="fa fa-user-o" aria-hidden="true"></i>
-									<span>Giriş Yap</span>
+						@if (User.Identity.IsAuthenticated)
+						{
+							<div>
+								<a asp-area="Admin"
+								asp-controller="Home"
+								asp-action="Index">
+							    <i class="fa fa-lock" aria-hidden="true"></i>
+							   <span>Admin Panel</span></a>
+							</div>
 
-								</a>
-							}
-							else
-							{
-						
+				
+							<div>
 								<div class="dropdown text-center">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:white" role="button" aria-haspopup="true" aria-expanded="false">
-									
-											<i class="fa fa-user-o " aria-hidden="true"></i>
-											<div>Hesabım</div>
-										
+
+										<i class="fa fa-user-o " aria-hidden="true"></i>
+										<div>Hesabım</div>
+
 									</a>
 									<ul class="dropdown-menu">
 										<li><a href="#">Siparişlerim</a></li>
@@ -74,21 +63,36 @@
 										<li><a asp-area="" asp-controller="Account" asp-action="Logout">Çıkış Yap</a></li>
 									</ul>
 								</div>
+							</div>
 							
-							@* 	<a asp-area=""
+								<vc:cart></vc:cart>
+						
+						}else
+						{
+							<div>
+								<a asp-area=""
 								   asp-controller="Account"
-								   asp-action="Profile">
+								   asp-action="Login">
 									<i class="fa fa-user-o" aria-hidden="true"></i>
-									<span>Hesabım</span>
+									<span>Giriş Yap</span>
 
-								</a> *@
-							}
+								</a>
 
-						</div>
+							</div>
+							<div>
+								<a asp-area=""
+								   asp-controller="Account"
+								   asp-action="Register">
+									<i class="fa fa-user-o" aria-hidden="true"></i>
+									<span>Kayıt ol</span>
+
+								</a>
+
+							</div>
+						}
+					
 						
 					@* <vc:wishlist></vc:wishlist> *@
-					<vc:cart></vc:cart>
-						
 						<!-- Menu Toogle -->
 						<div class="menu-toggle">
 							<a href="#">

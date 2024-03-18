@@ -13,13 +13,8 @@
             <div class="card-body login-card-body">
                 <p class="login-box-msg"> </p>
 
-                <form 
-                    asp-area=""
-                    asp-controller="Account"
-                    asp-action="Login"
-                    method="post"
-                >
-           
+            <form asp-controller="Account" asp-action="Login" method="post">
+           <div class="text-danger" asp-validation-summary="All"></div>
                     <div class="input-group mb-3">
                         <input asp-for="Email" class="form-control" placeholder="Email">
                         <div class="input-group-append">
@@ -41,7 +36,7 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="icheck-primary">
-                                <input asp-for="RemindMe" type="checkbox" id="remember">
+                                <input asp-for="RememberMe" type="checkbox" id="remember">
                                 <label for="remember">
                                Beni Hatırla
                                 </label>

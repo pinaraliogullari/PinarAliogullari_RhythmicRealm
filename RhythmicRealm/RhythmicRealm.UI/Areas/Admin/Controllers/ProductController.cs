@@ -237,7 +237,7 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(AdminAddProductViewModel adminAddProductViewModel,IFormFile image)
         {
-            ModelState.Remove("ImageUrl");
+            ModelState.Remove("AddProductViewModel.ImageUrl");
             if (ModelState.IsValid && image!=null)
             {
                 adminAddProductViewModel.AddProductViewModel.ImageUrl=await _imageHelper.UploadImage(image,"products");
@@ -252,6 +252,8 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
                     IsActive = adminAddProductViewModel.AddProductViewModel.IsActive,
                     IsHome = adminAddProductViewModel.AddProductViewModel.IsHome,
                     Price=adminAddProductViewModel.AddProductViewModel.Price,
+                    BrandId=adminAddProductViewModel.BrandId,
+                    SubCategoryId=adminAddProductViewModel.SubCategoryId
                 };
                 await _productService.CreateProductAsync(model);
                 _notyfService.Success("Ürün başarıyla kaydedildi.");

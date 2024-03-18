@@ -24,5 +24,7 @@ namespace RhythmicRealm.Shared.ViewModels.SubCategoryViewModels
         [MaxLength(100, ErrorMessage = "{0} alanı uzunluğu {1} karakterden bçok girilmemelidir.")]
         public string Url { get; set; }
         public MainCategorySlimViewModel MainCategories { get; set; }
+
+        public int MainCategoryId { get; set; }
     }
 }

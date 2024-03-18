@@ -10,6 +10,8 @@ using RhythmicRealm.Service.Abstract;
 using RhythmicRealm.Service.Concrete;
 using RhythmicRealm.Shared.Helpers.Abstract;
 using RhythmicRealm.Shared.Helpers.Concrete;
+using RhythmicRealm.UI.EmailServices.Abstract;
+using RhythmicRealm.UI.EmailServices.Concrete;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -38,7 +40,7 @@ builder.Services.Configure<IdentityOptions>(options =>
 
 
 	//account lockout settings
-	options.Lockout.MaxFailedAccessAttempts = 3;//Üst üste hatalý giriþ denemesi sýnýrý
+	options.Lockout.MaxFailedAccessAttempts =4;//Üst üste hatalý giriþ denemesi sýnýrý
 	options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromSeconds(60);//Kilitlenmiþ bir hesaba yeniden giriþ yapabilmek için gereken bekleme süresi
 }
 
@@ -62,6 +64,15 @@ builder.Services.ConfigureApplicationCookie(options =>
 	options.ExpireTimeSpan = TimeSpan.FromDays(10); //CookieBuilder nesnesinde tanýmlanan Expiration deðerinin varsayýlan deðerlerle ezilme ihtimaline karþýn tekrardan Cookie vadesi burada da belirtiliyor.
 });
 
+
+//EmailSender
+builder.Services.AddScoped<IEmailSender, SmtpEmailSender>(options => new SmtpEmailSender(
+	builder.Configuration["EmailSender:Host"],
+	builder.Configuration.GetValue<int>("EmailSender:Port"),
+	builder.Configuration.GetValue<bool>("EmailSender:EnableSSL"),
+	builder.Configuration["EmailSender:UserName"],
+	builder.Configuration["EmailSender:Password"]
+  ));
 
 //datalayer-repositories
 builder.Services.AddScoped<IBrandRepository, BrandRepository>();

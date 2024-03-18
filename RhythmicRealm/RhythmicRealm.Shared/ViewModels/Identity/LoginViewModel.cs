@@ -17,6 +17,6 @@ namespace RhythmicRealm.Shared.ViewModels.Identity
         [Required(ErrorMessage = "Lütfen şifrenizi giriniz.")]
         [DataType(DataType.Password, ErrorMessage = "Şifreniz geçersiz.")]
         public string Password { get; set; }
-        public virtual bool RemindMe{ get; set; }
+        public virtual bool RememberMe{ get; set; }
     }
 }

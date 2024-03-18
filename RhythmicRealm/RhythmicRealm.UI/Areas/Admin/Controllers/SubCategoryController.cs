@@ -176,7 +176,11 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(AdminAddSubCategoryViewModel adminAddSubCategoryViewModel)
         {
-        
+            ModelState.Remove(nameof(adminAddSubCategoryViewModel.AddSubCategoryViewModel.Name));
+            ModelState.Remove(nameof(adminAddSubCategoryViewModel.AddSubCategoryViewModel.MainCategories.Name));
+            ModelState.Remove(nameof(adminAddSubCategoryViewModel.AddSubCategoryViewModel.MainCategories.Id));
+
+
             if (ModelState.IsValid)
             {
                 var model = new AddSubCategoryViewModel
@@ -184,11 +188,7 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
                     Name = adminAddSubCategoryViewModel.AddSubCategoryViewModel.Name,
                     Url = adminAddSubCategoryViewModel.AddSubCategoryViewModel.Url,
                     IsActive = adminAddSubCategoryViewModel.AddSubCategoryViewModel.IsActive,
-                    MainCategories = new MainCategorySlimViewModel
-                    {
-                        Id = adminAddSubCategoryViewModel.MainCategoryId,
-                        Name = adminAddSubCategoryViewModel.MainCategoryName
-                    }
+                    MainCategoryId = adminAddSubCategoryViewModel.MainCategoryId
                 };
                 await _subCategoryService.CreateSubCategoryAsync(model);
                 _notyfService.Success("Alt kategori başarıyla kaydedildi.");
