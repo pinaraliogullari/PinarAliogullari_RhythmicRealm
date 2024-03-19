@@ -1,0 +1,49 @@
+﻿@{
+    Layout = "_LoginRegisterLayout";
+    var email = ViewBag.Data;
+}
+
+
+
+<div class="login-box">
+    <div class="login-logo">
+        <a href="#"><b>Rhythmic</b>Realm</a>
+    </div>
+    <!-- /.login-logo -->
+
+
+    <h3 class="text-center">Şifreniz Gönderildi</h3>
+    <h5 class="text-center">@email adresine üyelik kaydı oluşturma linkiniz gönderildi.</h5>
+
+
+
+    <div class="card">
+
+        <div class="card-body login-card-body">
+            <p class="login-box-msg"> </p>
+
+
+            <div class="row">
+                <p>Üyelik oluşturma e-postası elinize ulaşmadıysa:</p>
+                <ul>
+                    <li>Şifre yenileme e-postasının gelmesi 10 dakikayı bulabilir.</li>
+                    <li> Spam ve diğer e-posta klasörlerinizi kontrol ediniz.</li>
+                    <li> Girdiğiniz e-posta adresinin doğruluğunu kontrol ediniz.</li>
+                </ul>
+
+                <a asp-area="" asp-controller="Account" asp-action="Register" class="btn btn-block btn-outline-secondary">
+                    Önceki Sayfaya Geri Dön
+                </a>
+
+
+            </div>
+
+
+
+
+
+        </div>
+        <!-- /.login-card-body -->
+    </div>
+</div>
+<!-- /.login-box -->

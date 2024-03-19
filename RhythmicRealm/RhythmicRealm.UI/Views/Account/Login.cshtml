@@ -15,35 +15,45 @@
 
             <form asp-controller="Account" asp-action="Login" method="post">
            <div class="text-danger" asp-validation-summary="All"></div>
+           <label asp-for="Email"></label>
+                <span class="text-danger" asp-validation-for="Email"></span>
                     <div class="input-group mb-3">
-                        <input asp-for="Email" class="form-control" placeholder="Email">
+                        <input asp-for="Email" class="form-control">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
                             </div>
                         </div>
                     </div>
-                    <span class="text-danger" asp-validation-for="Email"></span>
+               
+                <label asp-for="Password"></label>
+                <span class="text-danger" asp-validation-for="Password"></span>
                     <div class="input-group mb-3">
-                        <input asp-for="Password" type="password" class="form-control" placeholder="Şifre">
+                        <input asp-for="Password" type="password" class="form-control" >
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
                             </div>
                         </div>
                     </div>
-                    <span class="text-danger" asp-validation-for="Password"></span>
+              
                     <div class="row">
-                        <div class="col-8">
+                       @*  <div class="col-8">
                             <div class="icheck-primary">
                                 <input asp-for="RememberMe" type="checkbox" id="remember">
                                 <label for="remember">
                                Beni Hatırla
                                 </label>
                             </div>
-                        </div>
+                        </div> *@
+                    
+                        <a asp-area=""
+                           asp-controller="Account"
+                           asp-action="ForgotPassword"
+                        class="mb-3">Şifremi Unuttum</a>
+               
                         <!-- /.col -->
-                        <div class="col-4">
+                        <div class="col-12">
                             <button type="submit" class="btn btn-primary btn-block">Giriş Yap</button>
                         </div>
                         <!-- /.col -->
@@ -51,15 +61,7 @@
                 </form>
 
             
-                <!-- /.social-auth-links -->
-
-                <p class="mb-1">
-                    <a
-                        asp-area=""
-                        asp-controller="Account"
-                        asp-action="ForgotPassword"
-                        >Şifremi Unuttum</a>
-                </p>
+             
              
             </div>
             <!-- /.login-card-body -->

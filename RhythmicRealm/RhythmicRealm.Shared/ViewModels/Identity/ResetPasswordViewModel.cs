@@ -13,15 +13,15 @@ namespace RhythmicRealm.Shared.ViewModels.Identity
 		public string UserId { get; set; }
 		public string TokenCode { get; set; }
 
-		[DisplayName("Parola")]
-		[Required(ErrorMessage = "{0} alanı boş bırakılamaz!")]
-		[DataType(DataType.Password)]
+        [DisplayName("Yeni Parola")]
+		[Required(ErrorMessage = "{0} alanını boş bırakmayınız")]
+		[DataType(DataType.Password,ErrorMessage ="Lütfen uygun formatta parola oluşturunuz.")]
 		public string Password { get; set; }
 
-		[DisplayName("Parola Tekrar")]
-		[Required(ErrorMessage = "{0} alanı boş bırakılamaz!")]
+		[DisplayName("Yeni Parola Tekrar")]
+		[Required(ErrorMessage = "{0} alanını boş bırakmayınız.")]
 		[DataType(DataType.Password)]
-		[Compare("Password", ErrorMessage = "İki şifre birbiriyle uyuşmuyor.")]
+		[Compare("Password", ErrorMessage = "İki parola birbiriyle uyuşmuyor.")]
 		public string RePassword { get; set; }
 	}
 }

@@ -56,26 +56,32 @@ namespace RhythmicRealm.UI.Controllers
                     }
                 }
 
-				//var tokenCode = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-				//var backUrl = Url.Action("ConfirmEmail", "Account", new
-				//{
-				//    userId = user.Id,
-				//    token = tokenCode
-				//});
+                var tokenCode = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                var backUrl = Url.Action("ConfirmEmail", "Account", new
+                {
+                    userId = user.Id,
+                    token = tokenCode
+                });
 
-				//await _emailSender.SendEmailAsync(
-				//    user.Email,
-				//    "Rhythmic Realm App Üyelik Onayı",
-				//    $"<p>Rhythmic Realm sitesine üyeliğinizi onaylamak için aşağıdaki linke tıklayınız.</p><a href='http://localhost:5066{backUrl}'>ONAY LİNKİ</a>"
-				//    );
+                await _emailSender.SendEmailAsync(
+                    user.Email,
+                    "Rhythmic Realm  Üyelik Onayı",
+                    $"<p>Rhythmic Realm sitesine üyeliğinizi onaylamak için aşağıdaki linke tıklayınız.</p><a href='http://localhost:5066{backUrl}'>ONAY LİNKİ</a>"
+                    );
 
-				//await _shoppingCartManager.InitializeShoppingCartAsync(userId);
-				await _userManager.AddToRoleAsync(user, "Customer");
+                //await _shoppingCartManager.InitializeShoppingCartAsync(userId);
+                await _userManager.AddToRoleAsync(user, "Customer");
                 _notyfService.Success("Üyelik kaydınız başarıyla tamamlanmıştır. Lütfen mail adresinize gelen onay linkine tıklayınız.",5);
-                return RedirectToAction("Login");
-                
+                return RedirectToAction("ShowResetPasswordInfo", registerViewModel);
+
             }
             return View(registerViewModel);
+        }
+
+        public async Task<IActionResult> ShowMemberShipConfirmInfo(RegisterViewModel registerViewmodel)
+        {
+            ViewBag.Data = registerViewmodel.Email;
+            return View();
         }
 
         public async Task<IActionResult> ConfirmEmail(string userId, string token)
@@ -193,16 +199,35 @@ namespace RhythmicRealm.UI.Controllers
 				tokenCode = tokenCode
 			});
 			var subject = "RhythmicRealm Şifre Sıfırlama";
-			var htmlMessage = $"<h1> Şifre Sıfırlama İşlemi</h1>" +
-				$"<p>" +
-				$"Lütfen şifrenizi sıfırlamak için aşağıdaki linke tıklayınız." +
-				$"</p>" +
-				$"<a href='http://localhost:5066{backUrl}'>Şifre Sıfırla</a>";
+            var htmlMessage = $@"
+                    <html>
+                    <head>
+                        <title>Şifre Sıfırlama İşlemi</title>
+                    </head>
+                    <body>
+                    
+                        <p>Merhaba,</p>
+                        <p>Şifre yenileme talebinizi aldık. Lütfen aşağıdaki bağlantıya tıklayarak yeni şifrenizi belirleyin:</p>
+                            <p><a href='http://localhost:5066{backUrl}'>Şifremi Sıfırla</a></p>
+                        <p>Bağlantıya tıklamazsanız, bu bağlantı 24 saat içinde geçersiz olacaktır.</p>
+                        <p>Eğer şifre sıfırlama talebinde bulunmadıysanız, bu e-postayı göz ardı edebilirsiniz.</p>
+                        <p>İyi günler dileriz.</p>
+                       
+                        <p>RhythmicRealm Ekibi</p>
+                    </body>
+                    </html>";
+            
 			await _emailSender.SendEmailAsync(forgotPasswordViewModel.Email, subject, htmlMessage);
-			return RedirectToAction("Login");
+            return RedirectToAction("ShowResetPasswordInfo", forgotPasswordViewModel);
+        }
+
+		public async Task<IActionResult> ShowResetPasswordInfo(ForgotPasswordViewModel forgotPasswordViewModel)
+		{
+			return View(forgotPasswordViewModel);
 		}
 
-		public async Task<IActionResult> ResetPassword(string userId, string tokenCode)
+
+        public async Task<IActionResult> ResetPassword(string userId, string tokenCode)
 		{
 			if (userId == null || tokenCode == null)
 			{
@@ -252,16 +277,16 @@ namespace RhythmicRealm.UI.Controllers
 		}
 
 
-		public IActionResult ChangePassword()
-		{
-			return View();
-		}
+		//public IActionResult ChangePassword()
+		//{
+		//	return View();
+		//}
 
-		[HttpPost]
-		public async Task<IActionResult> UpdatePassword(UpdatePasswordViewModel updatePasswordViewModel)
-		{
-			return View();
-		}
+		//[HttpPost]
+		//public async Task<IActionResult> UpdatePassword(UpdatePasswordViewModel updatePasswordViewModel)
+		//{
+		//	return View();
+		//}
 
 		public async Task<IActionResult> AccessDenied()
 		{

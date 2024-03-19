@@ -20,54 +20,68 @@ Rhythmic Realm'a hemen üye ol ve fırsatları yakala!</p>
                     asp-action="Register"
                     method="post"
                 >
-         
-                    <div class="input-group mb-3">
-                        <input asp-for="FirstName" type="text" class="form-control" placeholder="Ad ">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-user"></span>
-                            </div>
-                        </div>
-                 
-                    </div>
-  
+                <label asp-for="FirstName"></label>
                 <span asp-validation-for="FirstName" class="text-danger"></span>
+                    <div class="input-group mb-3">
+                        <input asp-for="FirstName" type="text" class="form-control">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
+                        </div>
+                   
+                    </div>
+            
+
+                <label asp-for="LastName"></label>
+                <span asp-validation-for="LastName" class="text-danger"></span>
                       <div class="input-group mb-3">
-                        <input asp-for="LastName" type="text" class="form-control" placeholder="Soyad">
+                        <input asp-for="LastName" type="text" class="form-control">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
                             </div>
                         </div>
                     </div>
-                <span asp-validation-for="LastName" class="text-danger"></span>
-                    <div class="input-group mb-3">
-                        <input asp-for="Email" type="email" class="form-control" placeholder="Email">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
-                            </div>
-                        </div>
-                    </div>
+           
+
+
+                <label asp-for="Email"></label>
                 <span asp-validation-for="Email" class="text-danger"></span>
-                    <div class="input-group mb-3">
-                        <input asp-for="Password" type="password" class="form-control" placeholder="Şifre">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
+                <div class="input-group mb-3">
+                    <input asp-for="Email" type="text" class="form-control">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user"></span>
                         </div>
                     </div>
+                </div>
+              
+
+
+                <label asp-for="Password"></label>
                 <span asp-validation-for="Password" class="text-danger"></span>
                     <div class="input-group mb-3">
-                        <input asp-for="RePassword" type="password" class="form-control" placeholder="Şifrenizi tekrar giriniz">
+                        <input asp-for="Password" type="password" class="form-control" >
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
                             </div>
                         </div>
                     </div>
+        
+
+                <label asp-for="RePassword"></label>
                 <span asp-validation-for="RePassword" class="text-danger"></span>
+                    <div class="input-group mb-3">
+                        <input asp-for="RePassword" type="password" class="form-control" >
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                
                     <div class="row">
                         <div class="col-8">
                            
