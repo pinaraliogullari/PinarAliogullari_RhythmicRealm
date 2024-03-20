@@ -329,26 +329,38 @@ namespace RhythmicRealm.UI.Controllers
             return View(profileViewModel);
         }
 
-
-
-
-        public IActionResult UpdatePassword()
-        {
-            return View();
-        }
-
         [HttpPost]
-        public async Task<IActionResult> UpdatePassword(UpdatePasswordViewModel updatePasswordViewModel)
+        public async Task<IActionResult> UpdatePassword(ProfileViewModel profileViewModel)
+        {
+            var userId = _userManager.GetUserId(User);
+            var user = await _userManager.FindByIdAsync(userId);
+            var isVerified = await _userManager.CheckPasswordAsync(user, profileViewModel.PasswordInfo.OldPassword);
+            if (isVerified)
+            {
+                var result = await _userManager.ChangePasswordAsync(user, profileViewModel.PasswordInfo.OldPassword, profileViewModel.PasswordInfo.NewPassword);
+                if (result.Succeeded)
+                {
+                    var updateSecurityStampResult = await _userManager.UpdateSecurityStampAsync(user);
+                    await _signInManager.SignOutAsync();
+                    await _signInManager.PasswordSignInAsync(user, profileViewModel.PasswordInfo.NewPassword, false, false);
+                    return RedirectToAction("Login");
+                }
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+                return View(profileViewModel);
+            }
+            ModelState.AddModelError("", "Geçerli şifreniz hatalıdır!");
+            return View(profileViewModel);
+        }
+        public async Task<IActionResult> AccessDenied()
         {
             return View();
         }
 
-        public async Task<IActionResult> AccessDenied()
-		{
-			return View();
-		}
+    }
 
-	}
 
     
 }
