@@ -24,7 +24,7 @@ namespace RhythmicRealm.UI.Controllers
 			_emailSender = emailSender;
 		}
 
-		[HttpGet]
+		
         public IActionResult Register()
         {
             return View();
@@ -107,9 +107,6 @@ namespace RhythmicRealm.UI.Controllers
 			_notyfService.Error("Hesabınız onaylanırken bir sorun oluştu, daha sonra tekrar deneyiniz.");
 			return View();
 		}
-
-
-        [HttpGet]
         public  IActionResult Login(string returnUrl = null)
         {
             if (returnUrl != null)
@@ -118,7 +115,6 @@ namespace RhythmicRealm.UI.Controllers
             }
             return View();
         }
-
 
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
@@ -277,18 +273,77 @@ namespace RhythmicRealm.UI.Controllers
 		}
 
 
-		//public IActionResult ChangePassword()
-		//{
-		//	return View();
-		//}
+        public async Task<IActionResult> Profile()
+        {
+            var userId = _userManager.GetUserId(User);
+            var user= await _userManager.FindByIdAsync(userId);
+            var profileViewModel = new ProfileViewModel
+            {
+                UserInfo= new UserViewModel
+                {
+                    UserId=userId,
+                    FirstName=user.FirstName,
+                    LastName=user.LastName,
+                    Email=user.Email,
+                    PhoneNumber=user.PhoneNumber,
+                    DateofBirth=user.DateOfBirth,
+                    Address=user.Address,
+                    City=user.City
 
-		//[HttpPost]
-		//public async Task<IActionResult> UpdatePassword(UpdatePasswordViewModel updatePasswordViewModel)
-		//{
-		//	return View();
-		//}
+                },
+            
+            };
+           
+            return View(profileViewModel);
+        }
 
-		public async Task<IActionResult> AccessDenied()
+        [HttpPost]
+        public async Task<IActionResult> Profile(ProfileViewModel profileViewModel)
+        {
+            var userId = _userManager.GetUserId(User);
+            var user = await _userManager.FindByIdAsync(userId);
+            if (ModelState.IsValid)
+            {
+                user.FirstName = profileViewModel.UserInfo.FirstName;
+                user.LastName = profileViewModel.UserInfo.LastName;
+                user.Email = profileViewModel.UserInfo.Email;
+                user.City = profileViewModel.UserInfo.City;
+                user.Address = profileViewModel.UserInfo.Address;
+                user.PhoneNumber = profileViewModel.UserInfo.PhoneNumber;
+                user.DateOfBirth = profileViewModel.UserInfo.DateofBirth;
+
+                var result = await _userManager.UpdateAsync(user);
+                if (result.Succeeded)
+                {
+                    await _userManager.UpdateSecurityStampAsync(user);
+                    await _signInManager.SignOutAsync();
+                    await _signInManager.SignInAsync(user, false);
+                    _notyfService.Success("Profiliniz başarıyla güncellenmiştir");
+                    return Redirect("~/");
+                }
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+            }
+            return View(profileViewModel);
+        }
+
+
+
+
+        public IActionResult UpdatePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdatePassword(UpdatePasswordViewModel updatePasswordViewModel)
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> AccessDenied()
 		{
 			return View();
 		}

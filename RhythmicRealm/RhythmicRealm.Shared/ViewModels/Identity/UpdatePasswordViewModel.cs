@@ -10,19 +10,19 @@ namespace RhythmicRealm.Shared.ViewModels.Identity
 {
     public class UpdatePasswordViewModel
     {
-        [DisplayName("Eski şifreniz")]
+        [DisplayName("Şu Anki Şifre")]
         [Required(ErrorMessage = "{0} alanı boş bırakılamaz!")]
         [DataType(DataType.Password)]
         public string OldPassword { get; set; }
 
-        [DisplayName("Yeni şifreniz")]
+        [DisplayName("Yeni Şifre")]
         [Required(ErrorMessage = "{0} alanı boş bırakılamaz!")]
         [DataType(DataType.Password)]
         public string NewPassword { get; set; }
 
-        [DisplayName("Yeni şifrenizi tekrar giriniz.")]
+        [DisplayName("Yeni şifre(Tekrar)")]
         [Required(ErrorMessage = "{0} alanı boş bırakılamaz!")]
-        [DataType(DataType.Password)]
+        [DataType(DataType.Password, ErrorMessage = "Şifreniz en az 7 karakter ve en fazla 20 karakter olmalı, harf ve rakam içermelidir.")]
         [Compare("NewPassword", ErrorMessage = "Şifreler uyuşmuyor!")]
         public string ReNewPassword { get; set; }
     }

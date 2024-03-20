@@ -1,0 +1,114 @@
+﻿@model ProfileViewModel
+
+<style>
+    .mt-5 {
+        margin-top: 50px;
+    }
+    .mb-5{
+        margin-bottom:50px;
+    }
+</style>
+<div class="container mt-5 mb-5">
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title text-danger">Kullanıcı Bilgileri</h4>
+                <hr />
+                    <form asp-area="" asp-controller="Account" asp-action="Profile" method="post">
+                        <input  type="hidden" asp-for="UserInfo.UserId"/>
+                  
+                    <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="UserInfo.FirstName" class="control-label"></label>
+                                <input asp-for="UserInfo.FirstName" class="form-control" />
+                                <span asp-validation-for="UserInfo.FirstName" class="text-danger"></span>
+                            </div>
+                    </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="UserInfo.LastName" class="control-label"></label>
+                                <input asp-for="UserInfo.LastName" class="form-control" />
+                                <span asp-validation-for="UserInfo.LastName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="UserInfo.Email" class="control-label"></label>
+                                <input asp-for="UserInfo.Email" class="form-control" />
+                                <span asp-validation-for="UserInfo.Email" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="UserInfo.PhoneNumber" class="control-label"></label>
+                                <input asp-for="UserInfo.PhoneNumber" class="form-control" />
+                                <span asp-validation-for="UserInfo.PhoneNumber" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="UserInfo.DateofBirth" class="control-label"></label>
+                                <input type="date" asp-for="UserInfo.DateofBirth" class="form-control" />
+                                <span asp-validation-for="UserInfo.DateofBirth" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="UserInfo.City" class="control-label"></label>
+                                <input asp-for="UserInfo.City" class="form-control" />
+                                <span asp-validation-for="UserInfo.City" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label asp-for="UserInfo.Address" class="control-label"></label>
+                                <textarea  asp-for="UserInfo.Address" class="form-control" ></textarea>
+                                <span asp-validation-for="UserInfo.Address" class="text-danger"></span>
+                            </div>
+                        </div>
+                    
+
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary">Güncelle</button>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title text-danger">Şifre Güncelleme</h4>
+                <hr />
+                <form asp-action="UpdatePassword" asp-controller="Account" method="post">
+         
+
+                    <div class="form-group">
+                        <label asp-for="PasswordInfo.OldPassword" class="control-label"></label>
+                        <input asp-for="PasswordInfo.OldPassword" class="form-control" />
+                        <span asp-validation-for="PasswordInfo.OldPassword" class="text-danger"></span>
+                    </div>
+                        <div class="form-group">
+                            <label asp-for="PasswordInfo.NewPassword" class="control-label"></label>
+                            <input asp-for="PasswordInfo.NewPassword" class="form-control" />
+                            <span asp-validation-for="PasswordInfo.NewPassword" class="text-danger"></span>
+                            <p>Şifreniz <strong>en az 7 karakter</strong> ve <strong>en fazla 20 karakter</strong>  olmalı, <strong>harf ve rakam </strong> içermelidir.</p>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="PasswordInfo.ReNewPassword" class="control-label"></label>
+                            <input asp-for="PasswordInfo.ReNewPassword" class="form-control" />
+                            <span asp-validation-for="PasswordInfo.ReNewPassword" class="text-danger"></span>
+                        </div>
+             
+                    <div class="text-right">
+                            <button type="submit" class="btn btn-primary">Güncelle</button>
+                    </div>
+                  
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
