@@ -9,7 +9,7 @@ using RhythmicRealm.Shared.ViewModels.Identity;
 namespace RhythmicRealm.UI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    //[Authorize("SuperAdmin")]
+    [Authorize(Roles = "SuperAdmin")]
     public class AuthorizationController : Controller
     {
         private readonly UserManager<User> _userManager;

@@ -116,11 +116,11 @@ ul, ol {
 /*-- Text input --*/
 
 .input {
-  height: 40px;
-  padding: 0px 15px;
-  border: 1px solid #E4E7ED;
-  background-color: #FFF;
-  width: 100%;
+    height: 40px;
+    padding: 0px 15px;
+    border: 1px solid #E4E7ED;
+    background-color: #FFF;
+    width: 100%;
 }
 
 textarea.input {
@@ -487,7 +487,10 @@ textarea.input {
   font-weight: 700;
   border: none;
   border-radius: 0px 40px 40px 0px;
+  
 }
+
+  
 
 /*----------------------------*\
 	Cart

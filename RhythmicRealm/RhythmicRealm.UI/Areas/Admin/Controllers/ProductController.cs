@@ -43,6 +43,8 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
 			return View(products.Data);
 
 		}
+
+		[Authorize(Roles = "SuperAdmin,Admin")]
 		[HttpGet]
         public async Task<IActionResult> UpdateIsHome(int id)
         {
@@ -50,7 +52,9 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
             return Json(result);
         }
 
-        [HttpGet]
+
+		[Authorize(Roles = "SuperAdmin,Admin")]
+		[HttpGet]
         public async Task<IActionResult> UpdateIsActive(int id)
         {
             var result = await _productService.UpdateIsActiveAsync(id);
@@ -78,6 +82,8 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
 			return subCategories.Data;
 		}
 
+
+		[Authorize(Roles = "SuperAdmin,Admin")]
 		[HttpGet]
 		public async Task<IActionResult> Edit(int id)
 		{
@@ -173,7 +179,9 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
 
         }
 
-        [HttpGet]
+
+		[Authorize(Roles = "SuperAdmin,Admin")]
+		[HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
             var product = await _productService.GetProductByProductIdAsync(id);
@@ -188,7 +196,9 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
             return PartialView("_DeleteProductPartialView", model);
         }
 
-        [HttpGet]
+
+		[Authorize(Roles = "SuperAdmin,Admin")]
+		[HttpGet]
         public async Task<IActionResult> HardDelete(int id)
         {
             await _productService.HardDeleteAsync(id);
@@ -196,8 +206,10 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
             return RedirectToAction("Index");
             
         }
-     
-        [HttpGet]
+
+
+		[Authorize(Roles = "SuperAdmin,Admin")]
+		[HttpGet]
         public async Task<IActionResult> SoftDelete(int id)
         {
             await _productService.SoftDeleteAsync(id);
@@ -212,8 +224,8 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
             return RedirectToAction("Index", new { isdeleted = tempdataInf });
         }
 
-        [Authorize(Roles = "SuperAdmin")]
-        [HttpGet]
+		[Authorize(Roles = "SuperAdmin,Admin")]
+		[HttpGet]
         public async Task<IActionResult> Create()
         {
             var brands = await GetBrandsAsync();

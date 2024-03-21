@@ -19,6 +19,6 @@ namespace RhythmicRealm.Shared.ViewModels.Identity
         [Required(ErrorMessage = "Lütfen şifrenizi giriniz.")]
         [DataType(DataType.Password, ErrorMessage = "Şifreniz en az 7 karakter ve en fazla 20 karakter olmalı, harf ve rakam içermelidir.")]
         public string Password { get; set; }
-        //public virtual bool RememberMe{ get; set; }
+        public virtual bool RememberMe{ get; set; }
     }
 }

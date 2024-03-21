@@ -8,6 +8,10 @@
 				<li><a href="#"><i class="fa fa-envelope-o"></i> aliogullarpnar@gmail.com</a></li>
 				<li><a href="#"><i class="fa fa-map-marker"></i> Beşiktaş İSTANBUL</a></li>
 			</ul>
+			<ul class="header-links pull-right">
+				<li><a asp-area="" asp-controller="AboutUs" asp-action="Index"> Hakkımızda</a></li>
+				<li><a asp-area="" asp-controller="Contact" asp-action="Index"> İletişim</a></li>
+			</ul>
 		
 		</div>
 	</div>
@@ -19,53 +23,57 @@
 			<!-- row -->
 			<div class="row">
 				<!-- LOGO -->
-				<div class="col-lg-2 col-md-2">
+				<div class="col-lg-2 col-md-2 col-sm-12">
 					<div class="header-logo">
-						<a href="#" class="logo">
+						<a href="/" class="logo hidden-xs">
 							<img src="~/ui/img/logo1.png" alt="" >
 						</a>
 					</div>
 				</div>
 				<!-- /LOGO -->
-				<div class="col-lg-6 col-md-5 ">
+				<div class="col-lg-7 col-md-7 col-sm-7 ">
 					<vc:search-bar></vc:search-bar>
 
 				</div>
 
 				
 				<!-- ACCOUNT -->
-				<div class="col-lg-4 col-md-5  clear-fix">
+				<div class="col-lg-3 col-md-3 col-sm-5 clear-fix">
 					<div class="header-ctn">
 						@if (User.Identity.IsAuthenticated)
 						{
-							<div>
-								<a asp-area="Admin"
-								asp-controller="Home"
-								asp-action="Index">
-							    <i class="fa fa-lock" aria-hidden="true"></i>
-							   <span>Admin Panel</span></a>
-							</div>
-
-				
-							<div>
-								<div class="dropdown text-center">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:white" role="button" aria-haspopup="true" aria-expanded="false">
-
-										<i class="fa fa-user-o " aria-hidden="true"></i>
-										<div>Hesabım</div>
-
+							@if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
+							{
+								<div>
+									<a asp-area="Admin" asp-controller="Home" asp-action="Index">
+										<i class="fa fa-lock" aria-hidden="true"></i>
+										<span>Admin Panel</span>
 									</a>
-									<ul class="dropdown-menu">
-										<li><a href="#">Siparişlerim</a></li>
-										<li role="separator" class="divider"></li>
-										<li><a asp-area="" asp-controller="Account" asp-action="Profile">Kullanıcı Bilgilerim</a></li>
-										<li role="separator" class="divider"></li>
-										<li><a asp-area="" asp-controller="Account" asp-action="Logout">Çıkış Yap</a></li>
-									</ul>
 								</div>
-							</div>
-							
+							}
+							else
+							{
+								<div>
+									<div class="dropdown text-center">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:white" role="button" aria-haspopup="true" aria-expanded="false">
+
+											<i class="fa fa-user-o " aria-hidden="true"></i>
+											<div>Hesabım</div>
+
+										</a>
+										<ul class="dropdown-menu">
+											<li><a href="#">Siparişlerim</a></li>
+											<li role="separator" class="divider"></li>
+											<li><a asp-area="" asp-controller="Account" asp-action="Profile">Kullanıcı Bilgilerim</a></li>
+											<li role="separator" class="divider"></li>
+											<li><a asp-area="" asp-controller="Account" asp-action="Logout">Çıkış Yap</a></li>
+										</ul>
+									</div>
+								</div>
+
 								<vc:cart></vc:cart>
+							}
+
 						
 						}else
 						{

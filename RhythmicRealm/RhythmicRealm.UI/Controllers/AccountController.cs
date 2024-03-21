@@ -126,7 +126,7 @@ namespace RhythmicRealm.UI.Controllers
                 {
                     //İlgili kullanıcıya dair önceden oluşturulmuş bir Cookie varsa siliyoruz.
                     await _signInManager.SignOutAsync();
-                    Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(user, model.Password,false,true);
+                  var result = await _signInManager.PasswordSignInAsync(user, model.Password,model.RememberMe,true);
 
                     if (result.Succeeded)
                     {

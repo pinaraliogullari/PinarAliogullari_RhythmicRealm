@@ -8,6 +8,7 @@ using RhythmicRealm.Shared.ViewModels.ProductViewModels;
 using RhythmicRealm.UI.Areas.Admin.AdminViewModels;
 using RhythmicRealm.Shared.ViewModels.SubCategoryViewModels;
 using AspNetCoreHero.ToastNotification.Abstractions;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RhythmicRealm.UI.Areas.Admin.Controllers
 {
@@ -41,7 +42,9 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
             return Json(result);
 
         }
-        [HttpGet]
+
+		[Authorize(Roles = "SuperAdmin,Admin")]
+		[HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
             var mainCategory = await _mainCategoryService.GetMainCategoryByIdAsync(id);
@@ -50,7 +53,9 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
             return PartialView("_DeleteMainCategoryPartialView", model);
         }
 
-        [HttpGet]
+
+		[Authorize(Roles = "SuperAdmin,Admin")]
+		[HttpGet]
         public async Task<IActionResult> HardDelete(int id)
         {
 
@@ -60,7 +65,9 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
 
         }
 
-        [HttpGet]
+
+		[Authorize(Roles = "SuperAdmin,Admin")]
+		[HttpGet]
         public async Task<IActionResult> SoftDelete(int id)
         {
             await _mainCategoryService.SoftDeleteMainCategoryAsync(id);
@@ -74,7 +81,8 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
             return RedirectToAction("Index", new { isdeleted = tempdataInf });
         }
 
-        [HttpGet]
+		[Authorize(Roles = "SuperAdmin,Admin")]
+		[HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
 
@@ -100,8 +108,8 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
 
         }
 
-
-        [HttpGet]
+		[Authorize(Roles = "SuperAdmin,Admin")]
+		[HttpGet]
         public async Task<IActionResult> Create()
         {
          

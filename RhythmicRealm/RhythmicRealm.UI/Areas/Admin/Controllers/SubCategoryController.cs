@@ -1,5 +1,6 @@
 ﻿using AspNetCoreHero.ToastNotification.Abstractions;
 using Mapster;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using RhythmicRealm.Entity.Concrete;
@@ -36,7 +37,9 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
 
         }
 
-        [HttpGet]
+
+		[Authorize(Roles = "SuperAdmin,Admin")]
+		[HttpGet]
         public async Task<IActionResult> UpdateIsActive(int id)
         {
             var result = await _subCategoryService.UpdateIsActiveAsync(id);
@@ -44,7 +47,9 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
 
         }
 
-        [HttpGet]
+
+		[Authorize(Roles = "SuperAdmin,Admin")]
+		[HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
             var subCategory = await _subCategoryService.GetSubCategoryByIdAsync(id);
@@ -59,7 +64,9 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
             return PartialView("_DeleteSubCategoryPartialView", adminSubCategoryDeleteViewModel);
         }
 
-        [HttpGet]
+
+		[Authorize(Roles = "SuperAdmin,Admin")]
+		[HttpGet]
         public async Task<IActionResult> HardDelete(int id)
         {
 
@@ -69,7 +76,9 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
 
         }
 
-        [HttpGet]
+
+		[Authorize(Roles = "SuperAdmin,Admin")]
+		[HttpGet]
         public async Task<IActionResult> SoftDelete(int id)
         {
             await _subCategoryService.SoftDeleteSubCategoryAsync(id);
@@ -89,7 +98,9 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
             return mainCategories.Data;
         }
 
-        [HttpGet]
+
+		[Authorize(Roles = "SuperAdmin,Admin")]
+		[HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
 
@@ -159,7 +170,8 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
         }
 
 
-        [HttpGet]
+		[Authorize(Roles = "SuperAdmin,Admin")]
+		[HttpGet]
         public async Task<IActionResult> Create()
         {
             var model = new AdminAddSubCategoryViewModel();
