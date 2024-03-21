@@ -221,8 +221,6 @@ namespace RhythmicRealm.UI.Controllers
 		{
 			return View(forgotPasswordViewModel);
 		}
-
-
         public async Task<IActionResult> ResetPassword(string userId, string tokenCode)
 		{
 			if (userId == null || tokenCode == null)
@@ -271,7 +269,6 @@ namespace RhythmicRealm.UI.Controllers
 			}
 			return View(resetPasswordViewModel);
 		}
-
 
         public async Task<IActionResult> Profile()
         {
@@ -354,7 +351,7 @@ namespace RhythmicRealm.UI.Controllers
             ModelState.AddModelError("", "Geçerli şifreniz hatalıdır!");
             return View(profileViewModel);
         }
-        public async Task<IActionResult> AccessDenied()
+        public async Task<IActionResult> AccessDenialPage()
         {
             return View();
         }

@@ -52,7 +52,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 {
 	options.LoginPath = "/Account/Login";
 	options.LogoutPath = "/";
-	options.AccessDeniedPath = "/Account/AccessDenied";
+	options.AccessDeniedPath = "/Account/AccessDenialPage";
 	options.Cookie = new CookieBuilder
 	{
 		Name = "RRCookie", //Oluþturulacak Cookie'yi isimlendirme.

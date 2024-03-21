@@ -9,6 +9,7 @@ using RhythmicRealm.UI.Areas.Admin.AdminViewModels;
 using AspNetCoreHero.ToastNotification.Abstractions;
 using RhythmicRealm.Shared.Helpers.Abstract;
 using RhythmicRealm.Shared.Helpers.Concrete;
+using Microsoft.AspNetCore.Authorization;
 
 
 
@@ -210,6 +211,8 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
             
             return RedirectToAction("Index", new { isdeleted = tempdataInf });
         }
+
+        [Authorize(Roles = "SuperAdmin")]
         [HttpGet]
         public async Task<IActionResult> Create()
         {
