@@ -55,10 +55,29 @@ Table OF Contents
 	Typography
 \*----------------------------*/
 
+
+/*container*/
+.logo_container {
+   margin-top:20px;
+    
+}
+
+    .logo_container a {
+        font-size: 24px;
+        color: #d21737;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+        .logo_container a span {
+            color: #fff;
+        }
+
+
 body {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
-  color: #333;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    color: #333;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -122,6 +141,7 @@ ul, ol {
     background-color: #FFF;
     width: 100%;
 }
+
 
 textarea.input {
   padding: 15px;
@@ -467,6 +487,8 @@ textarea.input {
 
 .header-search form {
   position: relative;
+  margin-left:100px;
+
 }
 
 .header-search form .input-select {
@@ -475,7 +497,7 @@ textarea.input {
 }
 
 .header-search form .input {
-  width: calc(100% - 260px);
+  width: calc(100% - 100px);
   margin-right: -4px;
 }
 
@@ -542,6 +564,10 @@ textarea.input {
 
 .header-ctn .menu-toggle {
   display: none;
+}
+
+.dropdown-toggle{
+    cursor:pointer;
 }
 
 .cart-dropdown {

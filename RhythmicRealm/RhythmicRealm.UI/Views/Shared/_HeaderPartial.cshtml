@@ -22,96 +22,118 @@
 		<div class="container">
 			<!-- row -->
 			<div class="row">
-				<!-- LOGO -->
-				<div class="col-lg-2 col-md-2 col-sm-12">
-					<div class="header-logo">
-						<a href="/" class="logo hidden-xs">
-							<img src="~/ui/img/logo1.png" alt="" >
-						</a>
+			
+				<div class="container-edit">
+					<div class="col-lg-2 col-md-2 col-sm-2 hidden-xs">
+
+						<div class="logo_container">
+							<a href="/">Rhythmic<span>Realm</span></a>
+						</div>
+
 					</div>
-				</div>
-				<!-- /LOGO -->
-				<div class="col-lg-7 col-md-7 col-sm-7 ">
-					<vc:search-bar></vc:search-bar>
 
-				</div>
+					<div class="col-lg-6 col-md-6 col-sm-12">
+						<vc:search-bar></vc:search-bar>
 
-				
-				<!-- ACCOUNT -->
-				<div class="col-lg-3 col-md-3 col-sm-5 clear-fix">
-					<div class="header-ctn">
-						@if (User.Identity.IsAuthenticated)
-						{
-							@if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
+					</div>
+
+					<div class="col-lg-4 col-md-4 col-sm-12 clear-fix">
+						<div class="header-ctn">
+							@if (User.Identity.IsAuthenticated)
+
 							{
-								<div>
-									<a asp-area="Admin" asp-controller="Home" asp-action="Index">
-										<i class="fa fa-lock" aria-hidden="true"></i>
-										<span>Admin Panel</span>
-									</a>
-								</div>
+								@if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
+								{
+									<div>
+										<a asp-area="Admin" asp-controller="Home" asp-action="Index">
+											<i class="fa fa-lock" aria-hidden="true"></i>
+											<span>Admin Panel</span>
+										</a>
+									</div>
+									<div>
+										<div class="dropdown text-center">
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:white" role="button" aria-haspopup="true" aria-expanded="false">
+
+												<i class="fa fa-user-o " aria-hidden="true"></i>
+												<div>Hesabım</div>
+
+											</a>
+											<ul class="dropdown-menu">
+												<li><a href="#">Siparişlerim</a></li>
+												<li role="separator" class="divider"></li>
+												<li><a asp-area="" asp-controller="Account" asp-action="Profile">Kullanıcı Bilgilerim</a></li>
+												<li role="separator" class="divider"></li>
+												<li><a asp-area="" asp-controller="Account" asp-action="Logout">Çıkış Yap</a></li>
+											</ul>
+										</div>
+									</div>
+
+									<vc:cart></vc:cart>
+								}
+								else
+								{
+									<div>
+										<div class="dropdown text-center">
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:white" role="button" aria-haspopup="true" aria-expanded="false">
+
+												<i class="fa fa-user-o " aria-hidden="true"></i>
+												<div>Hesabım</div>
+
+											</a>
+											<ul class="dropdown-menu">
+												<li><a href="#">Siparişlerim</a></li>
+												<li role="separator" class="divider"></li>
+												<li><a asp-area="" asp-controller="Account" asp-action="Profile">Kullanıcı Bilgilerim</a></li>
+												<li role="separator" class="divider"></li>
+												<li><a asp-area="" asp-controller="Account" asp-action="Logout">Çıkış Yap</a></li>
+											</ul>
+										</div>
+									</div>
+
+									<vc:cart></vc:cart>
+								}
+
+
 							}
 							else
 							{
 								<div>
-									<div class="dropdown text-center">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:white" role="button" aria-haspopup="true" aria-expanded="false">
+									<a asp-area=""
+									   asp-controller="Account"
+									   asp-action="Login">
+										<i class="fa fa-user-o" aria-hidden="true"></i>
+										<span>Giriş Yap</span>
 
-											<i class="fa fa-user-o " aria-hidden="true"></i>
-											<div>Hesabım</div>
+									</a>
 
-										</a>
-										<ul class="dropdown-menu">
-											<li><a href="#">Siparişlerim</a></li>
-											<li role="separator" class="divider"></li>
-											<li><a asp-area="" asp-controller="Account" asp-action="Profile">Kullanıcı Bilgilerim</a></li>
-											<li role="separator" class="divider"></li>
-											<li><a asp-area="" asp-controller="Account" asp-action="Logout">Çıkış Yap</a></li>
-										</ul>
-									</div>
 								</div>
+								<div>
+									<a asp-area=""
+									   asp-controller="Account"
+									   asp-action="Register">
+										<i class="fa fa-user-o" aria-hidden="true"></i>
+										<span>Kayıt ol</span>
 
-								<vc:cart></vc:cart>
+									</a>
+
+								</div>
 							}
 
-						
-						}else
-						{
-							<div>
-								<a asp-area=""
-								   asp-controller="Account"
-								   asp-action="Login">
-									<i class="fa fa-user-o" aria-hidden="true"></i>
-									<span>Giriş Yap</span>
 
+							@* <vc:wishlist></vc:wishlist> *@
+							<!-- Menu Toogle -->
+							<div class="menu-toggle">
+								<a href="#">
+									<i class="fa fa-bars"></i>
+									<span>Menu</span>
 								</a>
-
 							</div>
-							<div>
-								<a asp-area=""
-								   asp-controller="Account"
-								   asp-action="Register">
-									<i class="fa fa-user-o" aria-hidden="true"></i>
-									<span>Kayıt ol</span>
-
-								</a>
-
-							</div>
-						}
-					
-						
-					@* <vc:wishlist></vc:wishlist> *@
-						<!-- Menu Toogle -->
-						<div class="menu-toggle">
-							<a href="#">
-								<i class="fa fa-bars"></i>
-								<span>Menu</span>
-							</a>
+							<!-- /Menu Toogle -->
 						</div>
-						<!-- /Menu Toogle -->
 					</div>
 				</div>
-				<!-- /ACCOUNT -->
+			
+			
 			</div>
 			<!-- row -->
 		</div>
