@@ -4,7 +4,7 @@
 }
 
 .shopping-cart.dark{
-	background-color: #f6f6f6;
+	background-color: #f6f6f3;
 }
 
 .shopping-cart .content{
@@ -33,7 +33,7 @@
 .shopping-cart .block-heading h2,
 .shopping-cart .block-heading h3 {
 	margin-bottom:1.2rem;
-	color: #3b99e0;
+	color: #15161d;
 }
 
 .shopping-cart .items{
@@ -70,14 +70,14 @@
 }
 
 .shopping-cart .items .product .info .price{
-	margin-top: 15px;
+	/* margin-top: 15px;
     font-weight: bold;
-    font-size: 22px;
+    font-size: 22px; */
  }
 
 .shopping-cart .summary{
-	border-top: 2px solid #5ea4f3;
-    background-color: #f7fbff;
+	border-top: 2px solid #f6f6f3;
+  background-color: #f6f6f3;
     height: 100%;
     padding: 30px;
 }
@@ -117,9 +117,10 @@
 	}
 
 	.shopping-cart .items .product .info .price {
-		font-weight: bold;
-		font-size: 22px;
-		top: 17px; 
+		font-weight: bold; 
+		font-size: 16px;
+		top: 25px; 
+		color:#d9534f;
 	}
 
 	.shopping-cart .items .product .info .quantity {
