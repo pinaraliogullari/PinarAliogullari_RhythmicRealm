@@ -1572,7 +1572,18 @@ footer .under-footer a:hover {
 Products Page
 --------------------------------------------- 
 */
+.truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Ýstenen satýr sayýsý */
+    -webkit-box-orient: vertical;
+}
 
+/* "Devamýný Oku" linki için kullanýlan stil */
+.more {
+    margin-top: 10px;
+}
 .page-heading {
   margin-top: 160px;
   margin-bottom: 30px;
@@ -1589,7 +1600,7 @@ Products Page
 
 .page-heading .inner-content h2 {
   font-size: 52px;
-  color: #fff;
+  color: ghostwhite;
   font-weight: 700;
   margin-bottom: 15px;
 }
@@ -1913,14 +1924,15 @@ About Us Page
 */
 
 .about-page-heading {
-  margin-top: 160px;
-  margin-bottom: 30px;
-  background-image: url(../images/about-us-page-heading.jpg);
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
+    margin-top: 160px;
+    margin-bottom: 30px;
+    background-image: url('/aboutus/images/aboutus-bg.png');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
+}
 .about-us {
   margin-top: 80px;
 }
@@ -2014,6 +2026,7 @@ About Us Page
 }
 
 .our-team .section-heading h2 {
+
   margin-bottom: 10px;
 }
 
