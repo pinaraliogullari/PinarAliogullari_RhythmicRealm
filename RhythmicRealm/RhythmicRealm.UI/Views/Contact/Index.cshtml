@@ -106,25 +106,27 @@
 
 				<div class="col-lg-6 contact_col">
 					<div class="contact_contents">
-						<h1>Contact Us</h1>
-						<p>There are many ways to contact us. You may drop us a line, give us a call or send an email, choose what suits you the most.</p>
+						<h3>Bize Ulaşın</h3>
+						<p>
+							Hizmetler:
+							Teknik Bilgi (Ürünler), Satış & Müşteri Desteği, Sipariş & Kargo Takibi, Şikayet & Öneriler
+						</p>
 						<div>
-							<p>(800) 686-6688</p>
-							<p>info.deercreative@gmail.com</p>
+							<p>
+								Online Sipariş & Destek
+								
+							</p>
+							<p>02161234567</p>
 						</div>
 						<div>
-							<p>mm</p>
-						</div>
-						<div>
-							<p>Open hours: 8.00-18.00 Mon-Fri</p>
-							<p>Sunday: Closed</p>
+							<p>Çalışma Saatleri: Hafta İçi: 09:00 - 22:00, Cumartesi ve Pazar: 10:00 - 22:00</p>
 						</div>
 					</div>
 
 					<!-- Follow Us -->
 
 					<div class="follow_us_contents">
-						<h1>Follow Us</h1>
+						<h3>Bizi Takip Edin</h3>
 						<ul class="social d-flex flex-row">
 							<li><a href="#" style="background-color: #3a61c9"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
 							<li><a href="#" style="background-color: #41a1f6"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
@@ -137,19 +139,35 @@
 
 				<div class="col-lg-6 get_in_touch_col">
 					<div class="get_in_touch_contents">
-						<h1>Get In Touch With Us!</h1>
-						<p>Fill out the form below to recieve a free and confidential.</p>
-						<form action="post">
-							<div>
-								<input id="input_name" class="form_input input_name input_ph" type="text" name="name" placeholder="Name" required="required" data-error="Name is required.">
-								<input id="input_email" class="form_input input_email input_ph" type="email" name="email" placeholder="Email" required="required" data-error="Valid email is required.">
-								<input id="input_website" class="form_input input_website input_ph" type="url" name="name" placeholder="Website" required="required" data-error="Name is required.">
-								<textarea id="input_message" class="input_ph input_message" name="message" placeholder="Message" rows="3" required data-error="Please, write us a message."></textarea>
+					
+						<div class="card" onclick="changeMap('address1')">
+							<div class="card-body">
+								<h4>İstanbul Ofis</h4>
+								<p>İstanbul, Türkiye</p>
+								<div id="map1" class="map_container">
+									<!-- İstanbul ofisi haritası buraya eklenecek -->
+								</div>
 							</div>
-							<div>
-								<button id="review_submit" type="submit" class="red_button message_submit_btn trans_300" value="Submit">send message</button>
+						</div>
+						<div class="card" onclick="changeMap('address2')">
+							<div class="card-body">
+								<h4>Floransa Ofis</h4>
+								<p>Floransa, İtalya</p>
+								<div id="map2" class="map_container">
+									<!-- Floransa ofisi haritası buraya eklenecek -->
+								</div>
 							</div>
-						</form>
+						</div>
+						<div class="card" onclick="changeMap('address3')">
+							<div class="card-body">
+								<h4>Berlin Ofis</h4>
+								<p>Berlin, Almanya</p>
+								<div id="map3" class="map_container">
+									<!-- Berlin ofisi haritası buraya eklenecek -->
+								</div>
+							</div>
+						</div>
+						<!-- Diğer ofis kartları buraya eklenebilir -->
 					</div>
 				</div>
 
@@ -222,6 +240,22 @@
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
 	<script src="~/contact/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
 	<script src="~/contact/js/contact_custom.js"></script>
+
+	<script>
+		function changeMap(address) {
+			var iframe;
+			if (address === 'address1') {
+				iframe = document.getElementById("map1").querySelector("iframe");
+				iframe.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2921.320305896792!2d28.89815201568226!3d41.002301024684774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac5132b95aa6d%3A0x4f7cf274b1679d97!2sIstanbul%20Bosphorus!5e0!3m2!1sen!2str!4v1646990984072!5m2!1sen!2str";
+			} else if (address === 'address2') {
+				iframe = document.getElementById("map2").querySelector("iframe");
+				iframe.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2921.4297832301547!2d11.255199951474506!3d43.7705540584649!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132a56a680d2d6ad%3A0x93d57917efc72a03!2sFlorence%2C%20Metropolitan%20City%20of%20Florence%2C%20Italy!5e0!3m2!1sen!2str!4v1646990953909!5m2!1sen!2str";
+			} else if (address === 'address3') {
+				iframe = document.getElementById("map3").querySelector("iframe");
+				iframe.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15888.97780234893!2d13.388120730762665!3d52.51626846977989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDEyJzQ2LjkiTiAxM8KwMDAnNDcuMyJF!5e0!3m2!1sen!2str!4v1646990941257!5m2!1sen!2str";
+			}
+		}
+	</script>
 </body>
 
 </html>
