@@ -39,9 +39,47 @@ namespace RhythmicRealm.Service.Concrete
 
         }
 
-		public Task<Response<List<ProductViewModel>>> GetAllProductsAsync()
+		public async Task<Response<List<ProductViewModel>>> GetAllProductsAsync()
 		{
-			throw new NotImplementedException();
+			var products = await _productRepository.GetAllAsync(null, p => p.Include(x => x.Brand).Include(x => x.SubCategory).ThenInclude(x => x.MainCategory));
+			if (products == null) return Response<List<ProductViewModel>>.Fail(404, "Sonuç bulunamadı");
+			var productViewModel = products.Select(product=> new ProductViewModel
+			{
+				Id = product.Id,
+				Name = product.Name,
+				ImageUrl = product.ImageUrl,
+				Url = product.Url,
+				Description = product.Description,
+				Properties = product.Properties,
+				Price = product.Price,
+				IsActive = product.IsActive,
+				IsHome = product.IsHome,
+				MainCategory = new InMainCategoryViewModel
+				{
+					Id = product.SubCategory.MainCategory.Id,
+					Name = product.SubCategory.MainCategory.Name,
+					IsActive = product.SubCategory.MainCategory.IsActive,
+					IsDeleted = product.SubCategory.MainCategory.IsDeleted,
+					Url = product.SubCategory.MainCategory.Url,
+
+
+				},
+				SubCategory = new InSubCategoryViewModel
+				{
+					Id = product.SubCategory.Id,
+					Name = product.SubCategory.Name,
+					IsActive = product.SubCategory.IsActive,
+					IsDeleted = product.SubCategory.IsDeleted,
+					Url = product.SubCategory.Url
+				},
+				Brand = new BrandSlimViewModel
+				{
+					Id = product.Brand.Id,
+					Name = product.Brand.Name,
+
+				}
+			}).ToList();
+			return Response<List<ProductViewModel>>.Success(productViewModel, 200);
 		}
 
 		public async Task<Response<ProductViewModel>> GetProductByProductIdAsync(int productId)
