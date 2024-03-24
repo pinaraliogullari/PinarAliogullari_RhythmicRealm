@@ -12,64 +12,71 @@
 		<div class="row">
 			<!-- ASIDE -->
 			<div id="aside" class="col-md-3">
-				<!-- aside Widget -->
-				<div class="aside">
-					<h3 class="aside-title">Ilgili Kategoriler</h3>
-					<div class="checkbox-filter">
-						@foreach (var subCategoryName in subCategoryNames)
-						{
-							<div class="input-checkbox">
-								<input type="checkbox" id="subcategory-@subCategoryName">
-								<label for="subcategory-@subCategoryName">
-									<span></span>
-									@subCategoryName
-									<small>(120)</small>
-								</label>
-							</div>
+				<form id="filterForm" method="GET" asp-area="" asp-controller="Store" asp-action="FilterProducts">
+					<!-- aside Widget -->
+					<div class="aside">
+						<h3 class="aside-title">Ilgili Kategoriler</h3>
+						<div class="checkbox-filter">
+							@foreach (var subCategoryName in subCategoryNames)
+							{
+								<div class="input-checkbox">
+									<input type="checkbox" id="subcategory-@subCategoryName" name="subCategory" value="@subCategoryName">
+									<label for="subcategory-@subCategoryName">
+										<span></span>
+										@subCategoryName
+										<small>(120)</small>
+									</label>
+								</div>
 
-						}
-					
-					</div>
-				</div>
-				<!-- /aside Widget -->
-				<!-- aside Widget -->
-				<div class="aside">
-					<h3 class="aside-title">Fiyat</h3>
-					<div class="price-filter">
-						<div id="price-slider"></div>
-						<div class="input-number price-min">
-							<input id="price-min" type="number">
-							<span class="qty-up">+</span>
-							<span class="qty-down">-</span>
-						</div>
-						<span>-</span>
-						<div class="input-number price-max">
-							<input id="price-max" type="number">
-							<span class="qty-up">+</span>
-							<span class="qty-down">-</span>
+							}
+
 						</div>
 					</div>
-				</div>
-				<!-- /aside Widget -->
-				<!-- aside Widget -->
-				<div class="aside">
-					<h3 class="aside-title">Markalar</h3>
-					<div class="checkbox-filter">
-						@foreach (var brand in brands)
-						{
-							<div class="input-checkbox">
-								<input type="checkbox" id="brand-@brand">
-								<label for="brand-@brand">
-									<span></span>
-									@brand
-									<small>(578)</small>
-								</label>
+					<!-- /aside Widget -->
+					<!-- aside Widget -->
+					<div class="aside">
+						<h3 class="aside-title">Fiyat</h3>
+						<div class="price-filter">
+							<div id="price-slider"></div>
+							<div class="input-number price-min">
+								<input id="price-min" type="number">
+								<span class="qty-up">+</span>
+								<span class="qty-down">-</span>
 							</div>
-						}
+							<span>-</span>
+							<div class="input-number price-max">
+								<input id="price-max" type="number">
+								<span class="qty-up">+</span>
+								<span class="qty-down">-</span>
+							</div>
+						</div>
 					</div>
-				</div>
-				<!-- /aside Widget -->
-			
+					<!-- /aside Widget -->
+					<!-- aside Widget -->
+					<div class="aside">
+						<h3 class="aside-title">Markalar</h3>
+						<div class="checkbox-filter">
+
+							@foreach (var brand in brands)
+							{
+								<div class="input-checkbox">
+									<input type="checkbox" id="brand-@brand" name="brand" value="@brand">
+									<label for="brand-@brand">
+										<span></span>
+										@brand
+										<small>(578)</small>
+									</label>
+								</div>
+							}
+
+
+
+						</div>
+					</div>
+
+					<!-- /aside Widget -->
+					<button style="margin-top:50px;background-color:darkred; " class="btn btn-danger btn-block" type="submit">Filtrele</button>
+			    </form>
 			</div>
 			<!-- /ASIDE -->
 			<!-- STORE -->
@@ -113,7 +120,7 @@
 									</div>
 								</div>
 								<div class="product-body">
-									<p class="product-category">@product.SubCategory.Name</p>
+									<p class="product-category">@product.SubCategory.Name-@product.Brand.Name</p>
 									<h3 class="product-name"><a href="#">@product.Name</a></h3>
 									<h4 class="product-price">@($"{product.Price:C2}") <del class="product-old-price">@($"{product.Price+2500:C2}")</del></h4>
 									<div class="product-rating">
@@ -157,3 +164,13 @@
 	<!-- /container -->
 </div>
 <!-- /SECTION -->
+
+@section TopScripts{
+	<script>
+		document.querySelectorAll('input[type="checkbox"]').forEach(function (checkbox) {
+			checkbox.addEventListener('change', function () {
+				document.getElementById('filterForm').submit();
+			});
+		});
+	</script>
+}

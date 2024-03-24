@@ -17,7 +17,7 @@ namespace RhythmicRealm.UI.Controllers
 			_productService = productService;
 		}
 
-		public async Task<IActionResult> Index(int id,int brandId,int subCategoryId)
+		public async Task<IActionResult> Index(int id)
         {
 			var products=await GetProductsByMainCategoryIdAsync(id);
             return View(products);
@@ -28,6 +28,13 @@ namespace RhythmicRealm.UI.Controllers
 			var products = await _productService.GetProductsByMainCategoryIdAsync(id);
 			return products.Data.ToList();
 
+		}
+
+		public async Task<IActionResult> FilterProducts(string[] subCategory, string[] brand)
+		{
+			// subCategory ve brand parametreleri kullanılarak filtreleme işlemleri yapılabilir
+			// Daha sonra filtrelenmiş ürünlerin listesini alıp, uygun bir view'e göndermelisiniz
+			return View();
 		}
 
 	
