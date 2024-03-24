@@ -9,5 +9,6 @@ namespace RhythmicRealm.Data.Abstract
 {
 	public interface IProductRepository:IGenericRepository<Product>
 	{
+		Task<List<Product>> GetProductsByMainCategoryId(int id);
 	}
 }

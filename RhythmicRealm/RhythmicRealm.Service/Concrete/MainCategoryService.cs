@@ -62,13 +62,18 @@ namespace RhythmicRealm.Service.Concrete
 
         }
 
-        public  Task<Response<List<MainCategoryViewModel>>> GetMainCategoriesByIsActiveAsync()
+        public  async Task<Response<List<MainCategoryViewModel>>> GetMainCategoriesByIsActiveAsync(bool isActive=true)
         {
-            throw new NotImplementedException();
-          
-        }
+            var mainCategories = await _mainCategoryRepository.GetAllAsync(m => m.IsActive == isActive);
+			if (mainCategories == null)
+				return Response<List<MainCategoryViewModel>>.Fail(404, "Sonuç bulunamadı");
+			var mainCategoryViewModel = mainCategories.Adapt<List<MainCategoryViewModel>>();
+			return Response<List<MainCategoryViewModel>>.Success(mainCategoryViewModel, 200);
 
-        public async Task<Response<List<MainCategoryViewModel>>> GetMainCategoriesByIsDeleteAsync(bool isDeleted = false)
+
+		}
+
+        public async Task<Response<List<MainCategoryViewModel>>> GetMainCategoriesByIsDeleteAsync(bool isDeleted)
         {
            var mainCategories=await _mainCategoryRepository.GetAllAsync(m=>m.IsDeleted== isDeleted);
             if (mainCategories == null)

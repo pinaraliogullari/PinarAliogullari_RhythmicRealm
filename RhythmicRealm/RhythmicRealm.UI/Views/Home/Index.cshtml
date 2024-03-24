@@ -1,6 +1,6 @@
 ﻿
 @model List<ProductViewModel>
-@await Html.PartialAsync("_NavbarPartial")
+<vc:navbar-of-main-cat></vc:navbar-of-main-cat>
 
 <!-- SECTION -->
 <div class="section">
@@ -13,8 +13,6 @@
 			<!-- shop -->
 			@{
 				List<int> selectedIndices = new List<int> { 2,9,17, 23,26,34};
-
-				// Seçilen indisler üzerinde döngü
 				foreach (int index in selectedIndices)
 				{
 					var item = Model[index];

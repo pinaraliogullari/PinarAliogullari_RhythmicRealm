@@ -141,8 +141,9 @@ namespace RhythmicRealm.Service.Concrete
 		{
 			
 			var products = await _productRepository.GetAllAsync (p => p.IsDeleted == isDeleted, p => p.Include(x => x.Brand).Include(x => x.SubCategory).ThenInclude(x => x.MainCategory));
-			if (products == null) return Response<List<ProductViewModel>>.Fail(404, "Sonuç bulunamadı");
-			var productsDto = products.Select(product => new ProductViewModel
+			if (products == null) 
+				return Response<List<ProductViewModel>>.Fail(404, "Sonuç bulunamadı");
+			var model = products.Select(product => new ProductViewModel
 			{
 				Id = product.Id,
 				Name = product.Name,
@@ -178,7 +179,43 @@ namespace RhythmicRealm.Service.Concrete
 
 				}
 			}).ToList();
-			return Response<List<ProductViewModel>>.Success(productsDto, 200);
+			return Response<List<ProductViewModel>>.Success(model, 200);
+		}
+
+		public async Task<Response<List<ProductViewModel>>> GetProductsByMainCategoryIdAsync(int mainCategoryId)
+		{
+			var products = await _productRepository.GetProductsByMainCategoryId(mainCategoryId);
+			if (products == null)
+				return Response<List<ProductViewModel>>.Fail(404, "Sonuç bulunamadı");
+
+			var model = products.Select(p => new ProductViewModel
+			{
+				Id = p.Id,
+				Name = p.Name,
+				ImageUrl = p.ImageUrl,
+				Description = p.Description,
+				Properties = p.Properties,
+				Price = p.Price,
+				IsActive = p.IsActive,
+				IsHome = p.IsHome,
+				Brand = new BrandSlimViewModel
+				{
+					Id = p.Brand.Id,
+					Name = p.Brand.Name,
+				},
+				MainCategory=new InMainCategoryViewModel
+				{
+					Id=p.SubCategory.MainCategoryId,
+					Name=p.SubCategory.MainCategory.Name,
+				},
+				SubCategory = new InSubCategoryViewModel
+				{
+					Id = p.SubCategory.Id,
+					Name = p.SubCategory.Name,
+				}
+			}).ToList(); 
+
+			return Response<List<ProductViewModel>>.Success(model,200);
 		}
 
 		public Task<Response<List<ProductViewModel>>> GetProductsBySubCategoryIdAsync(int subCategoryId)
@@ -189,7 +226,8 @@ namespace RhythmicRealm.Service.Concrete
 		public async Task<Response<NoContent>> HardDeleteAsync(int productId)
 		{
 			var product= await _productRepository.GetAsync(p=>p.Id==productId);
-			if (product == null) return Response<NoContent>.Fail(404, "Ürün bulunamadı");
+			if (product == null) 
+				return Response<NoContent>.Fail(404, "Ürün bulunamadı");
 			await _productRepository.HardDeleteAsync(product);
 			return Response<NoContent>.Success(200);
 		}

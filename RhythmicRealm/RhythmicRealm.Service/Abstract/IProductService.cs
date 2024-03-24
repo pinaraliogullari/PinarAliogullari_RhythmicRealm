@@ -11,6 +11,7 @@ namespace RhythmicRealm.Service.Abstract
     public interface IProductService
 	{
 		Task<Response<List<ProductViewModel>>> GetProductsBySubCategoryIdAsync(int subCategoryId);
+		Task<Response<List<ProductViewModel>>> GetProductsByMainCategoryIdAsync(int mainCategoryId);
 		Task<Response<ProductViewModel>> GetProductByProductIdAsync(int productId);
 		Task<Response<List<ProductViewModel>>> GetProductsByIsActiveAsync(bool isActive = true);
 		Task<Response<List<ProductViewModel>>> GetProductsByIsDeleteAsync(bool isDeleted);
