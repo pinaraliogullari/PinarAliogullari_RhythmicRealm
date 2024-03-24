@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RhythmicRealm.Service.Abstract;
 using RhythmicRealm.Shared.ViewModels.ProductViewModels;
+using System.Linq;
 
 namespace RhythmicRealm.UI.Controllers
 {
@@ -20,7 +21,9 @@ namespace RhythmicRealm.UI.Controllers
 		public async Task<IActionResult> Index(int id)
         {
 			var products=await GetProductsByMainCategoryIdAsync(id);
-            return View(products);
+			TempData["mainCategoryId"] = id;
+			return View(products);
+		
         }
 
         private async Task<List<ProductViewModel>> GetProductsByMainCategoryIdAsync(int id)
@@ -29,15 +32,36 @@ namespace RhythmicRealm.UI.Controllers
 			return products.Data.ToList();
 
 		}
-
+		
 		public async Task<IActionResult> FilterProducts(string[] subCategory, string[] brand)
 		{
-			// subCategory ve brand parametreleri kullanılarak filtreleme işlemleri yapılabilir
-			// Daha sonra filtrelenmiş ürünlerin listesini alıp, uygun bir view'e göndermelisiniz
-			return View();
+			var mainCategoryId = (int)TempData["mainCategoryId"];
+			var filteredProducts = await GetFilteredProducts(mainCategoryId, subCategory, brand);
+
+
+
+			return View("Index",filteredProducts);
 		}
 
-	
+		private async Task<List<ProductViewModel>> GetFilteredProducts(int mainCategoryId, string[] subCategory, string[] brand)
+		{
+			var products = await _productService.GetProductsByMainCategoryIdAsync(mainCategoryId);
+			var data = products.Data;
+
+			if (subCategory != null && subCategory.Length > 0)
+			{
+				data = data.Where(p => subCategory.Contains(p.SubCategory.Name)).ToList();
+			}
+
+			if (brand != null && brand.Length > 0)
+			{
+				data = data.Where(p => brand.Contains(p.Brand.Name)).ToList();
+			}
+
+			return data;
+		}
+
+
 
 	}
 }
