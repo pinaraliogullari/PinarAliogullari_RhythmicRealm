@@ -14,5 +14,6 @@ namespace RhythmicRealm.Service.Abstract
         Task<Response<BrandViewModel>> GetBrandByIdAsync(int id);
         Task<Response<List<BrandViewModel>>> GetAllBrandsAsync();
         Task<Response<BrandViewModel>> GetBrandWithMainCategoriesAsync(int brandId);
+        Task<Response<List<BrandSlimViewModel>>> GetBrandsByMainCategoryId(int mainCategoryId);
     }
 }

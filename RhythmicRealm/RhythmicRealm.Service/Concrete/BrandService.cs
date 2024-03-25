@@ -37,7 +37,22 @@ namespace RhythmicRealm.Service.Concrete
             return Response<BrandViewModel>.Success(brandViewModel, 200);
         }
 
-        public async Task<Response<BrandViewModel>> GetBrandWithMainCategoriesAsync(int brandId)
+		public async Task<Response<List<BrandSlimViewModel>>> GetBrandsByMainCategoryId(int mainCategoryId)
+		{
+			var brands = await _brandRepository
+				   .GetAllAsync(b => b.BrandMainCategories.Any(bmc => bmc.MainCategoryId == mainCategoryId));
+			var brandViewModels = brands.Select(brand => new BrandSlimViewModel
+			{
+				Id = brand.Id,
+				Name = brand.Name,
+				ImageUrl = brand.ImageUrl,
+			
+			}).ToList();
+
+			return Response<List<BrandSlimViewModel>>.Success(brandViewModels,200);
+		}
+
+		public async Task<Response<BrandViewModel>> GetBrandWithMainCategoriesAsync(int brandId)
         {
             var brand = await _brandRepository.GetAsync(b => b.Id == brandId,
            source => source

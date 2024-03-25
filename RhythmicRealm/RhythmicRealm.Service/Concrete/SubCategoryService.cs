@@ -80,7 +80,22 @@ namespace RhythmicRealm.Service.Concrete
                 return Response<List<SubCategoryViewModel>>.Success(subCategoriesViewModel, 200);
             }
 
-            public async Task<Response<SubCategoryViewModel>> GetSubCategoryByIdAsync(int id)
+		public async Task<Response<List<InSubCategoryViewModel>>> GetSubCategoriesByMainCategoryId(int mainCategoryId)
+		{
+            var subCategories = await _subCategoryRepository.GetAllAsync(s => s.MainCategoryId == mainCategoryId);
+			if (subCategories == null) return Response<List<InSubCategoryViewModel>>.Fail(404, "İlgili ana kategori bulunamadı.");
+			var subCategoryViewModels = subCategories.Select(subCategory => new InSubCategoryViewModel
+			{
+				Id = subCategory.Id,
+				Name = subCategory.Name,
+                IsActive=subCategory.IsActive,
+                IsDeleted = subCategory.IsDeleted,
+                Url = subCategory.Url,
+			}).ToList();
+			return Response<List<InSubCategoryViewModel>>.Success(subCategoryViewModels, 200);
+		}
+
+		public async Task<Response<SubCategoryViewModel>> GetSubCategoryByIdAsync(int id)
             {
                 var subCategory = await _subCategoryRepository.GetAsync(s => s.Id == id);
                 if (subCategory == null) return Response<SubCategoryViewModel>.Fail(404, "İlgili ana kategori bulunamadı.");
