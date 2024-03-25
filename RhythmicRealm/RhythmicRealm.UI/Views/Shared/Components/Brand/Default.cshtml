@@ -16,9 +16,12 @@
 								@foreach (var brand in Model)
 								{
 									<div class="product">
-										<div class="product-img">
-											<img style="cursor:pointer" src="~/images/brands/@brand.ImageUrl" alt="">
-										</div>
+											<a asp-area="" asp-controller="Store" asp-action="ShowProducts" asp-route-id="@brand.Id">
+											<div class="product-img">
+												<img style="cursor:pointer" src="~/images/brands/@brand.ImageUrl" alt="">
+											</div>
+											</a>
+										
 										<div class="product-body">
 											<p class="product-category"></p>
 										</div>

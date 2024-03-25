@@ -45,8 +45,6 @@ namespace RhythmicRealm.UI.Controllers
 
 
 		}
-
-
 		public async Task<IActionResult> FilterProducts(string[] subCategory, string[] brand)
 		{
 			if (!TempData.ContainsKey("MainCategoryId"))
@@ -90,7 +88,7 @@ namespace RhythmicRealm.UI.Controllers
 
 		private async Task<List<BrandSlimViewModel>> GetBrandsByMainCategoryId(int id)
 		{
-			var brands = await _brandService.GetBrandsByMainCategoryId(id);
+			var brands = await _brandService.GetBrandsByMainCategoryIdAsync(id);
 			return brands.Data;
 		}
 
@@ -99,8 +97,37 @@ namespace RhythmicRealm.UI.Controllers
 			var subCategories = await _subCategoryService.GetSubCategoriesByMainCategoryId(id);
 			return subCategories.Data;
 		}
+		public async Task<IActionResult> ShowProducts(int id)
+		{
+			var products = await _productService.GetProductsByBrandIdAsync(id);
+			var model = products.Data;
+			return View(model);
+		}
+		public async Task<IActionResult> Search(string query)
+		{
+			var searchResults = await _productService.SearchProductAsync(query);
+			var model = searchResults.Data;
+			return View("ShowProducts", model);
+		}
+
+		public async Task<IActionResult> ShowProductsOnCards(int id)
+		{
+			if (id == 1)
+			{
+				var products = await _productService.GetNewProductsAsync();
+				var model = products.Data;
+				return View("ShowProducts",model);
+			}
+			if (id == 3)
+			{
+				var products = await _productService.GetSelectedProducts();
+				var model = products.Data;
+				return View("ShowProducts", model);
+			}
 
 
-
+			return View();
+			
+		}
 	}
 }

@@ -2,38 +2,50 @@
 @model List<ProductViewModel>
 <vc:navbar-of-main-cat></vc:navbar-of-main-cat>
 
+
 <!-- SECTION -->
 <div class="section">
 	<!-- container -->
 	<div class="container">
 
-
 		<!-- row -->
 		<div class="row">
-			<!-- shop -->
-			@{
-				List<int> selectedIndices = new List<int> { 2,9,17, 23,26,34};
-				foreach (int index in selectedIndices)
-				{
-					var item = Model[index];
-
-					<div class="col-md-4 col-xs-6">
-						<div class="shop">
-							<div class="shop-img">
-								<img style="height:250px" src="~/images/products/@item.ImageUrl" alt="">
-							</div>
-							<div class="shop-body">
-								<h3>@item.SubCategory.Name</h3>
-								<a href="#" class="cta-btn">Ürünlere Göz At<i class="fa fa-arrow-circle-right"></i></a>
-							</div>
-						</div>
+			<div class="col-md-4 col-xs-6">
+				<div class="shop">
+					<div class="shop-img">
+						<img style="height:250px" src="~/ui/img/new.png" alt="">
 					</div>
-				}
-			}
-				
-			
-			<!-- /shop -->
-	
+					<div class="shop-body">
+						<h3>Yeni Ürünler</h3>
+						<a asp-area="" asp-controller="Store" asp-action="ShowProductsOnCards" asp-route-id="1" class="cta-btn">Ürünlere Göz At<i class="fa fa-arrow-circle-right"></i></a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-xs-6">
+				<div class="shop">
+					<div class="shop-img">
+						<img style="height:250px" src="~/ui/img/top-selling.png" alt="">
+					</div>
+					<div class="shop-body">
+						<h3>Çok Satanlar</h3>
+						<a asp-area="" asp-controller="Store" asp-action="ShowProductsOnCards" asp-route-id="2" class="cta-btn">Ürünlere Göz At<i class="fa fa-arrow-circle-right"></i></a>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4 col-xs-6">
+				<div class="shop">
+					<div class="shop-img">
+						<img style="height:250px" src="~/ui/img/pick.png" alt="">
+					</div>
+					<div class="shop-body">
+						<h3>Sizin İçin Seçtiklerimiz</h3>
+						<a asp-area="" asp-controller="Store" asp-action="ShowProductsOnCards" asp-route-id="3" class="cta-btn">Ürünlere Göz At<i class="fa fa-arrow-circle-right"></i></a>
+					</div>
+				</div>
+			</div>
+
+
 		</div>
 		<!-- /row -->
 	</div>
@@ -75,6 +87,7 @@
 										<div class="product-body">
 											<p class="product-category">@product.SubCategory.Name</p>
 											<h3 class="product-name"><a href="#">@product.Name</a></h3>
+											<h3 class="product-category"><a href="#">@product.Description</a></h3>
 											<h4 class="product-price">@($"{product.Price:C2}") <del class="product-old-price">@($"{product.Price+2500:C2}")</del></h4>
 											<div class="product-rating">
 												<i class="fa fa-star"></i>

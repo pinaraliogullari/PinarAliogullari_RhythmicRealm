@@ -11,16 +11,20 @@ namespace RhythmicRealm.Service.Abstract
     public interface IProductService
 	{
 		Task<Response<List<ProductViewModel>>> GetProductsBySubCategoryIdAsync(int subCategoryId);
-		Task<Response<List<ProductViewModel>>> GetProductsByMainCategoryIdAsync(int mainCategoryId);
-		Task<Response<ProductViewModel>> GetProductByProductIdAsync(int productId);
+		Task<Response<List<ProductViewModel>>> GetProductsByMainCategoryIdAsync(int mainCategoryId); //kullandım
+		Task<Response<List<ProductViewModel>>> GetNewProductsAsync(); //kullandım
+		Task<Response<List<ProductViewModel>>> GetSelectedProducts(); //kullandım
+		Task<Response<List<ProductViewModel>>> SearchProductAsync(string query); //kullandım
+		Task<Response<List<ProductViewModel>>> GetProductsByBrandIdAsync(int brandId); //kullandım
+		Task<Response<ProductViewModel>> GetProductByProductIdAsync(int productId); //kullandım
 		Task<Response<List<ProductViewModel>>> GetProductsByIsActiveAsync(bool isActive = true);
 		Task<Response<List<ProductViewModel>>> GetProductsByIsDeleteAsync(bool isDeleted);
-		Task<Response<List<ProductViewModel>>> GetAllProductsAsync();
-		Task<Response<ProductViewModel>> CreateProductAsync(AddProductViewModel addProductViewModel);
-		Task<Response<ProductViewModel>> UpdateProductAsync(EditProductViewModel editProductDto);
-		Task<Response<NoContent>> HardDeleteAsync(int productId);
-		Task<Response<NoContent>> SoftDeleteAsync(int productId);
-		Task<bool> UpdateIsHomeAsync(int productId);
-		Task<bool> UpdateIsActiveAsync(int productId);
+		Task<Response<List<ProductViewModel>>> GetAllProductsAsync(); //kullandım
+		Task<Response<ProductViewModel>> CreateProductAsync(AddProductViewModel addProductViewModel); //kullandım
+		Task<Response<ProductViewModel>> UpdateProductAsync(EditProductViewModel editProductDto); //kullandım
+		Task<Response<NoContent>> HardDeleteAsync(int productId); //kullandım
+		Task<Response<NoContent>> SoftDeleteAsync(int productId); //kullandım
+		Task<bool> UpdateIsHomeAsync(int productId); //kullandım
+		Task<bool> UpdateIsActiveAsync(int productId); //kullandım
 	}
 }

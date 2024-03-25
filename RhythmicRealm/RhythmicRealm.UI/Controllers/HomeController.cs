@@ -8,7 +8,6 @@ namespace RhythmicRealm.UI.Controllers
 	{
 
 		private readonly IProductService _productService;
-
 		public HomeController(IProductService productService)
 		{
 			_productService = productService;
@@ -23,5 +22,6 @@ namespace RhythmicRealm.UI.Controllers
 		}
 
 	
+
 	}
 }
