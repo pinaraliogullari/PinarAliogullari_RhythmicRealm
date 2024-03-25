@@ -14,6 +14,6 @@ namespace RhythmicRealm.Data.Abstract
 		Task<List<Product>> GetNewProductsAsync();
 		Task<List<Product>> GetSelectedProductsAsync();
 		Task<List<Product>> GetAdvantageousProductsAsync();
-
+		Task<List<Product>> GetProductsBySubcategoryIdAndBrandIdAsync(int[] subId, int[] brandId);
 	}
 }

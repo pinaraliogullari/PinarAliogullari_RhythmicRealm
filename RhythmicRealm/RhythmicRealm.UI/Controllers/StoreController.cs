@@ -33,56 +33,38 @@ namespace RhythmicRealm.UI.Controllers
 				Brands = await GetBrandsByMainCategoryId(id),
 				SubCategories = await GetSubCategoriesByMainCategoryId(id)
 			};
+			
+
+			return View(model);
+		}
+		public async Task<IActionResult> FilterProducts(int Id,int[] subCategoryId, int[] brandId)
+		{
+		
+
+			var filteredProducts = await GetFilteredProducts(subCategoryId, brandId);
+			var model = new StoreViewModel
+			{
+				Products = filteredProducts,
+				Brands = await GetBrandsByMainCategoryId(Id),
+				SubCategories =await GetSubCategoriesByMainCategoryId(Id)
+			};
 			if (model.Products != null && model.Products.Any())
 			{
-				return View(model);
+				return View("Index", model);
 			}
 			else
 			{
 				ViewBag.ErrorMessage = "Aradığınız kriterlere uygun ürün bulunamadı.";
-				return View();
+				return View("Index", model);
+
 			}
-
-
-		}
-		public async Task<IActionResult> FilterProducts(string[] subCategory, string[] brand)
-		{
-			if (!TempData.ContainsKey("MainCategoryId"))
-			{
-				return RedirectToAction("Index");
-			}
-
-			var mainCategoryId = (int)TempData["MainCategoryId"];
-			var filteredProducts = await GetFilteredProducts(mainCategoryId, subCategory, brand);
-			var model = new StoreViewModel
-			{
-				Products = filteredProducts,
-				Brands = await GetBrandsByMainCategoryId(mainCategoryId),
-				SubCategories =await GetSubCategoriesByMainCategoryId(mainCategoryId)
-			};
-			
-			return View("Index", model);
-			
-		
 		}
 
-		private async Task<List<ProductViewModel>> GetFilteredProducts(int mainCategoryId, string[] subCategory, string[] brand)
+		private async Task<List<ProductViewModel>> GetFilteredProducts(int[] subCategoryId, int[] brandId)
 		{
-			
-			var products = await _productService.GetProductsByMainCategoryIdAsync(mainCategoryId);
+
+			var products = await _productService.GetProductsBySubcategoryIdAndBrandId(subCategoryId, brandId);
 			var data = products.Data;
-
-			if (subCategory != null && subCategory.Length > 0)
-			{
-				data = data.Where(p => subCategory.Contains(p.SubCategory.Name)).ToList();
-			}
-			
-			if (brand != null && brand.Length > 0)
-			{
-				data = data.Where(p => brand.Contains(p.Brand.Name)).ToList();
-			}
-			
-
 			return data;
 		}
 

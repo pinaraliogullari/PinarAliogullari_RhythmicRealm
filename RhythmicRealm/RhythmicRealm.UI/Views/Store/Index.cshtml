@@ -1,12 +1,9 @@
 ﻿@model StoreViewModel
 <vc:navbar-of-main-cat></vc:navbar-of-main-cat>
 
-@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
-{
-    <div class="alert alert-danger" role="alert">
-        @ViewBag.ErrorMessage
-    </div>
-}
+
+    
+
 <!-- SECTION -->
 <div class="section">
 	<!-- container -->
@@ -25,7 +22,7 @@
 							{
 							
 								<div class="input-checkbox">
-									<input type="checkbox" id="subcategory-@subCategory.Id" name="subCategory" value="@subCategory.Name">
+									<input type="checkbox" id="subcategory-@subCategory.Id" name="subCategoryId" value="@subCategory.Id">
 									<label for="subcategory-@subCategory.Id">
 										<span></span>
 										@subCategory.Name
@@ -65,7 +62,7 @@
 							@foreach (var brand in Model.Brands)
 							{
 								<div class="input-checkbox">
-									<input type="checkbox" id="brand-@brand.Id" name="brand" value="@brand.Name">
+									<input type="checkbox" id="brand-@brand.Id" name="brandId" value="@brand.Id">
 									<label for="brand-@brand.Id">
 										<span></span>
 										@brand.Name
@@ -78,9 +75,8 @@
 
 						</div>
 					</div>
-
 					<!-- /aside Widget -->
-					<button style="margin-top:50px;background-color:darkred; " class="btn btn-danger btn-block" type="submit">Filtrele</button>
+					<button style="margin-top:50px;background-color:darkred; " class="btn btn-danger btn-block" type="submit" value="@Model.Products.FirstOrDefault()?.MainCategory.Id">Filtrele</button>
 			    </form>
 			</div>
 			<!-- /ASIDE -->
@@ -91,8 +87,10 @@
 				<!-- /store top filter -->
 				<!-- store products -->
 					<div class="row">
+					
 				@foreach (var product in Model.Products)
 					{
+						
 						<div class="col-md-4 col-xs-6">
 							<div class="product">
 								<div class="product-img">
@@ -126,18 +124,12 @@
 			        }
 				
 				</div>
+				<div class="alert alert-danger" role="alert">
+					@ViewBag.ErrorMessage
+				</div>
 				<!-- /store products -->
 				<!-- store bottom filter -->
-				<div class="store-filter clearfix">
 				
-					<ul class="store-pagination">
-						<li class="active">1</li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-					</ul>
-				</div>
 				<!-- /store bottom filter -->
 			</div>
 			<!-- /STORE -->

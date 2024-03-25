@@ -2,12 +2,6 @@
 using RhythmicRealm.Data.Abstract;
 using RhythmicRealm.Data.Concrete.Contexts;
 using RhythmicRealm.Entity.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.WebPages;
 
 namespace RhythmicRealm.Data.Concrete.Repositories
 {
@@ -124,6 +118,27 @@ namespace RhythmicRealm.Data.Concrete.Repositories
 		        .Where(p => p.Name.Contains(query.ToUpper()) || p.Description.Contains(query.ToUpper()) || p.Brand.Name.Contains(query.ToUpper()))
 		        .ToListAsync();
 			return searchResults;
+		}
+
+		public async Task<List<Product>> GetProductsBySubcategoryIdAndBrandIdAsync(int[] subId, int[] brandId)
+		{
+			IQueryable<Product> searchResults = RRContext
+				.Products
+				.Include(p => p.Brand)
+				.Include(p => p.SubCategory)
+				.ThenInclude(s => s.MainCategory).AsQueryable();
+
+			 if(subId.Length > 0)
+				searchResults = searchResults.Where(x => subId.Contains(x.SubCategoryId));
+			
+			if(brandId.Length > 0)
+				searchResults = searchResults.Where(x => brandId.Contains(x.BrandId));
+
+			//Select * from Produıct where SubscatreoID = subcateoryId and BrandId = brandId
+
+			//SElect*from Product where SubcategoryID = subcategoryKId
+
+			return await searchResults.ToListAsync();
 		}
 	}
 }
