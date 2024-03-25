@@ -118,6 +118,13 @@ namespace RhythmicRealm.UI.Controllers
 				var model = products.Data;
 				return View("ShowProducts",model);
 			}
+
+			if (id == 2)
+			{
+				var products = await _productService.GetAdvantageousProductsAsync();
+				var model = products.Data;
+				return View("ShowProducts", model);
+			}
 			if (id == 3)
 			{
 				var products = await _productService.GetSelectedProducts();

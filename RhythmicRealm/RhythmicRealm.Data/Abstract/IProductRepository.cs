@@ -13,6 +13,7 @@ namespace RhythmicRealm.Data.Abstract
 		Task<List<Product>> SearchProductByQueryAsync(string query);
 		Task<List<Product>> GetNewProductsAsync();
 		Task<List<Product>> GetSelectedProductsAsync();
+		Task<List<Product>> GetAdvantageousProductsAsync();
 
 	}
 }

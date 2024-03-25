@@ -13,6 +13,7 @@ namespace RhythmicRealm.Service.Abstract
 		Task<Response<List<ProductViewModel>>> GetProductsBySubCategoryIdAsync(int subCategoryId);
 		Task<Response<List<ProductViewModel>>> GetProductsByMainCategoryIdAsync(int mainCategoryId); //kullandım
 		Task<Response<List<ProductViewModel>>> GetNewProductsAsync(); //kullandım
+		Task<Response<List<ProductViewModel>>> GetAdvantageousProductsAsync(); //kullandım
 		Task<Response<List<ProductViewModel>>> GetSelectedProducts(); //kullandım
 		Task<Response<List<ProductViewModel>>> SearchProductAsync(string query); //kullandım
 		Task<Response<List<ProductViewModel>>> GetProductsByBrandIdAsync(int brandId); //kullandım

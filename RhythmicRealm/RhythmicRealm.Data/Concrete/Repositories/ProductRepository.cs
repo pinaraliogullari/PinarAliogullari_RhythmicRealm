@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.WebPages;
 
 namespace RhythmicRealm.Data.Concrete.Repositories
 {
@@ -18,6 +19,51 @@ namespace RhythmicRealm.Data.Concrete.Repositories
 		private RRContext RRContext
 		{
 			get { return _dbContext as RRContext; }
+		}
+
+		public async Task<List<Product>> GetAdvantageousProductsAsync()
+		{
+			var mainCategories = await RRContext.Products.Select(p => p.SubCategory.MainCategory).Distinct().ToListAsync();
+			var filteredProducts = new List<Product>();
+			foreach (var mainCategory in mainCategories)
+			{
+				decimal priceFilter = GetPriceFilterForSubCategory(mainCategory.Name);
+
+				var products = await RRContext.Products
+					.Include(p => p.Brand)
+					.Include(p => p.SubCategory)
+					.ThenInclude(s => s.MainCategory)
+					.Where(p => p.SubCategory.MainCategory.Name == mainCategory.Name && p.Price < priceFilter)
+					.OrderByDescending(p => p.CreatedDate)
+					.ToListAsync();
+
+				if (products != null && products.Any())
+				{
+					filteredProducts.AddRange(products);
+				}
+			}
+
+			return filteredProducts;
+		}
+
+		private decimal GetPriceFilterForSubCategory(string mainCategoryName)
+		{
+	
+			switch (mainCategoryName)
+			{
+				case "Tuşlular":
+					return 35000; 
+				case "Telliler":
+					return 10000;
+				case "Yaylılar":
+					return 30000;
+				case "Nefesliler":
+					return 1000;
+				case "Davul Perküsyon":
+					return 6000;
+				default:
+					return 10000; 
+			}
 		}
 
 		public async Task<List<Product>> GetNewProductsAsync()
