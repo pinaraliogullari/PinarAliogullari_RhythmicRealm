@@ -82,6 +82,8 @@ builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IShoppingBasketRepository, ShoppingBasketRepository>();
 builder.Services.AddScoped<IShoppingBasketItemRepository, ShoppingBasketItemRepository>();
+builder.Services.AddScoped<IContactRepository, ContactRepository>();
+builder.Services.AddScoped<IMessageRepository, MessageRepository>();
 
 
 //datalayer-services
@@ -92,6 +94,8 @@ builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IShoppingBasketService, ShoppingBasketService>();
 builder.Services.AddScoped<IShoppingBasketItemService, ShoppingBasketItemService>();
+builder.Services.AddScoped<IContactService, ContactService>();
+builder.Services.AddScoped<IMessageService, MessageService>();
 
 //Helper
 builder.Services.AddScoped<IImageHelper, ImageHelper>();

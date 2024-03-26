@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RhythmicRealm.Data.Extensions;
+using RhythmicRealm.Entity.Concrete.Others;
 
 namespace RhythmicRealm.Data.Concrete.Contexts
 {
@@ -23,6 +24,8 @@ namespace RhythmicRealm.Data.Concrete.Contexts
 		public DbSet<SubCategory> MainCategories { get; set; }
 		public DbSet<Product> Products { get; set; }
 		public DbSet<BrandMainCategory> BrandMainCategories { get; set; }
+		public DbSet<Contact> Contacts { get; set; }
+		public DbSet<Message> Messages { get; set; }
         public DbSet<ShoppingBasket> ShoppingBaskets { get; set; }
         public DbSet<ShoppingBasketItem> ShoppingBasketItems { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
