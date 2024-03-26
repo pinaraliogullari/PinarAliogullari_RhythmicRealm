@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace RhythmicRealm.Data.Abstract
 {
-	public interface IOrderRepository:IGenericRepository<Order>
+	public interface IOrderRepository : IGenericRepository<Order>
 	{
+		
 	}
 }

@@ -23,8 +23,17 @@ namespace RhythmicRealm.Data.Concrete.Contexts
 		public DbSet<SubCategory> MainCategories { get; set; }
 		public DbSet<Product> Products { get; set; }
 		public DbSet<BrandMainCategory> BrandMainCategories { get; set; }
-		protected override void OnModelCreating(ModelBuilder modelBuilder)
+        public DbSet<ShoppingBasket> ShoppingBaskets { get; set; }
+        public DbSet<ShoppingBasketItem> ShoppingBasketItems { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
+			modelBuilder.Entity<Order>()
+				.HasKey(o => o.Id);
+			modelBuilder.Entity<ShoppingBasket>()
+				.HasOne(s => s.Order)
+				.WithOne(o => o.ShoppingBasket)
+				.HasForeignKey<Order>(o => o.Id);
+
 			modelBuilder.SeedData();
 			modelBuilder.ApplyConfigurationsFromAssembly(typeof(BrandConfig).Assembly);
 			base.OnModelCreating(modelBuilder);

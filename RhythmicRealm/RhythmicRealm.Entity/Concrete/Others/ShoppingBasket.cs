@@ -1,4 +1,5 @@
 ﻿using RhythmicRealm.Entity.Abstract;
+using RhythmicRealm.Entity.Concrete.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,11 @@ namespace RhythmicRealm.Entity.Concrete
 	{
 		public int Id { get; set; }
 		public DateTime CreatedDate { get; set; } = DateTime.Now;
-		public string UserId { get; set; }
-		public List<ShoppingBasketItem> ShoppingBasketItems { get; set; } = new List<ShoppingBasketItem>();//sepetin başlangıç durumunu(boş) belirlemek için.
-	}
+		public DateTime UpdatedDate { get; set; } = DateTime.Now;
+        public User	User { get; set; }
+        public string UserId { get; set; }
+        public Order Order { get; set; }
+        public List<ShoppingBasketItem> ShoppingBasketItems { get; set; }
+
+    }
 }

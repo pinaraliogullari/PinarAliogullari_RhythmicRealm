@@ -1,12 +1,9 @@
 ﻿using AspNetCoreHero.ToastNotification.Abstractions;
-using AspNetCoreHero.ToastNotification.Notyf;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using RhythmicRealm.Entity.Concrete.Identity;
 using RhythmicRealm.Shared.ViewModels.Identity;
 using RhythmicRealm.UI.EmailServices.Abstract;
-using System.Web.Helpers;
 
 namespace RhythmicRealm.UI.Controllers
 {

@@ -9,5 +9,6 @@ namespace RhythmicRealm.Data.Abstract
 {
 	public interface IShoppingBasketRepository:IGenericRepository<ShoppingBasket>
 	{
+		
 	}
 }

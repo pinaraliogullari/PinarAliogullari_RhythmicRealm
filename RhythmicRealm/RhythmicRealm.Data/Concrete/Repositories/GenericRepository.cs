@@ -19,6 +19,8 @@ namespace RhythmicRealm.Data.Concrete.Repositories
 			_dbContext = dbContext;
 		}
 
+		public DbSet<TEntity> Table { get ; set; }
+
 		public async Task<bool> AnyAsync(Expression<Func<TEntity, bool>> options)
 		{
 			return await _dbContext.Set<TEntity>().AnyAsync(options);

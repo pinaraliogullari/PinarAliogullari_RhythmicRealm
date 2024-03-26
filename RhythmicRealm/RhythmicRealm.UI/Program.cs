@@ -18,7 +18,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<RRContext>(options =>options.UseSqlite(builder.Configuration.GetConnectionString("SqliteConnection")));
-
+builder.Services.AddHttpContextAccessor(); //http context nesnesine katmanlardaki herhangi bir sýnýftan eriþebilmek için.
 
 //identity
 builder.Services.AddIdentity<User, Role>()

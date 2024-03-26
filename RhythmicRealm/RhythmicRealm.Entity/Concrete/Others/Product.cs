@@ -21,6 +21,7 @@ namespace RhythmicRealm.Entity.Concrete
         public int SubCategoryId { get; set; }
         public Brand Brand { get; set; }
         public int BrandId { get; set; }
-	
-	}
+        public List<ShoppingBasketItem> ShoppingBasketItems { get; set; }
+
+    }
 }
