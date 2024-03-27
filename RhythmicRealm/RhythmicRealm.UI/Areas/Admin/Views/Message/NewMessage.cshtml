@@ -1,4 +1,6 @@
-﻿  <!-- Content Wrapper. Contains page content -->
+﻿ @model AdminMessageViewModel
+ 
+<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -14,42 +16,49 @@
                 @await Html.PartialAsync("_MessageBoxLeftSidePartialView")
                 <!-- /.col -->
                 <div class="col-md-9">
-                    <div class="card card-primary card-outline">
-                        <div class="card-header">
-                            <h3 class="card-title">Yeni Mesaj Oluştur</h3>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <div class="form-group">
-                                <input class="form-control" placeholder="Alıcı:">
+                    <form asp-area="Admin" asp-controller="Message" asp-action="NewMessage" method="post">
+                        <div class="card card-primary card-outline">
+                            <div class="card-header">
+                                <h3 class="card-title">Yeni Mesaj Oluştur</h3>
                             </div>
-                            <div class="form-group">
-                                <input class="form-control" placeholder="Konu:">
-                            </div>
-                            <div class="form-group">
-                                <textarea id="compose-textarea" class="form-control" style="height: 300px">
-                          
-                                </textarea>
-                            </div>
-                            <div class="form-group">
-                                <div class="btn btn-default btn-file">
-                                    <i class="fas fa-paperclip"></i> Dosya Ekle
-                                    <input type="file" name="attachment">
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label asp-for="ReceiverMail"></label>
+                                    <input asp-for=ReceiverMail class="form-control" >
+                                    <span class="text-danger" asp-validation-for="ReceiverMail"></span>
                                 </div>
-                                <p class="help-block">Max. 32MB</p>
+                                <div class="form-group">
+                                    <label asp-for="Subject"></label>
+                                    <input asp-for=Subject class="form-control">
+                                    <span class="text-danger" asp-validation-for="Subject"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Content"></label>
+                                    <textarea asp-for=Content id="compose-textarea" class="form-control" style="height: 300px"></textarea>
+                                    <span class="text-danger" asp-validation-for="Content"></span>
+                                </div>
+                                <div class="form-group">
+                                    <div class="btn btn-default btn-file">
+                                        <i class="fas fa-paperclip"></i> Dosya Ekle
+                                        <input type="file" name="attachment">
+                                    </div>
+                                    <p class="help-block">Max. 32MB</p>
+                                </div>
                             </div>
-                        </div>
-                        <!-- /.card-body -->
-                        <div class="card-footer">
-                            <div class="float-right">
-                                <button type="button" class="btn btn-default"><i class="fas fa-pencil-alt"></i> Taslaklara Kaydet</button>
-                                <button type="submit" class="btn btn-primary"><i class="far fa-envelope"></i> Gönder</button>
+                            <!-- /.card-body -->
+                            <div class="card-footer">
+                                <div class="float-right">
+
+                                    <button type="submit" class="btn btn-primary"><i class="far fa-envelope"></i> Gönder</button>
+                                </div>
+                                <a asp-area="Admin" asp-controller="Message" asp-action="Index" type="reset" class="btn btn-default"><i class="fas fa-times"></i> İptal Et</a>
                             </div>
-                            <button type="reset" class="btn btn-default"><i class="fas fa-times"></i> İptal Et</button>
+                            <!-- /.card-footer -->
                         </div>
-                        <!-- /.card-footer -->
-                    </div>
-                    <!-- /.card -->
+                        <!-- /.card -->
+                    </form>
+                 
                 </div>
                 <!-- /.col -->
             </div>
@@ -61,5 +70,5 @@
 
 @section BottomScripts {
     @await Html.PartialAsync("_SummerNotePartial")
-    
+
 }

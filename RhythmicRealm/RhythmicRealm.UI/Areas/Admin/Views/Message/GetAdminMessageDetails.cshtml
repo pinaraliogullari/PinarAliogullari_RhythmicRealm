@@ -1,4 +1,4 @@
-﻿@model MessageViewModel
+﻿@model AdminMessageViewModel
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -15,20 +15,14 @@
         <div class="container-fluid">
             <div class="row">
 
-
-
                 @await Html.PartialAsync("_MessageBoxLeftSidePartialView")
 
                 <!-- /.col -->
                 <div class="col-md-9">
                     <div class="card card-primary card-outline">
                         <div class="card-header">
-                            <h3 class="card-title">Mail içeriği</h3>
-
-                            <div class="card-tools">
-                                <a href="#" class="btn btn-tool" title="Previous"><i class="fas fa-chevron-left"></i></a>
-                                <a href="#" class="btn btn-tool" title="Next"><i class="fas fa-chevron-right"></i></a>
-                            </div>
+                            <h3 class="card-title">Mail kutusu</h3>
+                            <span class="mailbox-read-time float-right">@Model.MessageDate</span>
                         </div>
                         <!-- /.card-header -->
 
@@ -37,8 +31,8 @@
                                 <h5>Konu: @Html.DisplayFor(x => x.Subject)</h5>
                                 <br />
                                 <h6>
-                                    Kimden: @Html.DisplayFor(x => x.SenderMail)
-                                    <span class="mailbox-read-time float-right">@Model.MessageDate</span>
+                                    Gönderici: @Html.DisplayFor(x => x.SenderMail)
+                             
 
                                 </h6>
                             </div>

@@ -8,11 +8,9 @@ using System.Threading.Tasks;
 
 namespace RhythmicRealm.Shared.ViewModels.MessageViewModels
 {
-    public class MessageViewModel
+    public class AdminMessageViewModel
     {
         public int Id { get; set; }
-
-
         [DisplayName("Kimden:")]
         public string SenderMail { get; set; }
 

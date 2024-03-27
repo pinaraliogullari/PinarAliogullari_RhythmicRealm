@@ -1,16 +1,17 @@
 ﻿using RhythmicRealm.Shared.Response;
-using RhythmicRealm.Shared.ViewModels.MessageViewModel;
+using RhythmicRealm.Shared.ViewModels.MessageViewModels;
+
 
 
 namespace RhythmicRealm.Service.Abstract
 {
-	public interface IContactService
+    public interface IContactService
 	{
-		Task<Response<List<ContactViewModel>>> GetMessagesListAsync();
-		Task<Response<ContactViewModel>> GetMessageAsync(int id);
-		Task<Response<NoContent>> CreateMessageAsync(ContactViewModel contactViewModel);
-		Task<Response<NoContent>> UpdateMessageAsync(ContactViewModel contactViewModel);
-		Task<Response<NoContent>> DeleteMessageAsync(ContactViewModel contactViewModel);
+		Task<Response<List<UserMessageViewModel>>> GetMessagesListInInboxAsync();
+        Task<Response<UserMessageViewModel>> GetMessageAsync(int id);
+		Task<Response<NoContent>> CreateMessageAsync(UserMessageViewModel contactViewModel);
+		Task<Response<NoContent>> UpdateMessageAsync(UserMessageViewModel contactViewModel);
+		Task<Response<NoContent>> DeleteMessageAsync(UserMessageViewModel contactViewModel);
 
 
 	}

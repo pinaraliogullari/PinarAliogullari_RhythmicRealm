@@ -25,30 +25,19 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a 
-                               asp-area="Admin"
-                               asp-controller="MainCategory"  
-                               asp-action="Index"
-                               asp-route-isdeleted=false
-                              class="nav-link">
+                            <a asp-area="Admin" asp-controller="MainCategory" asp-action="Index" asp-route-isdeleted=false  class="nav-link">
                                 <i class="fas fa-list"></i>
                                 <p>Ana Kategori Listesi</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a asp-area="Admin"
-                               asp-controller="MainCategory"
-                               asp-action="Create"
-                               class="nav-link">
+                            <a asp-area="Admin" asp-controller="MainCategory"asp-action="Create" class="nav-link">
                                 <i class="fas fa-plus"></i>
                                 <p>Ana Kategori Ekle</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a asp-area="Admin"
-                               asp-controller="MainCategory"
-                               asp-action="Index"
-                               asp-route-isdeleted=true
+                            <a asp-area="Admin" asp-controller="MainCategory" asp-action="Index" asp-route-isdeleted=true
                                class="nav-link">
                                 <i class="fas fa-trash-alt"></i>
                                 <p>Çöp Kutusu</p>
@@ -67,29 +56,20 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a asp-area="Admin"
-                               asp-controller="SubCategory"
-                               asp-action="Index"
-                               asp-route-isdeleted=false
+                            <a asp-area="Admin" asp-controller="SubCategory" asp-action="Index" asp-route-isdeleted=false
                                class="nav-link">
                                 <i class="fas fa-list"></i>
                                 <p>Alt Kategori Listesi</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a asp-area="Admin"
-                               asp-controller="SubCategory"
-                               asp-action="Create"
-                               class="nav-link">
+                            <a asp-area="Admin" asp-controller="SubCategory" asp-action="Create"  class="nav-link">
                                 <i class="fas fa-plus"></i>
                                 <p>Alt Kategori Ekle</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a asp-area="Admin"
-                               asp-controller="SubCategory"
-                               asp-action="Index"
-                               asp-route-isdeleted=true
+                            <a asp-area="Admin" asp-controller="SubCategory" asp-action="Index" asp-route-isdeleted=true
                                class="nav-link">
                                 <i class="fas fa-trash-alt"></i>
                                 <p>Çöp Kutusu</p>
@@ -108,31 +88,20 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a 
-                                asp-area="Admin"
-                                asp-controller="Product"
-                                asp-action="Index"
-                                asp-route-isdeleted=false
+                            <a asp-area="Admin" asp-controller="Product" asp-action="Index" asp-route-isdeleted=false
                                 class="nav-link">
                                 <i class="fas fa-list"></i>
                                 <p>Ürün Listesi</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a asp-area="Admin"
-                            asp-controller="Product"
-                            asp-action="Create"
-                            class="nav-link">
+                            <a asp-area="Admin"  asp-controller="Product" asp-action="Create" class="nav-link">
                                 <i class="fas fa-plus"></i>
                                 <p>Yeni Ürün Ekle</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a 
-                                asp-area="Admin"
-                                asp-controller="Product"
-                                asp-action="Index"
-                                asp-route-isdeleted=true
+                            <a asp-area="Admin" asp-controller="Product" asp-action="Index" asp-route-isdeleted=true
                                class="nav-link">
                                 <i class="fas fa-trash-alt"></i>
                                 <p>Çöp Kutusu</p>
@@ -168,10 +137,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a 
-                                asp-area="Admin"
-                                asp-controller=""
-                                asp-action=""
+                            <a asp-area="Admin" asp-controller="" asp-action=""
                             class="nav-link">
                                 <i class="fas fa-user"></i>
                                 <p>Yeni Kullanıcılar</p>
@@ -190,40 +156,21 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a 
-                                asp-area="Admin"
-                                asp-controller="Authorization"
-                                asp-action="Index"
-                                class="nav-link">
+                            <a asp-area="Admin" asp-controller="Authorization"asp-action="Index" class="nav-link">
                                 <i class="fas fa-user-tag"></i>
                                 <p>Yetkilendirme</p>
                             </a>
                         </li>
                     </ul>
                 </li>
+              
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="fas fa-envelope"></i>
+                    <a asp-area="Admin" asp-controller="Message" asp-action="Index" class="nav-link">
+                        <i class="fas fa-envelope-open-text"></i>
                         <p>
-                          Mesajlar
-                            <i class="fas fa-angle-left right"></i>
+                            Mesajlar
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a asp-area="Admin" asp-controller="Contact" asp-action="Index" class="nav-link">
-                                <i class="fas fa-envelope-open-text"></i>
-                                <p>Tüm Mesajlar</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/mailbox/compose.html" class="nav-link">
-                                <i class="fas fa-minus-square"></i>
-                                <p>Okunmamış Mesajlar</p>
-                            </a>
-                        </li>
-                     
-                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="pages/gallery.html" class="nav-link">
@@ -251,10 +198,7 @@
                 </li>
                 <li class="nav-item">
                     <!--logout sayfasına yönlendireceğim.-->
-                    <a asp-area=""
-                    asp-controller="Home"
-                    asp-action="Index"
-                    class="nav-link">
+                    <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link">
                         <i class="fas fa-sign-out-alt"></i>
                         <p>
                             Çıkış Yap

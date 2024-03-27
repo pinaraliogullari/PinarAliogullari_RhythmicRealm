@@ -1,4 +1,4 @@
-﻿@model ContactViewModel
+﻿@model UserMessageViewModel
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -15,10 +15,79 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-           
-                   
 
-                  @await Html.PartialAsync("_MessageBoxLeftSidePartialView")
+                <div class="col-md-3">
+                    <a asp-area="Admin" asp-controller="Message" asp-action="NewMessage" class="btn btn-primary btn-block mb-3">Yeni Mesaj Oluştur</a>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Seçenekler</h3>
+
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body p-0">
+                            <ul class="nav nav-pills flex-column">
+                                <li class="nav-item active">
+                                    <a asp-area="Admin" asp-controller="Message" asp-action="Inbox" class="nav-link">
+                                        <i class="fas fa-inbox"></i> Gelen Mesajlar
+                                        <span class="badge bg-primary float-right">12</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-area="Admin" asp-controller="Message" asp-action="Sendbox" class="nav-link">
+                                        <i class="far fa-envelope"></i> Gönderilen Mesajlar
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-trash-alt"></i> Çöp Kutusu
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Diğer</h3>
+
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body p-0">
+                            <ul class="nav nav-pills flex-column">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle text-danger"></i>
+                                        Önemliler
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle text-warning"></i> Tanıtımlar
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle text-primary"></i>
+                                        Sosyal Medya
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
                 
                 <!-- /.col -->
                 <div class="col-md-9">
@@ -39,7 +108,7 @@
                                     <br />
                                     <h6>
                                         Kimden: @Html.DisplayFor(x => x.UserMail)
-                                        <span class="mailbox-read-time float-right">15 Feb. 2015 11:03 PM</span>
+                                        <span class="mailbox-read-time float-right">@Model.MessageDate</span>
                                     
                                     </h6>
                                 </div>

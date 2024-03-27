@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RhythmicRealm.Service.Abstract;
+using RhythmicRealm.Service.Concrete;
 
 namespace RhythmicRealm.UI.Areas.Admin.Controllers
 {
+
+	//şu an için bu controllerı kullanmıyorum
 	[Area("Admin")]
 	public class ContactController : Controller
 	{
@@ -15,7 +18,7 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
 
 		public async Task<IActionResult> Index()
 		{
-			var contactValues= await _contactService.GetMessagesListAsync();
+			var contactValues= await _contactService.GetMessagesListInInboxAsync();
 			return View(contactValues.Data);
 		}
 
