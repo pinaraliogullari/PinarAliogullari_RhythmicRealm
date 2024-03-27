@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
 namespace RhythmicRealm.UI.Areas.Admin.ViewComponents
 {
 
@@ -7,6 +6,7 @@ namespace RhythmicRealm.UI.Areas.Admin.ViewComponents
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {
+            
             return View();
         }
     }

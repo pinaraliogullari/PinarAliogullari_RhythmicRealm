@@ -29,5 +29,6 @@ namespace RhythmicRealm.Shared.ViewModels.MessageViewModels
 
         [DisplayName("Tarih/Saat:")]
         public DateTime MessageDate { get; set; } = DateTime.Now;
+        public bool IsRead { get; set; }
     }
 }

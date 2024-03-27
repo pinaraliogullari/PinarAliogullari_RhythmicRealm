@@ -25,5 +25,9 @@ namespace RhythmicRealm.Data.Abstract
 		Task UpdateAsync(TEntity entity);
 		Task HardDeleteAsync(TEntity entity);
 		Task<bool> AnyAsync(Expression<Func<TEntity, bool>> options);
+		Task<int> GetCount(
+		Expression<Func<TEntity, bool>> options = null, Func<IQueryable<TEntity>,
+		IIncludableQueryable<TEntity, object>> include = null
+	);
 	}
 }

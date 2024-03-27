@@ -14,5 +14,6 @@ namespace RhythmicRealm.Shared.ViewModels.MessageViewModels
         public string Subject { get; set; }
         public string Content { get; set; }
         public DateTime MessageDate { get; set; } = DateTime.Now;
+        public bool IsRead { get; set; }
     }
 }

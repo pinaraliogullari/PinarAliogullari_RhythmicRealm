@@ -13,6 +13,7 @@ namespace RhythmicRealm.Entity.Concrete.Others
         public string ReceiverMail { get; set; }
         public string Subject { get; set; }
         public string Content { get; set; }
+        public bool IsRead { get; set; }
         public DateTime MessageDate { get; set; }=DateTime.Now;
 
         //public int Id { get; set; }

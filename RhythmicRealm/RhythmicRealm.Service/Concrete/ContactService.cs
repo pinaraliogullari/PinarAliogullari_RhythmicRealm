@@ -48,6 +48,11 @@ namespace RhythmicRealm.Service.Concrete
 			return Response<UserMessageViewModel>.Success(messageViewModel, 200);
 		}
 
+		public Task<Response<int>> GetMessageCountAsync(string userId, bool isRead = false)
+		{
+			throw new NotImplementedException();
+		}
+
 		public async Task<Response<List<UserMessageViewModel>>> GetMessagesListInInboxAsync()
 		{
 			var messages = await _contactRepository.GetAllAsync();
@@ -57,14 +62,13 @@ namespace RhythmicRealm.Service.Concrete
 			return Response<List<UserMessageViewModel>>.Success(messageViewModel, 200);
 		}
 
-        public async Task<Response<NoContent>> UpdateMessageAsync(UserMessageViewModel contactViewModel)
+        public async Task<Response<NoContent>> UpdateMessageAsync(int id)
 		{
-			var message= contactViewModel.Adapt<Contact>();
-			if (message == null)
-				return Response<NoContent>.Fail(404,"Mesaj bulunamadı.");
-			await _contactRepository.UpdateAsync(message);
-			return Response<NoContent>.Success(200);
+            var message = await _contactRepository.GetAsync(x => x.Id == id);
+            message.IsRead = true;
+            await _contactRepository.UpdateAsync(message);
+            return Response<NoContent>.Success(200);
 
-		}
+        }
 	}
 }

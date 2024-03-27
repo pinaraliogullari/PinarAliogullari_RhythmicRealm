@@ -1,10 +1,11 @@
-﻿    <!-- Sidebar user panel (optional) -->
+﻿@model string
+<!-- Sidebar user panel (optional) -->
 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
     <div class="image">
         <img src="~/admin/dist/img/pa.jpeg" class="img-circle elevation-2" alt="User Image">
     </div>
     <div class="info">
-        <!--identity paketini yükleyince user ismini buraya dinamik olarak alıcam-->
-        <a href="#" class="d-block">Pınar Alioğulları Kaya</a>
+        
+        <a href="#" class="d-block">@Model</a>
     </div>
 </div>

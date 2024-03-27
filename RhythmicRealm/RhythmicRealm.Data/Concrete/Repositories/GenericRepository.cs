@@ -63,6 +63,20 @@ namespace RhythmicRealm.Data.Concrete.Repositories
 			// return await query.SingleOrDefaultAsync(); birden fazla veri olması durumunda hata verir.
 		}
 
+		public async Task<int> GetCount(Expression<Func<TEntity, bool>> options = null, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null)
+		{
+			IQueryable<TEntity> query = _dbContext.Set<TEntity>();
+			if (include != null)
+			{
+				query = include(query);
+			}
+			if (options != null)
+			{
+				query = query.Where(options);
+			}
+			return await query.CountAsync();
+		}
+
 		public async Task<int> GetCountAsync(Expression<Func<TEntity, bool>> options = null, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null)
 		{
 			IQueryable<TEntity> query = _dbContext.Set<TEntity>();

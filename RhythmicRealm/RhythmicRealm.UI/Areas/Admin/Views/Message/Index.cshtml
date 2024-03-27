@@ -1,4 +1,6 @@
 ﻿@model AllMessagesViewModel
+
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -77,6 +79,7 @@
                                     {
                                         @foreach (var userMessage in Model.UserMessages)
                                         {
+                                             
                                             <tr>
                                                 <td>
                                                     <div class="icheck-primary">
@@ -86,8 +89,8 @@
                                                 </td>
                                                 <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
                                                 <td class="mailbox-name"><a asp-area="Admin" asp-controller="Message" asp-action="GetUserMessageDetails" asp-route-id="@userMessage.Id">@userMessage.UserMail</a></td>
-                                                <td class="mailbox-subject">
-                                                    <b>@userMessage.Subject</b> - @userMessage.Content.Substring(0, 30)...
+                                                <td class="mailbox-subject @(userMessage.IsRead ? "" : "font-weight-bold")">
+                                                    <b>@userMessage.Subject</b> -  @(userMessage.Content.Length > 30 ? $"{userMessage.Content.Substring(0, 30)}..." : userMessage.Content)
                                                 </td>
                                                 <td class="mailbox-attachment"></td>
                                                 <td class="mailbox-date">@userMessage.MessageDate</td>
@@ -107,8 +110,8 @@
                                                 </td>
                                                 <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
                                                 <td class="mailbox-name"><a asp-area="Admin" asp-controller="Message" asp-action="GetAdminMessageDetails" asp-route-id="@adminMessage.Id">@adminMessage.SenderMail</a></td>
-                                                <td class="mailbox-subject">
-                                                    <b>@adminMessage.Subject</b> - @adminMessage.Content.Substring(0, 30)...
+                                                <td class="mailbox-subject @(adminMessage.IsRead ? "" : "font-weight-bold")">
+                                                    <b>@adminMessage.Subject</b> - @(adminMessage.Content.Length>30?$"{adminMessage.Content.Substring(0,30)}...":adminMessage.Content)...
                                                 </td>
                                                 <td class="mailbox-attachment"></td>
                                                 <td class="mailbox-date">@adminMessage.MessageDate</td>
