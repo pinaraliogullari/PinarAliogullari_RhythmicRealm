@@ -11,7 +11,8 @@ namespace RhythmicRealm.Service.Abstract
 {
     public interface IMessageService
     {
-        Task<Response<List<MessageViewModel>>> GetMessagesListAsync();
+        Task<Response<List<MessageViewModel>>> GetMessagesListInInboxAsync();
+        Task<Response<List<MessageViewModel>>> GetMessagesListInSendboxAsync();
         Task<Response<MessageViewModel>> GetMessageAsync(int id);
         Task<Response<NoContent>> CreateMessageAsync(MessageViewModel messageViewModel);
         Task<Response<NoContent>> UpdateMessageAsync(MessageViewModel messageViewModel);

@@ -1,5 +1,6 @@
-﻿<div class="col-md-3">
-    <a href="compose.html" class="btn btn-primary btn-block mb-3">Mail Kutusu</a>
+﻿
+<div class="col-md-3">
+    <a asp-area="Admin" asp-controller="Message" asp-action="NewMessage" class="btn btn-primary btn-block mb-3">Yeni Mesaj Oluştur</a>
 
     <div class="card">
         <div class="card-header">
@@ -26,21 +27,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a asp-area="Admin" asp-controller="Message" asp-action="Sendbox" class="nav-link">
                         <i class="far fa-envelope"></i> Gönderilen Mesajlar
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="far fa-file-alt"></i> Taslaklar
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="fas fa-filter"></i> Spam
-                        <span class="badge bg-warning float-right">65</span>
-                    </a>
-                </li>
+               
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="far fa-trash-alt"></i> Çöp Kutusu

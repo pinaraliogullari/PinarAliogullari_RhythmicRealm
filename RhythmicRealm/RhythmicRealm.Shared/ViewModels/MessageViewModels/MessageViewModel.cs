@@ -17,6 +17,8 @@ namespace RhythmicRealm.Shared.ViewModels.MessageViewModels
         public string SenderMail { get; set; }
 
         [DisplayName("Kime:")]
+        [Required(ErrorMessage = "Alıcı adresi boş bırakılmamalıdır.")]
+        [DataType(DataType.EmailAddress,ErrorMessage ="Lütfen uygun formatta bir mail adresi giriniz.")]
         public string ReceiverMail { get; set; }
 
         [DisplayName("Konu:")]

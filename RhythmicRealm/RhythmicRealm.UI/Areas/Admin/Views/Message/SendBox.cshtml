@@ -1,5 +1,5 @@
-﻿@model List<ContactViewModel>
- <!-- Content Wrapper. Contains page content -->
+﻿@model List<MessageViewModel>
+<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -15,12 +15,12 @@
     <!-- Main content -->
     <section class="content">
         <div class="row">
-           @await Html.PartialAsync("_MessageBoxLeftSidePartialView")
+            @await Html.PartialAsync("_MessageBoxLeftSidePartialView")
             <!-- /.col -->
             <div class="col-md-9">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h3 class="card-title">Gelen Mesajlar</h3>
+                        <h3 class="card-title">Gönderilen Mesajlar</h3>
 
                         <div class="card-tools">
                             <div class="input-group input-group-sm">
@@ -38,7 +38,24 @@
                     <div class="card-body p-0">
                         <div class="mailbox-controls">
                             <!-- Check all button -->
-                            
+                            <button type="button" class="btn btn-default btn-sm checkbox-toggle">
+                                <i class="far fa-square"></i>
+                            </button>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default btn-sm">
+                                    <i class="far fa-trash-alt"></i>
+                                </button>
+                                <button type="button" class="btn btn-default btn-sm">
+                                    <i class="fas fa-reply"></i>
+                                </button>
+                                <button type="button" class="btn btn-default btn-sm">
+                                    <i class="fas fa-share"></i>
+                                </button>
+                            </div>
+                            <!-- /.btn-group -->
+                            <button type="button" class="btn btn-default btn-sm">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
                             <div class="float-right">
                                 1-50/200
                                 <div class="btn-group">
@@ -66,16 +83,16 @@
                                                 </div>
                                             </td>
                                             <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
-                                            <td class="mailbox-name"><a asp-area="Admin" asp-controller="Contact" asp-action="GetContactDetails" asp-route-id="@item.Id">@item.UserName</a></td>
+                                            <td class="mailbox-name"><a a asp-area="Admin" asp-controller="Message" asp-action="GetSendBoxMessageDetails" asp-route-id="@item.Id">@item.ReceiverMail</a></td>
                                             <td class="mailbox-subject">
-                                                <b>@item.Subject</b> - @item.Content.Substring(0,30)...
+                                                <b>@item.Subject</b> - @item.Content.Substring(0, 30)...
                                             </td>
                                             <td class="mailbox-attachment"></td>
-                                            <td class="mailbox-date">@item</td>
+                                            <td class="mailbox-date">@item.MessageDate</td>
                                         </tr>
                                     }
-                             
-                                
+
+
                                 </tbody>
                             </table>
                             <!-- /.table -->

@@ -1,6 +1,7 @@
 ﻿using Mapster;
 using RhythmicRealm.Data.Abstract;
 using RhythmicRealm.Data.Concrete.Repositories;
+using RhythmicRealm.Entity.Concrete.Others;
 using RhythmicRealm.Service.Abstract;
 using RhythmicRealm.Shared.Response;
 using RhythmicRealm.Shared.ViewModels.MessageViewModel;
@@ -22,9 +23,13 @@ namespace RhythmicRealm.Service.Concrete
             _messageRepository = messageRepository;
         }
 
-        public Task<Response<NoContent>> CreateMessageAsync(MessageViewModel messageViewModel)
+        public async Task<Response<NoContent>> CreateMessageAsync(MessageViewModel messageViewModel)
         {
-            throw new NotImplementedException();
+            var message = messageViewModel.Adapt<Message>();
+            if (message == null)
+                return Response<NoContent>.Fail(404, "Bir hata meydana geldi.");
+            await _messageRepository.CreateAsync(message);
+            return Response<NoContent>.Success(200);
         }
 
         public Task<Response<NoContent>> DeleteMessageAsync(MessageViewModel messageViewModel)
@@ -32,14 +37,27 @@ namespace RhythmicRealm.Service.Concrete
             throw new NotImplementedException();
         }
 
-        public Task<Response<MessageViewModel>> GetMessageAsync(int id)
+        public async Task<Response<MessageViewModel>> GetMessageAsync(int id)
         {
-            throw new NotImplementedException();
+            var message = await _messageRepository.GetAsync(x => x.Id == id);
+            if (message == null)
+                return Response<MessageViewModel>.Fail(404, "Mesaj bulunamadı");
+            var messageViewModel = message.Adapt<MessageViewModel>();
+            return Response<MessageViewModel>.Success(messageViewModel, 200);
         }
 
-        public async Task<Response<List<MessageViewModel>>> GetMessagesListAsync()
+        public async Task<Response<List<MessageViewModel>>> GetMessagesListInInboxAsync()
         {
             var messages = await _messageRepository.GetAllAsync(x=>x.ReceiverMail=="admin@gmail.com");
+            if (messages == null)
+                return Response<List<MessageViewModel>>.Fail(404, "Mesaj bulunamadı");
+            var messageViewModel = messages.Adapt<List<MessageViewModel>>();
+            return Response<List<MessageViewModel>>.Success(messageViewModel, 200);
+        }
+
+        public async Task<Response<List<MessageViewModel>>> GetMessagesListInSendboxAsync()
+        {
+            var messages = await _messageRepository.GetAllAsync(x => x.ReceiverMail == "admin@gmail.com");
             if (messages == null)
                 return Response<List<MessageViewModel>>.Fail(404, "Mesaj bulunamadı");
             var messageViewModel = messages.Adapt<List<MessageViewModel>>();
