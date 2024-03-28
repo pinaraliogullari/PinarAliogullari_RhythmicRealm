@@ -2,260 +2,225 @@
 @{
 	Layout = "";
 }
+@model UserMessageViewModel
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<title>Contact Us</title>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="description" content="Colo Shop Template">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="~/contact/styles/bootstrap4/bootstrap.min.css">
-	<link href="~/contact/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" type="text/css" href="~/contact/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-	<link rel="stylesheet" type="text/css" href="~/contact/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-	<link rel="stylesheet" type="text/css" href="~/contact/plugins/OwlCarousel2-2.2.1/animate.css">
-	<link rel="stylesheet" href="~/contact/plugins/themify-icons/themify-icons.css">
-	<link rel="stylesheet" type="text/css" href="~/contact/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
-	<link rel="stylesheet" type="text/css" href="~/contact/styles/contact_styles.css">
-	<link rel="stylesheet" type="text/css" href="~/contact/styles/contact_responsive.css">
-</head>
 
-<body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-	<div class="super_container">
+    <title>Rhythmic Realm-İletişim</title>
 
-		<!-- Header -->
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="~/contact2/assets/css/bootstrap.min.css">
 
-		<header class="header trans_300">
+    <link rel="stylesheet" type="text/css" href="~/contact2/assets/css/font-awesome.css">
 
-			<!-- Main Navigation -->
+    <link rel="stylesheet" href="~/contact2/assets/css/templatemo-hexashop.css">
 
-			<div class="main_nav_container">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-12 text-right">
-							<div class="logo_container">
-								<a href="/">Rhythmic<span>Realm</span></a>
-							</div>
-							<nav class="navbar">
-							@* 	<ul class="navbar_menu">
-									<li><a href="index.html">home</a></li>
-									<li><a href="#">shop</a></li>
-									<li><a href="#">promotion</a></li>
-									<li><a href="#">pages</a></li>
-									<li><a href="#">blog</a></li>
-									<li><a href="contact.html">contact</a></li>
-								</ul>
-								<ul class="navbar_user">
-									<li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-									<li><a href="#"><i class="fa fa-user" aria-hidden="true"></i></a></li>
-									<li class="checkout">
-										<a href="#">
-											<i class="fa fa-shopping-cart" aria-hidden="true"></i>
-											<span id="checkout_items" class="checkout_items">2</span>
-										</a>
-									</li>
-								</ul> *@
-								<div class="hamburger_container">
-									<i class="fa fa-bars" aria-hidden="true"></i>
-								</div>
-							</nav>
-						</div>
-					</div>
-				</div>
-			</div>
+    <link rel="stylesheet" href="~/contact2/assets/css/owl-carousel.css">
 
-		</header>
+    <link rel="stylesheet" href="~/contact2/assets/css/lightbox.css">
 
-		<div class="fs_menu_overlay"></div>
+        <style>
+            .logo_container {
+                margin-top: 20px;
+            }
 
-	
+            .logo_container a {
+                font-size: 24px;
+                color: #d21737;
+                font-weight: 700;
+                text-transform: uppercase;
+            }
 
-		<div class="container contact_container">
-			<div class="row">
-				<div class="col">
+            .logo_container a span {
+                color: black;
+            }
+            </style>
 
-					<!-- Breadcrumbs -->
+-->
+    </head>
+    
+    <body>
+    
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <div class="logo_container">
+                            <a href="/">Rhythmic<span>Realm</span></a>
+                        </div>
+                      
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+    <!-- ***** Main Banner Area Start ***** -->
+    <div class="page-heading about-page-heading" id="top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="inner-content">
+                        <h2>Bize ulaşın</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Main Banner Area End ***** -->
 
-					<div class="breadcrumbs d-flex flex-row align-items-center">
-						<ul>
-							<li><a href="/">Home</a></li>
-							<li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Contact</a></li>
-						</ul>
-					</div>
+    <!-- ***** Contact Area Starts ***** -->
+    <div class="contact-us">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div id="map">
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d90186.37207676383!2d-80.13495239500924!3d25.9317678710111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9ad1877e4a82d%3A0xa891714787d1fb5e!2sPier%20Park!5e1!3m2!1sen!2sth!4v1637512439384!5m2!1sen!2sth" width="100%" height="400px" frameborder="0" style="border:0" allowfullscreen></iframe>
+                      <!-- You can simply copy and paste "Embed a map" code from Google Maps for any location. -->
+                      
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="section-heading">
+                        <h2>Sorun, öneri ve destek talepleriniz için; </h2>
+                        <span>Ekiplerimiz en kısa sürede sizinle iletişime geçecektir.</span>
+                    </div>
+                    <form id="contact" asp-area="Admin" asp-controller="Message" asp-action="NewContactMessage"  method="post">
+                        <div class="row">
+                   
+                          <div class="col-lg-6">
+                            <fieldset>
+                              <input asp-for="@Model.UserMail"  type="text"  placeholder="Email adresiniz" required="">
+                              <span class="text-danger" asp-validation-for="@Model.UserMail"></span>
+                            </fieldset>
+                          </div>
+                          <div class="col-lg-6 ">
+                                <fieldset>
+                                    <input asp-for="@Model.Subject" type="text" placeholder="Konu" required="">
+                                    <span class="text-danger" asp-validation-for="@Model.Subject"></span>
+                                </fieldset>
+                            </div>
+                          <div class="col-lg-12">
+                            <fieldset>
+                              <textarea asp-for=@Model.Content  rows="6"  placeholder="Mesajınız" required=""></textarea>
+                              <span class="text-danger" asp-validation-for="@Model.Content"></span>
+                            </fieldset>
+                          </div>
+                          <div class="col-lg-12">
+                            <fieldset>
+                              <button type="submit" id="form-submit" class="main-dark-button"><i class="fa fa-paper-plane"></i></button>
+                            </fieldset>
+                          </div>
+                        </div>
+                      </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Contact Area Ends ***** -->
 
-				</div>
-			</div>
+    <!-- ***** Subscribe Area Starts ***** -->
+    <div class="subscribe">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="section-heading">
+                        <h2>Bültenimize Abone Olarak %30 İndirimden Yararlanabilirsiniz</h2>
+                    </div>
+                    <form id="subscribe" asp-area="" asp-controller="Home" asp-action="Index" method="get">
+                        <div class="row">
+                          <div class="col-lg-5">
+                            <fieldset>
+                              <input name="name" type="text" id="name" placeholder="Adınız Soyadınız" required="">
+                            </fieldset>
+                          </div>
+                          <div class="col-lg-5">
+                            <fieldset>
+                              <input name="email" type="text" id="email" placeholder="Email adresiniz" required="">
+                            </fieldset>
+                          </div>
+                          <div class="col-lg-2">
+                            <fieldset>
+                              <button type="submit" id="form-submit" class="main-dark-button"><i class="fa fa-paper-plane"></i></button>
+                            </fieldset>
+                          </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-4">
+                    <div class="row">
+                        <div class="col-6">
+                            <ul>
+                                <li>Mağaza adresi:<br><span>Sunny Isles Beach, FL 33160, United States</span></li>
+                                <li>Telefon:<br><span>010-020-0340</span></li>
+                                <li>Ofis adresi:<br><span>North Miami Beach</span></li>
+                            </ul>
+                        </div>
+                        <div class="col-6">
+                            <ul>
+                                <li>Çalışma saatleri:<br><span>07:30 AM - 9:30 PM </span></li>
+                                <li>Email:<br><span>rhythmicsite@hotmail.com</span></li>
+                                <li>Sosya medya:<br><span><a href="#">Facebook</a>, <a href="#">Instagram</a>, <a href="#">Behance</a>, <a href="#">Linkedin</a></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Subscribe Area Ends ***** -->
 
-			<!-- Map Container -->
 
-			<div class="row">
-				<div class="col">
-					<div id="google_map">
-						<div class="map_container">
-							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d92180.90977648456!2d11.158566724340636!3d43.78005249540952!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132a56a680d2d6ad%3A0x93d57917efc72a03!2sFloransa%2C%20Firenze%20ili%2C%20%C4%B0talya!5e0!3m2!1str!2str!4v1711057612080!5m2!1str!2str" width="1110" height="507" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-						</div>
-					</div>
-				</div>
-			</div>
+    <!-- jQuery -->
+    <script src="assets/js/jquery-2.1.0.min.js"></script>
 
-			<!-- Contact Us -->
+    <!-- Bootstrap -->
+    <script src="~/contact2/assets/js/popper.js"></script>
+    <script src="~/contact2/assets/js/bootstrap.min.js"></script>
 
-			<div class="row">
+    <!-- Plugins -->
+    <script src="~/contact2/assets/js/owl-carousel.js"></script>
+    <script src="~/contact2/assets/js/accordions.js"></script>
+    <script src="~/contact2/assets/js/datepicker.js"></script>
+    <script src="~/contact2/assets/js/scrollreveal.min.js"></script>
+    <script src="~/contact2/assets/js/waypoints.min.js"></script>
+    <script src="~/contact2/assets/js/jquery.counterup.min.js"></script>
+    <script src="~/contact2/assets/js/imgfix.min.js"></script>
+    <script src="~/contact2/assets/js/slick.js"></script>
+    <script src="~/contact2/assets/js/lightbox.js"></script>
+    <script src="~/contact2/assets/js/isotope.js"></script>
 
-				<div class="col-lg-6 contact_col">
-					<div class="contact_contents">
-						<h3>Bize Ulaşın</h3>
-						<p>
-							Hizmetler:
-							Teknik Bilgi (Ürünler), Satış & Müşteri Desteği, Sipariş & Kargo Takibi, Şikayet & Öneriler
-						</p>
-						<div>
-							<p>
-								Online Sipariş & Destek
-								
-							</p>
-							<p>02161234567</p>
-						</div>
-						<div>
-							<p>Çalışma Saatleri: Hafta İçi: 09:00 - 22:00, Cumartesi ve Pazar: 10:00 - 22:00</p>
-						</div>
-					</div>
+    <!-- Global Init -->
+    <script src="assets/js/custom.js"></script>
 
-					<!-- Follow Us -->
+    <script>
 
-					<div class="follow_us_contents">
-						<h3>Bizi Takip Edin</h3>
-						<ul class="social d-flex flex-row">
-							<li><a href="#" style="background-color: #3a61c9"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-							<li><a href="#" style="background-color: #41a1f6"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-							<li><a href="#" style="background-color: #fb4343"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-							<li><a href="#" style="background-color: #8f6247"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-						</ul>
-					</div>
+        $(function() {
+            var selectedClass = "";
+            $("p").click(function(){
+            selectedClass = $(this).attr("data-rel");
+            $("#portfolio").fadeTo(50, 0.1);
+                $("#portfolio div").not("."+selectedClass).fadeOut();
+            setTimeout(function() {
+              $("."+selectedClass).fadeIn();
+              $("#portfolio").fadeTo(50, 1);
+            }, 500);
+                
+            });
+        });
 
-				</div>
+    </script>
 
-				<div class="col-lg-6 get_in_touch_col">
-					<div class="get_in_touch_contents">
-					
-						<div class="card" onclick="changeMap('address1')">
-							<div class="card-body">
-								<h4>İstanbul Ofis</h4>
-								<p>İstanbul, Türkiye</p>
-								<div id="map1" class="map_container">
-									<!-- İstanbul ofisi haritası buraya eklenecek -->
-								</div>
-							</div>
-						</div>
-						<div class="card" onclick="changeMap('address2')">
-							<div class="card-body">
-								<h4>Floransa Ofis</h4>
-								<p>Floransa, İtalya</p>
-								<div id="map2" class="map_container">
-									<!-- Floransa ofisi haritası buraya eklenecek -->
-								</div>
-							</div>
-						</div>
-						<div class="card" onclick="changeMap('address3')">
-							<div class="card-body">
-								<h4>Berlin Ofis</h4>
-								<p>Berlin, Almanya</p>
-								<div id="map3" class="map_container">
-									<!-- Berlin ofisi haritası buraya eklenecek -->
-								</div>
-							</div>
-						</div>
-						<!-- Diğer ofis kartları buraya eklenebilir -->
-					</div>
-				</div>
-
-			</div>
-		</div>
-
-		<!-- Newsletter -->
-
-		<div class="newsletter">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-6">
-						<div class="newsletter_text d-flex flex-column justify-content-center align-items-lg-start align-items-md-center text-center">
-							<h4>Newsletter</h4>
-							<p>Subscribe to our newsletter and get 20% off your first purchase</p>
-						</div>
-					</div>
-					<div class="col-lg-6">
-						<form action="post">
-							<div class="newsletter_form d-flex flex-md-row flex-column flex-xs-column align-items-center justify-content-lg-end justify-content-center">
-								<input id="newsletter_email" type="email" placeholder="Your email" required="required" data-error="Valid email is required.">
-								<button id="newsletter_submit" type="submit" class="newsletter_submit_btn trans_300" value="Submit">subscribe</button>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- Footer -->
-
-		<footer class="footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-6">
-						<div class="footer_nav_container d-flex flex-sm-row flex-column align-items-center justify-content-lg-start justify-content-center text-center">
-							
-						</div>
-					</div>
-					<div class="col-lg-6">
-						<div class="footer_social d-flex flex-row align-items-center justify-content-lg-end justify-content-center">
-							<ul>
-								<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-								<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-								<li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
-								<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="footer_nav_container">
-							Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Designed by Pınar Alioğulları Kaya
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
-
-	</div>
-
-	<script src="~/contact/js/jquery-3.2.1.min.js"></script>
-	<script src="~/contact/styles/bootstrap4/popper.js"></script>
-	<script src="~/contact/styles/bootstrap4/bootstrap.min.js"></script>
-	<script src="~/contact/plugins/Isotope/isotope.pkgd.min.js"></script>
-	<script src="~/contact/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-	<script src="~/contact/plugins/easing/easing.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
-	<script src="~/contact/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-	<script src="~/contact/js/contact_custom.js"></script>
-
-	<script>
-		function changeMap(address) {
-			var iframe;
-			if (address === 'address1') {
-				iframe = document.getElementById("map1").querySelector("iframe");
-				iframe.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2921.320305896792!2d28.89815201568226!3d41.002301024684774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac5132b95aa6d%3A0x4f7cf274b1679d97!2sIstanbul%20Bosphorus!5e0!3m2!1sen!2str!4v1646990984072!5m2!1sen!2str";
-			} else if (address === 'address2') {
-				iframe = document.getElementById("map2").querySelector("iframe");
-				iframe.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2921.4297832301547!2d11.255199951474506!3d43.7705540584649!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132a56a680d2d6ad%3A0x93d57917efc72a03!2sFlorence%2C%20Metropolitan%20City%20of%20Florence%2C%20Italy!5e0!3m2!1sen!2str!4v1646990953909!5m2!1sen!2str";
-			} else if (address === 'address3') {
-				iframe = document.getElementById("map3").querySelector("iframe");
-				iframe.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15888.97780234893!2d13.388120730762665!3d52.51626846977989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDEyJzQ2LjkiTiAxM8KwMDAnNDcuMyJF!5e0!3m2!1sen!2str!4v1646990941257!5m2!1sen!2str";
-			}
-		}
-	</script>
-</body>
+  </body>
 
 </html>

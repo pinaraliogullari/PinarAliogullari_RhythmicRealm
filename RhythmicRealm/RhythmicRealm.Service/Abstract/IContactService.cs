@@ -11,10 +11,12 @@ namespace RhythmicRealm.Service.Abstract
         Task<Response<UserMessageViewModel>> GetMessageAsync(int id);
 		Task<Response<NoContent>> CreateMessageAsync(UserMessageViewModel contactViewModel);
 		Task<Response<NoContent>> UpdateMessageAsync(int id);
-		Task<Response<NoContent>> DeleteMessageAsync(UserMessageViewModel contactViewModel);
+		Task<Response<NoContent>> HardDeleteMessageAsync(int id);
+		Task<Response<NoContent>> SoftDeleteMessageAsync(int id);
 		Task<Response<int>> GetMessageCountAsync(string userId, bool isRead = false);
+        Task<Response<List<UserMessageViewModel>>> GetTrashMessagesAsync();
 
 
 
-	}
+    }
 }

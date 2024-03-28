@@ -6,8 +6,7 @@ using RhythmicRealm.Entity.Concrete;
 using RhythmicRealm.Service.Abstract;
 using RhythmicRealm.Shared.Response;
 using RhythmicRealm.Shared.ViewModels.MessageViewModels;
-using System;
-using System.Runtime.CompilerServices;
+
 
 
 namespace RhythmicRealm.Service.Concrete
@@ -32,10 +31,18 @@ namespace RhythmicRealm.Service.Concrete
 			return Response<NoContent>.Success(200);
 		}
 
-		public async Task<Response<NoContent>> DeleteMessageAsync(UserMessageViewModel contactViewModel)
+        public async Task<Response<NoContent>> SoftDeleteMessageAsync(int id)
+        {
+
+            var message = await _contactRepository.GetAsync(x => x.Id == id);
+            message.IsDeleted = true;
+            await _contactRepository.UpdateAsync(message);
+            return Response<NoContent>.Success(200);
+        }
+        public async Task<Response<NoContent>> HardDeleteMessageAsync(int id)
 		{
-			var deletedMessage= contactViewModel.Adapt<Contact>();
-			await _contactRepository.HardDeleteAsync(deletedMessage);
+            var message = await _contactRepository.GetAsync(x => x.Id == id);
+			await _contactRepository.HardDeleteAsync(message);
 			return Response<NoContent>.Success(200);
 		}
 
@@ -55,7 +62,7 @@ namespace RhythmicRealm.Service.Concrete
 
 		public async Task<Response<List<UserMessageViewModel>>> GetMessagesListInInboxAsync()
 		{
-			var messages = await _contactRepository.GetAllAsync();
+			var messages = await _contactRepository.GetAllAsync(x=>x.IsDeleted==false);
 			if (messages == null)
 				return Response<List<UserMessageViewModel>>.Fail(404, "Mesaj bulunamadı");
 			var messageViewModel = messages.Adapt<List<UserMessageViewModel>>();
@@ -70,5 +77,14 @@ namespace RhythmicRealm.Service.Concrete
             return Response<NoContent>.Success(200);
 
         }
-	}
+
+        public async Task<Response<List<UserMessageViewModel>>> GetTrashMessagesAsync()
+        {
+            var messages = await _contactRepository.GetAllAsync(x => x.IsDeleted);
+            if (messages == null)
+                return Response<List<UserMessageViewModel>>.Fail(500, "Bir hata meydana geldi.");
+            var messageViewModel = messages.Adapt<List<UserMessageViewModel>>();
+            return Response<List<UserMessageViewModel>>.Success(messageViewModel, 200);
+        }
+    }
 }

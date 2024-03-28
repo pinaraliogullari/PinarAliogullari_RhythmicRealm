@@ -27,10 +27,8 @@
                             @for (int i = 0; i < Model.AssignRole.Count; i++)
                             {
                                 <div class="icheck-primary">
-                                    <input asp-for="@Model.AssignRole[i].IsAssigned" />
-                                    <label asp-for="@Model.AssignRole[i].IsAssigned">@Model.AssignRole[i].Name</label>
-                                    <input type="hidden" asp-for="@Model.AssignRole[i].Id" />
-                                    <input type="hidden" asp-for="@Model.AssignRole[i].Name" />
+                                    <input type="radio" id="role_@Model.AssignRole[i].Id" name="SelectedRoleId" value="@Model.AssignRole[i].Id" />
+                                    <label for="role_@Model.AssignRole[i].Id">@Model.AssignRole[i].Name</label>
                                 </div>
                             }
                         </div>

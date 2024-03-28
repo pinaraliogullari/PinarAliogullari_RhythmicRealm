@@ -128,6 +128,19 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
 
         }
 
+        public async Task<IActionResult> SoftDeleteUserMessage(int id)
+        {
+
+            var result = await _contactService.SoftDeleteMessageAsync(id);
+            if (result.IsSucceesed)
+            {
+                _notyfService.Success("Mesaj çöp kutusuna gönderilmiştir.");
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index");
+
+        }
+
         public async Task<IActionResult> HardDeleteMessage(int id)
         {
 
@@ -141,11 +154,30 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
             return RedirectToAction("TrashMessages");
 
         }
+        public async Task<IActionResult> HardDeleteUserMessage(int id)
+        {
+
+            var result = await _contactService.HardDeleteMessageAsync(id);
+            if (result.IsSucceesed)
+            {
+                _notyfService.Success("Mesaj kalıcı olarak silinmiştir.");
+                return RedirectToAction("TrashMessages");
+            }
+            _notyfService.Error("Mesaj silinirken bir hata oluştu.");
+            return RedirectToAction("TrashMessages");
+
+        }
         public async Task<IActionResult> TrashMessages()
         {
-            var trashMessages = await _messageService.GetTrashMessagesAsync();
-            if (trashMessages.Data.Any())
-                return View(trashMessages.Data);
+            var deletedAdminMessages = await _messageService.GetTrashMessagesAsync();
+            var deletedUserMessages = await _contactService.GetTrashMessagesAsync();
+            var model = new AllMessagesViewModel
+            {
+                UserMessages = deletedUserMessages.Data,
+                AdminMessages = deletedAdminMessages.Data,
+            };
+            if (model.UserMessages.Any() && model.AdminMessages.Any())
+                return View(model);
             else
             {
                 ViewBag.TrashBoxMessage = "Silinecek mesaj bulunmamaktadır.";
@@ -153,5 +185,22 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
             }
         }
 
+        [HttpPost]
+        public async Task<IActionResult> NewContactMessage(UserMessageViewModel message)
+        {
+
+            message.UserMail = message.UserMail;
+            message.ReceiverMail = "rhythmicsite@hotmail.com";
+            message.MessageDate = DateTime.Now;
+            if (ModelState.IsValid)
+            {
+                await _contactService.CreateMessageAsync(message);
+                _notyfService.Success("Mesajınız başarıyla gönderildi.Ekiplerimiz en kısa sürede sizinle iletişime geçecektir. ", 5);
+                return RedirectToAction("Index", "Contact", new { area = "" });
+            }
+            _notyfService.Error("Mesaj gönderilemedi.");
+            return RedirectToAction("Index", "Contact", new { area = "" });
+
+        }
     }
 }

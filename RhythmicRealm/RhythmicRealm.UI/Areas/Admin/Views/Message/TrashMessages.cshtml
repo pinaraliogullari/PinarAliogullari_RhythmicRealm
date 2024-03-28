@@ -1,4 +1,4 @@
-﻿@model List<AdminMessageViewModel>
+﻿@model AllMessagesViewModel
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -60,7 +60,25 @@
                             <div class="table-responsive mailbox-messages">
                                 <table class="table table-hover table-striped">
                                     <tbody>
-                                        @foreach (var item in Model)
+                                        @foreach (var item in Model.UserMessages)
+                                        {
+
+                                            <tr>
+                                                <td>
+                                                    <a asp-area="Admin" asp-controller="Message" asp-action="HardDeleteUserMessage" asp-route-id="@item.Id" type="button" class="btn btn-default btn-sm">
+                                                        <i class="far fa-trash-alt"></i>
+                                                    </a>
+                                                </td>
+                                                <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
+                                                <td class="mailbox-name"><a asp-area="Admin" asp-controller="Message" asp-action="GetSendBoxMessageDetails" asp-route-id="@item.Id">@item.UserMail</a></td>
+                                                <td class="mailbox-subject">
+                                                    <b>@item.Subject</b> -  @(item.Content.Length > 30 ? $"{item.Content.Substring(0, 30)}..." : item.Content)
+                                                </td>
+                                                <td class="mailbox-attachment"></td>
+                                                <td class="mailbox-date">@item.MessageDate</td>
+                                            </tr>
+                                        }
+                                        @foreach (var item in Model.AdminMessages)
                                         {
 
                                             <tr>

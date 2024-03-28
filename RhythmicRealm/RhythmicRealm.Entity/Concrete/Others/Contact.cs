@@ -14,6 +14,7 @@ namespace RhythmicRealm.Entity.Concrete
         public string Subject { get; set; }
         public string Content { get; set; }
         public bool IsRead { get; set; }
+        public bool IsDeleted { get; set; }
         public DateTime MessageDate { get; set; }=DateTime.Now;
     }
 }

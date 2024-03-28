@@ -58,14 +58,8 @@
                                     @foreach (var item in Model)
                                     {
                                         <tr>
-                                            <td>
-                                                <div class="icheck-primary">
-                                                    <input type="checkbox" value="" id="check1">
-                                                    <label for="check1"></label>
-                                                </div>
-                                            </td>
                                             <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
-                                            <td class="mailbox-name"><a asp-area="Admin" asp-controller="Contact" asp-action="GetContactDetails" asp-route-id="@item.Id">@item.UserName</a></td>
+                                            <td class="mailbox-name"><a asp-area="Admin" asp-controller="Contact" asp-action="GetContactDetails" asp-route-id="@item.Id">@item.UserMail</a></td>
                                             <td class="mailbox-subject">
                                                 <b>@item.Subject</b> - @item.Content.Substring(0,30)...
                                             </td>

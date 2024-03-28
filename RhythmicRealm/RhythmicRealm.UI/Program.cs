@@ -1,7 +1,6 @@
 using AspNetCoreHero.ToastNotification;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using RhythmicRealm.Data.Abstract;
 using RhythmicRealm.Data.Concrete.Contexts;
 using RhythmicRealm.Data.Concrete.Repositories;

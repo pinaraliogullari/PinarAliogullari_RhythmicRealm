@@ -50,9 +50,9 @@
                         <!-- /.card-footer -->
                         <div class="card-footer">
                             <div class="float-right">
-                                <button type="button" class="btn btn-default"><i class="fas fa-reply"></i> Reply</button>
+                                <a asp-area="Admin" asp-controller="Message" asp-action="NewMessage" type="button" class="btn btn-primary"><i class="fas fa-reply"></i> Cevapla</a>
                             </div>
-                            <a asp-area="Admin" asp-controller="Message" asp-action="SoftDeleteMessage" asp-route-id="@Model.Id" type="button" class="btn btn-default"><i class="far fa-trash-alt"></i> Delete</a>
+                            <a asp-area="Admin" asp-controller="Message" asp-action="SoftDeleteMessage" asp-route-id="@Model.Id" type="button" class="btn btn-default"><i class="far fa-trash-alt"></i> Sil</a>
                         </div>
                         <!-- /.card-footer -->
 

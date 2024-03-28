@@ -42,22 +42,15 @@
                                     {
                                         @foreach (var userMessage in Model.UserMessages)
                                         {
-                                             
-                                            <tr>
-                                                <td>
-                                                    <div class="icheck-primary">
-                                                        <input type="checkbox" value="" id="check1">
-                                                        <label for="check1"></label>
-                                                    </div>
-                                                </td>
-                                                <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
-                                                <td class="mailbox-name"><a asp-area="Admin" asp-controller="Message" asp-action="GetUserMessageDetails" asp-route-id="@userMessage.Id">@userMessage.UserMail</a></td>
-                                                <td class="mailbox-subject @(userMessage.IsRead ? "" : "font-weight-bold")">
-                                                    <b>@userMessage.Subject</b> -  @(userMessage.Content.Length > 30 ? $"{userMessage.Content.Substring(0, 30)}..." : userMessage.Content)
-                                                </td>
-                                                <td class="mailbox-attachment"></td>
-                                                <td class="mailbox-date">@userMessage.MessageDate</td>
-                                            </tr>
+                                        <tr> <a asp-area="Admin" asp-controller="Message" asp-action="GetUserMessageDetails" asp-route-id="@userMessage.Id"></a>
+                                            <td class="mailbox-star"><a asp-area="Admin" asp-controller="Message" asp-action="GetUserMessageDetails" asp-route-id="@userMessage.Id"><i class="fas fa-star text-warning"></i></a></td>
+                                            <td class="mailbox-name"><a asp-area="Admin" asp-controller="Message" asp-action="GetUserMessageDetails" asp-route-id="@userMessage.Id">@userMessage.UserMail</a></td>
+                                            <td class="mailbox-subject @(userMessage.IsRead ? "" : "font-weight-bold")">
+                                                <b>@userMessage.Subject</b> - @(userMessage.Content.Length > 30 ? $"{userMessage.Content.Substring(0, 30)}..." : userMessage.Content)...
+                                            </td>
+                                            <td class="mailbox-attachment"></td>
+                                            <td class="mailbox-date">@userMessage.MessageDate</td>
+                                        </tr>
                                         }
                                     }
                                     @if (Model.AdminMessages != null && Model.AdminMessages.Any())
