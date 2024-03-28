@@ -38,6 +38,7 @@ namespace RhythmicRealm.UI.Controllers
                     FirstName = registerViewModel.FirstName,
                     LastName = registerViewModel.LastName,
                     Email = registerViewModel.Email,
+                    RoleId = "9ccb2c2d-ba52-43e4-9338-811e818f8f91",
                     EmailConfirmed = true,
                     Statu=true,
                     UserName = userName,

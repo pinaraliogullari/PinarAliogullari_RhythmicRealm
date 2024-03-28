@@ -137,20 +137,15 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a asp-area="Admin" asp-controller="" asp-action=""
-                            class="nav-link">
-                                <i class="fas fa-user"></i>
-                                <p>Yeni Kullanıcılar</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/mailbox/compose.html" class="nav-link">
+                            <a asp-area="Admin" asp-controller="Authorization" asp-action="ViewPersons" asp-route-statu="Admins"
+                               class="nav-link">
                                 <i class="fas fa-user"></i>
                                 <p>Yöneticiler</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/mailbox/read-mail.html" class="nav-link">
+                            <a asp-area="Admin" asp-controller="Authorization" asp-action="ViewPersons" asp-route-statu="Customers"
+                               class="nav-link">
                                 <i class="fas fa-user"></i>
                                 <p>Müşteriler</p>
                             </a>

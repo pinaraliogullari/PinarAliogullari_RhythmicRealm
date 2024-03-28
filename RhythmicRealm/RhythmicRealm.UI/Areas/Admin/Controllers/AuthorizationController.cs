@@ -25,6 +25,7 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
+     
             var users = await _userManager.Users.ToListAsync();
 
             var usersWithRoles = new List<UserListViewModel>();
@@ -51,7 +52,8 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
             return View(usersWithRoles);
         }
 
-      
+
+        [Authorize(Roles ="SuperAdmin")]   
         [HttpGet]
         public async Task<IActionResult> ChangeAuthority(string id)
         {
@@ -109,7 +111,9 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
 			_notyfService.Error("Güncelleme işlemi başarısız oldu.");
 			return View(changeAuthorityViewModel);
 		}
-		public async Task<IActionResult> ChangeStatu(string id)
+
+    
+        public async Task<IActionResult> ChangeStatu(string id)
         {
             var user = await _userManager.FindByIdAsync(id);
             if (user != null)
@@ -137,5 +141,24 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
        
             return RedirectToAction("Index");
         }
+
+        public async Task<IActionResult> ViewPersons(string statu)
+        {
+            if (statu == "Customers")
+            {
+                var users = _userManager.Users
+                    .Where(u => u.RoleId == "9ccb2c2d-ba52-43e4-9338-811e818f8f91").ToList();
+
+                return View(users);
+            }
+            else if (statu == "Admins")
+            {
+                var users = _userManager.Users
+                    .Where(u => u.RoleId == "454f8738-8b5a-4372-8f08-ff32862888f2" || u.RoleId== "197c8514-818a-4b2b-ade7-294d04ec36f9").ToList();
+                return View(users);
+            }
+            return View();
+        }
+
     }
 }
