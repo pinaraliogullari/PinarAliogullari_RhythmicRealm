@@ -51,10 +51,8 @@
                         <div class="card-footer">
                             <div class="float-right">
                                 <button type="button" class="btn btn-default"><i class="fas fa-reply"></i> Reply</button>
-                                <button type="button" class="btn btn-default"><i class="fas fa-share"></i> Forward</button>
                             </div>
-                            <button type="button" class="btn btn-default"><i class="far fa-trash-alt"></i> Delete</button>
-                            <button type="button" class="btn btn-default"><i class="fas fa-print"></i> Print</button>
+                            <a asp-area="Admin" asp-controller="Message" asp-action="SoftDeleteMessage" asp-route-id="@Model.Id" type="button" class="btn btn-default"><i class="far fa-trash-alt"></i> Delete</a>
                         </div>
                         <!-- /.card-footer -->
 

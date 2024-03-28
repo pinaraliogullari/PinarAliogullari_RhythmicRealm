@@ -33,7 +33,7 @@
                                 <h5>Konu: @Html.DisplayFor(x => x.Subject)</h5>
                                 <br />
                                 <h6>
-                                    Alıcı: @Html.DisplayFor(x => x.SenderMail)
+                                    Alıcı: @Html.DisplayFor(x => x.ReceiverMail)
                                 </h6>
                             </div>
 
@@ -49,12 +49,9 @@
                         </div>
                         <!-- /.card-footer -->
                         <div class="card-footer">
-                            <div class="float-right">
-                                <button type="button" class="btn btn-default"><i class="fas fa-reply"></i> Reply</button>
-                                <button type="button" class="btn btn-default"><i class="fas fa-share"></i> Forward</button>
-                            </div>
-                            <button type="button" class="btn btn-default"><i class="far fa-trash-alt"></i> Delete</button>
-                            <button type="button" class="btn btn-default"><i class="fas fa-print"></i> Print</button>
+                            
+                            <button type="button" class="btn btn-danger float-right"><i class="far fa-trash-alt"></i> Delete</button>
+                    
                         </div>
                         <!-- /.card-footer -->
 

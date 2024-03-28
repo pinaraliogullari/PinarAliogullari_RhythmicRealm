@@ -46,8 +46,13 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
                 AdminMessages = adminMessages,
                 UserMessages = userMessages
             };
+            //if (model.UserMessages == null && model.AdminMessages == null)
+            //{
+            //    ViewBag.InboxMessage = "Görüntülenecek mesaj bulunmamaktadır.";
+            //}
 
             return View(model);
+
         }
 
         private async Task<List<AdminMessageViewModel>> GetAdminMessagesListInInbox()
@@ -110,7 +115,43 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
 
         }
 
-      
+        public async Task<IActionResult> SoftDeleteMessage(int id)
+        {
+       
+            var result= await _messageService.SoftDeleteMessageAsync(id);
+            if (result.IsSucceesed)
+            {
+                _notyfService.Success("Mesaj çöp kutusuna gönderilmiştir.");
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index");
+
+        }
+
+        public async Task<IActionResult> HardDeleteMessage(int id)
+        {
+
+            var result = await _messageService.HardDeleteMessageAsync(id);
+            if (result.IsSucceesed)
+            {
+                _notyfService.Success("Mesaj kalıcı olarak silinmiştir.");
+                return RedirectToAction("TrashMessages");
+            }
+            _notyfService.Error("Mesaj silinirken bir hata oluştu.");
+            return RedirectToAction("TrashMessages");
+
+        }
+        public async Task<IActionResult> TrashMessages()
+        {
+            var trashMessages = await _messageService.GetTrashMessagesAsync();
+            if (trashMessages.Data.Any())
+                return View(trashMessages.Data);
+            else
+            {
+                ViewBag.TrashBoxMessage = "Silinecek mesaj bulunmamaktadır.";
+                return View();
+            }
+        }
 
     }
 }

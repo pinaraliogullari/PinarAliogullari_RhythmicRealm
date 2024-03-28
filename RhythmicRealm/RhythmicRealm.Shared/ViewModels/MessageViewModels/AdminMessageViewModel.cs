@@ -11,10 +11,10 @@ namespace RhythmicRealm.Shared.ViewModels.MessageViewModels
     public class AdminMessageViewModel
     {
         public int Id { get; set; }
-        [DisplayName("Kimden:")]
+        [DisplayName("Gönderici:")]
         public string SenderMail { get; set; }
 
-        [DisplayName("Kime:")]
+        [DisplayName("Alıcı:")]
         [Required(ErrorMessage = "Alıcı adresi boş bırakılmamalıdır.")]
         [DataType(DataType.EmailAddress,ErrorMessage ="Lütfen uygun formatta bir mail adresi giriniz.")]
         public string ReceiverMail { get; set; }

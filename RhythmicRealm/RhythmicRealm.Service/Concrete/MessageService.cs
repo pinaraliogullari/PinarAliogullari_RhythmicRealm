@@ -29,16 +29,25 @@ namespace RhythmicRealm.Service.Concrete
         {
             var message = messageViewModel.Adapt<Message>();
             if (message == null)
-                return Response<NoContent>.Fail(404, "Bir hata meydana geldi.");
+                return Response<NoContent>.Fail(500, "Bir hata meydana geldi.");
             await _messageRepository.CreateAsync(message);
             return Response<NoContent>.Success(200);
         }
 
-        public Task<Response<NoContent>> DeleteMessageAsync(AdminMessageViewModel messageViewModel)
+        public async Task<Response<NoContent>> SoftDeleteMessageAsync(int id)
         {
-            throw new NotImplementedException();
-        }
 
+            var message = await _messageRepository.GetAsync(x => x.Id == id);
+            message.IsDeleted = true;
+            await _messageRepository.UpdateAsync(message);
+            return Response<NoContent>.Success(200);
+        }
+        public async Task<Response<NoContent>> HardDeleteMessageAsync(int id)
+        {
+            var message = await _messageRepository.GetAsync(x => x.Id == id);
+            await _messageRepository.HardDeleteAsync(message);
+            return Response<NoContent>.Success(200);
+        }
         public async Task<Response<AdminMessageViewModel>> GetMessageAsync(int id)
         {
             var message = await _messageRepository.GetAsync(x => x.Id == id);
@@ -61,7 +70,7 @@ namespace RhythmicRealm.Service.Concrete
 		 
 			var userId = _userManager.GetUserId(_httpContextAccessor.HttpContext.User);
             var user= await _userManager.FindByIdAsync(userId);
-            var messages = await _messageRepository.GetAllAsync(x=>x.ReceiverMail==user.Email);
+            var messages = await _messageRepository.GetAllAsync(x=>x.ReceiverMail==user.Email && x.IsDeleted==false);
             if (messages == null)
                 return Response<List<AdminMessageViewModel>>.Fail(404, "Mesaj bulunamadı");
             var messageViewModel = messages.Adapt<List<AdminMessageViewModel>>();
@@ -79,6 +88,16 @@ namespace RhythmicRealm.Service.Concrete
             return Response<List<AdminMessageViewModel>>.Success(messageViewModel, 200);
         }
 
+        public async Task<Response<List<AdminMessageViewModel>>> GetTrashMessagesAsync()
+        {
+            var messages = await _messageRepository.GetAllAsync(x => x.IsDeleted);
+            if (messages == null)
+                return Response<List<AdminMessageViewModel>>.Fail(500, "Bir hata meydana geldi.");
+            var messageViewModel = messages.Adapt<List<AdminMessageViewModel>>();
+            return Response<List<AdminMessageViewModel>>.Success(messageViewModel, 200);
+
+        }
+
         public async Task<Response<NoContent>> UpdateMessageAsync(int id)
         {
             var message = await _messageRepository.GetAsync(x => x.Id == id);
@@ -86,5 +105,7 @@ namespace RhythmicRealm.Service.Concrete
             await _messageRepository.UpdateAsync(message);
             return Response<NoContent>.Success(200);
         }
+
+      
     }
 }

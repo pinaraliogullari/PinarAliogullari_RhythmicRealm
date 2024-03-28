@@ -67,8 +67,6 @@ namespace RhythmicRealm.UI.Controllers
                     );
 
                 //await _shoppingCartManager.InitializeShoppingCartAsync(userId);
-                await _userManager.AddToRoleAsync(user, "Customer");
-                _notyfService.Success("Üyelik kaydınız başarıyla tamamlanmıştır. Lütfen mail adresinize gelen onay linkine tıklayınız.",5);
                 return RedirectToAction("ShowResetPasswordInfo", registerViewModel);
 
             }

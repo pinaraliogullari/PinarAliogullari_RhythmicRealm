@@ -9,7 +9,7 @@ using RhythmicRealm.Shared.ViewModels.Identity;
 namespace RhythmicRealm.UI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "SuperAdmin")]
+    
     public class AuthorizationController : Controller
     {
         private readonly UserManager<User> _userManager;
@@ -74,30 +74,42 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
             return View(model);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> ChangeAuthority(ChangeAuthorityViewModel changeAuthorityViewModel)
-        {
-            if (ModelState.IsValid)
-            {
-                var user = await _userManager.FindByIdAsync(changeAuthorityViewModel.Id);
-                foreach (var role in changeAuthorityViewModel.AssignRole)
-                {
-                    if (role.IsAssigned)
-                        await _userManager.AddToRoleAsync(user, role.Name);
-                    
-                    else
-                    {
-                        await _userManager.RemoveFromRoleAsync(user, role.Name);
-                    }
-                }
-                _notyfService.Success($"{user.FirstName} {user.LastName}  adlı kullanıcının rolü başarıyla değiştirilmiştir.");
-                return RedirectToAction("Index");
-            }
-            _notyfService.Success("Güncelleme işlemi başarısız");
-            return View(changeAuthorityViewModel);
-        }
+		[HttpPost]
+		public async Task<IActionResult> ChangeAuthority(ChangeAuthorityViewModel changeAuthorityViewModel)
+		{
+			if (ModelState.IsValid)
+			{
+				var user = await _userManager.FindByIdAsync(changeAuthorityViewModel.Id);
+				foreach (var roleViewModel in changeAuthorityViewModel.AssignRole)
+				{
+					var isInRole = await _userManager.IsInRoleAsync(user, roleViewModel.Name);
+					if (roleViewModel.IsAssigned && !isInRole)
+					{
+						await _userManager.AddToRoleAsync(user, roleViewModel.Name);
+					}
+					else if (!roleViewModel.IsAssigned && isInRole)
+					{
+						await _userManager.RemoveFromRoleAsync(user, roleViewModel.Name);
+					}
+				}
+				var result = await _userManager.UpdateAsync(user);
+				if (!result.Succeeded)
+				{
+					foreach (var error in result.Errors)
+					{
+						ModelState.AddModelError("", error.Description);
+					}
+					return View(changeAuthorityViewModel);
+				}
 
-        public async Task<IActionResult> ChangeStatu(string id)
+				_notyfService.Success($"{user.FirstName} {user.LastName} adlı kullanıcının rolü başarıyla güncellendi.");
+				return RedirectToAction("Index");
+			}
+
+			_notyfService.Error("Güncelleme işlemi başarısız oldu.");
+			return View(changeAuthorityViewModel);
+		}
+		public async Task<IActionResult> ChangeStatu(string id)
         {
             var user = await _userManager.FindByIdAsync(id);
             if (user != null)

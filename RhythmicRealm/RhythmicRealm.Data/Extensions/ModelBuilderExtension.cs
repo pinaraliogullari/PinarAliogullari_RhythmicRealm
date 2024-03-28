@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RhythmicRealm.Entity.Concrete.Others;
 
 namespace RhythmicRealm.Data.Extensions
 {
@@ -31,7 +32,24 @@ namespace RhythmicRealm.Data.Extensions
 
             List<User> users = new List<User>
             {
-                new User
+				new User
+				{
+					FirstName="Pınar",
+					LastName="Alioğulları Kaya",
+					UserName="pinaraliogullarikaya",
+					NormalizedUserName="PINARALIOGULLARIKAYA",
+					Email="rhythmicsite@hotmail.com",
+					NormalizedEmail="RHYTHMICSITE@HOTMAIL.COM",
+					Gender="Kadın",
+					DateOfBirth=new DateTime(1996,8,18),
+					Address="Halilpaşa Konağı Caddesi Kemeraltı Sokak No:4 D:2 Üsküdar",
+					City="İstanbul",
+					PhoneNumber="5558779966",
+					EmailConfirmed=true,
+					Statu=true,
+
+				},
+				new User
                 {
                     FirstName="Nisa",
                     LastName="Kırcalı",
@@ -65,24 +83,6 @@ namespace RhythmicRealm.Data.Extensions
                     Statu=true,
            
                 },
-                new User
-                {
-                    FirstName="Ertan",
-                    LastName="Kemaloğlu",
-                    UserName="ertankemaloglu",
-                    NormalizedUserName="ERTANKEMALOGLU",
-                    Email="ertankemaloglu@gmail.com",
-                    NormalizedEmail="ERTANKEMALOGLU@GMAIL.COM",
-                    Gender="Erkek",
-                    DateOfBirth=new DateTime(1993,7,16),
-                    Address="Halilpaşa Konağı Caddesi Kemeraltı Sokak No:4 D:2 Üsküdar",
-                    City="İstanbul",
-                    PhoneNumber="5387996655",
-                    EmailConfirmed=true,
-                    Statu=true,
-                   
-                },
-              
             };
 
             modelBuilder.Entity<User>().HasData(users);
@@ -91,10 +91,98 @@ namespace RhythmicRealm.Data.Extensions
             #region Şifre İşlemleri
 
             var passwordHasher = new PasswordHasher<User>();
-            users[0].PasswordHash = passwordHasher.HashPassword(users[0], "Qsc987.");
-            users[1].PasswordHash = passwordHasher.HashPassword(users[1], "Qsc987.");
-            users[2].PasswordHash = passwordHasher.HashPassword(users[2], "Qsc987.");
+            users[0].PasswordHash = passwordHasher.HashPassword(users[0], "Rhythmicsite987.");
+            users[1].PasswordHash = passwordHasher.HashPassword(users[1], "Rhythmicsite987.");
+            users[2].PasswordHash = passwordHasher.HashPassword(users[2], "Rhythmicsite987.");
 
+            #endregion
+
+            #region Mesaj İşlemleri
+
+            List<Message> userMessages= new List<Message>()
+            {
+                new Message { 
+                    Id=1,
+                    SenderMail= "rhythmicsite@hotmail.com",
+                    ReceiverMail= "mehmetaksu@gmail.com",
+                    Subject="Destek talebi",
+                    Content="Merhaba,Admin şifremi değiştirmem gerekiyor. DEstek rica ederim",
+                },
+                new Message
+                {
+                    Id = 2,
+                    SenderMail = "rhythmicsite@hotmail.com",
+                    ReceiverMail = "nisakircali@gmail.com",
+                    Subject = "Destek talebi",
+                    Content = "Merhaba,Güncel fiyat listesini gönderebilir misin?"
+                },
+                new Message
+                {
+                    Id = 3,
+                    SenderMail = "rhythmicsite@hotmail.com",
+                    ReceiverMail = "nisakircali@gmail.com",
+                    Subject = "Şubeler hk",
+                    Content = "Merhaba, Şube listesinin güncel versiyonunu gönderebilir misin?"
+                },
+            
+                 new Message
+                {
+                    Id = 4,
+                    SenderMail = "nisakircali@gmail.com",
+                    ReceiverMail = "rhythmicsite@hotmail.com",
+                    Subject = "Stok hk",
+                    Content = "Merhaba, Piyano stoğu bu hafta güncelleniyor."
+                },
+                 new Message
+                {
+                    Id = 5,
+                    SenderMail = "mehmetaksu@gmail.com",
+                    ReceiverMail = "rhythmicsite@hotmail.com",
+                    Subject = "Giriş hatası",
+                    Content = "Merhaba, Hata çözüldü."
+                },
+                    new Message
+                {
+                    Id = 6,
+                    SenderMail = "nisakircali@gmail.com",
+                    ReceiverMail = "mehmetaksu@gmail.com",
+                    Subject = "Ürün listeleri hk",
+                    Content = "Merhaba, Ürün listelerinin son hali pazartesi günü iltilecektir."
+                },
+                       new Message
+                {
+                    Id = 7,
+                    SenderMail = "nisakircali@gmail.com",
+                    ReceiverMail = "mehmetaksu@gmail.com",
+                    Subject = "Ürün görselleri hk",
+                    Content = "Merhaba, Yeni ürün görselleri için çekimler devam ediyor."
+                },
+                 new Message
+                {
+                    Id = 8,
+                    SenderMail = "mehmetaksu@gmail.com",
+                    ReceiverMail = "rhythmicsite@hotmail.com",
+                    Subject = "Ürün görselleri hk",
+                    Content = "Merhaba, Kategori düzenlemesi tamamlandı.."
+                },
+                  new Message
+                {
+                    Id = 9,
+                    SenderMail = "mehmetaksu@gmail.com",
+                    ReceiverMail = "rhythmicsite@hotmail.com",
+                    Subject = "Teslimat hk",
+                    Content = "Merhaba, Hava koşullarından dolayı aksayan teslimatlar var.Kargolar ile görüşüyoruz."
+                },
+                  new Message
+                {
+                    Id = 10,
+                    SenderMail = "mehmetaksu@gmail.com",
+                    ReceiverMail = "nisakircali@gmail.com",
+                    Subject = "Destek talebi",
+                    Content = "Merhaba, Yetkilendirmeler tamalandı, kontrol edebilir misin?."
+                },
+            };
+            modelBuilder.Entity<Message>().HasData(userMessages);
             #endregion
 
             #region Rol Atama İşlemleri
@@ -116,7 +204,7 @@ namespace RhythmicRealm.Data.Extensions
                     UserId=users[2].Id,
                     RoleId=roles.Where(r=>r.Name=="Customer").FirstOrDefault().Id,
                 },
-              
+
             };
             modelBuilder.Entity<IdentityUserRole<string>>().HasData(userRoles);
             #endregion

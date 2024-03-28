@@ -56,14 +56,7 @@
                                 <tbody>
                                     @foreach (var item in Model)
                                     {
-                                        
                                         <tr>
-                                            <td>
-                                                <div class="icheck-primary">
-                                                    <input type="checkbox" value="" id="check1">
-                                                    <label for="check1"></label>
-                                                </div>
-                                            </td>
                                             <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
                                             <td class="mailbox-name"><a asp-area="Admin" asp-controller="Message" asp-action="GetSendBoxMessageDetails" asp-route-id="@item.Id">@item.ReceiverMail</a></td>
                                             <td class="mailbox-subject">
@@ -84,25 +77,6 @@
                     <!-- /.card-body -->
                     <div class="card-footer p-0">
                         <div class="mailbox-controls">
-                            <!-- Check all button -->
-                            <button type="button" class="btn btn-default btn-sm checkbox-toggle">
-                                <i class="far fa-square"></i>
-                            </button>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default btn-sm">
-                                    <i class="far fa-trash-alt"></i>
-                                </button>
-                                <button type="button" class="btn btn-default btn-sm">
-                                    <i class="fas fa-reply"></i>
-                                </button>
-                                <button type="button" class="btn btn-default btn-sm">
-                                    <i class="fas fa-share"></i>
-                                </button>
-                            </div>
-                            <!-- /.btn-group -->
-                            <button type="button" class="btn btn-default btn-sm">
-                                <i class="fas fa-sync-alt"></i>
-                            </button>
                             <div class="float-right">
                                 1-50/200
                                 <div class="btn-group">
