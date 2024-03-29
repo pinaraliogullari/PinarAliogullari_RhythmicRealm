@@ -15,66 +15,78 @@
 					<div class="container">
 						<div class="content">
 							<div class="row">
-								<div class="col-md-12 col-lg-8">
-									<div class="items">
-									
-									@foreach (var item in Model.BasketItems)
-										{
-											<div class="product">
-												<div class="row">
-													<div class="col-md-3">
-														<img style="width:150px;" class="img-fluid mx-auto d-block image" src="~/images/products/@item.ImageUrl">
-													</div>
-													<div class="col-md-8">
-														<div class="info">
-															<div class="row">
-																<div class="col-md-3 product-name">
-																	<div class="product-name">
-																		<a href="#"><strong>@item.Name</strong></a>
-																		
+								@if (Model.BasketItems.Count != 0)
+								{
+									<div class="col-md-12 col-lg-8">
+										<div class="items">
+
+											@foreach (var item in Model.BasketItems)
+											{
+												<div class="product">
+													<div class="row">
+														<div class="col-md-3">
+															<img style="width:150px;" class="img-fluid mx-auto d-block image" src="~/images/products/@item.ImageUrl">
+														</div>
+														<div class="col-md-9">
+															<div class="info">
+																<div class="row">
+																	<div class="col-md-5 product-name">
+																		<div class="product-name">
+																			<a href="#"><strong>@item.Name</strong></a>
+
+																		</div>
+																	</div>
+																	<div class="col-md-2 quantity">
+																		<label for="quantity">Adet</label>
+																		<input id="quantity" type="number" value="1"
+																			   class="form-control quantity-input">
+																	</div>
+																	<div class="col-md-3 price">
+																		<span>@($"{item.Price:C2}")</span>
+																	</div>
+																	<div class="col-md-1">
+																		<a asp-area="" asp-controller="Basket" asp-action="RemoveFromBasket" asp-route-productId="@item.ProductId" style="float: right;">
+																			<i style="font-size:18px;" class="fa fa-trash" aria-hidden="true"></i>
+																		</a>
 																	</div>
 																</div>
-																<div class="col-md-3 quantity">
-																	<label for="quantity">Adet</label>
-																	<input id="quantity" type="number" value="1"
-																		   class="form-control quantity-input">
-																</div>
-																<div class="col-md-3 price">
-																	<span>@($"{item.Price:C2}")</span>
-																</div>
-																<div class="col-md-2">
-																	<!-- Çöp kutusu ikonu -->
-																	<a asp-area="" asp-controller="ShoppingCart" asp-action="DeleteItem" asp-route-id="@item.ProductId" style="float: right;">
-																		<i style="font-size:30px;" class="fa fa-trash" aria-hidden="true"></i>
-																	</a>
-																	<!-- Çöp kutusu ikonu -->
-																</div>
-															</div>
 
+															</div>
 														</div>
 													</div>
+
+
 												</div>
-											
-												
-											</div>
-										}
-										
+											}
+
+										</div>
 									</div>
-								</div>
+								}
+								else
+								{
+									<div class="alert alert-warning">
+										Sepetinizde ürün bulunmamaktadır.
+									</div>
+								}
 								<div class="col-md-12 col-lg-4">
 									<div class="summary">
 										<h3>Sipariş Özeti</h3>
 										<div class="summary-item">
-											<span class="text">Ürünün Toplamı</span><span class="price">360 TL</span>
+											<span class="text">Ürünün Toplamı</span><span class="price">@($"{Model.TotalPrice():C2}")</span>
 										</div>
 										<div class="summary-item">
-											<span class="text">İndirim</span><span class="price">0 TL</span>
+											@{
+												var total = Model.TotalPrice();
+												var discount =(double) total * 0.1;
+												var newTotal = (double)total - discount;
+											}
+											<span class="text">İndirim</span><span class="price">@($"{discount:C2}")</span>
 										</div>
 										<div class="summary-item">
-											<span class="text">Kargo</span><span class="price">0 TL</span>
+											<span class="text">Kargo</span><span class="price">@($"{0:C2}")</span>
 										</div>
 										<div class="summary-item">
-											<span class="text">Toplam</span><span class="price">360 TL</span>
+											<span class="text">Toplam</span><span class="price">@($"{newTotal:C2}")</span>
 										</div>
 										<div>
 											<a asp-area="" asp-controller="CheckOut" asp-action="Index" class="btn btn-danger btn-lg btn-block">Sepeti Onayla</a>

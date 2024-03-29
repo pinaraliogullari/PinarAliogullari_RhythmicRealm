@@ -20,19 +20,20 @@ namespace RhythmicRealm.UI.Controllers
 
         public async Task<IActionResult> Index()
 		{
-            var basket = await _shoppingBasketService.GetShoppingBasketByUserId(_userManager.GetUserId(User));
+            var basket = await _shoppingBasketService.GetShoppingBasketByUserIdAsync(_userManager.GetUserId(User));
             return View(basket.Data);
         }
 
         [HttpPost]
         public async Task<IActionResult> AddToBasket(int productId,int quantity)
         {
+            //productdetaildeyken sepete ekle deyince product detail sayfasında kalsın istiyorum .
 			var filledBasket=await _shoppingBasketService.AddItemToBasketAsync(_userManager.GetUserId(User),productId, quantity);
             _notyfService.Success("Ürün sepetine eklendi");
             return RedirectToAction("Index", "Home");
         }
 
-        [HttpPost]
+  
         public async Task<IActionResult> RemoveFromBasket(int productId)
         {
             await _shoppingBasketService.RemoveItemFromBasketAsync(_userManager.GetUserId(User),productId);
