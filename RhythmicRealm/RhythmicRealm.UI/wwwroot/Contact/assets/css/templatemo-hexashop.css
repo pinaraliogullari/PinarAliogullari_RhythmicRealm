@@ -199,6 +199,28 @@ body {
   font-weight: 400;
 }
 
+.logo_container {
+    margin-top: 20px;
+}
+
+    .logo_container a {
+        font-size: 24px;
+        color: #d21737;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+        .logo_container a span {
+            color: black;
+        }
+
+.truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
 
 
 /* 

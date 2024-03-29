@@ -1,21 +1,15 @@
-﻿using RhythmicRealm.Entity.Concrete;
-using RhythmicRealm.Shared.Response;
-using RhythmicRealm.Shared.ViewModels.MainCategoryViewModels;
+﻿using RhythmicRealm.Shared.Response;
 using RhythmicRealm.Shared.ViewModels.ShoppingBasketViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace RhythmicRealm.Service.Abstract
 {
 	public interface IShoppingBasketService
 	{
-		Task<Response<List<ShoppingBasketItem>>> GetBasketItemAsync();
-		Task<Response<NoContent>> AddItemToBasketAsync(CreateBasketItemViewModel basketItem);
-		Task<Response<NoContent>> UpdateQuantityAsync(UpdateBasketItemViewModel basketItem);
-		Task<Response<NoContent>> RemoveBasketItemAsync(int basketItemId);
-		//Task<Response<NoContent>> CreateShoppingBasket();
+		Task<Response<NoContent>> InitializeBasketAsync(string userId);
+		Task<Response<ShoppingBasketViewModel>> GetShoppingBasketByUserId(string userId);
+		Task<Response<ShoppingBasketViewModel>> AddItemToBasketAsync(string userId, int productId, int quantity);
+		Task<Response<NoContent>> RemoveItemFromBasketAsync(string userId,int productId);
+		Task<Response<NoContent>> RemoveBasket(int cartId);
 	}
 }

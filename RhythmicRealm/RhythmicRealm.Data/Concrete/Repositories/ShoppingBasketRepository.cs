@@ -1,14 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query;
 using RhythmicRealm.Data.Abstract;
 using RhythmicRealm.Data.Concrete.Contexts;
 using RhythmicRealm.Entity.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace RhythmicRealm.Data.Concrete.Repositories
 {
@@ -21,8 +15,42 @@ namespace RhythmicRealm.Data.Concrete.Repositories
 		private RRContext RRContext
 		{
 			get { return _dbContext as RRContext; }
-		}
+        }
 
-		
-	}
+        
+        public async Task ClearShoppingBasketAsync(int shoppingBasketId)
+        {
+            var deletedItems= await RRContext
+                .ShoppingBasketItems
+                .Where(x=>x.ShoppingBasketId==shoppingBasketId)
+                .ToListAsync();
+            RRContext.ShoppingBasketItems.RemoveRange(deletedItems);
+            await RRContext.SaveChangesAsync();
+        }
+
+        public async Task DeleteFromShoppingBasketAsync(int shoppingBasketId, int productId)
+        {
+            var deletedItem = await RRContext
+                .ShoppingBasketItems
+                .Where(x => x.ShoppingBasketId == shoppingBasketId && x.ProductId == productId)
+                .FirstOrDefaultAsync();
+            RRContext.ShoppingBasketItems.Remove(deletedItem);
+            await RRContext.SaveChangesAsync();
+        }
+
+        public async Task<ShoppingBasket> GetShoppingBasketByUserIdAsync(string userId)
+        {
+
+            var shoppingCart = await RRContext
+                .ShoppingBaskets
+                .Include(x => x.ShoppingBasketItems)
+                .ThenInclude(x => x.Product)
+                .FirstOrDefaultAsync(x => x.UserId == userId);
+            return shoppingCart;
+
+
+        }
+
+        
+    }
 }

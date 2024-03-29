@@ -1,41 +1,44 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using RhythmicRealm.Entity.Concrete.Identity;
 using RhythmicRealm.Service.Abstract;
-using RhythmicRealm.Shared.ViewModels.ShoppingBasketViewModels;
 
 namespace RhythmicRealm.UI.Controllers
 {
 	public class BasketController : Controller
 	{
 		private readonly IShoppingBasketService _shoppingBasketService;
+		private readonly UserManager<User> _userManager;
+        private readonly INotyfService _notyfService;
+        public BasketController(IShoppingBasketService shoppingBasketService, UserManager<User> userManager, INotyfService notyfService)
+        {
+            _shoppingBasketService = shoppingBasketService;
+            _userManager = userManager;
+            _notyfService = notyfService;
+        }
 
-		public BasketController(IShoppingBasketService shoppingBasketService)
+        public async Task<IActionResult> Index()
 		{
-			_shoppingBasketService = shoppingBasketService;
-		}
+            var basket = await _shoppingBasketService.GetShoppingBasketByUserId(_userManager.GetUserId(User));
+            return View(basket.Data);
+        }
 
-		public async Task<IActionResult> Index()
-		{
-			var shoppingCart = await _shoppingBasketService.GetBasketItemAsync();
-			return View(shoppingCart.Data);
-		}
+        [HttpPost]
+        public async Task<IActionResult> AddToBasket(int productId,int quantity)
+        {
+			var filledBasket=await _shoppingBasketService.AddItemToBasketAsync(_userManager.GetUserId(User),productId, quantity);
+            _notyfService.Success("Ürün sepetine eklendi");
+            return RedirectToAction("Index", "Home");
+        }
 
-		public async Task<IActionResult> AddToBasket(CreateBasketItemViewModel basketItem)
-		{
-			await _shoppingBasketService.AddItemToBasketAsync(basketItem);
-			return RedirectToAction("Index");
-		}
+        [HttpPost]
+        public async Task<IActionResult> RemoveFromBasket(int productId)
+        {
+            await _shoppingBasketService.RemoveItemFromBasketAsync(_userManager.GetUserId(User),productId);
+            return RedirectToAction("Index");
+        }
 
-		public async Task<IActionResult> UpdateQuantityAsync(UpdateBasketItemViewModel basketItem)
-		{
-			await _shoppingBasketService.UpdateQuantityAsync(basketItem);
-			return RedirectToAction("Index");
-		}
-	
 
-		public async Task<IActionResult> RemoveBasketItem(int id)
-		{
-			await _shoppingBasketService.RemoveBasketItemAsync(id);
-			return RedirectToAction("Index");
-		}
 	}
 }

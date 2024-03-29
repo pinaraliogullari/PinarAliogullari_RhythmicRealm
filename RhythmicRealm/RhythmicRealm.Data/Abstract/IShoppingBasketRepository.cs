@@ -9,6 +9,9 @@ namespace RhythmicRealm.Data.Abstract
 {
 	public interface IShoppingBasketRepository:IGenericRepository<ShoppingBasket>
 	{
-		
-	}
+        Task<ShoppingBasket> GetShoppingBasketByUserIdAsync(string userId);
+        Task DeleteFromShoppingBasketAsync(int shoppingCartId, int productId);
+        Task ClearShoppingBasketAsync(int shoppingCartId);
+
+    }
 }

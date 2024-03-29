@@ -30,12 +30,6 @@ namespace RhythmicRealm.Data.Concrete.Contexts
         public DbSet<ShoppingBasketItem> ShoppingBasketItems { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			modelBuilder.Entity<Order>()
-				.HasKey(o => o.Id);
-			modelBuilder.Entity<ShoppingBasket>()
-				.HasOne(s => s.Order)
-				.WithOne(o => o.ShoppingBasket)
-				.HasForeignKey<Order>(o => o.Id);
 
 			modelBuilder.SeedData();
 			modelBuilder.ApplyConfigurationsFromAssembly(typeof(BrandConfig).Assembly);

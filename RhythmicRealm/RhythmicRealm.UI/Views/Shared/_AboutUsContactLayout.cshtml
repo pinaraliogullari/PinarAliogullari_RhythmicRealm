@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <title>Rhythmic Realm</title>
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="~/Contact/assets/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="~/Contact/assets/css/font-awesome.css">
+
+    <link rel="stylesheet" href="~/Contact/assets/css/templatemo-hexashop.css">
+
+    <link rel="stylesheet" href="~/Contact/assets/css/owl-carousel.css">
+
+    <link rel="stylesheet" href="~/Contact/assets/css/lightbox.css">
+
+    -->
+</head>
+
+<body>
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <div class="logo_container">
+                            <a href="/">Rhythmic<span>Realm</span></a>
+                        </div>
+
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ***** Header Area End ***** -->
+                        @RenderBody()
+    <!-- jQuery -->
+    
+
+    <script src="assets/js/jquery-2.1.0.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="~/Contact/assets/js/popper.js"></script>
+    <script src="~/Contact/assets/js/bootstrap.min.js"></script>
+
+    <!-- Plugins -->
+    <script src="~/Contact/assets/js/owl-carousel.js"></script>
+    <script src="~/Contact/assets/js/accordions.js"></script>
+    <script src="~/Contact/assets/js/datepicker.js"></script>
+    <script src="~/Contact/assets/js/scrollreveal.min.js"></script>
+    <script src="~/Contact/assets/js/waypoints.min.js"></script>
+    <script src="~/Contact/assets/js/jquery.counterup.min.js"></script>
+    <script src="~/Contact/assets/js/imgfix.min.js"></script>
+    <script src="~/Contact/assets/js/slick.js"></script>
+    <script src="~/Contact/assets/js/lightbox.js"></script>
+    <script src="~/Contact/assets/js/isotope.js"></script>
+
+    <!-- Global Init -->
+    <script src="assets/js/custom.js"></script>
+
+    <script>
+
+        $(function () {
+            var selectedClass = "";
+            $("p").click(function () {
+                selectedClass = $(this).attr("data-rel");
+                $("#portfolio").fadeTo(50, 0.1);
+                $("#portfolio div").not("." + selectedClass).fadeOut();
+                setTimeout(function () {
+                    $("." + selectedClass).fadeIn();
+                    $("#portfolio").fadeTo(50, 1);
+                }, 500);
+
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>

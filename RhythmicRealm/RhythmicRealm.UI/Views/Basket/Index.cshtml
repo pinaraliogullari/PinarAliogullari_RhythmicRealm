@@ -1,331 +1,130 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+﻿@model ShoppingBasketViewModel
 
-	<title>Electro - HTML Ecommerce Template</title>
+@{
+    Layout = "_BasketLayout";
+}
+<!-- SECTION -->
+<div class="section">
+	<!-- container -->
+	<div class="container">
+		<!-- row -->
+		<div class="row">
 
-	<!-- Google font -->
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
-
-	<!-- Bootstrap -->
-	<link type="text/css" rel="stylesheet" href="~/ui/cssbootstrap.min.css" />
-
-	<!-- Slick -->
-	<link type="text/css" rel="stylesheet" href="~/ui/cssslick.css" />
-	<link type="text/css" rel="stylesheet" href="~/ui/cssslick-theme.css" />
-
-	<!-- nouislider -->
-	<link type="text/css" rel="stylesheet" href="~/ui/cssnouislider.min.css" />
-
-	<!-- Font Awesome Icon -->
-	<link rel="stylesheet" href="~/ui/cssfont-awesome.min.css">
-
-	<!-- Custom stlylesheet -->
-	<link type="text/css" rel="stylesheet" href="~/ui/cssstyle.css" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/~/Basket/assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="~/Basket/assets/css/style.css">
-
-
-
-</head>
-<body>
-	
-	<!-- NAVIGATION -->
-	<nav id="navigation">
-		<!-- container -->
-		<div class="container">
-			
-<vc:navbar-of-main-cat></vc:navbar-of-main-cat>
-		</div>
-		<!-- /container -->
-	</nav>
-	<!-- /NAVIGATION -->
-
-	<!-- SECTION -->
-	<div class="section">
-		<!-- container -->
-		<div class="container">
-			<!-- row -->
-			<div class="row">
-
-				<main class="page">
-					<section class="shopping-cart dark">
-						<div class="container">
-							<div class="content">
-								<div class="row">
-									<div class="col-md-12 col-lg-8">
-										<div class="items">
+			<main class="page">
+				<section class="shopping-cart dark">
+					<div class="container">
+						<div class="content">
+							<div class="row">
+								<div class="col-md-12 col-lg-8">
+									<div class="items">
+									
+									@foreach (var item in Model.BasketItems)
+										{
 											<div class="product">
 												<div class="row">
 													<div class="col-md-3">
-														<img class="img-fluid mx-auto d-block image" src="~/Basket/assets/img/image.jpg">
+														<img style="width:150px;" class="img-fluid mx-auto d-block image" src="~/images/products/@item.ImageUrl">
 													</div>
 													<div class="col-md-8">
 														<div class="info">
 															<div class="row">
-																<div class="col-md-5 product-name">
+																<div class="col-md-3 product-name">
 																	<div class="product-name">
-																		<a href="#">Lorem Ipsum dolor</a>
-																		<div class="product-info">
-																			<div>Display: <span class="value">5 inch</span></div>
-																			<div>RAM: <span class="value">4GB</span></div>
-																			<div>Memory: <span class="value">32GB</span></div>
-																		</div>
+																		<a href="#"><strong>@item.Name</strong></a>
+																		
 																	</div>
 																</div>
-																<div class="col-md-4 quantity">
+																<div class="col-md-3 quantity">
 																	<label for="quantity">Adet</label>
 																	<input id="quantity" type="number" value="1"
 																		   class="form-control quantity-input">
 																</div>
 																<div class="col-md-3 price">
-																	<span>120 TL</span>
+																	<span>@($"{item.Price:C2}")</span>
+																</div>
+																<div class="col-md-2">
+																	<!-- Çöp kutusu ikonu -->
+																	<a asp-area="" asp-controller="ShoppingCart" asp-action="DeleteItem" asp-route-id="@item.ProductId" style="float: right;">
+																		<i style="font-size:30px;" class="fa fa-trash" aria-hidden="true"></i>
+																	</a>
+																	<!-- Çöp kutusu ikonu -->
 																</div>
 															</div>
+
 														</div>
 													</div>
 												</div>
+											
+												
 											</div>
-											<div class="product">
-												<div class="row">
-													<div class="col-md-3">
-														<img class="img-fluid mx-auto d-block image" src="~/Basket/assets/img/image.jpg">
-													</div>
-													<div class="col-md-8">
-														<div class="info">
-															<div class="row">
-																<div class="col-md-5 product-name">
-																	<div class="product-name">
-																		<a href="#">Lorem Ipsum dolor</a>
-																		<div class="product-info">
-																			<div>Display: <span class="value">5 inch</span></div>
-																			<div>RAM: <span class="value">4GB</span></div>
-																			<div>Memory: <span class="value">32GB</span></div>
-																		</div>
-																	</div>
-																</div>
-																<div class="col-md-4 quantity">
-																	<label for="quantity">Adet</label>
-																	<input id="quantity" type="number" value="1"
-																		   class="form-control quantity-input">
-																</div>
-																<div class="col-md-3 price">
-																	<span>120 TL</span>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="product">
-												<div class="row">
-													<div class="col-md-3">
-														<img class="img-fluid mx-auto d-block image" src="~/Basket/assets/img/image.jpg">
-													</div>
-													<div class="col-md-8">
-														<div class="info">
-															<div class="row">
-																<div class="col-md-5 product-name">
-																	<div class="product-name">
-																		<a href="#">Lorem Ipsum dolor</a>
-																		<div class="product-info">
-																			<div>Display: <span class="value">5 inch</span></div>
-																			<div>RAM: <span class="value">4GB</span></div>
-																			<div>Memory: <span class="value">32GB</span></div>
-																		</div>
-																	</div>
-																</div>
-																<div class="col-md-4 quantity">
-																	<label for="quantity">Adet</label>
-																	<input id="quantity" type="number" value="1"
-																		   class="form-control quantity-input">
-																</div>
-																<div class="col-md-3 price">
-																	<span>120 TL</span>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-12 col-lg-4">
-										<div class="summary">
-											<h3>Sipariş Özeti</h3>
-											<div class="summary-item">
-												<span class="text">Ürünün Toplamı</span><span class="price">360 TL</span>
-											</div>
-											<div class="summary-item">
-												<span class="text">İndirim</span><span class="price">0 TL</span>
-											</div>
-											<div class="summary-item">
-												<span class="text">Kargo</span><span class="price">0 TL</span>
-											</div>
-											<div class="summary-item">
-												<span class="text">Toplam</span><span class="price">360 TL</span>
-											</div>
-											<div>
-												<a asp-area="" asp-controller="CheckOut" asp-action="Index" class="btn btn-danger btn-lg btn-block">Sepeti Onayla</a>
-											</div>
+										}
 										
+									</div>
+								</div>
+								<div class="col-md-12 col-lg-4">
+									<div class="summary">
+										<h3>Sipariş Özeti</h3>
+										<div class="summary-item">
+											<span class="text">Ürünün Toplamı</span><span class="price">360 TL</span>
 										</div>
+										<div class="summary-item">
+											<span class="text">İndirim</span><span class="price">0 TL</span>
+										</div>
+										<div class="summary-item">
+											<span class="text">Kargo</span><span class="price">0 TL</span>
+										</div>
+										<div class="summary-item">
+											<span class="text">Toplam</span><span class="price">360 TL</span>
+										</div>
+										<div>
+											<a asp-area="" asp-controller="CheckOut" asp-action="Index" class="btn btn-danger btn-lg btn-block">Sepeti Onayla</a>
+										</div>
+
 									</div>
 								</div>
 							</div>
 						</div>
-					</section>
-				</main>
-			</div>
-			<!-- /row -->
+					</div>
+				</section>
+			</main>
 		</div>
-		<!-- /container -->
+		<!-- /row -->
 	</div>
-	<!-- /SECTION -->
-	<!-- NEWSLETTER -->
-	<div id="newsletter" class="section">
-		<!-- container -->
-		<div class="container">
-			<!-- row -->
-			<div class="row">
-				<div class="col-md-12">
-					<div class="newsletter">
-						<p>Sign Up for the <strong>NEWSLETTER</strong></p>
-						<form>
-							<input class="input" type="email" placeholder="Enter Your Email">
-							<button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
-						</form>
-						<ul class="newsletter-follow">
-							<li>
-								<a href="#"><i class="fa fa-facebook"></i></a>
-							</li>
-							<li>
-								<a href="#"><i class="fa fa-twitter"></i></a>
-							</li>
-							<li>
-								<a href="#"><i class="fa fa-instagram"></i></a>
-							</li>
-							<li>
-								<a href="#"><i class="fa fa-pinterest"></i></a>
-							</li>
-						</ul>
-					</div>
+	<!-- /container -->
+</div>
+<!-- /SECTION -->
+<!-- NEWSLETTER -->
+<div id="newsletter" class="section">
+	<!-- container -->
+	<div class="container">
+		<!-- row -->
+		<div class="row">
+			<div class="col-md-12">
+				<div class="newsletter">
+					<p>Sign Up for the <strong>NEWSLETTER</strong></p>
+					<form>
+						<input class="input" type="email" placeholder="Enter Your Email">
+						<button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
+					</form>
+					<ul class="newsletter-follow">
+						<li>
+							<a href="#"><i class="fa fa-facebook"></i></a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-twitter"></i></a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-instagram"></i></a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-pinterest"></i></a>
+						</li>
+					</ul>
 				</div>
 			</div>
-			<!-- /row -->
 		</div>
-		<!-- /container -->
+		<!-- /row -->
 	</div>
-	<!-- /NEWSLETTER -->
-	<!-- FOOTER -->
-	<footer id="footer">
-		<!-- top footer -->
-		<div class="section">
-			<!-- container -->
-			<div class="container">
-				<!-- row -->
-				<div class="row">
-					<div class="col-md-3 col-xs-6">
-						<div class="footer">
-							<h3 class="footer-title">About Us</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
-							<ul class="footer-links">
-								<li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
-								<li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
-								<li><a href="#"><i class="fa fa-envelope-o"></i>email@email.com</a></li>
-							</ul>
-						</div>
-					</div>
-
-					<div class="col-md-3 col-xs-6">
-						<div class="footer">
-							<h3 class="footer-title">Categories</h3>
-							<ul class="footer-links">
-								<li><a href="#">Hot deals</a></li>
-								<li><a href="#">Laptops</a></li>
-								<li><a href="#">Smartphones</a></li>
-								<li><a href="#">Cameras</a></li>
-								<li><a href="#">Accessories</a></li>
-							</ul>
-						</div>
-					</div>
-
-					<div class="clearfix visible-xs"></div>
-
-					<div class="col-md-3 col-xs-6">
-						<div class="footer">
-							<h3 class="footer-title">Information</h3>
-							<ul class="footer-links">
-								<li><a href="#">About Us</a></li>
-								<li><a href="#">Contact Us</a></li>
-								<li><a href="#">Privacy Policy</a></li>
-								<li><a href="#">Orders and Returns</a></li>
-								<li><a href="#">Terms & Conditions</a></li>
-							</ul>
-						</div>
-					</div>
-
-					<div class="col-md-3 col-xs-6">
-						<div class="footer">
-							<h3 class="footer-title">Service</h3>
-							<ul class="footer-links">
-								<li><a href="#">My Account</a></li>
-								<li><a href="#">View Cart</a></li>
-								<li><a href="#">Wishlist</a></li>
-								<li><a href="#">Track My Order</a></li>
-								<li><a href="#">Help</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<!-- /row -->
-			</div>
-			<!-- /container -->
-		</div>
-		<!-- /top footer -->
-		<!-- bottom footer -->
-		<div id="bottom-footer" class="section">
-			<div class="container">
-				<!-- row -->
-				<div class="row">
-					<div class="col-md-12 text-center">
-						<ul class="footer-payments">
-							<li><a href="#"><i class="fa fa-cc-visa"></i></a></li>
-							<li><a href="#"><i class="fa fa-credit-card"></i></a></li>
-							<li><a href="#"><i class="fa fa-cc-paypal"></i></a></li>
-							<li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
-							<li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
-							<li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
-						</ul>
-						<span class="copyright">
-							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-							Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						</span>
-
-
-					</div>
-				</div>
-				<!-- /row -->
-			</div>
-			<!-- /container -->
-		</div>
-		<!-- /bottom footer -->
-	</footer>
-	<!-- /FOOTER -->
-	<!-- jQuery Plugins -->
-	<script src="~/ui/jsjquery.min.js"></script>
-	<script src="~/ui/jsbootstrap.min.js"></script>
-	<script src="~/ui/jsslick.min.js"></script>
-	<script src="~/ui/jsnouislider.min.js"></script>
-	<script src="~/ui/jsjquery.zoom.min.js"></script>
-	<script src="~/ui/jsmain.js"></script>
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-</body>
-</html>
+	<!-- /container -->
+</div>
+<!-- /NEWSLETTER -->
