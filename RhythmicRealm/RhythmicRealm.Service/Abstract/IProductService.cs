@@ -10,7 +10,7 @@ namespace RhythmicRealm.Service.Abstract
 {
     public interface IProductService
 	{
-		Task<Response<List<ProductViewModel>>> GetProductsBySubCategoryIdAsync(int subCategoryId);
+		Task<Response<List<ProductViewModel>>> GetProductsBySubCategoryIdAsync(int subCategoryId);//kullandım.
 		Task<Response<List<ProductViewModel>>> GetProductsByMainCategoryIdAsync(int mainCategoryId); //kullandım
 		Task<Response<List<ProductViewModel>>> GetNewProductsAsync(); //kullandım
 		Task<Response<List<ProductViewModel>>> GetAdvantageousProductsAsync(); //kullandım
@@ -27,6 +27,6 @@ namespace RhythmicRealm.Service.Abstract
 		Task<Response<NoContent>> SoftDeleteAsync(int productId); //kullandım
 		Task<bool> UpdateIsHomeAsync(int productId); //kullandım
 		Task<bool> UpdateIsActiveAsync(int productId); //kullandım
-		Task<Response<List<ProductViewModel>>> GetProductsBySubcategoryIdAndBrandId(int[] subId, int[] brandId);
+		Task<Response<List<ProductViewModel>>> GetProductsBySubcategoryIdAndBrandId(int[] subId, int[] brandId); //kullandım
 	}
 }

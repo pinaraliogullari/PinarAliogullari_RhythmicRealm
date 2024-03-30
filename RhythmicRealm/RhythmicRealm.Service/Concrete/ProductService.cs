@@ -332,9 +332,39 @@ namespace RhythmicRealm.Service.Concrete
 			return Response<List<ProductViewModel>>.Success(model, 200);
 		}
 
-		public Task<Response<List<ProductViewModel>>> GetProductsBySubCategoryIdAsync(int subCategoryId)
+		public async Task<Response<List<ProductViewModel>>> GetProductsBySubCategoryIdAsync(int subCategoryId)
 		{
-			throw new NotImplementedException();
+			var products = await _productRepository.GetProductsBySubCategoryIdAsync(subCategoryId);
+			if (products == null)
+				return Response<List<ProductViewModel>>.Fail(404, "Sonuç bulunamadı");
+
+			var model = products.Select(p => new ProductViewModel
+			{
+				Id = p.Id,
+				Name = p.Name,
+				ImageUrl = p.ImageUrl,
+				Description = p.Description,
+				Properties = p.Properties,
+				Price = p.Price,
+				IsActive = p.IsActive,
+				IsHome = p.IsHome,
+				Brand = new BrandSlimViewModel
+				{
+					Id = p.Brand.Id,
+					Name = p.Brand.Name,
+				},
+				MainCategory = new InMainCategoryViewModel
+				{
+					Id = p.SubCategory.MainCategoryId,
+					Name = p.SubCategory.MainCategory.Name,
+				},
+				SubCategory = new InSubCategoryViewModel
+				{
+					Id = p.SubCategory.Id,
+					Name = p.SubCategory.Name,
+				}
+			}).ToList();
+			return Response<List<ProductViewModel>>.Success(model, 200);
 		}
 
 		public async Task<Response<List<ProductViewModel>>> GetSelectedProducts()

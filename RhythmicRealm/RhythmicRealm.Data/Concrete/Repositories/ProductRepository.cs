@@ -140,5 +140,18 @@ namespace RhythmicRealm.Data.Concrete.Repositories
 
 			return await searchResults.ToListAsync();
 		}
+
+		public async Task<List<Product>> GetProductsBySubCategoryIdAsync(int id)
+		{
+				List<Product> products = await RRContext
+			.Products
+			.Include(p => p.SubCategory)
+			.ThenInclude(s => s.MainCategory)
+			.Include(p => p.Brand)
+			.Where(p => p.SubCategory.Id == id)
+			.ToListAsync();
+
+			return products;
+		}
 	}
 }
