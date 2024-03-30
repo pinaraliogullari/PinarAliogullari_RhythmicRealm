@@ -36,14 +36,13 @@
 																<div class="row">
 																	<div class="col-md-5 product-name">
 																		<div class="product-name">
-																			<a asp-area="" asp-controller="ProductDetails" asp-action="Index" asp-route-id="@item.ProductId"><strong>@item.Name</strong></a>
+																			<a asp-area="" asp-controller="ProductDetails" asp-action="Index" asp-route-id="@item.ProductId">@item.Name</a>
 
 																		</div>
 																	</div>
 																	<div class="col-md-2 quantity">
 																		<label for="quantity">Adet</label>
-																		<input onchange="" id="quantity" type="number" value="1"
-																			   class="form-control quantity-input">
+																	<input onchange="changeQuantity(this)" data-item-id="@item.BasketItemId" id="quantity" type="number" value="1" class="form-control quantity-input">
 																	</div>
 																	<div class="col-md-3 price">
 																		<span id="item-total">@($"{item.Price:C2}")</span>
@@ -70,7 +69,7 @@
 									<div class="summary">
 										<h3>Sipariş Özeti</h3>
 										<div class="summary-item">
-											<span id="basket-total" class="text">Ürünün Toplamı</span><span class="price">@($"{Model.TotalPrice():C2}")</span>
+											<span class="text">Ürünün Toplamı</span><span id="basket-total" class="price">@($"{Model.TotalPrice():C2}")</span>
 										</div>
 										<div class="summary-item">
 											@{
@@ -78,13 +77,13 @@
 												var discount =(double) total * 0.1;
 												var newTotal = (double)total - discount;
 											}
-											<span id="discount" class="text">Sepette %10 İndirim </span><span class="price">@($"{discount:C2}")</span>
+											<span class="text">Sepette %10 İndirim </span><span id="discount" class="price">@($"{discount:C2}")</span>
 										</div>
 										<div class="summary-item">
 											<span class="text">Kargo</span><span class="price">@($"{0:C2}")</span>
 										</div>
 										<div class="summary-item">
-											<span id="new-total" class="text">Toplam</span><span class="price">@($"{newTotal:C2}")</span>
+											<span class="text">Toplam</span><span id="new-total" class="price">@($"{newTotal:C2}")</span>
 										</div>
 										<div>
 											@if (User.Identity.IsAuthenticated)
@@ -148,19 +147,21 @@
 <!-- /NEWSLETTER -->
 
 <script>
-        function changeQuantity () {
-		var productId = $(this).closest(".product").data("product-id");
-		var newQuantity = $(this).val();
+	function changeQuantity(element) {
+		var newQuantity = $(element).val();
+		var itemId = $(element).data("item-id");
+		
 		$.ajax({
 			type: "POST",
 			url: "/Basket/UpdateQuantity",
-			data: { shoppingBasketItemId: productId, quantity: newQuantity },
+			data: { shoppingBasketItemId: itemId, quantity: newQuantity },
 			success: function (response) {
 				if (response.success) {
 					$("#item-total").text(response.basketItemTotal);
 					$("#discount").text(response.discount);
 					$("#basket-total").text(response.basketTotal);
 					$("#new-total").text(response.newTotal);
+					
 				} else {
 					alert("Bir hata oluştu: " + response.message);
 				}
@@ -169,5 +170,5 @@
 				alert("Bir hata oluştu. Lütfen tekrar deneyin.");
 			}
 		});
-	});
+	}
 </script>

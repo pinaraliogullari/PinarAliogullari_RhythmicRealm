@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using RhythmicRealm.Entity.Concrete.Identity;
 using RhythmicRealm.Service.Abstract;
+using RhythmicRealm.Shared.ViewModels.ShoppingBasketViewModels;
 
 namespace RhythmicRealm.UI.ViewComponents
 {
@@ -27,7 +28,12 @@ namespace RhythmicRealm.UI.ViewComponents
 
 				var shoppingBasket = await _shoppingBasketService.GetShoppingBasketByUserIdAsync(userId);
 				var count = await _shoppingBasketItemService.CountAsync(shoppingBasket.Data.ShoppingBasketId);
-				return View("Default", count);
+				var miniBasketViewModel = new MiniBasketViewModel
+				{
+					Count = count,
+					ShoppingBasket = shoppingBasket.Data,
+				};
+				return View("Default", miniBasketViewModel);
 			}
 			return View("EmptyBasket");
 		}

@@ -19,6 +19,12 @@ namespace RhythmicRealm.Data.Concrete.Repositories
 		{
 			get { return _dbContext as RRContext; }
 		}
-		
+
+		public async Task UpdateQuantityAsync(ShoppingBasketItem shoppingBasketItem, int quantity)
+		{
+			shoppingBasketItem.Quantity = quantity;
+			RRContext.Update(shoppingBasketItem);
+			await RRContext.SaveChangesAsync();
+		}
 	}
 }

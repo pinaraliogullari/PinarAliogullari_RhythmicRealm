@@ -10,16 +10,18 @@ namespace RhythmicRealm.UI.Controllers
 	public class BasketController : Controller
 	{
 		private readonly IShoppingBasketService _shoppingBasketService;
+        private readonly IShoppingBasketItemService _shoppingBasketItemService;
 		private readonly UserManager<User> _userManager;
         private readonly INotyfService _notyfService;
-        public BasketController(IShoppingBasketService shoppingBasketService, UserManager<User> userManager, INotyfService notyfService)
-        {
-            _shoppingBasketService = shoppingBasketService;
-            _userManager = userManager;
-            _notyfService = notyfService;
-        }
+		public BasketController(IShoppingBasketService shoppingBasketService, UserManager<User> userManager, INotyfService notyfService, IShoppingBasketItemService shoppingBasketItemService)
+		{
+			_shoppingBasketService = shoppingBasketService;
+			_userManager = userManager;
+			_notyfService = notyfService;
+			_shoppingBasketItemService = shoppingBasketItemService;
+		}
 
-        public async Task<IActionResult> Index()
+		public async Task<IActionResult> Index()
 		{
             if (User.Identity.IsAuthenticated)
             {
@@ -47,17 +49,18 @@ namespace RhythmicRealm.UI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UpdateQuantity(int itemId, int quantity)
+        public async Task<IActionResult> UpdateQuantity(int shoppingBasketItemId, int quantity)
         {
             var userId= _userManager.GetUserId(User);
-            var basket= await _shoppingBasketService.UpdateQuantityAsync(itemId, quantity,userId);
-            var basketItem = basket.Data.BasketItems.FirstOrDefault(x=>x.BasketItemId==itemId);
-            var basketItemTotal= $"{(basketItem.Price * quantity):C0}";
-            var basketTotal = $"{basket.Data.TotalPrice():C0}";
-            var discount = $"{(basket.Data.TotalPrice() * 0.1m):C0}";
-            var newTotal = basket.Data.TotalPrice() - basket.Data.TotalPrice() * 0.1m;
+            var basket= await _shoppingBasketService.GetShoppingBasketByUserIdAsync(userId);
+            var updatedBasketItem= await _shoppingBasketItemService.UpdateQuantityAsync(shoppingBasketItemId, quantity);
+            var basketItemTotal = $"{(updatedBasketItem.Data.Price * quantity):C2}";
+			var basketTotal = (basket.Data.TotalPrice() * quantity).ToString("C2");
+			var discount = ((basket.Data.TotalPrice() * 0.1m) * 2).ToString("C2");
+			var newTotal = ((basket.Data.TotalPrice() * quantity) - (basket.Data.TotalPrice() * 0.1m)).ToString("C2");
 			return Json(new
 			{
+                success=true,
 				basketItemTotal = basketItemTotal,
 				basketTotal = basketTotal,
 				discount = discount,

@@ -1,4 +1,4 @@
-﻿@model int
+﻿@model MiniBasketViewModel
 
 <!-- Cart -->
 <div class="dropdown">
@@ -6,11 +6,11 @@
 
 		<i class="fa fa-shopping-cart"></i>
 		<span>Sepetim</span>
-		<div class="qty">@Model</div>
+		<div class="qty">@Model.Count</div>
 	</a>
 	<div class="cart-dropdown">
 		<div class="cart-list">
-			@* @foreach (var item in Model.BasketItems)
+			@foreach (var item in Model.ShoppingBasket.BasketItems)
 			{
 				<div class="product-widget">
 					<div class="product-img">
@@ -22,13 +22,17 @@
 					</div>
 				
 				</div>
-			} *@
+			}
 			
 		</div>
-		@* <div class="cart-summary">
-			
-			<h5>Toplam:@($"{Model.TotalPrice():C2}")</h5>
-		</div> *@
+		<div class="cart-summary">
+			@{
+				var total = Model.ShoppingBasket.TotalPrice();
+				var discount = (double)total * 0.1;
+				var newTotal = (double)total - discount;
+			}
+			<h5>Toplam:@($"{newTotal:C2}")</h5>
+		</div>
 		<div class="cart-btns">
 			<a asp-area="" asp-controller="Basket" asp-action="Index">Sepeti Görüntüle</a>
 			@if (User.Identity.IsAuthenticated)
