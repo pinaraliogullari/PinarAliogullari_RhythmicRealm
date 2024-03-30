@@ -28,18 +28,21 @@
 							<div class="product-body">
 								<p class="product-category">@item.MainCategory.Name-@item.SubCategory.Name</p>
 								<h3 class="product-name"><a href="#">@item.Name</a></h3>
-								<h4 class="product-price">$980.00 <del class="product-old-price">@($"{item.Price:C2}")</del></h4>
+								<h4 class="product-price">@($"{item.Price:C2}") <del class="product-old-price">@($"{item.Price+2500:C2}")</del></h4>
 								<div class="product-rating">
 								</div>
 								<div class="product-btns">
-									<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-									<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-									<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+									<a style="cursor:pointer"><i class="fa fa-heart-o"></i><span class="tooltipp">Beğen</span></a>
+									<a asp-area="" asp-controller="ProductDetails" asp-action="Index" asp-route-id="@item.Id" style="cursor:pointer"><i class="fa fa-eye"></i><span class="tooltipp">İncele</span></a>
 								</div>
 							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-							</div>
+							<form asp-area="" asp-controller="Basket" asp-action="AddToBasket" method="post">
+								<input type="hidden" value="@item.Id" name="productId" />
+								<input type="hidden" value="1" name="quantity" />
+								<div class="add-to-cart">
+									<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Sepete Ekle</button>
+								</div>
+							</form>
 						</div>
 					</div>
 					<!-- /product -->

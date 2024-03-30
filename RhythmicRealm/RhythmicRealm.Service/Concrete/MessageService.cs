@@ -62,7 +62,7 @@ namespace RhythmicRealm.Service.Concrete
             var userId = _userManager.GetUserId(_httpContextAccessor.HttpContext.User);
             var user = await _userManager.FindByIdAsync(userId);
             var count = await _messageRepository.GetCount(m=>m.IsRead == isRead&& m.ReceiverMail==user.Email);
-            return Response<int>.Success(count);
+            return Response<int>.Success(count,200);
         }
 
         public async Task<Response<List<AdminMessageViewModel>>> GetMessagesListInInboxAsync()
