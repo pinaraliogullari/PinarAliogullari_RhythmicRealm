@@ -1,13 +1,22 @@
-﻿using RhythmicRealm.Service.Abstract;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using RhythmicRealm.Data.Abstract;
+using RhythmicRealm.Service.Abstract;
+
 
 namespace RhythmicRealm.Service.Concrete
 {
-	public class ShoppingBasketItemService:IShoppingBasketItemService
+	public class ShoppingBasketItemService : IShoppingBasketItemService
 	{
+		private readonly IShoppingBasketRepository _shoppingBasketRepository;
+
+		public ShoppingBasketItemService(IShoppingBasketRepository shoppingBasketRepository)
+		{
+			_shoppingBasketRepository = shoppingBasketRepository;
+		}
+
+		public async Task<int> CountAsync(int shoppingBasketId)
+		{
+			return await _shoppingBasketRepository.GetCount(x => x.Id == shoppingBasketId);
+		}
 	}
 }
+

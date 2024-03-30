@@ -1,6 +1,9 @@
 ﻿using Mapster;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using RhythmicRealm.Data.Abstract;
+using RhythmicRealm.Data.Concrete.Contexts;
 using RhythmicRealm.Entity.Concrete;
 using RhythmicRealm.Entity.Concrete.Identity;
 using RhythmicRealm.Service.Abstract;
@@ -14,14 +17,16 @@ namespace RhythmicRealm.Service.Concrete
 	{
 		private readonly UserManager<User> _userManager;
 		private readonly IShoppingBasketRepository _shoppingBasketRepository;
+        private readonly IHttpContextAccessor _contextAccessor;
 
-		public ShoppingBasketService(UserManager<User> userManager, IShoppingBasketRepository shoppingBasketRepository)
+		public ShoppingBasketService(UserManager<User> userManager, IShoppingBasketRepository shoppingBasketRepository, IHttpContextAccessor contextAccessor)
 		{
 			_userManager = userManager;
 			_shoppingBasketRepository = shoppingBasketRepository;
+			_contextAccessor = contextAccessor;
 		}
 
-        public async Task<Response<ShoppingBasketViewModel>> AddItemToBasketAsync(string userId, int productId, int quantity)
+		public async Task<Response<ShoppingBasketViewModel>> AddItemToBasketAsync(string userId, int productId, int quantity)
         {
             var basket=await _shoppingBasketRepository.GetShoppingBasketByUserIdAsync(userId);
             if (basket != null)
@@ -49,7 +54,9 @@ namespace RhythmicRealm.Service.Concrete
             return Response<ShoppingBasketViewModel>.Fail(500,"Bir hata meydana geldi");
         }
 
-        public async Task<Response<ShoppingBasketViewModel>> GetShoppingBasketByUserIdAsync(string userId)
+	
+
+		public async Task<Response<ShoppingBasketViewModel>> GetShoppingBasketByUserIdAsync(string userId)
         {
            var basket= await _shoppingBasketRepository.GetShoppingBasketByUserIdAsync(userId);
             var basketViewModel = new ShoppingBasketViewModel
@@ -78,12 +85,6 @@ namespace RhythmicRealm.Service.Concrete
             return Response<NoContent>.Success(200);
         }
 
-        public async Task<Response<NoContent>> RemoveBasketAsync(int cartId)
-        {
-            await _shoppingBasketRepository.ClearShoppingBasketAsync(cartId);
-            return Response<NoContent>.Success(200);
-        }
-
         public async Task<Response<NoContent>> RemoveItemFromBasketAsync(string userId, int productId)
         {
             var basket = await GetShoppingBasketByUserIdAsync(userId);
@@ -95,6 +96,21 @@ namespace RhythmicRealm.Service.Concrete
                 return Response<NoContent>.Fail(500, "Bir hata meydana geldi");
 
         }
-    }
+
+		public async Task<Response<ShoppingBasketViewModel>> UpdateQuantityAsync(int shoppingBasketItemId, int quantity,string userId)
+		{
+		    await _shoppingBasketRepository.UpdateQuantityAsync(shoppingBasketItemId, quantity);
+            await _shoppingBasketRepository.GetShoppingBasketByUserIdAsync(userId);
+            return Response<ShoppingBasketViewModel>.Success(200);
+           
+		}
+
+		//public async Task<Response<NoContent>> RemoveBasketAsync(int cartId)
+		//{
+		//    await _shoppingBasketRepository.ClearShoppingBasketAsync(cartId);
+		//    return Response<NoContent>.Success(200);
+		//}
+
+	}
 }
 

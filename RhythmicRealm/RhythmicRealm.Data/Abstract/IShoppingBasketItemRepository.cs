@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace RhythmicRealm.Data.Abstract
 {
-	public interface IShoppingBasketItemRepository:IGenericRepository<ShoppingBasketItem>
+	public interface IShoppingBasketItemRepository : IGenericRepository<ShoppingBasketItem>
 	{
+		
 	}
 }

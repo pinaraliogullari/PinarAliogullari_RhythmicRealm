@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RhythmicRealm.Data.Concrete.Repositories
 {
-	public class ShoppingBasketItemRepository:GenericRepository<ShoppingBasketItem>,IShoppingBasketItemRepository
+	public class ShoppingBasketItemRepository : GenericRepository<ShoppingBasketItem>, IShoppingBasketItemRepository
 	{
 		public ShoppingBasketItemRepository(RRContext _context) : base(_context)
 		{
@@ -19,5 +19,6 @@ namespace RhythmicRealm.Data.Concrete.Repositories
 		{
 			get { return _dbContext as RRContext; }
 		}
+		
 	}
 }

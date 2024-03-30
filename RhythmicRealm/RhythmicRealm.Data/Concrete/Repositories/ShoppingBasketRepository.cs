@@ -41,16 +41,22 @@ namespace RhythmicRealm.Data.Concrete.Repositories
         public async Task<ShoppingBasket> GetShoppingBasketByUserIdAsync(string userId)
         {
 
-            var shoppingCart = await RRContext
+            var shoppingBasket = await RRContext
                 .ShoppingBaskets
                 .Include(x => x.ShoppingBasketItems)
                 .ThenInclude(x => x.Product)
                 .FirstOrDefaultAsync(x => x.UserId == userId);
-            return shoppingCart;
+            return shoppingBasket;
 
 
         }
 
-        
-    }
+		public async Task UpdateQuantityAsync(int shoppingBasketItemId, int quantity)
+		{
+			var updatedItem = await RRContext.ShoppingBasketItems.FindAsync(shoppingBasketItemId);
+				updatedItem.Quantity = quantity;
+				await RRContext.SaveChangesAsync();
+			
+		}
+	}
 }

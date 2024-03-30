@@ -8,5 +8,6 @@ namespace RhythmicRealm.Service.Abstract
 {
 	public interface IShoppingBasketItemService
 	{
+		Task<int> CountAsync(int shoppingBasketId);
 	}
 }

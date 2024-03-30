@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RhythmicRealm.Entity.Concrete.Identity;
+using RhythmicRealm.Service.Abstract;
 using RhythmicRealm.Shared.ViewModels.Identity;
 using RhythmicRealm.UI.EmailServices.Abstract;
 
@@ -13,16 +14,18 @@ namespace RhythmicRealm.UI.Controllers
         private readonly INotyfService _notyfService;
         private readonly SignInManager<User> _signInManager;
         private readonly IEmailSender _emailSender;
-		public AccountController(UserManager<User> userManager, INotyfService notyfService, SignInManager<User> signInManager, IEmailSender emailSender)
+        private readonly IShoppingBasketService _shoppingBasketService;
+		public AccountController(UserManager<User> userManager, INotyfService notyfService, SignInManager<User> signInManager, IEmailSender emailSender, IShoppingBasketService shoppingBasketService)
 		{
 			_userManager = userManager;
 			_notyfService = notyfService;
 			_signInManager = signInManager;
 			_emailSender = emailSender;
+			_shoppingBasketService = shoppingBasketService;
 		}
 
-		
-        public IActionResult Register()
+
+		public IActionResult Register()
         {
             return View();
         }
@@ -67,7 +70,7 @@ namespace RhythmicRealm.UI.Controllers
                     $"<p>Rhythmic Realm sitesine üyeliğinizi onaylamak için aşağıdaki linke tıklayınız.</p><a href='http://localhost:5066{backUrl}'>ONAY LİNKİ</a>"
                     );
 
-                //await _shoppingCartManager.InitializeShoppingCartAsync(userId);
+                
                 return RedirectToAction("ShowResetPasswordInfo", registerViewModel);
 
             }
@@ -96,7 +99,7 @@ namespace RhythmicRealm.UI.Controllers
 			var result = await _userManager.ConfirmEmailAsync(user, token);
 			if (result.Succeeded)
 			{
-				//await _shoppingCartManager.InitializeShoppingCartAsync(userId);
+				await _shoppingBasketService.InitializeBasketAsync(userId);
 				_notyfService.Information("Hesabınız başarıyla onaylanmıştır.");
 				return RedirectToAction("Login");
 			}
