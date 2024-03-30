@@ -1,4 +1,5 @@
-﻿using RhythmicRealm.Data.Abstract;
+﻿using Microsoft.EntityFrameworkCore;
+using RhythmicRealm.Data.Abstract;
 using RhythmicRealm.Service.Abstract;
 
 
@@ -6,16 +7,16 @@ namespace RhythmicRealm.Service.Concrete
 {
 	public class ShoppingBasketItemService : IShoppingBasketItemService
 	{
-		private readonly IShoppingBasketRepository _shoppingBasketRepository;
+		private readonly IShoppingBasketItemRepository _shoppingBasketItemRepository;
 
-		public ShoppingBasketItemService(IShoppingBasketRepository shoppingBasketRepository)
+		public ShoppingBasketItemService(IShoppingBasketItemRepository shoppingBasketItemRepository)
 		{
-			_shoppingBasketRepository = shoppingBasketRepository;
+			_shoppingBasketItemRepository = shoppingBasketItemRepository;
 		}
 
 		public async Task<int> CountAsync(int shoppingBasketId)
 		{
-			return await _shoppingBasketRepository.GetCount(x => x.Id == shoppingBasketId);
+			return await _shoppingBasketItemRepository.GetCount(x =>x.ShoppingBasketId==shoppingBasketId);
 		}
 	}
 }
