@@ -20,7 +20,7 @@ namespace RhythmicRealm.Shared.ViewModels.OrderViewModels
 		public string CardNumber { get; set; }
 		public string ExpirationMonth { get; set; }
 		public string ExpirationYear { get; set; }
-		public string Cvv { get; set; }
+		public string Cvc { get; set; }
 		public ShoppingBasketViewModel ShoppingBasket { get; set; }
 	}
 }

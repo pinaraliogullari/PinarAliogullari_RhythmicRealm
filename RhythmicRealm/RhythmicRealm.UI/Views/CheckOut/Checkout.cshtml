@@ -1,0 +1,123 @@
+﻿@model OrderViewModel
+
+<!-- BREADCRUMB -->
+<div id="breadcrumb" class="section">
+	<!-- container -->
+	<div class="container">
+		<!-- row -->
+		<div class="row">
+			<div class="col-md-12">
+				<h3 class="breadcrumb-header">ÖDEME SAYFASI</h3>
+				<ul class="breadcrumb-tree">
+					<li><a asp-area="" asp-controller="Home" asp-action="Index">Ana Sayfa</a></li>
+					<li class="active">Ödeme Sayfası</li>
+				</ul>
+			</div>
+		</div>
+		<!-- /row -->
+	</div>
+	<!-- /container -->
+</div>
+<!-- /BREADCRUMB -->
+<!-- SECTION -->
+<div class="section">
+	<!-- container -->
+	<div class="container">
+		<!-- row -->
+		<div class="row">
+
+			<div class="col-md-7">
+				<!-- Billing Details -->
+				<div class="billing-details">
+					<div class="section-title">
+						<h3 class="title">Fatura Adresi</h3>
+					</div>
+					<div class="form-group">
+						<input asp-for=@Model.FirstName class="input" type="text" name="first-name" placeholder="Ad">
+					</div>
+					<div class="form-group">
+						<input asp-for=@Model.LastName class="input" type="text" name="last-name" placeholder="Soyad">
+					</div>
+					<div class="form-group">
+						<input asp-for=@Model.Email class="input" type="email" name="email" placeholder="Email">
+					</div>
+					<div class="form-group">
+						<input asp-for="@Model.Address" class="input" type="text" name="address" placeholder="Adres">
+					</div>
+					<div class="form-group">
+						<input asp-for="@Model.City" class="input" type="text" name="city" placeholder="Şehir">
+					</div>
+					<div class="form-group">
+						<input value="Türkiye" class="input" type="text" name="country" placeholder="Ülke">
+					</div>
+					<div class="form-group">
+						<input asp-for="@Model.PhoneNumber" class="input" type="tel" name="tel" placeholder="Telefon">
+					</div>
+				</div>
+				<!-- /Billing Details -->
+				<div class="billing-details">
+					<div class="section-title">
+						<h3 class="title">Kart Bilgileri</h3>
+					</div>
+					<div class="form-group">
+						<input asp-for="@Model.CardName" class="input" type="text" name="first-name" placeholder="Kart üzerindeki Ad Soyad">
+					</div>
+					<div class="form-group">
+						<input asp-for="@Model.CardNumber" class="input" type="text" name="last-name" placeholder="Kart Numarası">
+					</div>
+					<div class="form-group">
+						<input asp-for="@Model.ExpirationMonth" class="input" type="email" name="email" placeholder="Geçerlilik Ay">
+					</div>
+					<div class="form-group">
+						<input asp-for="@Model.ExpirationYear" class="input" type="text" name="address" placeholder="Geçerlilik Yıl">
+					</div>
+					<div class="form-group">
+						<input asp-for="@Model.Cvc" class="input" type="text" name="city" placeholder="Cvc">
+					</div>
+				</div>
+			</div>
+
+			<!-- Order Details -->
+			<div class="col-md-5 order-details">
+				<div class="section-title text-center">
+					<h3 class="title">Siparişiniz</h3>
+				</div>
+				<div class="order-summary">
+					<div class="order-col">
+						<div><strong>Ürünler</strong></div>
+						<div><strong>Toplam</strong></div>
+					</div>
+					<div class="order-products">
+						@foreach (var item in Model.ShoppingBasket.BasketItems)
+						{
+							<div class="order-col">
+								<div>@item.Quantity x @item.Name</div>
+								<div>
+									@($"{item.Price:C2}")</div>
+							</div>
+						}
+					</div>
+					@{
+						var total = Model.ShoppingBasket.TotalPrice();
+						var discount = (double)total * 0.1;
+						var newTotal = (double)total - discount;
+					}
+					
+					<div class="order-col">
+						<div>Kargo</div>
+						<div><strong>Ücretsiz</strong></div>
+					</div>
+					<div class="order-col">
+						<div><strong>TOTAL</strong></div>
+						<div><strong class="order-total">@($"{newTotal:C2}")</strong></div>
+					</div>
+				</div>
+				<a href="#" class="primary-btn order-submit">Ödemeyi Tamamla</a>
+			</div>
+			<!-- /Order Details -->
+		</div>
+		<!-- /row -->
+	</div>
+	<!-- /container -->
+</div>
+<!-- /SECTION -->

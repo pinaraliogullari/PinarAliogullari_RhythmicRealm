@@ -36,7 +36,6 @@ namespace RhythmicRealm.Service.Concrete
 				City = order.City,
 				PhoneNumber = order.PhoneNumber,
 				Email = order.Email,
-				OrderNote = order.OrderNote,
 				OrderItems = order.OrderItems.Select(x => new OrderListViewModel.OrderItemViewModel
                 {
 					Id = x.Id,
@@ -68,7 +67,6 @@ namespace RhythmicRealm.Service.Concrete
 				City = order.City,
 				PhoneNumber = order.PhoneNumber,
 				Email = order.Email,
-				OrderNote = order.OrderNote,
 				OrderItems = order.OrderItems.Select(x => new OrderListViewModel.OrderItemViewModel
                 {
 					Id = x.Id,
@@ -93,7 +91,6 @@ namespace RhythmicRealm.Service.Concrete
 				City = order.City,
 				PhoneNumber = order.PhoneNumber,
 				Email = order.Email,
-				OrderNote = order.OrderNote,
 				OrderItems = order.OrderItems.Select(x => new OrderListViewModel.OrderItemViewModel
                 {
 					Id = x.Id,

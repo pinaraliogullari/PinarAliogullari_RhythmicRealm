@@ -23,7 +23,6 @@ namespace RhythmicRealm.Entity.Concrete
         public string City { get; set; }
         public string PhoneNumber { get; set; }
 		public string Email { get; set; }
-		public string OrderNote { get; set; }
         public string PaymentId { get; set; }
         public string PaymentToken { get; set; }
         public string ConversationId { get; set; }
