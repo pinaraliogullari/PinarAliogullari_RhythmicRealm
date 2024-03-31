@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RhythmicRealm.Shared.ComplexTypes
 {
-	public enum PaymentOption
+	public enum EnumPaymentOptions
 	{
 		CreditCard=0,
 		Eft=1

@@ -28,6 +28,8 @@ namespace RhythmicRealm.Data.Concrete.Contexts
 		public DbSet<Message> Messages { get; set; }
         public DbSet<ShoppingBasket> ShoppingBaskets { get; set; }
         public DbSet<ShoppingBasketItem> ShoppingBasketItems { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 

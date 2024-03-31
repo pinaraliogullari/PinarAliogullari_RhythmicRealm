@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RhythmicRealm.Shared.ComplexTypes
 {
-	public enum OrderState
+	public enum EnumOrderState
 	{
 		[Display(Name = "Siparişiniz alındı")]
 		Received = 0,

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RhythmicRealm.Entity.Concrete
 {
-	public class OrderDetails
+	public class OrderItem
 	{
 		public int Id { get; set; }
 		public int OrderId { get; set; }
