@@ -1,4 +1,6 @@
 ﻿
+using RhythmicRealm.Shared.ViewModels.ProductViewModels;
+
 namespace RhythmicRealm.Shared.ViewModels.ShoppingBasketViewModels
 {
     public partial class ShoppingBasketViewModel
@@ -17,6 +19,7 @@ namespace RhythmicRealm.Shared.ViewModels.ShoppingBasketViewModels
     {
         public int BasketItemId { get; set; }
         public int ProductId { get; set; }
+        public ProductViewModel Product { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
         public string ImageUrl { get; set; }

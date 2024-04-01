@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 using RhythmicRealm.Data.Abstract;
 using RhythmicRealm.Data.Concrete.Contexts;
 using RhythmicRealm.Entity.Concrete;
@@ -9,6 +10,7 @@ using RhythmicRealm.Entity.Concrete.Identity;
 using RhythmicRealm.Service.Abstract;
 using RhythmicRealm.Shared.Response;
 using RhythmicRealm.Shared.ViewModels.ShoppingBasketViewModels;
+using System.Web.Helpers;
 
 
 namespace RhythmicRealm.Service.Concrete
@@ -85,7 +87,16 @@ namespace RhythmicRealm.Service.Concrete
             return Response<NoContent>.Success(200);
         }
 
-        public async Task<Response<NoContent>> RemoveItemFromBasketAsync(string userId, int productId)
+		public async Task<Response<NoContent>> RemoveBasketAsync(int cartId)
+		{
+			var basket= await _shoppingBasketRepository.GetAsync(x=> x.Id == cartId ,IncludeExpression=>IncludeExpression
+            .Include(x=>x.ShoppingBasketItems));
+			basket.ShoppingBasketItems = new List<ShoppingBasketItem>();
+			await _shoppingBasketRepository.UpdateAsync(basket);
+			return Response<NoContent>.Success(200);
+		}
+
+		public async Task<Response<NoContent>> RemoveItemFromBasketAsync(string userId, int productId)
         {
             var basket = await GetShoppingBasketByUserIdAsync(userId);
             if (basket != null)
@@ -105,11 +116,7 @@ namespace RhythmicRealm.Service.Concrete
            
 		}
 
-		//public async Task<Response<NoContent>> RemoveBasketAsync(int cartId)
-		//{
-		//    await _shoppingBasketRepository.ClearShoppingBasketAsync(cartId);
-		//    return Response<NoContent>.Success(200);
-		//}
+	
 
 	}
 }

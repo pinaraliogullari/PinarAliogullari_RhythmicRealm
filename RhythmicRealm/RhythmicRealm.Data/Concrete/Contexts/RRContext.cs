@@ -3,11 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using RhythmicRealm.Data.Concrete.Configs;
 using RhythmicRealm.Entity.Concrete.Identity;
 using RhythmicRealm.Entity.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using RhythmicRealm.Data.Extensions;
 using RhythmicRealm.Entity.Concrete.Others;
 

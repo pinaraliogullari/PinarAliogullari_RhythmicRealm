@@ -27,6 +27,8 @@
     
     <PackageReference Include="AspNetCoreHero.ToastNotification" Version="1.1.0" />
     
+    <PackageReference Include="Iyzipay" Version="2.1.61" />
+    
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.16">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

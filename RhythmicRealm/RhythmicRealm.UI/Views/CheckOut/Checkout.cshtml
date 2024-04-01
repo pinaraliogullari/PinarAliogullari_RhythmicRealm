@@ -23,35 +23,45 @@
 <div class="section">
 	<!-- container -->
 	<div class="container">
+		<div class="text-danger" asp-validation-summary="All"></div>
 		<!-- row -->
+		<form asp-area="" asp-controller="CheckOut" asp-action="Checkout" method="post">
 		<div class="row">
-
+		
 			<div class="col-md-7">
 				<!-- Billing Details -->
 				<div class="billing-details">
 					<div class="section-title">
 						<h3 class="title">Fatura Adresi</h3>
 					</div>
-					<div class="form-group">
-						<input asp-for=@Model.FirstName class="input" type="text" name="first-name" placeholder="Ad">
+					<div class="form-group col-md-6">
+						<label asp-for="@Model.FirstName"></label>
+						<input asp-for=@Model.FirstName class="input"  >
+							
 					</div>
-					<div class="form-group">
-						<input asp-for=@Model.LastName class="input" type="text" name="last-name" placeholder="Soyad">
+					<div class="form-group col-md-6">
+						<label asp-for="@Model.LastName"></label>
+						<input asp-for=@Model.LastName class="input"  >
 					</div>
-					<div class="form-group">
-						<input asp-for=@Model.Email class="input" type="email" name="email" placeholder="Email">
+					<div class="form-group col-md-6">
+						<label asp-for="@Model.Email"></label>
+						<input asp-for=@Model.Email class="input"  >
 					</div>
-					<div class="form-group">
-						<input asp-for="@Model.Address" class="input" type="text" name="address" placeholder="Adres">
+					<div class="form-group col-md-6">
+						<label asp-for="@Model.PhoneNumber"></label>
+						<input asp-for="@Model.PhoneNumber" class="input" >
 					</div>
-					<div class="form-group">
-						<input asp-for="@Model.City" class="input" type="text" name="city" placeholder="Şehir">
+					<div class="form-group col-md-6">
+						<label asp-for="@Model.City"></label>
+						<input asp-for="@Model.City" class="input"  >
 					</div>
-					<div class="form-group">
-						<input value="Türkiye" class="input" type="text" name="country" placeholder="Ülke">
+					<div class="form-group col-md-6">
+						<label >Ülke</label>
+						<input value="Türkiye" class="input"  >
 					</div>
-					<div class="form-group">
-						<input asp-for="@Model.PhoneNumber" class="input" type="tel" name="tel" placeholder="Telefon">
+					<div class="form-group col-md-12">
+						<label asp-for="@Model.Address"></label>
+						<textarea asp-for="@Model.Address" class="input"></textarea>
 					</div>
 				</div>
 				<!-- /Billing Details -->
@@ -59,20 +69,27 @@
 					<div class="section-title">
 						<h3 class="title">Kart Bilgileri</h3>
 					</div>
-					<div class="form-group">
-						<input asp-for="@Model.CardName" class="input" type="text" name="first-name" placeholder="Kart üzerindeki Ad Soyad">
+					<div class="form-group col-md-12">
+						<label asp-for="@Model.CardName"></label>
+						<input asp-for="@Model.CardName" class="input" >
+						<span class="text-danger" asp-validation-for="@Model.FirstName"></span>
 					</div>
-					<div class="form-group">
-						<input asp-for="@Model.CardNumber" class="input" type="text" name="last-name" placeholder="Kart Numarası">
+					<div class="form-group col-md-12">
+					    <label asp-for="@Model.CardNumber"></label>
+						<input asp-for="@Model.CardNumber" class="input"  >
+						<span class="text-danger" asp-validation-for="@Model.CardNumber"></span>
 					</div>
-					<div class="form-group">
-						<input asp-for="@Model.ExpirationMonth" class="input" type="email" name="email" placeholder="Geçerlilik Ay">
+					<div class="form-group col-md-4">
+						<label asp-for="@Model.ExpirationMonth"></label>
+						<input asp-for="@Model.ExpirationMonth" class="input">
 					</div>
-					<div class="form-group">
-						<input asp-for="@Model.ExpirationYear" class="input" type="text" name="address" placeholder="Geçerlilik Yıl">
+					<div class="form-group col-md-4">
+						<label asp-for="@Model.ExpirationYear"></label>
+						<input asp-for="@Model.ExpirationYear" class="input" >
 					</div>
-					<div class="form-group">
-						<input asp-for="@Model.Cvc" class="input" type="text" name="city" placeholder="Cvc">
+					<div class="form-group col-md-4">
+						<label asp-for="@Model.Cvc"></label>
+						<input asp-for="@Model.Cvc" class="input" >
 					</div>
 				</div>
 			</div>
@@ -108,14 +125,15 @@
 						<div><strong>Ücretsiz</strong></div>
 					</div>
 					<div class="order-col">
-						<div><strong>TOTAL</strong></div>
+						<div><strong>Toplam</strong></div>
 						<div><strong class="order-total">@($"{newTotal:C2}")</strong></div>
 					</div>
 				</div>
-				<a href="#" class="primary-btn order-submit">Ödemeyi Tamamla</a>
+				<button type="submit" class="primary-btn order-submit">Ödemeyi Tamamla</button>
 			</div>
 			<!-- /Order Details -->
 		</div>
+		</form>
 		<!-- /row -->
 	</div>
 	<!-- /container -->
