@@ -339,7 +339,8 @@ namespace RhythmicRealm.UI.Controllers
                     var updateSecurityStampResult = await _userManager.UpdateSecurityStampAsync(user);
                     await _signInManager.SignOutAsync();
                     await _signInManager.PasswordSignInAsync(user, profileViewModel.PasswordInfo.NewPassword, false, false);
-                    return RedirectToAction("Login");
+                    _notyfService.Success("Şifreniz başarıyla güncellenmiştir.");
+                    return Redirect("~/");
                 }
                 foreach (var error in result.Errors)
                 {

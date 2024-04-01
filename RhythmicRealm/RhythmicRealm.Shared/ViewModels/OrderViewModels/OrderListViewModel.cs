@@ -14,7 +14,6 @@ namespace RhythmicRealm.Shared.ViewModels.OrderViewModels
 		public string City { get; set; }
 		public string PhoneNumber{ get; set; }
 		public string Email { get; set; }
-		public string OrderNote { get; set; }
         public List<OrderItemViewModel> OrderItems { get; set; }
 		public decimal TotalPrice()
 		{
@@ -26,8 +25,8 @@ namespace RhythmicRealm.Shared.ViewModels.OrderViewModels
 			public int Id { get; set; }
 			public decimal Price { get; set; }
 			public int Quantity { get; set; }
-			public int ProductId { get; set; }
-			public ProductViewModel Product { get; set; }
-		}
+            public string Name { get; set; }
+            public string ImageUrl { get; set; }
+        }
     }
 }

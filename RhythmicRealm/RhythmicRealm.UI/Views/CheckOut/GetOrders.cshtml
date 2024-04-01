@@ -37,7 +37,7 @@
                                     <td>@order.OrderDate</td>
                                     <td>@order.OrderState.GetDisplayName()</td>
                                     <td>@($"{@order.TotalPrice():C2}")</td>
-                                    <td><a class="btn btn-default">Sipariş Detayları</a></td>
+                                    <td><a asp-area="" asp-controller="CheckOut" asp-action="OrderDetails" asp-route-id="@order.Id" class="btn btn-default">Sipariş Detayları</a></td>
                                 </tr>
                             }
                         </tbody>

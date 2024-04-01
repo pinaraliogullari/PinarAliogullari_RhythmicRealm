@@ -44,6 +44,8 @@ namespace RhythmicRealm.Service.Concrete
 					Id = x.Id,
 					Price = x.Price,
 					Quantity = x.Quantity,
+					ImageUrl=x.Product.ImageUrl,
+					Name = x.Product.Name,
 				}).ToList()
 			};
 			 return Response<OrderListViewModel>.Success(model, 200);
@@ -75,7 +77,9 @@ namespace RhythmicRealm.Service.Concrete
 					Id = x.Id,
 					Price = x.Price,
 					Quantity = x.Quantity,
-				}).ToList()
+                    ImageUrl = x.Product.ImageUrl,
+                    Name = x.Product.Name,
+                }).ToList()
 			}).ToList();
 			return Response<List<OrderListViewModel>>.Success(model,200);
 		}
@@ -106,7 +110,9 @@ namespace RhythmicRealm.Service.Concrete
 					Id = x.Id,
 					Price = x.Price,
 					Quantity = x.Quantity,
-				}).ToList()
+                    ImageUrl = x.Product.ImageUrl,
+                    Name = x.Product.Name,
+                }).ToList()
 			}).ToList();
 			return Response<List<OrderListViewModel>>.Success(model,200);
 		}
@@ -132,6 +138,8 @@ namespace RhythmicRealm.Service.Concrete
                     Id = x.Id,
                     Price = x.Price,
                     Quantity = x.Quantity,
+                    ImageUrl = x.Product.ImageUrl,
+                    Name = x.Product.Name,
                 }).ToList()
             }).ToList();
             return Response<List<OrderListViewModel>>.Success(model, 200);

@@ -220,5 +220,11 @@ namespace RhythmicRealm.UI.Controllers
             var deliveredOrders = await _orderService.GetOrdersByOrderStateAsync(orderState); 
             return View("GetOrders", deliveredOrders.Data); 
         }
+		
+		public async Task<IActionResult> OrderDetails(int id)
+		{
+			var order = await _orderService.GetOrderAsync(id);
+			return View(order.Data);
+		}
     }
 }

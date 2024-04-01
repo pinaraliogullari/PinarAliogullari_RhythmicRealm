@@ -1,0 +1,95 @@
+﻿@model OrderListViewModel
+
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <h4 style="margin-bottom:40px;" class="text-danger">Sipariş Detayları</h4>     
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <!-- Ürün detayları tablosu -->
+                    <table class="table table-bordered">
+                        <tbody>
+                            @foreach (var item in Model.OrderItems)
+                            {
+                                <tr>
+                                    <td rowspan="2" class="product-image-column"><img src="/images/products/@item.ImageUrl" alt="Product Image" style="max-width: 150px; " /></td>
+                                    <td><a asp-area="" asp-controller="ProductDetails" asp-action="Index" asp-route-id="@item.Id">@item.Name</a></td>
+                                </tr>
+                                <tr>
+                                    <td>@($"{@item.Price:C2}")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- /row -->
+        <!-- row -->
+        <div class="row">
+            <!-- Kart bilgileri tablosu -->
+            <div class="col-md-6">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Ödeme Bilgileri</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Ürün Toplamı: </strong>@($"{@Model.TotalPrice():C2}")</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Kargo Tutarı: </strong>Ücretsiz</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Toplam Fiyat: </strong>@($"{@Model.TotalPrice():C2}")</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Teslimat bilgileri tablosu -->
+            <div class="col-md-6">
+                <div class="table-responsive">
+                    <table class="table table-bordered ">
+                        <thead>
+                            <tr>
+                                <th>Teslimat Bilgileri</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Ad Soyad: </strong>@($"{Model.FirstName} {Model.LastName}")</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Adres: </strong>@Model.Address</td>
+                            </tr>
+                            <tr>
+                              
+                                <td><strong>Telefon: </strong>@Model.PhoneNumber </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /SECTION -->
+
+  @section Styles{
+    <style>
+        .product-image-column {
+            width: 48.5%; /* İstediğiniz genişliği burada ayarlayabilirsiniz */
+        }
+    </style>
+ }
