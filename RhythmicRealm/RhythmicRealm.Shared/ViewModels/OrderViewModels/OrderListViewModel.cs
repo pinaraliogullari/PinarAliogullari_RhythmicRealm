@@ -6,7 +6,7 @@ namespace RhythmicRealm.Shared.ViewModels.OrderViewModels
 	{
 		public int Id { get; set; }
 		public string OrderNumber { get; set; }
-		public DateTime OrderDate { get; set; }
+		public DateTime OrderDate { get; set; }=DateTime.Now;
 		public EnumOrderState OrderState { get; set; }
 		public string FirstName { get; set; }
 		public string LastName { get; set; }

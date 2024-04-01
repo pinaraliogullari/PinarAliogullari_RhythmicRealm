@@ -1,5 +1,4 @@
-﻿
-@model List<ProductViewModel>
+﻿@model List<ProductViewModel>
 <vc:navbar-of-main-cat></vc:navbar-of-main-cat>
 
 
@@ -101,13 +100,23 @@
 												<a asp-area="" asp-controller="ProductDetails" asp-action="Index" asp-route-id="@product.Id" style="cursor:pointer"><i class="fa fa-eye"></i><span class="tooltipp">İncele</span></a>
 											</div>
 										</div>
-										<form asp-area="" asp-controller="Basket" asp-action="AddToBasket" method="post">
-											<input type="hidden" value="@product.Id" name="productId" />
-											<input type="hidden" value="1" name="quantity" />
+										@if (User.Identity.IsAuthenticated)
+										{
+											<form asp-area="" asp-controller="Basket" asp-action="AddToBasket" method="post">
+												<input type="hidden" value="@product.Id" name="productId" />
+												<input type="hidden" value="1" name="quantity" />
+												<div class="add-to-cart">
+													<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Sepete Ekle</button>
+												</div>
+											</form>
+										}
+										else
+										{
 											<div class="add-to-cart">
-												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Sepete Ekle</button>
-										</div>
-										</form>
+												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i><a asp-area="" asp-controller="Account" asp-action="Login">Sepete Ekle</a></button>
+											</div>
+										}
+
 										
 									</div>
 

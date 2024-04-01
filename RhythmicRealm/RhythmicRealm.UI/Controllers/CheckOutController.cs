@@ -59,8 +59,8 @@ namespace RhythmicRealm.UI.Controllers
 
 
 			Options options = new Options();
-			options.ApiKey = "sandbox-UKIxztfdrQPHn73zIzswI2DejgcOi3l0";
-			options.SecretKey = "sandbox-aA6IXPfhfxFkVAYMOD5JlkyhljVxqUzN";
+			options.ApiKey = "sandbox-2VZs9tMkbi5Y2ibjdzKXZIuYKEMO6Wl0";
+			options.SecretKey = "sandbox-aGn2UCTrQHPMvp9kF0LL6oM9SgImvDIV";
 			options.BaseUrl = "https://sandbox-api.iyzipay.com";
 
 			CreatePaymentRequest request = new CreatePaymentRequest();
@@ -143,7 +143,7 @@ namespace RhythmicRealm.UI.Controllers
 			order.PaymentOptions = EnumPaymentOptions.CreditCard;
 			order.PaymentId = payment.PaymentId;
 			order.ConversationId = payment.ConversationId;
-			order.OrderDate = new DateTime();
+			order.OrderDate = DateTime.Now;
 			order.FirstName = orderViewModel.FirstName;
 			order.LastName = orderViewModel.LastName;
 			order.Email= orderViewModel.Email;
@@ -204,5 +204,21 @@ namespace RhythmicRealm.UI.Controllers
 			}	
 			return View(orderViewModel);
 		}
-	}
+
+		public async Task<IActionResult> GetOrders()
+		{
+			var orders = await _orderService.GetOrdersAsync();
+			return View(orders.Data);
+		}
+        public async Task<IActionResult> GetOngoingOrders(EnumOrderState orderState)
+        {
+            var ongoingOrders = await _orderService.GetOrdersByOrderStateAsync(orderState); 
+            return View("GetOrders", ongoingOrders.Data); 
+        }
+        public async Task<IActionResult> GetDeliveredOrders(EnumOrderState orderState)
+        {
+            var deliveredOrders = await _orderService.GetOrdersByOrderStateAsync(orderState); 
+            return View("GetOrders", deliveredOrders.Data); 
+        }
+    }
 }

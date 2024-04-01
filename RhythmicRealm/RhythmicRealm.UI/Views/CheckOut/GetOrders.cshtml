@@ -1,0 +1,54 @@
+﻿@model List<OrderListViewModel>
+@using RhythmicRealm.Shared.Extensions;
+
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-left" style=" margin-bottom: 20px;">
+                <a asp-area="" asp-controller="CheckOut" asp-action="GetOrders" class="btn btn-primary">Tüm Siparişler</a>
+                <a asp-area="" asp-controller="CheckOut" asp-action="GetOngoingOrders" asp-route-orderState="Preparing" class="btn btn-danger">Devam Eden Siparişler</a>
+                <a asp-area="" asp-controller="CheckOut" asp-action="GetDeliveredOrders" asp-route-orderState="Delivered" class="btn btn-success">Teslim Edilen Siparişler</a>
+            </div>
+        </div>
+     
+        <!-- row -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <!-- Responsive table wrapper -->
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Sipariş Numarası</th>
+                                <th>Sipariş Tarihi</th>
+                                <th>Sipariş Durumu</th>
+                                <th>Sipariş Tutarı</th>
+                                <th>Sipariş Detayları</th>
+                             
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var order in Model)
+                            {
+                                <tr>
+                                    <td>@order.OrderNumber</td>
+                                    <td>@order.OrderDate</td>
+                                    <td>@order.OrderState.GetDisplayName()</td>
+                                    <td>@($"{@order.TotalPrice():C2}")</td>
+                                    <td><a class="btn btn-default">Sipariş Detayları</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /SECTION -->
+
+

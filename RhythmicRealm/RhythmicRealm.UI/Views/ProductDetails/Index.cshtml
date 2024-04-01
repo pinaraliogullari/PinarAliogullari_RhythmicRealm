@@ -46,13 +46,22 @@
 
 					<div class="add-to-cart">
 						
-						<form asp-area="" asp-controller="Basket" asp-action="AddToBasket" method="post">
-							<input type="hidden" name="productId" value="@Model.Id" />
-							<input type="hidden" name="quantity" value="1" />
+						@if (User.Identity.IsAuthenticated)
+						{
+							<form asp-area="" asp-controller="Basket" asp-action="AddToBasket" method="post">
+								<input type="hidden" value="@Model.Id" name="productId" />
+								<input type="hidden" value="1" name="quantity" />
+								<div class="add-to-cart">
+									<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Sepete Ekle</button>
+								</div>
+							</form>
+						}
+						else
+						{
 							<div class="add-to-cart">
-								<button type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Sepete Ekle</button>
+								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i><a asp-area="" asp-controller="Account" asp-action="Login">Sepete Ekle</a></button>
 							</div>
-						</form>
+						}
 					</div>
 
 					<ul class="product-btns">
