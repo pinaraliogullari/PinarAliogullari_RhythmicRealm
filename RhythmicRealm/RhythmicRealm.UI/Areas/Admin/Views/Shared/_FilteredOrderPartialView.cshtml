@@ -1,0 +1,16 @@
+﻿@model List<OrderListViewModel>
+@foreach(var order in Model)
+{
+    <tr>
+        <td>@order.OrderNumber</td>
+        <td>@order.OrderDate</td>
+        <td>@($"{@order.FirstName} {order.LastName}")</td>
+        <td>@($"{order.TotalPrice():C2}")</td>
+        <td>
+           <div class="custom-control custom-switch">
+           <input onchange="changeOrderState(this,'@order.Id');"type="checkbox"class="custom-control-input" name="orderState"id="orderState-@order.Id" />
+                <label class="custom-control-label" for="orderState-@order.Id">@order.OrderState</label>
+           </div>                          
+        <td>
+    </tr>
+}

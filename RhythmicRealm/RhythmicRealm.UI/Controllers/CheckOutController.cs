@@ -59,8 +59,8 @@ namespace RhythmicRealm.UI.Controllers
 
 
 			Options options = new Options();
-			options.ApiKey = "sandbox-2VZs9tMkbi5Y2ibjdzKXZIuYKEMO6Wl0";
-			options.SecretKey = "sandbox-aGn2UCTrQHPMvp9kF0LL6oM9SgImvDIV";
+			options.ApiKey = "sandbox-dcBGSFkf4RPJ9AWI8m8QUdAmMHEkrD6A";
+			options.SecretKey = "sandbox-D5HK8UHqeMG3lGvkMfutg0xoUL1Ke5gf";
 			options.BaseUrl = "https://sandbox-api.iyzipay.com";
 
 			CreatePaymentRequest request = new CreatePaymentRequest();

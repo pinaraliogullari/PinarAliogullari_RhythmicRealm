@@ -1,0 +1,79 @@
+﻿@model OrderFilterViewModel
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="row">
+            <div class="container-fluid">
+
+                <div class="col-sm-6">
+                    <h4>Sipariş Takip Ekranı</h4>
+                </div>
+                <select onchange="filterByProduct(this)" asp-items="@Model.Products" class="form-control w-25 float-right">
+                    <option>Seçiniz</option>
+                </select>
+            </div>
+        </div>
+       
+    </section>
+    <section class="content">
+        <div class="container-fluid">
+        
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                             
+                            <table id="myDataTable" class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Sipariş Numarası</th>
+                                        <th>Sipariş Tarihi</th>
+                                        <th>Kullanıcı</th>
+                                        <th>Sipariş Tutarı</th>
+                                        <th>Sipariş Durumu</th>
+                                    </tr>
+                                </thead>
+                                <tbody>  
+                                   @await Html.PartialAsync("_FilteredOrderPartialView",Model.Orders)
+                                </tbody>
+                            </table>
+                            <p class="text-danger text-center" id="noProductsMessage" style="display: none;">Bu ürüne ait herhangi bir sipariş bulunmamaktadır.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+@section Styles {
+    @await Html.PartialAsync("_DataTablesCssPartial")
+
+}
+
+@section TopScripts{
+    <script>
+        const filterByProduct = (element) => {
+            const tBody = $("tbody");
+            const noProductsMessage = $("#noProductsMessage");
+            $.ajax({
+                url:`/Admin/Order/FilterByProduct/${element.value}`,
+                type:'GET',
+                success: (response) => {
+                    if (response.trim() === "") {
+                        tBody.html("");
+                        noProductsMessage.show();
+                    } else {
+                        tBody.html(response);
+                        noProductsMessage.hide();
+                    }
+                },
+                error: (error) => {
+                    console.log(error);
+                }
+            })
+        }
+    </script>
+}
+
+}
+@section BottomScripts {
+    @await Html.PartialAsync("_DataTablesJsPartial")
+}
