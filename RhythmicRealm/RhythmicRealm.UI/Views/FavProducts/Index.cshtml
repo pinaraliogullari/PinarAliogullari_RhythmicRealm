@@ -1,5 +1,4 @@
-﻿
-@model List<Favorite>
+﻿@model List<Favorite>
 
 <!-- SECTION -->
 <div class="section">
@@ -7,11 +6,11 @@
 	<div class="container">
 		<!-- row -->
 		<div class="row">
-			<div  class="col-md-12 buttons-grid">
-				
+			<div class="col-md-12 buttons-grid">
+
 				<span style="font-size:18px; color:darkred;">Favorilerim <i class="fa fa-heart" aria-hidden="true"></i></span>
-			
-				
+
+
 			</div>
 			<!-- STORE -->
 			<div id="store" class="col-md-12">
@@ -49,8 +48,8 @@
 											<i class="fa fa-star"></i>
 										</div>
 										<div class="product-btns">
-											<a class="add-to-wishlist" style="cursor:pointer"><i class="fa fa-heart-o"></i><span class="tooltipp">Beğen</span></a>
-											<a asp-area="" asp-controller="ProductDetails" asp-action="Index" asp-route-id="@product.Id" class="quick-view" style="cursor:pointer"><i class="fa fa-eye"></i><span class="tooltipp">İncele</span></a>
+											<a asp-area="" asp-controller="FavProducts" asp-action="ToggleFavorite" asp-route-productId="@product.Id" style="cursor:pointer"><i style="font-size:20px;" class="fa fa-heart-o"></i><span class="tooltipp"></span></a>
+											<a asp-area="" asp-controller="ProductDetails" asp-action="Index" asp-route-id="@product.Id" class="quick-view" style="cursor:pointer"><i style="font-size:20px;" class="fa fa-eye"></i><span class="tooltipp">İncele</span></a>
 										</div>
 									</div>
 									@if (User.Identity.IsAuthenticated)
@@ -74,7 +73,7 @@
 							</div>
 						}
 					}
-				
+
 
 				</div>
 				<!-- /store products -->

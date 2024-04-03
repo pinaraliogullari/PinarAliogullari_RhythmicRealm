@@ -21,15 +21,26 @@ namespace RhythmicRealm.Data.Concrete.Repositories
             get { return _dbContext as RRContext;}
         }
 
+		public async Task<List<Favorite>> GetFavoriteByProductAsync(string userId, int productId)
+		{
+			var favorites = await RRContext.Favorites
+				.Include(x => x.Product)
+				.ThenInclude(x => x.SubCategory)
+				.ThenInclude(x => x.MainCategory)
+				.Where(x => x.UserId == userId &&x.ProductId==productId)
+				.ToListAsync();
+
+			return favorites;
+		}
+
 		public async Task<List<Favorite>> GetFavoritesAsync(string userId)
 		{
 			var favorites = await RRContext.Favorites
 				.Include(x => x.Product)
 				.ThenInclude(x => x.SubCategory)
 				.ThenInclude(x => x.MainCategory)
-				.Include(x => x.Product)
 			    .Where(x => x.UserId == userId)
-			    .ToListAsync(); ;
+			    .ToListAsync(); 
 				
 			return favorites;
 		}

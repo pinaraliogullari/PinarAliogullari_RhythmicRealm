@@ -72,8 +72,6 @@
 
                    foreach (var product in Model.Products)
                     {
-          
-           
 									<div class="col-md-4 col-xs-6">
 										<div class="product">
 											<div class="product-img">
@@ -94,11 +92,11 @@
 													<i class="fa fa-star"></i>
 													<i class="fa fa-star"></i>
 												</div>
-												<div class="product-btns">
-													<a class="add-to-wishlist" style="cursor:pointer"><i class="fa fa-heart-o"></i><span class="tooltipp">Beğen</span></a>
-													<a asp-area="" asp-controller="ProductDetails" asp-action="Index" asp-route-id="@product.Id" class="quick-view" style="cursor:pointer"><i class="fa fa-eye"></i><span class="tooltipp">İncele</span></a>
-												</div>
-											</div>
+										<div class="product-btns">
+											<a asp-area="" asp-controller="FavProducts" asp-action="ToggleFavorite" asp-route-productId="@product.Id" style="cursor:pointer"><i style="font-size:20px;" class="fa fa-heart-o"></i><span class="tooltipp"></span></a>
+											<a asp-area="" asp-controller="ProductDetails" asp-action="Index" asp-route-id="@product.Id" style="cursor:pointer"><i style="font-size:20px;" class="fa fa-eye"></i><span class="tooltipp"></span></a>
+										</div>
+									</div>
 									@if (User.Identity.IsAuthenticated)
 									{
 										<form asp-area="" asp-controller="Basket" asp-action="AddToBasket" method="post">

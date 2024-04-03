@@ -65,7 +65,7 @@
 					</div>
 
 					<ul class="product-btns">
-						<li><a href="#"><i class="fa fa-heart-o"></i> Beğen</a></li>
+						<li><a asp-area="" asp-controller="FavProducts" asp-action="ToggleFavorite" asp-route-productId="@Model.Id" style="cursor:pointer"><i style="font-size:20px;"	class="fa fa-heart-o"></i><span class="tooltipp"></span></a></li>
 					</ul>
 
 					<ul class="product-links">

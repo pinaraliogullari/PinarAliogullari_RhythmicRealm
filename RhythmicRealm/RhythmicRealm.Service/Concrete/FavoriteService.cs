@@ -46,6 +46,24 @@ namespace RhythmicRealm.Service.Concrete
 
 			return Response<List<Favorite>>.Success(favProducts, 200);
 		}
+
+		public async Task<bool> IsProductFavoriteAsync(string userId, int productId)
+		{
+			var favorites = await _favoriteRepository.GetFavoriteByProductAsync(userId, productId);
+			return favorites.Any();
+		}
+
+		public async Task<Response<NoContent>> RemoveFromFavoriteAsync(string userId, int productId)
+		{
+			var existingFavorite = await _favoriteRepository.GetFavoritesAsync(userId);
+			if (existingFavorite.Count != 0)
+			{
+				await _favoriteRepository.HardDeleteAsync(existingFavorite.FirstOrDefault());
+				return Response<NoContent>.Success(200);
+			}
+
+			return Response<NoContent>.Fail(500, "İşlem başarısız");
+		}
 	}
 	
 }
