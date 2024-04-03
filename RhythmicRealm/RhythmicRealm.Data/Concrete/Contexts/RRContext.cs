@@ -17,8 +17,8 @@ namespace RhythmicRealm.Data.Concrete.Contexts
 		public DbSet<Brand> Brands { get; set; }
 		public DbSet<MainCategory> Categories { get; set; }
 		public DbSet<SubCategory> MainCategories { get; set; }
-		public DbSet<Product> Products { get; set; }
 		public DbSet<BrandMainCategory> BrandMainCategories { get; set; }
+		public DbSet<Product> Products { get; set; }
 		public DbSet<Contact> Contacts { get; set; }
 		public DbSet<Message> Messages { get; set; }
         public DbSet<ShoppingBasket> ShoppingBaskets { get; set; }

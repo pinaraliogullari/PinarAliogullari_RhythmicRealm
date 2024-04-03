@@ -1,12 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 
 
 namespace RhythmicRealm.Shared.ViewModels.ProductViewModels
 {
-    public class EditProductViewModel
+	public class EditProductViewModel
     {
         public int Id { get; set; }
 

@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using RhythmicRealm.Shared.ViewModels.MainCategoryViewModels;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RhythmicRealm.Shared.ViewModels.MainCategoryViewModels;
+using System.ComponentModel.DataAnnotations;
 
 namespace RhythmicRealm.Shared.ViewModels.SubCategoryViewModels
 {
-    public class AddSubCategoryViewModel
+	public class AddSubCategoryViewModel
     {
         [DisplayName("Alt Kategori Adı")]
         [Required(ErrorMessage = "{0} alanı boş bırakılmamalıdır.")]

@@ -1,22 +1,15 @@
 ﻿using Mapster;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query;
 using RhythmicRealm.Data.Abstract;
 using RhythmicRealm.Entity.Concrete;
 using RhythmicRealm.Service.Abstract;
 using RhythmicRealm.Shared.Response;
 using RhythmicRealm.Shared.ViewModels.MainCategoryViewModels;
 using RhythmicRealm.Shared.ViewModels.SubCategoryViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
 
 namespace RhythmicRealm.Service.Concrete
 {
-    public class MainCategoryService : IMainCategoryService
+	public class MainCategoryService : IMainCategoryService
     {
         private readonly IMainCategoryRepository _mainCategoryRepository;
 

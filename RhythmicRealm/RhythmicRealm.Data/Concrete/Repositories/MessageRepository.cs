@@ -1,12 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
-using RhythmicRealm.Data.Abstract;
+﻿using RhythmicRealm.Data.Abstract;
 using RhythmicRealm.Data.Concrete.Contexts;
 using RhythmicRealm.Entity.Concrete.Others;
 
 
 namespace RhythmicRealm.Data.Concrete.Repositories
 {
-    public class MessageRepository : GenericRepository<Message>, IMessageRepository
+	public class MessageRepository : GenericRepository<Message>, IMessageRepository
     {
         public MessageRepository(RRContext _context) : base(_context)
         {

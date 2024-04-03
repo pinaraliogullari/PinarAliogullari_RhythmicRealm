@@ -11,13 +11,11 @@ using RhythmicRealm.Shared.ViewModels.MessageViewModels;
 
 namespace RhythmicRealm.Service.Concrete
 {
-    public class MessageService : IMessageService
+	public class MessageService : IMessageService
     {
         private readonly IMessageRepository _messageRepository;
         private readonly UserManager<User> _userManager;
 		private readonly IHttpContextAccessor _httpContextAccessor;
-
-
 		public MessageService(IMessageRepository messageRepository, UserManager<User> userManager, IHttpContextAccessor httpContextAccessor)
 		{
 			_messageRepository = messageRepository;

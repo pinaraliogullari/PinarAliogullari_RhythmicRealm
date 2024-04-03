@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-using System.Web.Mvc;
 
 namespace RhythmicRealm.Shared.ViewModels.ProductViewModels
 {
-    public class AddProductViewModel
+	public class AddProductViewModel
     {
 
 

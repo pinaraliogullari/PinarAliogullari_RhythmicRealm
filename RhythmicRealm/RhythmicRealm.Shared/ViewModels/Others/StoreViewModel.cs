@@ -1,11 +1,6 @@
 ﻿using RhythmicRealm.Shared.ViewModels.BrandViewModels;
 using RhythmicRealm.Shared.ViewModels.ProductViewModels;
 using RhythmicRealm.Shared.ViewModels.SubCategoryViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RhythmicRealm.Shared.ViewModels.Others
 {

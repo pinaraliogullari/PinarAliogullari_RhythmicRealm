@@ -1,4 +1,5 @@
 ﻿using RhythmicRealm.Entity.Abstract;
+using RhythmicRealm.Entity.Concrete.Others;
 using System;
 using System.Collections.Generic;
 using System.IO.Pipes;
@@ -15,7 +16,7 @@ namespace RhythmicRealm.Entity.Concrete
         public string ImageUrl { get; set; }
         public string Url { get; set; }
         public List<Product> Products { get; set; }
-        public List<BrandMainCategory> BrandMainCategories { get; set; }
-     
-    }
+		public List<BrandMainCategory> BrandMainCategories { get; set; }
+
+	}
 }

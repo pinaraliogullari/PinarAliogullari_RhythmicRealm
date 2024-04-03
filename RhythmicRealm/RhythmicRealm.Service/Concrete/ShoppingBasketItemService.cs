@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using RhythmicRealm.Data.Abstract;
+﻿using RhythmicRealm.Data.Abstract;
 using RhythmicRealm.Service.Abstract;
 using RhythmicRealm.Shared.Response;
 using RhythmicRealm.Shared.ViewModels.ShoppingBasketViewModels;

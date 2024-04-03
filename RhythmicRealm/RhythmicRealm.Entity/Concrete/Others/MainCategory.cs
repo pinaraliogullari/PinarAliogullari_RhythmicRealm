@@ -13,7 +13,6 @@ namespace RhythmicRealm.Entity.Concrete
 		public string Url { get; set; }
 		public DateTime CreatedDate { get; set; } = DateTime.Now;
 		public List<SubCategory> SubCategories { get; set; }
-        public List<BrandMainCategory> BrandMainCategories { get; set; }
 		
 	}
 }

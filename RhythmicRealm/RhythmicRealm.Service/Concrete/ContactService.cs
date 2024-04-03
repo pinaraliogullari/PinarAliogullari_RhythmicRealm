@@ -1,7 +1,5 @@
 ﻿using Mapster;
-using MapsterMapper;
 using RhythmicRealm.Data.Abstract;
-using RhythmicRealm.Data.Concrete.Repositories;
 using RhythmicRealm.Entity.Concrete;
 using RhythmicRealm.Service.Abstract;
 using RhythmicRealm.Shared.Response;
@@ -11,7 +9,7 @@ using RhythmicRealm.Shared.ViewModels.MessageViewModels;
 
 namespace RhythmicRealm.Service.Concrete
 {
-    public class ContactService : IContactService
+	public class ContactService : IContactService
 	{
 		private readonly IContactRepository _contactRepository;
 		public ContactService(IContactRepository messageRepository)

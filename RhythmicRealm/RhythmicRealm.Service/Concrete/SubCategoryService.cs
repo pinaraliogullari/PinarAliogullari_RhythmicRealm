@@ -1,8 +1,6 @@
 ﻿using Mapster;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query;
 using RhythmicRealm.Data.Abstract;
-using RhythmicRealm.Data.Concrete.Repositories;
 using RhythmicRealm.Entity.Concrete;
 using RhythmicRealm.Service.Abstract;
 using RhythmicRealm.Shared.Response;
@@ -10,21 +8,20 @@ using RhythmicRealm.Shared.ViewModels.BrandViewModels;
 using RhythmicRealm.Shared.ViewModels.MainCategoryViewModels;
 using RhythmicRealm.Shared.ViewModels.ProductViewModels;
 using RhythmicRealm.Shared.ViewModels.SubCategoryViewModels;
-using RhythmicRealm.Shared.ViewModels.SubCategoryViewModels;
 
 
 namespace RhythmicRealm.Service.Concrete
 {
 	public class SubCategoryService:ISubCategoryService
 	{
-            private readonly ISubCategoryRepository _subCategoryRepository;
+        private readonly ISubCategoryRepository _subCategoryRepository;
 
-            public SubCategoryService(ISubCategoryRepository subCategoryRepository)
+        public SubCategoryService(ISubCategoryRepository subCategoryRepository)
             {
                 _subCategoryRepository = subCategoryRepository;
             }
 
-            public async Task<Response<SubCategoryViewModel>> CreateSubCategoryAsync(AddSubCategoryViewModel addSubCategoryViewModel)
+        public async Task<Response<SubCategoryViewModel>> CreateSubCategoryAsync(AddSubCategoryViewModel addSubCategoryViewModel)
             {
                 var subCategory = addSubCategoryViewModel.Adapt<SubCategory>();
                 var createdSubCategory = await _subCategoryRepository.CreateAsync(subCategory);
@@ -35,7 +32,7 @@ namespace RhythmicRealm.Service.Concrete
                 return Response<SubCategoryViewModel>.Success(subCategoryDTO, 200);
             }
 
-            public async Task<Response<List<SubCategoryViewModel>>> GetAllSubCategoriesAsync()
+        public async Task<Response<List<SubCategoryViewModel>>> GetAllSubCategoriesAsync()
             {
                 var subCategories = await _subCategoryRepository.GetAllAsync();
                 if (subCategories == null) return Response<List<SubCategoryViewModel>>.Fail(404, "Sonuç bulunamadı");
@@ -50,7 +47,7 @@ namespace RhythmicRealm.Service.Concrete
                 return Response<List<SubCategoryViewModel>>.Success(subCategoriesViewModel, 200);
             }
 
-            public async Task<Response<List<SubCategoryViewModel>>> GetSubCategoriesByIsActiveAsync(bool isActive = true)
+        public async Task<Response<List<SubCategoryViewModel>>> GetSubCategoriesByIsActiveAsync(bool isActive = true)
             {
                 var subCategories = await _subCategoryRepository.GetAllAsync(s => s.IsActive == isActive);
                 if (subCategories == null) return Response<List<SubCategoryViewModel>>.Fail(404, "Sonuç bulunamadı");
@@ -58,7 +55,7 @@ namespace RhythmicRealm.Service.Concrete
                 return Response<List<SubCategoryViewModel>>.Success(subCategoriesViewModel, 200);
             }
 
-            public async Task<Response<List<SubCategoryViewModel>>> GetSubCategoriesByIsDeleteAsync(bool isDeleted = false)
+        public async Task<Response<List<SubCategoryViewModel>>> GetSubCategoriesByIsDeleteAsync(bool isDeleted = false)
             {
                 var subCategories = await _subCategoryRepository.GetAllAsync(s => s.IsDeleted == isDeleted,
                     IncludeExpression=> IncludeExpression
@@ -163,7 +160,7 @@ namespace RhythmicRealm.Service.Concrete
                 return Response<SubCategoryViewModel>.Success(subCategoryViewModel, 200);
             }
 
-            public async Task<Response<NoContent>> HardDeleteSubCategoryAsync(int id)
+        public async Task<Response<NoContent>> HardDeleteSubCategoryAsync(int id)
             {
                 var subCategory = await _subCategoryRepository.GetAsync(s => s.Id == id);
                 if (subCategory == null) return Response<NoContent>.Fail(404, "Sonuç bulunamadı");
@@ -171,7 +168,7 @@ namespace RhythmicRealm.Service.Concrete
                 return Response<NoContent>.Success(200);
             }
 
-            public async Task<Response<NoContent>> SoftDeleteSubCategoryAsync(int id)
+        public async Task<Response<NoContent>> SoftDeleteSubCategoryAsync(int id)
             {
                 var subCategory = await _subCategoryRepository.GetAsync(s => s.Id == id);
                 if (subCategory == null) return Response<NoContent>.Fail(404, "Sonuç bulunamadı");

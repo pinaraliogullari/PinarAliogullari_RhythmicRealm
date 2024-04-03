@@ -1,10 +1,5 @@
 ﻿using RhythmicRealm.Shared.Response;
 using RhythmicRealm.Shared.ViewModels.MainCategoryViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RhythmicRealm.Service.Abstract
 {

@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 
 namespace RhythmicRealm.Shared.ViewModels.MainCategoryViewModels
 {
-    public class AddMainCategoryViewModel
+	public class AddMainCategoryViewModel
     {
         [DisplayName("Ana Kategori Adı")]
         [Required(ErrorMessage = "{0} alanı boş bırakılmamalıdır.")]

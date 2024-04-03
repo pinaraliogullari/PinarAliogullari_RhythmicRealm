@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RhythmicRealm.Shared.ViewModels.BrandViewModels;
+﻿using RhythmicRealm.Shared.ViewModels.BrandViewModels;
 using RhythmicRealm.Shared.ViewModels.MainCategoryViewModels;
 using RhythmicRealm.Shared.ViewModels.ProductViewModels;
 
 namespace RhythmicRealm.Shared.ViewModels.SubCategoryViewModels
 {
-    public class SubCategoryViewModel
+	public class SubCategoryViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

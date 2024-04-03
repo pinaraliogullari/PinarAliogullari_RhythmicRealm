@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RhythmicRealm.Shared.ViewModels.ProductViewModels
+﻿namespace RhythmicRealm.Shared.ViewModels.ProductViewModels
 {
-    public class InProductViewModel
+	public class InProductViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

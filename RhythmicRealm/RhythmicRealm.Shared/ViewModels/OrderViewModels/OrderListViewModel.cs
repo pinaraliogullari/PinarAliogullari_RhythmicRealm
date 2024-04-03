@@ -1,5 +1,4 @@
 ﻿using RhythmicRealm.Shared.ComplexTypes;
-using RhythmicRealm.Shared.ViewModels.ProductViewModels;
 namespace RhythmicRealm.Shared.ViewModels.OrderViewModels
 {
 	public class OrderListViewModel

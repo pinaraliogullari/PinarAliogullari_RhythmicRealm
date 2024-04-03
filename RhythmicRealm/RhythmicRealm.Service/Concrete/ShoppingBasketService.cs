@@ -1,16 +1,12 @@
-﻿using Mapster;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query;
 using RhythmicRealm.Data.Abstract;
-using RhythmicRealm.Data.Concrete.Contexts;
 using RhythmicRealm.Entity.Concrete;
 using RhythmicRealm.Entity.Concrete.Identity;
 using RhythmicRealm.Service.Abstract;
 using RhythmicRealm.Shared.Response;
 using RhythmicRealm.Shared.ViewModels.ShoppingBasketViewModels;
-using System.Web.Helpers;
 
 
 namespace RhythmicRealm.Service.Concrete

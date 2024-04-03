@@ -4,7 +4,7 @@ using RhythmicRealm.Shared.ViewModels.MessageViewModels;
 
 namespace RhythmicRealm.Service.Abstract
 {
-    public interface IMessageService
+	public interface IMessageService
     {
         Task<Response<List<AdminMessageViewModel>>> GetMessagesListInInboxAsync();
         Task<Response<List<AdminMessageViewModel>>> GetMessagesListInSendboxAsync();

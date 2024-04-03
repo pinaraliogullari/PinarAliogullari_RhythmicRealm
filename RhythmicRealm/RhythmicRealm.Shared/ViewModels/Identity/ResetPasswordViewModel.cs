@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RhythmicRealm.Shared.ViewModels.Identity
 {
-    public class ResetPasswordViewModel
+	public class ResetPasswordViewModel
     {
 		public string UserId { get; set; }
 		public string TokenCode { get; set; }

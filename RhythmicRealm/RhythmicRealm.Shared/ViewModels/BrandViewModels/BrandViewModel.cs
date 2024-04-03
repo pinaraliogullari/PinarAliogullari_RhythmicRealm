@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RhythmicRealm.Shared.ViewModels.MainCategoryViewModels;
+﻿using RhythmicRealm.Shared.ViewModels.MainCategoryViewModels;
 
 namespace RhythmicRealm.Shared.ViewModels.BrandViewModels
 {
-    public class BrandViewModel
+	public class BrandViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

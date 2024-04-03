@@ -1,16 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using RhythmicRealm.Shared.Helpers.Abstract;
-using Microsoft.AspNetCore.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RhythmicRealm.Shared.Helpers.Concrete
 {
-  
-    public class ImageHelper : IImageHelper
+
+	public class ImageHelper : IImageHelper
     {
 
         //bu constructor sayesinde ImageHelper nesnesi her oluştuğunda otomatik olarak localhost:5000/wwwroot/images oluşacak.Artık elimizde dosyaları kaydetmek için kullanacağımız klasörün temel bölümü mevcut.

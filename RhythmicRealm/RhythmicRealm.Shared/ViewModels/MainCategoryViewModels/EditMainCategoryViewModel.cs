@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RhythmicRealm.Shared.ViewModels.MainCategoryViewModels
 {
-    public class EditMainCategoryViewModel
+	public class EditMainCategoryViewModel
     {
         public int Id { get; set; }
 

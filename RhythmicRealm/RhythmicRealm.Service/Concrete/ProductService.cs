@@ -1,20 +1,14 @@
 ﻿using Mapster;
 using Microsoft.EntityFrameworkCore;
 using RhythmicRealm.Data.Abstract;
-using RhythmicRealm.Data.Concrete.Contexts;
 using RhythmicRealm.Entity.Concrete;
+using RhythmicRealm.Entity.Concrete.Others;
 using RhythmicRealm.Service.Abstract;
 using RhythmicRealm.Shared.Response;
-using RhythmicRealm.Shared.ViewModels;
 using RhythmicRealm.Shared.ViewModels.BrandViewModels;
 using RhythmicRealm.Shared.ViewModels.MainCategoryViewModels;
 using RhythmicRealm.Shared.ViewModels.ProductViewModels;
 using RhythmicRealm.Shared.ViewModels.SubCategoryViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RhythmicRealm.Service.Concrete
 {
@@ -247,11 +241,6 @@ namespace RhythmicRealm.Service.Concrete
 			throw new NotImplementedException();
 		}
 
-		/// <summary>
-		/// Bu metot; verilen parametredeki değere göre silinmiş veya silinmemiş productları listeler.
-		/// </summary>
-		/// <param name="productId"></param>
-		/// <returns></returns>
 		public async Task<Response<List<ProductViewModel>>> GetProductsByIsDeleteAsync(bool isDeleted)
 		{
 

@@ -1,19 +1,12 @@
 ﻿using Mapster;
-using Microsoft.EntityFrameworkCore;
 using RhythmicRealm.Data.Abstract;
 using RhythmicRealm.Service.Abstract;
 using RhythmicRealm.Shared.Response;
 using RhythmicRealm.Shared.ViewModels.BrandViewModels;
-using RhythmicRealm.Shared.ViewModels.MainCategoryViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RhythmicRealm.Service.Concrete
 {
-    public class BrandService : IBrandService
+	public class BrandService : IBrandService
     {
 
         private readonly IBrandRepository _brandRepository;
@@ -52,31 +45,6 @@ namespace RhythmicRealm.Service.Concrete
 			return Response<List<BrandSlimViewModel>>.Success(brandViewModels,200);
 		}
 
-		public async Task<Response<BrandViewModel>> GetBrandWithMainCategoriesAsync(int brandId)
-        {
-            var brand = await _brandRepository.GetAsync(b => b.Id == brandId,
-           source => source
-           .Include(b => b.BrandMainCategories)
-           .ThenInclude(bm => bm.MainCategory));
-            if (brand == null)
-            {
-                return Response<BrandViewModel>.Fail(404, "İlgili marka bulunamadı.");
-            }
-            var brandViewModel = new BrandViewModel
-            {
-                Id = brandId,
-                Name = brand.Name,
-                ImageUrl = brand.ImageUrl,
-                Url = brand.Url,
-                MainCategories = brand.BrandMainCategories
-                            .Select(bm => new MainCategoryViewModel
-                            {
-                                Id = bm.MainCategory.Id,
-                                Name = bm.MainCategory.Name,
-                            })
-                            .ToList()
-            };
-            return Response<BrandViewModel>.Success(brandViewModel, 200);
-        }
+		
     }
 }

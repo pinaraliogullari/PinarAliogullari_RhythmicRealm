@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RhythmicRealm.Shared.Helpers.Concrete
+﻿namespace RhythmicRealm.Shared.Helpers.Concrete
 {
-    public static class UrlCreateHelper
+	public static class UrlCreateHelper
     {
         public static string GetUrl(string text)
         {

@@ -5,7 +5,7 @@ using RhythmicRealm.Shared.ViewModels.MessageViewModels;
 
 namespace RhythmicRealm.Service.Abstract
 {
-    public interface IContactService
+	public interface IContactService
 	{
 		Task<Response<List<UserMessageViewModel>>> GetMessagesListInInboxAsync();
         Task<Response<UserMessageViewModel>> GetMessageAsync(int id);
