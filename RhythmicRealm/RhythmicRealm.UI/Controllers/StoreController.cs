@@ -1,17 +1,13 @@
-﻿using Iyzipay.Model.V2.Subscription;
-using Microsoft.AspNetCore.Mvc;
-using RhythmicRealm.Entity.Concrete;
+﻿using Microsoft.AspNetCore.Mvc;
 using RhythmicRealm.Service.Abstract;
 using RhythmicRealm.Shared.ViewModels.BrandViewModels;
 using RhythmicRealm.Shared.ViewModels.Others;
 using RhythmicRealm.Shared.ViewModels.ProductViewModels;
 using RhythmicRealm.Shared.ViewModels.SubCategoryViewModels;
-using System.ComponentModel;
-using System.Linq;
 
 namespace RhythmicRealm.UI.Controllers
 {
-    public class StoreController : Controller
+	public class StoreController : Controller
     {
         private readonly ISubCategoryService _subCategoryService;
         private readonly IBrandService _brandService;
@@ -42,7 +38,7 @@ namespace RhythmicRealm.UI.Controllers
 		{
 		
 
-			var filteredProducts = await GetFilteredProducts(subCategoryId, brandId);
+			var filteredProducts = await GetFilteredProducts(Id, subCategoryId, brandId);
 			var model = new StoreViewModel
 			{
 				Products = filteredProducts,
@@ -61,10 +57,10 @@ namespace RhythmicRealm.UI.Controllers
 			}
 		}
 
-		private async Task<List<ProductViewModel>> GetFilteredProducts(int[] subCategoryId, int[] brandId)
+		private async Task<List<ProductViewModel>> GetFilteredProducts(int mainCategoryId, int[] subCategoryId, int[] brandId)
 		{
 
-			var products = await _productService.GetProductsBySubcategoryIdAndBrandId(subCategoryId, brandId);
+			var products = await _productService.GetProductsBySubcategoryIdAndBrandId(mainCategoryId, subCategoryId, brandId);
 			var data = products.Data;
 			return data;
 		}
@@ -90,7 +86,7 @@ namespace RhythmicRealm.UI.Controllers
 		{
 			var searchResults = await _productService.SearchProductAsync(query);
 			var model = searchResults.Data;
-			return View("ShowProducts", model);
+			return RedirectToAction("ShowProducts", model);
 		}
 
 		public async Task<IActionResult> ShowProductsOnCards(int id)

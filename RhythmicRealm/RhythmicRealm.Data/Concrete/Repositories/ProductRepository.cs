@@ -120,13 +120,15 @@ namespace RhythmicRealm.Data.Concrete.Repositories
 			return searchResults;
 		}
 
-		public async Task<List<Product>> GetProductsBySubcategoryIdAndBrandIdAsync(int[] subId, int[] brandId)
+		public async Task<List<Product>> GetProductsBySubcategoryIdAndBrandIdAsync(int mainCategoryId, int[] subId, int[] brandId)
 		{
 			IQueryable<Product> searchResults = RRContext
 				.Products
 				.Include(p => p.Brand)
 				.Include(p => p.SubCategory)
 				.ThenInclude(s => s.MainCategory).AsQueryable();
+
+			searchResults = searchResults.Where(x => x.SubCategory.MainCategoryId.Equals(mainCategoryId));
 
 			 if(subId.Length > 0)
 				searchResults = searchResults.Where(x => subId.Contains(x.SubCategoryId));

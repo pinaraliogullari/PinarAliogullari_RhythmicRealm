@@ -502,9 +502,9 @@ namespace RhythmicRealm.Service.Concrete
 			return Response<ProductViewModel>.Success(resultProduct, 200);
 		}
 
-		public async Task<Response<List<ProductViewModel>>> GetProductsBySubcategoryIdAndBrandId(int[] subId, int[] brandId)
+		public async Task<Response<List<ProductViewModel>>> GetProductsBySubcategoryIdAndBrandId(int mainCategoryId, int[] subId, int[] brandId)
 		{
-		  var products = await _productRepository.GetProductsBySubcategoryIdAndBrandIdAsync(subId, brandId);
+		  var products = await _productRepository.GetProductsBySubcategoryIdAndBrandIdAsync(mainCategoryId,subId, brandId);
 			var productViewModels = products?.Select(product => new ProductViewModel
 			{
 				Id = product.Id,

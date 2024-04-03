@@ -1,14 +1,9 @@
 ﻿using RhythmicRealm.Shared.Response;
 using RhythmicRealm.Shared.ViewModels.ProductViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RhythmicRealm.Service.Abstract
 {
-    public interface IProductService
+	public interface IProductService
 	{
 		Task<Response<List<ProductViewModel>>> GetProductsBySubCategoryIdAsync(int subCategoryId);//kullandım.
 		Task<Response<List<ProductViewModel>>> GetProductsByMainCategoryIdAsync(int mainCategoryId); //kullandım
@@ -27,7 +22,7 @@ namespace RhythmicRealm.Service.Abstract
 		Task<Response<NoContent>> SoftDeleteAsync(int productId); //kullandım
 		Task<bool> UpdateIsHomeAsync(int productId); //kullandım
 		Task<bool> UpdateIsActiveAsync(int productId); //kullandım
-		Task<Response<List<ProductViewModel>>> GetProductsBySubcategoryIdAndBrandId(int[] subId, int[] brandId); //kullandım
+		Task<Response<List<ProductViewModel>>> GetProductsBySubcategoryIdAndBrandId(int mainCategoryId, int[] subId, int[] brandId); //kullandım
 	
 	
 	}

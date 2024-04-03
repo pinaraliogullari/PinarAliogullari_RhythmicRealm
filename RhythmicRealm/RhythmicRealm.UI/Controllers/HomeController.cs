@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RhythmicRealm.Service.Abstract;
-using System.Diagnostics;
 
 namespace RhythmicRealm.UI.Controllers
 {
