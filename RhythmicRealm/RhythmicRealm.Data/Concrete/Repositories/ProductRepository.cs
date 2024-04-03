@@ -115,8 +115,8 @@ namespace RhythmicRealm.Data.Concrete.Repositories
 				.Include(p => p.Brand)
 				.Include (p => p.SubCategory)
 				.ThenInclude (s => s.MainCategory)
-		        .Where(p => p.Name.Contains(query.ToUpper()) || p.Description.Contains(query.ToUpper()) || p.Brand.Name.Contains(query.ToUpper()))
-		        .ToListAsync();
+				.Where(p => p.Name.Contains(query.ToUpper()) || p.Description.Contains(query.ToUpper()) || p.Brand.Name.Contains(query.ToUpper()))
+				.ToListAsync();
 			return searchResults;
 		}
 
@@ -143,7 +143,7 @@ namespace RhythmicRealm.Data.Concrete.Repositories
 
 		public async Task<List<Product>> GetProductsBySubCategoryIdAsync(int id)
 		{
-				List<Product> products = await RRContext
+			List<Product> products = await RRContext
 			.Products
 			.Include(p => p.SubCategory)
 			.ThenInclude(s => s.MainCategory)
@@ -153,5 +153,7 @@ namespace RhythmicRealm.Data.Concrete.Repositories
 
 			return products;
 		}
+
+	
 	}
 }

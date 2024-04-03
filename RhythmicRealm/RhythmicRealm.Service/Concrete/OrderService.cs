@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query;
 using RhythmicRealm.Data.Abstract;
 using RhythmicRealm.Entity.Concrete;
 using RhythmicRealm.Service.Abstract;

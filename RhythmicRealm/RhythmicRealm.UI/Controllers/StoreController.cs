@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Iyzipay.Model.V2.Subscription;
+using Microsoft.AspNetCore.Mvc;
 using RhythmicRealm.Entity.Concrete;
 using RhythmicRealm.Service.Abstract;
 using RhythmicRealm.Shared.ViewModels.BrandViewModels;
@@ -118,5 +119,13 @@ namespace RhythmicRealm.UI.Controllers
 			return View();
 			
 		}
+
+		public async Task<IActionResult> StoreWithAllProducts()
+		{
+			var products= await _productService.GetAllProductsAsync();
+			return View("ShowProducts", products.Data);
+		}
+
+	
 	}
 }

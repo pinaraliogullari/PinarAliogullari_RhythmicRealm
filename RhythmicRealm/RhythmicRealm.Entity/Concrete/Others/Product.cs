@@ -1,4 +1,5 @@
 ﻿using RhythmicRealm.Entity.Abstract;
+using RhythmicRealm.Entity.Concrete.Others;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace RhythmicRealm.Entity.Concrete
         public Brand Brand { get; set; }
         public int BrandId { get; set; }
         public List<ShoppingBasketItem> ShoppingBasketItems { get; set; }
+        public List<Favorite> Favorites { get; set; }
 
     }
 }

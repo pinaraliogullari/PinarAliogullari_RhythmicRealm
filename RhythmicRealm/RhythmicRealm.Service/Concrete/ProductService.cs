@@ -1,6 +1,7 @@
 ﻿using Mapster;
 using Microsoft.EntityFrameworkCore;
 using RhythmicRealm.Data.Abstract;
+using RhythmicRealm.Data.Concrete.Contexts;
 using RhythmicRealm.Entity.Concrete;
 using RhythmicRealm.Service.Abstract;
 using RhythmicRealm.Shared.Response;
@@ -540,5 +541,8 @@ namespace RhythmicRealm.Service.Concrete
 
 			return Response<List<ProductViewModel>>.Success(productViewModels, 200);
 		}
+
+
+	
 	}
 }

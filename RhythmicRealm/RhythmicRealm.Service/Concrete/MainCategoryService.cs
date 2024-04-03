@@ -1,5 +1,6 @@
 ﻿using Mapster;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 using RhythmicRealm.Data.Abstract;
 using RhythmicRealm.Entity.Concrete;
 using RhythmicRealm.Service.Abstract;
@@ -36,8 +37,8 @@ namespace RhythmicRealm.Service.Concrete
 
         public async Task<Response<List<MainCategoryViewModel>>> GetAllMainCategoriesAsync()
         {
-          var mainCategories= await _mainCategoryRepository.GetAllAsync(null,source=>source
-          .Include(m=>m.SubCategories));
+          var mainCategories= await _mainCategoryRepository.GetAllAsync(null,IncludeExpression=> IncludeExpression
+		  .Include(m=>m.SubCategories));
             if (mainCategories == null)
                 return Response<List<MainCategoryViewModel>>.Fail(404, "Sonuç bulunamadı");
             var mainCategoriesViewModel = mainCategories.Select(m => new MainCategoryViewModel

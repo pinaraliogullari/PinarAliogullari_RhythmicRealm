@@ -1,7 +1,6 @@
 ﻿@model List<ProductViewModel>
 <vc:navbar-of-main-cat></vc:navbar-of-main-cat>
 
-
 <!-- SECTION -->
 <div class="section">
 	<!-- container -->
@@ -96,7 +95,7 @@
 												<i class="fa fa-star"></i>
 											</div>
 											<div class="product-btns">
-												<a style="cursor:pointer"><i class="fa fa-heart-o"></i><span class="tooltipp">Beğen</span></a>
+												<a asp-area="" asp-controller="FavProducts" asp-action="AddToFavs" asp-route-productId="@product.Id" style="cursor:pointer"><i class="fa fa-heart-o"></i><span class="tooltipp">Beğen</span></a>
 												<a asp-area="" asp-controller="ProductDetails" asp-action="Index" asp-route-id="@product.Id" style="cursor:pointer"><i class="fa fa-eye"></i><span class="tooltipp">İncele</span></a>
 											</div>
 										</div>
@@ -173,7 +172,7 @@
 					</ul>
 					<h2 class="text-uppercase">Yeni Ürünler </h2>
 					<p>Avantajlı Fiyatlar İle</p>
-					<a class="primary-btn2 cta-btn" href="#">Alışverişe Başla</a>
+					<a asp-area="" asp-controller="Store" asp-action="StoreWithAllProducts" class="primary-btn2 cta-btn" >Alışverişe Başla</a>
 				</div>
 			</div>
 		</div>

@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using RhythmicRealm.Service.Abstract;
+using RhythmicRealm.Shared.ComplexTypes;
+using RhythmicRealm.Shared.Extensions;
 using RhythmicRealm.UI.Areas.Admin.AdminViewModels;
 
 namespace RhythmicRealm.UI.Areas.Admin.Controllers
@@ -11,6 +13,7 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
 	{
         private readonly IProductService _productService;
 		private readonly IOrderService _orderService;
+	
 
         public OrderController(IOrderService orderService, IProductService productService)
         {
@@ -39,8 +42,23 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
 
 		public async Task<IActionResult> FilterByProduct(int id)
 		{
-			var orders = await _orderService.GetOrdersAsync(id);
-			return PartialView("_FilteredOrderPartialView", orders.Data);
+			if (id == 0)
+			{
+				var orders= await _orderService.GetOrdersAsync();
+                return PartialView("_FilteredOrderPartialView", orders.Data);
+			}
+			else
+			{
+                var orders = await _orderService.GetOrdersAsync(id);
+                return PartialView("_FilteredOrderPartialView", orders.Data);
+            }
+		}
+
+		public async Task<IActionResult> UpdateOrderState(int id)
+		{
+            var orderState = await _orderService.UpdateOrderStateAsync(id, EnumOrderState.Preparing);
+			var orderStateDisplay= orderState.GetDisplayName();
+			return Json(orderStateDisplay);
 		}
 	}
 }

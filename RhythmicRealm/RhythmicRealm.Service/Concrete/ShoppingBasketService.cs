@@ -55,9 +55,6 @@ namespace RhythmicRealm.Service.Concrete
             }
             return Response<ShoppingBasketViewModel>.Fail(500,"Bir hata meydana geldi");
         }
-
-	
-
 		public async Task<Response<ShoppingBasketViewModel>> GetShoppingBasketByUserIdAsync(string userId)
         {
            var basket= await _shoppingBasketRepository.GetShoppingBasketByUserIdAsync(userId);

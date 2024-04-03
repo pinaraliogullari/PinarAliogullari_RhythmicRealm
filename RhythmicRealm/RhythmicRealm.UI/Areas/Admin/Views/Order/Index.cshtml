@@ -8,7 +8,7 @@
                     <h4>Sipariş Takip Ekranı</h4>
                 </div>
                 <select onchange="filterByProduct(this)" asp-items="@Model.Products" class="form-control w-25 float-right">
-                    <option>Seçiniz</option>
+                    <option>Tüm Ürünler</option>
                 </select>
             </div>
         </div>
@@ -53,23 +53,51 @@
         const filterByProduct = (element) => {
             const tBody = $("tbody");
             const noProductsMessage = $("#noProductsMessage");
-            $.ajax({
-                url:`/Admin/Order/FilterByProduct/${element.value}`,
-                type:'GET',
-                success: (response) => {
-                    if (response.trim() === "") {
-                        tBody.html("");
-                        noProductsMessage.show();
-                    } else {
+            if (element.value === "Tüm Ürünler") {
+                $.ajax({
+                    url: '/Admin/Order/FilterByProduct/0',
+                    type: 'GET',
+                    success: (response) => {
                         tBody.html(response);
-                        noProductsMessage.hide();
+                        noProductsMessage.hide(); 
+                    },
+                    error: (err) => {
+                        console.log(err);
                     }
-                },
-                error: (error) => {
-                    console.log(error);
-                }
-            })
+                });
+            } else {
+                $.ajax({
+                    url: `/Admin/Order/FilterByProduct/${element.value}`,
+                    type: 'GET',
+                    success: (response) => {
+                        if (response.trim() === "") {
+                            tBody.html("");
+                            noProductsMessage.show(); 
+                        } else {
+                            tBody.html(response);
+                            noProductsMessage.hide();
+                        }
+                    },
+                    error: (err) => {
+                        console.log(err);
+                    }
+                });
+            }
         }
+
+        const changeOrderState = (element, orderId) => {
+            $.ajax({
+                url: `/Admin/Order/UpdateOrderState/${orderId}`,
+                type: 'GET',
+                success: (response) => {
+                    $(element).next().text(response);
+                    $(element).attr('disabled', 'disabled');
+                },
+                error: (err) => {
+                    console.log(err.statusText);
+                }
+            });
+        };
     </script>
 }
 

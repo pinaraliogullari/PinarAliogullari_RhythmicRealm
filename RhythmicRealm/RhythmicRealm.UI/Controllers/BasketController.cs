@@ -1,7 +1,6 @@
 ﻿using AspNetCoreHero.ToastNotification.Abstractions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using RhythmicRealm.Entity.Concrete;
 using RhythmicRealm.Entity.Concrete.Identity;
 using RhythmicRealm.Service.Abstract;
 
@@ -35,10 +34,10 @@ namespace RhythmicRealm.UI.Controllers
         [HttpPost]
         public async Task<IActionResult> AddToBasket(int productId,int quantity)
         {
-            //productdetaildeyken sepete ekle deyince product detail sayfasında kalsın istiyorum .
-		     await _shoppingBasketService.AddItemToBasketAsync(_userManager.GetUserId(User),productId, quantity);
+			var refererUrl = Request.Headers["Referer"].ToString();
+			await _shoppingBasketService.AddItemToBasketAsync(_userManager.GetUserId(User),productId, quantity);
             _notyfService.Success("Ürün sepetine eklendi");
-            return RedirectToAction("Index", "Home");
+            return Redirect(refererUrl);
         }
 
   

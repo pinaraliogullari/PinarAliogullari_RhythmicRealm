@@ -28,5 +28,7 @@ namespace RhythmicRealm.Service.Abstract
 		Task<bool> UpdateIsHomeAsync(int productId); //kullandım
 		Task<bool> UpdateIsActiveAsync(int productId); //kullandım
 		Task<Response<List<ProductViewModel>>> GetProductsBySubcategoryIdAndBrandId(int[] subId, int[] brandId); //kullandım
+	
+	
 	}
 }

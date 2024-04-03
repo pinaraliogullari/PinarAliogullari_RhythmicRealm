@@ -33,7 +33,16 @@
 					</div>
 
 					<div class="col-lg-6 col-md-6 col-sm-12">
-						<vc:search-bar></vc:search-bar>
+						<!-- SEARCH BAR -->
+
+						<div class="header-search">
+							<form id="searchForm" asp-area="" asp-controller="Store" asp-action="Search" method="post">
+								<input id="searchTerm" class="input" placeholder="Aradığınız ürün, kategori, marka.. ">
+								<button type="submit" class="search-btn">Ara</button>
+							</form>
+						</div>
+
+						<!-- /SEARCH BAR -->
 
 					</div>
 
@@ -59,7 +68,9 @@
 
 											</a>
 											<ul class="dropdown-menu">
-												<li><a href="#">Siparişlerim</a></li>
+												<li><a asp-area="" asp-controller="CheckOut" asp-action="GetOrders">Siparişlerim</a></li>
+												<li role="separator" class="divider"></li>
+												<li><a asp-area="" asp-controller="FavProducts" asp-action="Index">Favorilerim</a></li>
 												<li role="separator" class="divider"></li>
 												<li><a asp-area="" asp-controller="Account" asp-action="Profile">Kullanıcı Bilgilerim</a></li>
 												<li role="separator" class="divider"></li>
@@ -143,3 +154,27 @@
 	<!-- /MAIN HEADER -->
 </header>
 <!-- /HEADER -->
+
+<script>
+	document.getElementById("searchForm").addEventListener("submit", function(event) {
+		event.preventDefault(); // Sayfanın yeniden yüklenmesini engelle
+
+		var searchTerm = document.getElementById("searchTerm").value; // Arama terimini al
+
+		var xhr = new XMLHttpRequest(); // AJAX isteği oluştur
+		xhr.open("POST", this.action, true); // Formun action özelliğine göre POST isteği gönder
+		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState === XMLHttpRequest.DONE) {
+				if (xhr.status === 200) {
+					// Başarılı ise sayfayı yeniden yükle
+					window.location.reload();
+				} else {
+					// Hata durumunda uygun işlem yapılabilir
+					console.error("Arama isteği sırasında bir hata oluştu.");
+				}
+			}
+		};
+		xhr.send("query=" + encodeURIComponent(searchTerm)); // Arama terimini isteğe ekleyerek gönder
+	});
+</script>
