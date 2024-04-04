@@ -154,15 +154,16 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
         {
             if (statu == "Customers")
             {
-                var users = _userManager.Users
-                    .Where(u => u.RoleId == "91e997e8-ac8c-4196-95ea-114d5e158d77").ToList();
-
+                var users = await _userManager.GetUsersInRoleAsync("Customer");
                 return View(users);
             }
             else if (statu == "Admins")
             {
-                var users = _userManager.Users
-                    .Where(u => u.RoleId == "27d33046-bbb2-477a-bcb5-ee4e9f87862e" || u.RoleId== "4986ce01-879d-49c7-95d4-a13610cd153b").ToList();
+                var admins = await _userManager.GetUsersInRoleAsync("Admin");
+                var superAdmins = await _userManager.GetUsersInRoleAsync("SuperAdmin");
+
+                var users = admins.Concat(superAdmins).ToList();
+
                 return View(users);
             }
             return View();

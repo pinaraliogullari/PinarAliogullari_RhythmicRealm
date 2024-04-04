@@ -16,7 +16,7 @@
         <div class="container-fluid">
 
             <div class="row ">
-                <div class="card">
+                <div class="card col-md-12">
                     <div class="card-body">
                         <table id="myDataTable" class="table table-bordered table-hover">
                             <thead>
@@ -24,7 +24,7 @@
                                     <th>Id</th>
                                     <th>Kullanıcı Adı</th>
                                     <th>Ad Soyad</th>
-                                    <th>Rol</th>
+                                    <th>Durum</th>
                                     <th>Email</th>
 
                                 </tr>
@@ -36,7 +36,7 @@
                                         <td>@user.Id</td>
                                         <td>@user.UserName</td>
                                         <td>@($"{user.FirstName} {user.LastName}")</td>
-                                        <td>@user.RoleId</td>
+                                        <td>@(user.Statu?"Aktif":"Pasif")</td>
                                         <td>@user.Email</td>
                                      
 
