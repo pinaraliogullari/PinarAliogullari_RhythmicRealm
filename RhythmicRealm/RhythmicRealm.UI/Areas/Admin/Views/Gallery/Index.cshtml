@@ -1,0 +1,81 @@
+﻿@model List<ImageFileViewModel>
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+
+        </div>
+    </section>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                       <div class="card card-primary">
+                        <div class="card-header">
+                            <h4 class="card-title">Galeri</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                @foreach (var item in Model)
+                                {
+                                <div class="col-sm-2">
+                                    <a href="@item.ImagePath" data-toggle="lightbox" data-title="@item.ImageName" data-gallery="gallery">
+                                     <img src="@item.ImagePath" class="img-fluid mb-2" alt="white sample" />
+                                    </a>
+                                </div>
+                                }
+                            </div>
+                        </div>
+                       </div>
+                  
+                    
+                </div>
+            </div>
+         </div>
+    </section>
+</div>
+
+
+
+@section Styles{
+    <link rel="stylesheet" href="~/admin/plugins/ekko-lightbox/ekko-lightbox.css">
+    <link rel="stylesheet" href="~/admin/dist/css/adminlte.min.css">
+}
+
+@section BottomScripts{
+    <!-- Ekko Lightbox -->
+    <script src="~/admin/plugins/ekko-lightbox/ekko-lightbox.min.js"></script>
+    <script>
+        $(function () {
+            $(document).on('click', '[data-toggle="lightbox"]', function (event) {
+                event.preventDefault();
+                $(this).ekkoLightbox({
+                    alwaysShowClose: true
+                });
+            });
+
+            $('.filter-container').filterizr({ gutterPixels: 3 });
+            $('.btn[data-filter]').on('click', function () {
+                $('.btn[data-filter]').removeClass('active');
+                $(this).addClass('active');
+            });
+        })
+    </script>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

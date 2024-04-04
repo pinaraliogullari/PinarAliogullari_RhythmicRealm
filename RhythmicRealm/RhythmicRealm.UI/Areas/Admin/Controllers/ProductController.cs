@@ -201,7 +201,7 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
         public async Task<IActionResult> HardDelete(int id)
         {
             await _productService.HardDeleteAsync(id);
-            _notyfService.Error("Ürün kalıcı olarak silindi.");
+            _notyfService.Information("Ürün kalıcı olarak silindi.");
             return RedirectToAction("Index");
             
         }

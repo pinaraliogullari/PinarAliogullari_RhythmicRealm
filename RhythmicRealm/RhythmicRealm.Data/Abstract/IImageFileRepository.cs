@@ -2,7 +2,7 @@
 
 namespace RhythmicRealm.Data.Abstract
 {
-    public interface IMessageRepository:IGenericRepository<Message>
+    public interface IImageFileRepository:IGenericRepository<ImageFile>
     {
     }
 }

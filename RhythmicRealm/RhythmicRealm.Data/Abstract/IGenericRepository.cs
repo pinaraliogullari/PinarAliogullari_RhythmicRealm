@@ -1,17 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RhythmicRealm.Data.Abstract
 {
-	public interface IGenericRepository<TEntity> where TEntity : class
+    public interface IGenericRepository<TEntity> where TEntity : class
 	{
-		DbSet<TEntity> Table { get; set; }
 		//CRUD İŞLEMLERİ
 		Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> options = null, 
 			Func<IQueryable<TEntity>,

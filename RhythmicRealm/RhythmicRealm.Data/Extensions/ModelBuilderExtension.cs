@@ -92,8 +92,8 @@ namespace RhythmicRealm.Data.Extensions
 
             var passwordHasher = new PasswordHasher<User>();
             users[0].PasswordHash = passwordHasher.HashPassword(users[0], "Rhythmicsite987.");
-            users[1].PasswordHash = passwordHasher.HashPassword(users[1], "Rhythmicsite987.");
-            users[2].PasswordHash = passwordHasher.HashPassword(users[2], "Rhythmicsite987.");
+            users[1].PasswordHash = passwordHasher.HashPassword(users[1], "Nisakircali987.");
+            users[2].PasswordHash = passwordHasher.HashPassword(users[2], "Mehmetaksu987.");
 
             #endregion
 

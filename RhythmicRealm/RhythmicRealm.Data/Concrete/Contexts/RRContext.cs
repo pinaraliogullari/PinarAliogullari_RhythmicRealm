@@ -26,6 +26,7 @@ namespace RhythmicRealm.Data.Concrete.Contexts
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Favorite> Favorites { get; set; }
+        public DbSet<ImageFile> ImageFiles { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 

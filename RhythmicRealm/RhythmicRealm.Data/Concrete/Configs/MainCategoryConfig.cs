@@ -17,12 +17,12 @@ namespace RhythmicRealm.Data.Concrete.Configs
 			builder.Property(m => m.Url).IsRequired().HasMaxLength(50);
 			;
 			builder.HasData(
-				new MainCategory
-				{
+				    new MainCategory
+				    {
 					Id = 1,
 					Name = "Tuşlular",
 					Url = "tuslular"
-				},
+				    },
 					new MainCategory
 					{
 						Id = 2,

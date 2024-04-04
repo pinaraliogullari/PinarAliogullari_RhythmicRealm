@@ -1,5 +1,4 @@
 ﻿using AspNetCoreHero.ToastNotification;
-using Iyzipay.Model;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using RhythmicRealm.Data.Abstract;
@@ -15,7 +14,7 @@ using RhythmicRealm.UI.EmailServices.Concrete;
 
 namespace RhythmicRealm.UI.Extensions
 {
-	public static class ServiceCollectionExtensions
+    public static class ServiceCollectionExtensions
 	{
 		public static IServiceCollection LoadMyDbContextServices(this IServiceCollection services)
 		{
@@ -79,6 +78,7 @@ namespace RhythmicRealm.UI.Extensions
 			services.AddScoped<IContactRepository, ContactRepository>();
 			services.AddScoped<IMessageRepository, MessageRepository>();
 			services.AddScoped<IFavoriteRepository, FavoriteRepository>();
+			services.AddScoped<IImageFileRepository, ImageFileRepository>();
 
 			services.AddScoped<IBrandService, BrandService>();
 			services.AddScoped<IMainCategoryService, MainCategoryService>();
@@ -90,6 +90,7 @@ namespace RhythmicRealm.UI.Extensions
 			services.AddScoped<IContactService, ContactService>();
 			services.AddScoped<IMessageService, MessageService>();
 			services.AddScoped<IFavoriteService, FavoriteService>();
+			services.AddScoped<IImageFileService, ImageFileService>();
 			return services;
 		}
 		public static IServiceCollection LoadMyEmailSenderService(this IServiceCollection services)
