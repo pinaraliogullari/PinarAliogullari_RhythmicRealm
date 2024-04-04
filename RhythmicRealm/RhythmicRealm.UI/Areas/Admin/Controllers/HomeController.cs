@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using RhythmicRealm.Service.Abstract;
 
 namespace RhythmicRealm.UI.Areas.Admin.Controllers
 {
@@ -7,9 +7,25 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
     [Area("Admin")]
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly IOrderService _orderService;
+        private readonly IProductService _productService;
+
+        public HomeController(IOrderService orderService, IProductService productService)
         {
-            return View();
+            _orderService = orderService;
+            _productService = productService;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var orders = await _orderService.GetOrdersAsync();
+            return View(orders.Data);
+        }
+
+        public async Task<IActionResult> GetNewProducts()
+        {
+            var newProducts = await _productService.GetNewProductsAsync();
+            return View(newProducts.Data);
         }
     }
 }

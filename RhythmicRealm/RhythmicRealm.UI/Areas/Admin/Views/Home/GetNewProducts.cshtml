@@ -1,0 +1,80 @@
+﻿  @model List<ProductViewModel>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+
+            <div class="col-sm-6">
+                <h3>Yeni Ürünler</h3>
+            </div>
+
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-12 float-right">
+                  
+                </div>
+                <div class="col-12">
+                    <div class="card">
+
+                        <!-- /.card-header -->
+                        <div class="card-body">
+
+                            <table id="myDataTable" class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Görsel</th>
+                                        <th>Ürün</th>
+                                        <th>Ana Kategori</th>
+                                        <th>Alt Kategori</th>
+                                        <th>Marka</th>
+                                        <th>Fiyat(TL)</th>
+                                   
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var product in Model)
+                                    {
+                                        <tr>
+                                            <td>@product.Id</td>
+                                            <td> <img src="/images/products/@product.ImageUrl" style="width:60px;" /></td>
+                                            <td>@product.Name</td>
+                                            <td>@product.MainCategory.Name</td>
+                                            <td>@product.SubCategory.Name</td>
+                                            <td>@product.Brand.Name</td>
+                                            <td>@product.Price</td>
+                                              
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+@section Styles {
+    @await Html.PartialAsync("_DataTablesCssPartial")
+
+}
+@section BottomScripts {
+    @await Html.PartialAsync("_DataTablesJsPartial")
+
+}

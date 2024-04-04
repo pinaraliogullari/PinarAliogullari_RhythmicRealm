@@ -531,7 +531,6 @@ namespace RhythmicRealm.Service.Concrete
 			return Response<List<ProductViewModel>>.Success(productViewModels, 200);
 		}
 
-
-	
-	}
+       
+    }
 }

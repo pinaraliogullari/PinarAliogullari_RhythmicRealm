@@ -22,7 +22,8 @@ namespace RhythmicRealm.Service.Abstract
 		Task<Response<NoContent>> SoftDeleteAsync(int productId); 
 		Task<bool> UpdateIsHomeAsync(int productId); 
 		Task<bool> UpdateIsActiveAsync(int productId); 
-		Task<Response<List<ProductViewModel>>> GetProductsBySubcategoryIdAndBrandId(int mainCategoryId, int[] subId, int[] brandId); 
+		Task<Response<List<ProductViewModel>>> GetProductsBySubcategoryIdAndBrandId(int mainCategoryId, int[] subId, int[] brandId);
+	
 	
 	
 	}

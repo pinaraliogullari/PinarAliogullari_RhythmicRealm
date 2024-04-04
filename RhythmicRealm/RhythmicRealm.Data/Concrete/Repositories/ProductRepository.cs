@@ -115,7 +115,7 @@ namespace RhythmicRealm.Data.Concrete.Repositories
 				.Include(p => p.Brand)
 				.Include (p => p.SubCategory)
 				.ThenInclude (s => s.MainCategory)
-				.Where(p => p.Name.Contains(query.ToUpper()) || p.Description.Contains(query.ToUpper()) || p.Brand.Name.Contains(query.ToUpper()))
+				.Where(p => p.Name.Contains(query.ToUpper())||p.Description.Contains(query.ToUpper())||p.Brand.Name.Contains(query.ToUpper()))
 				.ToListAsync();
 			return searchResults;
 		}

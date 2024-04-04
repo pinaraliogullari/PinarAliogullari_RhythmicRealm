@@ -86,7 +86,7 @@ namespace RhythmicRealm.UI.Controllers
 		{
 			var searchResults = await _productService.SearchProductAsync(query);
 			var model = searchResults.Data;
-			return RedirectToAction("ShowProducts", model);
+			return View(model);
 		}
 
 		public async Task<IActionResult> ShowProductsOnCards(int id)

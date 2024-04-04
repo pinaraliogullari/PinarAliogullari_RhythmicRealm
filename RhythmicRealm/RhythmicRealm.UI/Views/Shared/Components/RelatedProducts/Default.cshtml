@@ -32,9 +32,10 @@
 								<div class="product-rating">
 								</div>
 								<div class="product-btns">
-									<a style="cursor:pointer"><i class="fa fa-heart-o"></i><span class="tooltipp">Beğen</span></a>
-									<a asp-area="" asp-controller="ProductDetails" asp-action="Index" asp-route-id="@item.Id" style="cursor:pointer"><i class="fa fa-eye"></i><span class="tooltipp">İncele</span></a>
-								</div>
+									<a asp-area="" asp-controller="FavProducts" asp-action="ToggleFavorite" asp-route-productId="@item.Id" style="cursor:pointer"><i style="font-size:20px;" class="fa fa-heart-o"></i><span class="tooltipp"></span></a>
+									<a asp-area="" asp-controller="ProductDetails" asp-action="Index" asp-route-id="@item.Id" style="cursor:pointer"><i style="font-size:20px;" class="fa fa-eye"></i><span class="tooltipp"></span></a>
+								
+							</div>
 							</div>
 							<form asp-area="" asp-controller="Basket" asp-action="AddToBasket" method="post">
 								<input type="hidden" value="@item.Id" name="productId" />
