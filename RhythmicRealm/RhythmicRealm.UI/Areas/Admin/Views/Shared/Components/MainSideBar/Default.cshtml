@@ -9,7 +9,7 @@
     <!-- Sidebar -->
     <div class="sidebar">
 
-        <vc:side-bar-user-panel></vc:side-bar-user-panel>
+        @await Component.InvokeAsync("SideBarUserPanel")
     
         <!-- Sidebar Menu -->
         <nav class="mt-2">

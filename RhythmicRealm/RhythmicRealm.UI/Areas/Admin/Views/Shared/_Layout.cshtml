@@ -14,11 +14,12 @@
     <div class="wrapper">
         <div class="wrapper">
            
-            <vc:preloader></vc:preloader>
-            <vc:navbar></vc:navbar>
-            <vc:main-side-bar></vc:main-side-bar>
-            @RenderBody()
-            @await Html.PartialAsync("_FooterPartial")
+             @await Component.InvokeAsync("Preloader")
+             @await Component.InvokeAsync("MainSideBar")
+             @await Component.InvokeAsync("Navbar")
+   
+             @RenderBody()
+             @await Html.PartialAsync("_FooterPartial")
         </div>
     </div>
     @await Html.PartialAsync("_ScriptsPartial")

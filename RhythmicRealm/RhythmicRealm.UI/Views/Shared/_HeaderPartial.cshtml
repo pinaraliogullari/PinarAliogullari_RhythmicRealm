@@ -79,7 +79,7 @@
 										</div>
 									</div>
 
-									<vc:cart></vc:cart>
+									@await Component.InvokeAsync("Cart")
 								}
 								else
 								{
@@ -103,7 +103,7 @@
 										</div>
 									</div>
 
-									<vc:cart></vc:cart>
+									@await Component.InvokeAsync("Cart")
 								}
 
 

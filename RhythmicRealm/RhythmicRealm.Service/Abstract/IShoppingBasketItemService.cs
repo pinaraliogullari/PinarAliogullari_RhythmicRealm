@@ -6,7 +6,8 @@ namespace RhythmicRealm.Service.Abstract
 	public interface IShoppingBasketItemService
 	{
 		Task<int> CountAsync(int shoppingBasketId);
-		Task<Response<ShoppingBasketItemViewModel>> UpdateQuantityAsync(int shoppingCartItemId, int quantity);
+		Task<Response<NoContent>> UpdateQuantityAsync(int shoppingCartItemId, int quantity);
+		Task<Response<ShoppingBasketItemViewModel>>GetShoppingBasketItemAsync(int shoppingBasketItemId);
 	
 	}
 }
