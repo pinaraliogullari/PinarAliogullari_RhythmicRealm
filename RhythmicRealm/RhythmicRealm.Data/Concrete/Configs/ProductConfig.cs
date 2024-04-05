@@ -26,7 +26,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 				new Product
 				{
 					Id = 1,
-					Name = "PERARL RIVER V-05 DIJITAL PIYANO",
+					Name = "pearl river v-05 dijital piyano",
 					SubCategoryId = 1,
 					ImageUrl = "piyano1.png",
 					Url = "pearl-river-v-05-dijital-piyano",
@@ -40,7 +40,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 				new Product
 				{
 					Id = 2,
-					Name = "KURZWEIL DIJITAL KUYRUKLU PIYANO",
+					Name = "kurzweil dijital kuyruklu piyano",
 					SubCategoryId = 1,
 					ImageUrl = "piyano2.png",
 					Url = "kurzveil-dijital-kuyruklu-piyano",
@@ -54,7 +54,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 				new Product
 				{
 					Id = 3,
-					Name = "AP270BK CELVIANO DIJITAL PIYANO ",
+					Name = "AP270BK celviano dijital piyano",
 					SubCategoryId = 1,
 					ImageUrl = "piyano3.png",
 					Url = "casio-ap20bk-celviano-dijital-piyano",
@@ -68,7 +68,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 				 new Product
 				 {
 					 Id = 4,
-					 Name = "PIAGGERO TUŞLU EGITIM KLAVYESI",
+					 Name = "piaggero tuşlu eğitim klavyesi",
 					 ImageUrl = "klavye1.png",
 					 SubCategoryId = 2,
 					 Url = "yamaha-piaggero-tuslu-egitim-klavyesi",
@@ -82,7 +82,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 				 new Product
 				 {
 					 Id = 5,
-					 Name = "MZ-61 TUSLU KLAVYE",
+					 Name = "MZ-61 tuşlu klavye",
 					 ImageUrl = "klavye2.png",
 					 SubCategoryId = 2,
 					 Url = "casio-mz61-tuslu-klavye",
@@ -96,7 +96,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 				 new Product
 				 {
 					 Id = 6,
-					 Name = "TUSLU KLAVYE",
+					 Name = "tuşlu klavye",
 					 ImageUrl = "klavye3.png",
 					 SubCategoryId = 2,
 					 Url = "casio-61-tuslu-klavye",
@@ -110,7 +110,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 				 new Product
 				 {
 					 Id = 7,
-					 Name = "HOHNER A16812 BRAVO 120 AKORDIYON ",
+					 Name = "hohner A16812 bravo 120 akordiyon ",
 					 ImageUrl = "akordiyon1.png",
 					 SubCategoryId = 3,
 					 Url = "hohner-a16812-bravo-120-akordiyon",
@@ -125,7 +125,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 				 new Product
 				 {
 					 Id = 8,
-					 Name = "PRS SE STANDART ELEKTRO GITAR",
+					 Name = "prs se standart elektro gitar",
 					 ImageUrl = "elektrogitar1.png",
 					 SubCategoryId = 4,
 					 Url = "prs-se-standart-elektro-gitar",
@@ -139,7 +139,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 				 new Product
 				 {
 					 Id = 9,
-					 Name = "PRS SE CUSTOM ELEKTRO GITAR",
+					 Name = "prs se custom elektro gitar",
 					 ImageUrl = "elektrogitar2.png",
 					 SubCategoryId = 4,
 					 Url = "prs-se-custom-elektro-gitar",
@@ -153,7 +153,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 				 new Product
 				 {
 					 Id = 10,
-					 Name = "SEAGULL S6 COLLECTION AKUSTIK GITAR",
+					 Name = "seagull s6 collection akustik gitar",
 					 ImageUrl = "akustikgitar1.png",
 					 SubCategoryId = 5,
 					 Url = "seagull-s6-collection-akustik-gitar",
@@ -167,7 +167,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 				 new Product
 				 {
 					 Id = 11,
-					 Name = "SEAGULL M6 AKUSTIK GITAR",
+					 Name = "seagull ml akustik gitar",
 					 ImageUrl = "akustikgitar2.png",
 					 SubCategoryId = 5,
 					 Url = "seagull-m6-akustik-gitar",
@@ -181,7 +181,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 				 new Product
 				 {
 					 Id = 12,
-					 Name = "GIBSON STANDART AKUSTIK GITAR",
+					 Name = "gibson standart akustik gitar",
 					 ImageUrl = "akustikgitar3.png",
 					 SubCategoryId = 5,
 					 Url = "gibson-standart-akustik-gitar",
@@ -195,7 +195,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 				 new Product
 				 {
 					 Id = 13,
-					 Name = "EPIPHONE MM-30S MANDOLIN",
+					 Name = "epiphone mm-30S mandolin",
 					 ImageUrl = "mandolin1.png",
 					 SubCategoryId = 6,
 					 Url = "epiphone-mm-30s-mandolin",
@@ -209,7 +209,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 				 new Product
 				 {
 					 Id = 14,
-					 Name = "8 TELLI MANDOLIN",
+					 Name = "8 telli mandolin",
 					 ImageUrl = "mandolin2.png",
 					 SubCategoryId = 6,
 					 Url = "8-telli-mandolin",
@@ -223,7 +223,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 		   new Product
 		   {
 			   Id = 15,
-			   Name = "Art SERIES CONCERT UKULELE",
+			   Name = "art series concert ukulele",
 			   ImageUrl = "ukulele1.png",
 			   SubCategoryId = 7,
 			   Url = "art-series-concert-ukulele",
@@ -237,7 +237,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 		   new Product
 		   {
 			   Id = 16,
-			   Name = "ALL SOLID ELEKTRO TENOR UKULELE",
+			   Name = "all solid elektro tenor ukulele",
 			   ImageUrl = "ukulele2.png",
 			   SubCategoryId = 7,
 			   Url = "all-solid-elektro-tenor-ukulele",
@@ -251,7 +251,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 		   new Product
 		   {
 			   Id = 17,
-			   Name = "MAVIS LAMINATED KEMAN",
+			   Name = "mavis laminated keman",
 			   ImageUrl = "keman1.png",
 			   SubCategoryId = 8,
 			   Url = "mavis-laminated-keman",
@@ -265,7 +265,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 		   new Product
 		   {
 			   Id = 18,
-			   Name = "DONNER RISING CARBON FIBER KEMAN SETI",
+			   Name = "donner rising carbon fiber keman seti",
 			   ImageUrl = "keman2.png",
 			   SubCategoryId = 8,
 			   Url = "donner-rising-carbon-fiber-keman-seti",
@@ -279,7 +279,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 		   new Product
 		   {
 			   Id = 19,
-			   Name = "SILENT KEMAN",
+			   Name = "silent keman",
 			   ImageUrl = "keman3.png",
 			   SubCategoryId = 8,
 			   Url = "yamaha-silent-keman",
@@ -293,7 +293,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 		   new Product
 		   {
 			   Id = 20,
-			   Name = "VIYOLA SETI",
+			   Name = "viyola seti",
 			   ImageUrl = "viyola1.png",
 			   SubCategoryId = 9,
 			   Url = "yamaha-viyola-seti",
@@ -307,7 +307,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 		   new Product
 		   {
 			   Id = 21,
-			   Name = "VA5S VIYOLA",
+			   Name = "va5s viyola",
 			   ImageUrl = "viyola2.png",
 			   SubCategoryId = 9,
 			   Url = "yamaha-va5s-seti",
@@ -321,7 +321,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 		   new Product
 		   {
 			   Id = 22,
-			   Name = "MC6012 CELLO",
+			   Name = "mc6012 çello",
 			   ImageUrl = "cello1.png",
 			   SubCategoryId = 10,
 			   Url = "rösler-mc6012-cello",
@@ -335,7 +335,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 		   new Product
 		   {
 			   Id = 23,
-			   Name = "DIGITAL SAKSAFON",
+			   Name = "dijital saksafon",
 			   ImageUrl = "saksafon1.png",
 			   SubCategoryId = 11,
 			   Url = "yamaha-dijital-saksafon",
@@ -349,7 +349,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 			new Product
 			{
 				Id = 24,
-				Name = "BOHEMIA TENOR SAKSAFON",
+				Name = "bohemia tenor saksafon",
 				ImageUrl = "saksafon2.png",
 				SubCategoryId = 11,
 				Url = "bohemia-tenor-saksafon",
@@ -363,7 +363,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 			 new Product
 			 {
 				 Id = 25,
-				 Name = "BEMOL KLARNET",
+				 Name = "bemol klarnet",
 				 ImageUrl = "klarnet1.png",
 				 SubCategoryId = 12,
 				 Url = "jinbao-bemol-klarnet",
@@ -377,7 +377,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 			  new Product
 			  {
 				  Id = 26,
-				  Name = " BOHEMIA PLUS SOL KLARNET",
+				  Name = " bohemia plus sol klarnet",
 				  ImageUrl = "klarnet2.png",
 				  SubCategoryId = 12,
 				  Url = "bohemia-plus-sol-klarnet",
@@ -390,7 +390,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 				 new Product
 				 {
 					 Id = 27,
-					 Name = "SI BEMOL KLARNET",
+					 Name = "si bemol klarnet",
 					 ImageUrl = "klarnet3.png",
 					 SubCategoryId = 12,
 					 Url = "antigua-si-bemol-klarnet",
@@ -403,7 +403,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 				 new Product
 				 {
 					 Id = 28,
-					 Name = "BLUES BENDER SI BEMOL MAJOR MIZIKA",
+					 Name = "blues bender si bemol major mızıka",
 					 ImageUrl = "mızıka1.png",
 					 SubCategoryId = 13,
 					 Url = "blues-bender-si-bemol-major-mizika",
@@ -416,7 +416,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 				 new Product
 				 {
 					 Id = 29,
-					 Name = "BOHEMIA YAN FLUT",
+					 Name = "bohemia yan flüt",
 					 ImageUrl = "yanflut1.png",
 					 SubCategoryId = 14,
 					 Url = "bohemia-yan-flut",
@@ -429,7 +429,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 				 new Product
 				 {
 					 Id = 30,
-					 Name = "YAN FLUT",
+					 Name = "yan flüt",
 					 ImageUrl = "yanflut2.png",
 					 SubCategoryId = 14,
 					 Url = "antigua-yan-flut",
@@ -442,7 +442,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 				 new Product
 				 {
 					 Id = 31,
-					 Name = "CONDUCTOR GUMUS YAN FLUT",
+					 Name = "conductor gümüş yan flüt",
 					 ImageUrl = "yanflut3.png",
 					 SubCategoryId = 14,
 					 Url = "conductor-gumus-yan-flut",
@@ -455,7 +455,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 				 new Product
 				 {
 					 Id = 32,
-					 Name = "JINBAO TRAMPET",
+					 Name = "jinbao trampet",
 					 ImageUrl = "akustikdavul1.png",
 					 SubCategoryId = 15,
 					 Url = "jinbao-trampet",
@@ -468,7 +468,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 				 new Product
 				 {
 					 Id = 33,
-					 Name = "JINBAO TIMBAL",
+					 Name = "jinbao timbal",
 					 ImageUrl = "perkusyon1.png",
 					 SubCategoryId = 16,
 					 Url = "jinbao-timbal",
@@ -481,7 +481,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 				 new Product
 				 {
 					 Id = 34,
-					 Name = "JINBAO ALTO GLOCKENSPIEL",
+					 Name = "jinbao alto glockenspiel",
 					 ImageUrl = "perkusyon2.png",
 					 SubCategoryId = 16,
 					 Url = "jinbao-Alto-glockenspiel",
@@ -494,7 +494,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 				 new Product
 				 {
 					 Id = 35,
-					 Name = "MEINL HIHAT ZIL ",
+					 Name = "meinl hihat zil",
 					 ImageUrl = "zil1.png",
 					 SubCategoryId = 17,
 					 Url = "meinl-Hihat-zil",
@@ -507,7 +507,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 				new Product
 				{
 					Id = 36,
-					Name = "JAZZ MEDIUM THIN CRASH ZIL ",
+					Name = "jazz medium thin crash zil",
 					ImageUrl = "zil2.png",
 					SubCategoryId = 17,
 					Url = "jazz-medium-thin-crash-zil",
@@ -520,7 +520,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 				new Product
 				{
 					Id = 37,
-					Name = "JINBAO M6 KEYBOARD MALET",
+					Name = "jinbao m6 keyboard malet",
 					ImageUrl = "baget1.png",
 					SubCategoryId = 18,
 					Url = "jinbao-m6-keyboard-malet",
@@ -533,7 +533,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 				 new Product
 				 {
 					 Id = 38,
-					 Name = "MEINL BRUSH FIXED WIRE BAGET",
+					 Name = "meinl brush fixed wire baget",
 					 ImageUrl = "baget2.png",
 					 SubCategoryId = 18,
 					 Url = "meinl-brush-fixed-wire-baget",

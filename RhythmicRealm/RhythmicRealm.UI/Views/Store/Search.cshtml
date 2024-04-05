@@ -9,7 +9,12 @@
 		<div class="row">
 			<div class="col-md-12 buttons-grid">
 				<h3>Arama Sonuçları</h3>
+			
 			</div>
+			@if (Model.Count == 0)
+			{
+				<div style="margin-bottom:200px;" class="alert alert-danger col-md-12">Arama sonuçlarına uygun ürün bulunmamaktadır.</div>
+			}
 			<!-- STORE -->
 			<div id="store" class="col-md-12">
 

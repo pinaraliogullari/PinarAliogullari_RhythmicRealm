@@ -84,7 +84,8 @@ namespace RhythmicRealm.UI.Controllers
 		}
 		public async Task<IActionResult> Search(string query)
 		{
-			var searchResults = await _productService.SearchProductAsync(query);
+			var lowerCaseQuery = query.ToLower();
+			var searchResults = await _productService.SearchProductAsync(lowerCaseQuery);
 			var model = searchResults.Data;
 			return View(model);
 		}
