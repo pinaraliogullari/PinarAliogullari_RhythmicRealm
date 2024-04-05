@@ -18,6 +18,7 @@ namespace RhythmicRealm.Entity.Concrete.Identity
 		public bool Statu { get; set; }
 		public string RoleId { get; set; } 
         public List<ShoppingBasket> ShoppingBaskets { get; set; }
+		public DateTime CreatedDate { get; set; } = DateTime.Now;
 
     }
 }

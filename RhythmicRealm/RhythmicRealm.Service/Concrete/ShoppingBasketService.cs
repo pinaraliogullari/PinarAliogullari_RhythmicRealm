@@ -53,33 +53,27 @@ namespace RhythmicRealm.Service.Concrete
         }
 		public async Task<Response<ShoppingBasketViewModel>> GetShoppingBasketByUserIdAsync(string userId)
         {
-            if (userId == null)
+           
+            var basket = await _shoppingBasketRepository.GetShoppingBasketByUserIdAsync(userId);
+            if (basket == null)
             {
-                return null;
+                return Response<ShoppingBasketViewModel>.Fail(404, "Sonuç bulunamadı");
             }
-            else
+            var basketViewModel = new ShoppingBasketViewModel
             {
-                var basket = await _shoppingBasketRepository.GetShoppingBasketByUserIdAsync(userId);
-                var basketViewModel = new ShoppingBasketViewModel
-                {
-                    ShoppingBasketId = basket.Id,
-                    BasketItems = basket.ShoppingBasketItems.Select(item => new ShoppingBasketItemViewModel
-                    {
-                        BasketItemId = item.Id,
-                        ProductId = item.ProductId,
-                        Name = item.Product.Name,
-                        Price = item.Product.Price,
-                        ImageUrl = item.Product.ImageUrl,
-                        Quantity = item.Quantity
-                    }).ToList()
-                };
-
-                if (basketViewModel == null)
-                    return Response<ShoppingBasketViewModel>.Fail(404, "Sonuç bulunamadı");
-                else
-                    return Response<ShoppingBasketViewModel>.Success(basketViewModel, 200);
-            }
-         
+               ShoppingBasketId = basket.Id,
+               BasketItems = basket.ShoppingBasketItems.Select(item => new ShoppingBasketItemViewModel
+               {
+                   BasketItemId = item.Id,
+                   ProductId = item.ProductId,
+                   Name = item.Product.Name,
+                   Price = item.Product.Price,
+                   ImageUrl = item.Product.ImageUrl,
+                   Quantity = item.Quantity
+               }).ToList()
+            };
+                return Response<ShoppingBasketViewModel>.Success(basketViewModel, 200);
+            
         }
 
         public async Task<Response<NoContent>> InitializeBasketAsync(string userId)
