@@ -48,7 +48,14 @@
 										<i class="fa fa-star"></i>
 									</div>
 									<div class="product-btns">
-										<a asp-area="" asp-controller="FavProducts" asp-action="ToggleFavorite" asp-route-productId="@product.Id" style="cursor:pointer"><i style="font-size:20px;" class="fa fa-heart-o"></i><span class="tooltipp"></span></a>
+										@if (User.Identity.IsAuthenticated)
+										{
+											<a asp-area="" asp-controller="FavProducts" asp-action="ToggleFavorite" asp-route-productId="@product.Id" style="cursor:pointer"><i style="font-size:20px;" class="fa fa-heart-o"></i><span class="tooltipp"></span></a>
+										}
+										else
+										{
+											<a asp-area="" asp-controller="Account" asp-action="Login" style="cursor:pointer"><i style="font-size:20px;" class="fa fa-heart-o"></i><span class="tooltipp"></span></a>
+										}
 										<a asp-area="" asp-controller="ProductDetails" asp-action="Index" asp-route-id="@product.Id" class="quick-view" style="cursor:pointer"><i style="font-size:20px;" class="fa fa-eye"></i><span class="tooltipp">İncele</span></a>
 									</div>
 								</div>

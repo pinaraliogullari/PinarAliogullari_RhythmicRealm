@@ -125,7 +125,7 @@ namespace RhythmicRealm.UI.Controllers
 				basketItem.Category1 = "Tuşlular";
 				basketItem.Category2 = "";
 				basketItem.ItemType = BasketItemType.PHYSICAL.ToString();
-				basketItem.Price = item.Price.ToString().Split(",")[0];
+				basketItem.Price = (item.Quantity * item.Price).ToString().Split(",")[0];
 
 				basketItems.Add(basketItem);
 			}

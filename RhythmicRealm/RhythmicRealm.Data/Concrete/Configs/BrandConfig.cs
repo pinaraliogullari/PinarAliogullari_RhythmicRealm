@@ -22,7 +22,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 				new Brand
 				{
 					Id = 1,
-					Name = "Casio",
+					Name = "casio",
 					Url = "casio",
 					ImageUrl = "casio.png"
 
@@ -30,7 +30,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 				 new Brand
 				 {
 					 Id = 2,
-					 Name = "Yamaha",
+					 Name = "yamaha",
 					 Url = "yamaha",
 					 ImageUrl = "yamaha.png"
 
@@ -38,7 +38,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 				  new Brand
 				  {
 					  Id = 3,
-					  Name = "Schecter",
+					  Name = "schecter",
 					  Url = "schecter",
 					  ImageUrl = "schecter.png"
 
@@ -46,7 +46,7 @@ namespace RhythmicRealm.Data.Concrete.Configs
 				   new Brand
 				   {
 					   Id = 4,
-					   Name = "Antigua",
+					   Name = "antigua",
 					   Url = "antigua",
 					   ImageUrl = "antigua.png"
 
