@@ -7,8 +7,8 @@
 		<title>Rhythmic Realm</title>
 
 		@await Html.PartialAsync("_StylesPartial")
-		@RenderSectionAsync("Styles", false)
-	    @RenderSectionAsync("TopScripts", false)
+		@await RenderSectionAsync("Styles", false)
+	    @await RenderSectionAsync("TopScripts", false)
 </head>
 <body>
 		@await Html.PartialAsync("_HeaderPartial")

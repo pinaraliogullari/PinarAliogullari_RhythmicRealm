@@ -1,12 +1,11 @@
 ﻿using Mapster;
-using MapsterMapper;
 using Microsoft.AspNetCore.Mvc;
 using RhythmicRealm.Service.Abstract;
 using RhythmicRealm.Shared.ViewModels.BrandViewModels;
 
 namespace RhythmicRealm.UI.ViewComponents
 {
-	public class BrandViewComponent:ViewComponent
+    public class BrandViewComponent:ViewComponent
 	{
 		private readonly IBrandService _brandService;
 	
