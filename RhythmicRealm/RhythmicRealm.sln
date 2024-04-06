@@ -3,15 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RhythmicRealm.UI", "RhythmicRealm.UI\RhythmicRealm.UI.csproj", "{368D4078-79BE-4B5F-967C-77752B40B885}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RhythmicRealm.UI", "RhythmicRealm.UI\RhythmicRealm.UI.csproj", "{368D4078-79BE-4B5F-967C-77752B40B885}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RhythmicRealm.Service", "RhythmicRealm.Service\RhythmicRealm.Service.csproj", "{9EBEDA0E-F59B-4EA9-969D-D5EF378FDE5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RhythmicRealm.Service", "RhythmicRealm.Service\RhythmicRealm.Service.csproj", "{9EBEDA0E-F59B-4EA9-969D-D5EF378FDE5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RhythmicRealm.Data", "RhythmicRealm.Data\RhythmicRealm.Data.csproj", "{2C45246F-BF44-4C71-BE48-901F4744A1C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RhythmicRealm.Data", "RhythmicRealm.Data\RhythmicRealm.Data.csproj", "{2C45246F-BF44-4C71-BE48-901F4744A1C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RhythmicRealm.Entity", "RhythmicRealm.Entity\RhythmicRealm.Entity.csproj", "{A15F7A46-370B-45EF-BF44-05C4F22F8029}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RhythmicRealm.Entity", "RhythmicRealm.Entity\RhythmicRealm.Entity.csproj", "{A15F7A46-370B-45EF-BF44-05C4F22F8029}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RhythmicRealm.Shared", "RhythmicRealm.Shared\RhythmicRealm.Shared.csproj", "{8C98DFE5-B8A2-402B-B19A-C3CBD5E31333}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RhythmicRealm.Shared", "RhythmicRealm.Shared\RhythmicRealm.Shared.csproj", "{8C98DFE5-B8A2-402B-B19A-C3CBD5E31333}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{65649AD8-F4F5-4991-B642-DE98EA086341}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RhythmicRealm.Test", "RhythmicRealm.Test\RhythmicRealm.Test.csproj", "{69E8B7AA-373E-4429-8C45-034E2DB427F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,9 +43,16 @@ Global
 		{8C98DFE5-B8A2-402B-B19A-C3CBD5E31333}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C98DFE5-B8A2-402B-B19A-C3CBD5E31333}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C98DFE5-B8A2-402B-B19A-C3CBD5E31333}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69E8B7AA-373E-4429-8C45-034E2DB427F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69E8B7AA-373E-4429-8C45-034E2DB427F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69E8B7AA-373E-4429-8C45-034E2DB427F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69E8B7AA-373E-4429-8C45-034E2DB427F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{69E8B7AA-373E-4429-8C45-034E2DB427F6} = {65649AD8-F4F5-4991-B642-DE98EA086341}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {418693BA-4BE2-4430-8F04-C4BBA1C790FE}
