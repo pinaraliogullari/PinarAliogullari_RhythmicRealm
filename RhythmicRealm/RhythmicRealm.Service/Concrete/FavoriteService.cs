@@ -16,10 +16,6 @@ namespace RhythmicRealm.Service.Concrete
 
 		public async Task<Response<NoContent>> AddToFavoritesAsync(string userId, int productId)
 		{
-
-			var existingFavorite = await _favoriteRepository.GetFavoritesAsync(userId);
-			if (existingFavorite.Count==0)
-			{
 				var newFavorite = new Favorite
 				{
 					UserId = userId,
@@ -28,9 +24,7 @@ namespace RhythmicRealm.Service.Concrete
 				};
 				await _favoriteRepository.CreateAsync(newFavorite);
 				return Response<NoContent>.Success(200);
-			}
-
-			return Response<NoContent>.Fail(500, "İşlem başarısız");
+		
 		}
 
 		public async Task<Response<List<Favorite>>> GetAllFavoritesAsync(string userId)

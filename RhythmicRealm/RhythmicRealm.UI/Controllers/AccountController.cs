@@ -328,6 +328,7 @@ namespace RhythmicRealm.UI.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdatePassword(ProfileViewModel profileViewModel)
         {
+
             var userId = _userManager.GetUserId(User);
             var user = await _userManager.FindByIdAsync(userId);
             var isVerified = await _userManager.CheckPasswordAsync(user, profileViewModel.PasswordInfo.OldPassword);

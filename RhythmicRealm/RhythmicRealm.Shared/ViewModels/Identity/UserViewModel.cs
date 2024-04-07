@@ -28,8 +28,13 @@ namespace RhythmicRealm.Shared.ViewModels.Identity
         [Required(ErrorMessage = "{0} alanını boş bırakmayınız")]
         public DateTime? DateofBirth { get; set; }
 
-        public string Address { get; set; }
-        public string City { get; set; }
+		[DisplayName("Adres")]
+		[Required(ErrorMessage = "{0} alanını boş bırakmayınız")]
+		public string Address { get; set; }
+
+		[DisplayName("Şehir")]
+		[Required(ErrorMessage = "{0} alanını boş bırakmayınız")]
+		public string City { get; set; }
       
     }
 }

@@ -23,7 +23,6 @@
 									<label for="subcategory-@subCategory.Id">
 										<span></span>
 										@subCategory.Name
-										<small>(120)</small>
 									</label>
 								</div>
 
@@ -45,7 +44,6 @@
 									<label for="brand-@brand.Id">
 										<span></span>
 										@brand.Name
-										<small>(578)</small>
 									</label>
 								</div>
 							}
@@ -134,16 +132,16 @@
 								@if (counter % 2 == 0) 
 								{
 									<div class="clearfix visible-sm visible-xs"></div>
-								}
-                    }
-				    }
-                    </div>
-				
+							}
+						}
+					}
+				</div>
+				@if (Model.Products.Count == 0)
+				{
 					<div class="alert alert-danger" role="alert">
 						@ViewBag.ErrorMessage
 					</div>
-				
-				
+				}
 				<!-- /store products -->
 				<!-- store bottom filter -->
 				
