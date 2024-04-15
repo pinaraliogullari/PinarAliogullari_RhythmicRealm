@@ -132,7 +132,12 @@ namespace RhythmicRealm.UI.Controllers
                         await _userManager.ResetAccessFailedCountAsync(user); //Önceki hataları girişler neticesinde +1 arttırılmış tüm değerleri 0(sıfır)a çekiyoruz.
 
                         if (string.IsNullOrEmpty(TempData["returnUrl"] != null ? TempData["returnUrl"].ToString() : ""))
-                            return Redirect("~/");
+                        {
+                            _notyfService.Information("Hesabınıza başarıyla giriş yaptınız.");
+							return Redirect("~/");
+						}
+                            
+                        
                         return Redirect(TempData["returnUrl"].ToString());
                     }
                     else
@@ -166,6 +171,7 @@ namespace RhythmicRealm.UI.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
+            _notyfService.Information("Hesabınızdan başarıyla çıkış yapılmıştır.");
             return Redirect("~/");
         }
         public IActionResult ForgotPassword()

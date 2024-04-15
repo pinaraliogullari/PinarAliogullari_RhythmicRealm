@@ -34,8 +34,8 @@ Katkıda bulunmak veya hataları bildirmek için [LinkedIn profilimi ziyaret ede
  Projeyi incelemek için yeni kayıt oluşturabilir veya aşağıdaki bilgiler ile giriş yapabilirsiniz.
 
 - SuperAdmin  --> email: rhythmicsite@hotmail.com   şifre:Rhythmicsite987.
-- Admin email --> email: nisakircali@hotmail.com    şifre:Nisakircali987.
-- Customer    --> email: mehmetaksu@hotmail.com     şifre:Mehmetaksu987.
+- Admin email --> email: stanleykubrick@gmail.com   şifre:Rhythmicsite987.
+- Customer    --> email: andreitarkovsky@gmail.com  şifre:Tarkovsky987.
 
 
 

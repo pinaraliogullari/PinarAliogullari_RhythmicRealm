@@ -46,13 +46,13 @@ namespace RhythmicRealm.Data.Extensions
 				},
 				new User
                 {
-                    FirstName="Nisa",
-                    LastName="Kırcalı",
-                    UserName="nisakircali",
-                    NormalizedUserName="NISAKIRCALI",
-                    Email="nisakircali@gmail.com",
-                    NormalizedEmail="NISAKIRCALI@GMAIL.COM",
-                    Gender="Kadın",
+                    FirstName="Stanley",
+                    LastName="Kubrick",
+                    UserName="stanleykubrick",
+                    NormalizedUserName="STANLEYKUBRICK",
+                    Email="stanleykubrick@gmail.com",
+                    NormalizedEmail="STANLEYKUBRICK@GMAIL.COM",
+                    Gender="Erkek",
                     DateOfBirth=new DateTime(1990,5,12),
                     Address="Halilpaşa Konağı Caddesi Kemeraltı Sokak No:4 D:2 Üsküdar",
                     City="İstanbul",
@@ -63,12 +63,12 @@ namespace RhythmicRealm.Data.Extensions
                 },
                 new User
                 {
-                    FirstName="Mehmet",
-                    LastName="Aksu",
-                    UserName="mehmetaksu",
-                    NormalizedUserName="MEHMETAKSU",
-                    Email="mehmetaksu@gmail.com",
-                    NormalizedEmail="MEHMETAKSU@GMAIL.COM",
+                    FirstName="Andrei",
+                    LastName="Tarkovsky",
+                    UserName="andreitarkovsky",
+                    NormalizedUserName="ANDREI TARKOVSKY",
+                    Email="andreitarkovsky@gmail.com",
+                    NormalizedEmail="ANDREITARKOVSKY@GMAIL.COM",
                     Gender="Erkek",
                     DateOfBirth=new DateTime(1993,7,16),
                     Address="Halilpaşa Konağı Caddesi Kemeraltı Sokak No:4 D:2 Üsküdar",
@@ -87,8 +87,8 @@ namespace RhythmicRealm.Data.Extensions
 
             var passwordHasher = new PasswordHasher<User>();
             users[0].PasswordHash = passwordHasher.HashPassword(users[0], "Rhythmicsite987.");
-            users[1].PasswordHash = passwordHasher.HashPassword(users[1], "Nisakircali987.");
-            users[2].PasswordHash = passwordHasher.HashPassword(users[2], "Mehmetaksu987.");
+            users[1].PasswordHash = passwordHasher.HashPassword(users[1], "Rhythmicsite987.");
+            users[2].PasswordHash = passwordHasher.HashPassword(users[2], "Tarkovsky987.");
 
             #endregion
 
@@ -99,15 +99,15 @@ namespace RhythmicRealm.Data.Extensions
                 new Message { 
                     Id=1,
                     SenderMail= "rhythmicsite@hotmail.com",
-                    ReceiverMail= "nisakircali@gmail.com",
-                    Subject="Destek talebi",
+                    ReceiverMail= "stanleykubrick@gmail.com",
+					Subject="Destek talebi",
                     Content="Merhaba,Admin şifremi değiştirmem gerekiyor. DEstek rica ederim",
                 },
                 new Message
                 {
                     Id = 2,
                     SenderMail = "rhythmicsite@hotmail.com",
-                    ReceiverMail = "nisakircali@gmail.com",
+                    ReceiverMail = "stanleykubrick@gmail.com",
                     Subject = "Destek talebi",
                     Content = "Merhaba,Güncel fiyat listesini gönderebilir misin?"
                 },
@@ -115,7 +115,7 @@ namespace RhythmicRealm.Data.Extensions
                 {
                     Id = 3,
                     SenderMail = "rhythmicsite@hotmail.com",
-                    ReceiverMail = "nisakircali@gmail.com",
+                    ReceiverMail = "stanleykubrick@gmail.com",
                     Subject = "Şubeler hk",
                     Content = "Merhaba, Şube listesinin güncel versiyonunu gönderebilir misin?"
                 },
@@ -123,7 +123,7 @@ namespace RhythmicRealm.Data.Extensions
                  new Message
                 {
                     Id = 4,
-                    SenderMail = "nisakircali@gmail.com",
+                    SenderMail = "stanleykubrick@gmail.com",
                     ReceiverMail = "rhythmicsite@hotmail.com",
                     Subject = "Stok hk",
                     Content = "Merhaba, Piyano stoğu bu hafta güncelleniyor."
@@ -131,7 +131,7 @@ namespace RhythmicRealm.Data.Extensions
                  new Message
                 {
                     Id = 5,
-                    SenderMail = "nisakircali@gmail.com",
+                    SenderMail = "stanleykubrick@gmail.com",
                     ReceiverMail = "rhythmicsite@hotmail.com",
                     Subject = "Giriş hatası",
                     Content = "Merhaba, Hata çözüldü."
@@ -139,7 +139,7 @@ namespace RhythmicRealm.Data.Extensions
                     new Message
                 {
                     Id = 6,
-				    SenderMail = "nisakircali@gmail.com",
+				    SenderMail = "stanleykubrick@gmail.com",
 					ReceiverMail = "rhythmicsite@hotmail.com",
 					Subject = "Ürün listeleri hk",
                     Content = "Merhaba, Ürün listelerinin son hali pazartesi günü iltilecektir."
@@ -147,7 +147,7 @@ namespace RhythmicRealm.Data.Extensions
                        new Message
                 {
                     Id = 7,
-                    SenderMail = "nisakircali@gmail.com",
+                    SenderMail = "stanleykubrick@gmail.com",
                     ReceiverMail = "rhythmicsite@hotmail.com",
                     Subject = "Ürün görselleri hk",
                     Content = "Merhaba, Yeni ürün görselleri için çekimler devam ediyor."
@@ -155,15 +155,15 @@ namespace RhythmicRealm.Data.Extensions
                  new Message
                 {
                     Id = 8,
-                    SenderMail = "nisakircali@gmail.com",
-                    ReceiverMail = "rhythmicsite@hotmail.com",
+                    SenderMail = "stanleykubrick@gmail.com",
+					ReceiverMail = "rhythmicsite@hotmail.com",
                     Subject = "Ürün görselleri hk",
                     Content = "Merhaba, Kategori düzenlemesi tamamlandı.."
                 },
                   new Message
                 {
                     Id = 9,
-				    SenderMail = "nisakircali@gmail.com",
+					SenderMail = "stanleykubrick@gmail.com",
 					ReceiverMail = "rhythmicsite@hotmail.com",
 					Subject = "Teslimat hk",
                     Content = "Merhaba, Hava koşullarından dolayı aksayan teslimatlar var.Kargolar ile görüşüyoruz."
@@ -171,7 +171,7 @@ namespace RhythmicRealm.Data.Extensions
                   new Message
                 {
                     Id = 10,
-				    SenderMail = "nisakircali@gmail.com",
+				    SenderMail = "stanleykubrick@gmail.com",
 					ReceiverMail = "rhythmicsite@hotmail.com",
 					Subject = "Destek talebi",
                     Content = "Merhaba, Yetkilendirmeler tamalandı, kontrol edebilir misin?."
@@ -186,7 +186,7 @@ namespace RhythmicRealm.Data.Extensions
 			{
 				new Contact {
 					Id=1,
-					SenderMail= "mehmetaksu@gmail.com",
+					SenderMail= "andreitarkovsky@gmail.com",
 					ReceiverMail= "rhythmicsite@hotmail.com",
 					Subject="Teslimat hk",
 					Content="Merhaba,Uzun süredir siparişimi bekliyorum. Ne zaman ulaşacağı konusunda bilgi rica ederim.",
