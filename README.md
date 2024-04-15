@@ -43,5 +43,6 @@ Katkıda bulunmak veya hataları bildirmek için [LinkedIn profilimi ziyaret ede
 
 ![store](https://github.com/pinaraliogullari/PinarAliogullari_RhythmicRealm/assets/112780885/acf7476b-22ca-4f59-892a-86c94ffdff4c)
 
+![image](https://github.com/pinaraliogullari/PinarAliogullari_RhythmicRealm/assets/112780885/c3df6ab1-9e38-415d-9d8f-61884e8495b1)
 
 ![adminpanel](https://github.com/pinaraliogullari/PinarAliogullari_RhythmicRealm/assets/112780885/85dcf2ab-e413-4b6b-a315-e211ca5a4f2d)
