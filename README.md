@@ -9,6 +9,7 @@ Katkıda bulunmak veya hataları bildirmek için [LinkedIn profilimi ziyaret ede
 - Microsoft.EntityFrameworkCore.Sqlite
 - AspNetCoreHero.ToastNotification
 - Mapster
+- Jquery
 - Bootstrap
 - Client-side validation
 - xunit
