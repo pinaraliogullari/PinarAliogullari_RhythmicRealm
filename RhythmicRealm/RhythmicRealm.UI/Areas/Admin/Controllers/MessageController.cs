@@ -189,7 +189,7 @@ namespace RhythmicRealm.UI.Areas.Admin.Controllers
         public async Task<IActionResult> NewContactMessage(UserMessageViewModel message)
         {
 
-            message.UserMail = message.UserMail;
+            message.SenderMail = message.SenderMail;
             message.ReceiverMail = "rhythmicsite@hotmail.com";
             message.MessageDate = DateTime.Now;
             if (ModelState.IsValid)

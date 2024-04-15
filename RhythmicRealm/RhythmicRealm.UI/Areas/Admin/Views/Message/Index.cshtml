@@ -44,7 +44,7 @@
                                         {
                                         <tr> <a asp-area="Admin" asp-controller="Message" asp-action="GetUserMessageDetails" asp-route-id="@userMessage.Id"></a>
                                             <td class="mailbox-star"><a asp-area="Admin" asp-controller="Message" asp-action="GetUserMessageDetails" asp-route-id="@userMessage.Id"><i class="fas fa-star text-warning"></i></a></td>
-                                            <td class="mailbox-name"><a asp-area="Admin" asp-controller="Message" asp-action="GetUserMessageDetails" asp-route-id="@userMessage.Id">@userMessage.UserMail</a></td>
+                                            <td class="mailbox-name"><a asp-area="Admin" asp-controller="Message" asp-action="GetUserMessageDetails" asp-route-id="@userMessage.Id">@userMessage.SenderMail</a></td>
                                             <td class="mailbox-subject @(userMessage.IsRead ? "" : "font-weight-bold")">
                                                 <b>@userMessage.Subject</b> - @(userMessage.Content.Length > 30 ? $"{userMessage.Content.Substring(0, 30)}..." : userMessage.Content)...
                                             </td>

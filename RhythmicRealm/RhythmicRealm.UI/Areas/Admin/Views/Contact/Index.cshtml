@@ -59,7 +59,7 @@
                                     {
                                         <tr>
                                             <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
-                                            <td class="mailbox-name"><a asp-area="Admin" asp-controller="Contact" asp-action="GetContactDetails" asp-route-id="@item.Id">@item.UserMail</a></td>
+                                            <td class="mailbox-name"><a asp-area="Admin" asp-controller="Contact" asp-action="GetContactDetails" asp-route-id="@item.Id">@item.SenderMail</a></td>
                                             <td class="mailbox-subject">
                                                 <b>@item.Subject</b> - @item.Content.Substring(0,30)...
                                             </td>

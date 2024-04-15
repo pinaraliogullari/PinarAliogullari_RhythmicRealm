@@ -1,5 +1,4 @@
-﻿using AutoFixture;
-using Moq;
+﻿using Moq;
 using RhythmicRealm.Data.Abstract;
 using RhythmicRealm.Entity.Concrete.Others;
 using RhythmicRealm.Service.Concrete;

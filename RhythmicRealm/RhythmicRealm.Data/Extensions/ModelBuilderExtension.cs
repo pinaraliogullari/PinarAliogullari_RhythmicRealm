@@ -1,17 +1,12 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using RhythmicRealm.Entity.Concrete.Identity;
 using RhythmicRealm.Entity.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using RhythmicRealm.Entity.Concrete.Identity;
 using RhythmicRealm.Entity.Concrete.Others;
 
 namespace RhythmicRealm.Data.Extensions
 {
-    public static class ModelBuilderExtension
+	public static class ModelBuilderExtension
     {
         //bir tipi extend ederken; oluşturulan sınıf ve içerisindeki metot static olmalı. metot içinde extend edilen tip this keywordü ile parametre olarak verilmeli.
         public static void SeedData(this ModelBuilder modelBuilder)
@@ -97,14 +92,14 @@ namespace RhythmicRealm.Data.Extensions
 
             #endregion
 
-            #region Mesaj İşlemleri
+            #region Yönetici Mesaj İşlemleri
 
-            List<Message> userMessages= new List<Message>()
+            List<Message> adminMessages= new List<Message>()
             {
                 new Message { 
                     Id=1,
                     SenderMail= "rhythmicsite@hotmail.com",
-                    ReceiverMail= "mehmetaksu@gmail.com",
+                    ReceiverMail= "nisakircali@gmail.com",
                     Subject="Destek talebi",
                     Content="Merhaba,Admin şifremi değiştirmem gerekiyor. DEstek rica ederim",
                 },
@@ -136,7 +131,7 @@ namespace RhythmicRealm.Data.Extensions
                  new Message
                 {
                     Id = 5,
-                    SenderMail = "mehmetaksu@gmail.com",
+                    SenderMail = "nisakircali@gmail.com",
                     ReceiverMail = "rhythmicsite@hotmail.com",
                     Subject = "Giriş hatası",
                     Content = "Merhaba, Hata çözüldü."
@@ -144,23 +139,23 @@ namespace RhythmicRealm.Data.Extensions
                     new Message
                 {
                     Id = 6,
-                    SenderMail = "nisakircali@gmail.com",
-                    ReceiverMail = "mehmetaksu@gmail.com",
-                    Subject = "Ürün listeleri hk",
+				    SenderMail = "nisakircali@gmail.com",
+					ReceiverMail = "rhythmicsite@hotmail.com",
+					Subject = "Ürün listeleri hk",
                     Content = "Merhaba, Ürün listelerinin son hali pazartesi günü iltilecektir."
                 },
                        new Message
                 {
                     Id = 7,
                     SenderMail = "nisakircali@gmail.com",
-                    ReceiverMail = "mehmetaksu@gmail.com",
+                    ReceiverMail = "rhythmicsite@hotmail.com",
                     Subject = "Ürün görselleri hk",
                     Content = "Merhaba, Yeni ürün görselleri için çekimler devam ediyor."
                 },
                  new Message
                 {
                     Id = 8,
-                    SenderMail = "mehmetaksu@gmail.com",
+                    SenderMail = "nisakircali@gmail.com",
                     ReceiverMail = "rhythmicsite@hotmail.com",
                     Subject = "Ürün görselleri hk",
                     Content = "Merhaba, Kategori düzenlemesi tamamlandı.."
@@ -168,25 +163,41 @@ namespace RhythmicRealm.Data.Extensions
                   new Message
                 {
                     Id = 9,
-                    SenderMail = "mehmetaksu@gmail.com",
-                    ReceiverMail = "rhythmicsite@hotmail.com",
-                    Subject = "Teslimat hk",
+				    SenderMail = "nisakircali@gmail.com",
+					ReceiverMail = "rhythmicsite@hotmail.com",
+					Subject = "Teslimat hk",
                     Content = "Merhaba, Hava koşullarından dolayı aksayan teslimatlar var.Kargolar ile görüşüyoruz."
                 },
                   new Message
                 {
                     Id = 10,
-                    SenderMail = "mehmetaksu@gmail.com",
-                    ReceiverMail = "nisakircali@gmail.com",
-                    Subject = "Destek talebi",
+				    SenderMail = "nisakircali@gmail.com",
+					ReceiverMail = "rhythmicsite@hotmail.com",
+					Subject = "Destek talebi",
                     Content = "Merhaba, Yetkilendirmeler tamalandı, kontrol edebilir misin?."
                 },
             };
-            modelBuilder.Entity<Message>().HasData(userMessages);
-            #endregion
+            modelBuilder.Entity<Message>().HasData(adminMessages);
+			#endregion
 
-            #region Rol Atama İşlemleri
-            List<IdentityUserRole<string>> userRoles = new List<IdentityUserRole<string>>
+			#region Kullanıcı Mesaj İşlemleri
+
+			List<Contact> userMessages = new List<Contact>()
+			{
+				new Contact {
+					Id=1,
+					SenderMail= "mehmetaksu@gmail.com",
+					ReceiverMail= "rhythmicsite@hotmail.com",
+					Subject="Teslimat hk",
+					Content="Merhaba,Uzun süredir siparişimi bekliyorum. Ne zaman ulaşacağı konusunda bilgi rica ederim.",
+				},
+			
+			};
+			modelBuilder.Entity<Contact>().HasData(userMessages);
+			#endregion
+
+			#region Rol Atama İşlemleri
+			List<IdentityUserRole<string>> userRoles = new List<IdentityUserRole<string>>
             {
                 new IdentityUserRole<string>
                 {

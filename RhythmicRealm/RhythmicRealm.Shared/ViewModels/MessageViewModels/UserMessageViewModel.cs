@@ -9,7 +9,7 @@ namespace RhythmicRealm.Shared.ViewModels.MessageViewModels
 
         [Required(ErrorMessage = "Mail adresi boş bırakılmamalıdır.")]
         [DataType(DataType.EmailAddress, ErrorMessage = "Lütfen uygun formatta bir mail adresi giriniz.")]
-        public string UserMail { get; set; }
+        public string SenderMail { get; set; }
 
 
         public string ReceiverMail { get; set; }

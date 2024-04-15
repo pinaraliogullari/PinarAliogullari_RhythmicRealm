@@ -110,7 +110,7 @@
 							<div class="order-col">
 								<div>@item.Quantity x @item.Name</div>
 								<div>
-									@($"{item.Price:C2}")</div>
+									@($"{item.Price*item.Quantity:C2}")</div>
 							</div>
 						}
 					</div>
@@ -120,10 +120,15 @@
 						var newTotal = (double)total - discount;
 					}
 					
-					<div class="order-col">
-						<div>Kargo</div>
-						<div><strong>Ücretsiz</strong></div>
-					</div>
+				
+						<div class="order-col">
+							<div>İndirim</div>
+							<div><strong>@($"{discount:C2}")</strong></div>
+						</div>
+						<div class="order-col">
+							<div>Kargo</div>
+							<div><strong>Ücretsiz</strong></div>
+						</div>
 					<div class="order-col">
 						<div><strong>Toplam</strong></div>
 						<div><strong class="order-total">@($"{newTotal:C2}")</strong></div>
